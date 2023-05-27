@@ -6,19 +6,17 @@ import 'preline'
 import * as VueRouter from 'vue-router'
 
 import Admin from './views/admin.vue' 
-//const About = { template: '<div>About</div>' }
-
+import Commerce from './views/commerce.vue' 
 
 const routes = [
     { path: '/', component: Admin }, 
     { path: '/admin', component: Admin },
-   // { path: '/about', component: About },
+    { path: '/commerce', component: Commerce },
   ]
 
 const router = VueRouter.createRouter({
-    // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
     history: VueRouter.createWebHashHistory(),
-    routes, // short for `routes: routes`
+    routes,
 })
 
 const app = createApp(App)
