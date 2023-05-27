@@ -4,14 +4,7 @@
 
 <template>
   <div>
-    
-     <router-view></router-view>
-
-      <!-- <h1 class="text-3xl font-bold underline">
-        Hello world!
-      </h1> -->
-  
-    
+     <router-view />    
     <!-- <hello-world></hello-world> -->
   </div>
 </template>

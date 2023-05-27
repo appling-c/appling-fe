@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
+import { createWebHistory, createRouter } from "vue-router";
 import 'preline'
 
 import * as VueRouter from 'vue-router'
@@ -16,8 +17,8 @@ const routes = [
     { path: '/login', component: Login }, 
  ]
 
-const router = VueRouter.createRouter({
-    history: VueRouter.createWebHashHistory(),
+const router = createRouter({
+    history: createWebHistory(),
     routes,
 })
 
