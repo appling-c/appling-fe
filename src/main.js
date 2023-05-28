@@ -24,6 +24,10 @@ const routes = [
         component: Admin,
         children: [
             {
+                path: '',
+                component: admin_dashboard,
+            },
+            {
                 path: 'dashboard',
                 component: admin_dashboard,
             },

@@ -14,7 +14,9 @@ import TheAdminSidebar from "../components/admin/adminSidebar.vue"
   <the-admin-sidebar/>
 
   <!-- Content -->
+   <div class="w-full pt-10 px-4 sm:px-6 md:px-8 lg:pl-72">
   <router-view></router-view>
+   </div>
   <!-- End Content -->
   <!-- ========== END MAIN CONTENT ========== -->
 </div>
