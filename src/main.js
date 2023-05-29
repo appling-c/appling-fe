@@ -3,6 +3,7 @@ import './style.css'
 import App from './App.vue'
 import { createWebHistory, createRouter } from "vue-router";
 import 'preline'
+import axios from './plugins/axios'
 
 import Admin from './views/admin.vue' 
 import admin_dashboard from './components/admin/contents/dashboard.vue'
@@ -67,3 +68,6 @@ const app = createApp(App)
 
 app.use(router)
 app.mount('#app')
+
+
+app.config.globalProperties.$axios = axios;
