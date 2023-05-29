@@ -9,6 +9,9 @@ import admin_dashboard from './components/admin/contents/dashboard.vue'
 import admin_product from './components/admin/contents/product.vue'
 import admin_calendar from './components/admin/contents/calendar.vue'
 
+import admmin_product_template from './components/admin/contents/product/template.vue'
+
+
 import Commerce from './views/commerce.vue' 
 import Login from './views/login.vue' 
 import Signup from './views/signup.vue' 
@@ -34,6 +37,17 @@ const routes = [
             {
                 path: 'product',
                 component: admin_product,
+                children : [
+                    {
+                        path : "",
+                        component : admmin_product_template
+                    },
+                    {
+                        path : "template",
+                        component : admmin_product_template
+                    }
+                    
+                ]
             },
             {
                 path: 'calendar',
