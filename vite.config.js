@@ -7,7 +7,7 @@ export default ({mode}) => {
   return defineConfig({
   server: {
     proxy: {
-      '/': process.env.VITE_API_URL,
+      '/api': "http://3.34.1.129:8000",
     }
   },
   plugins: [
