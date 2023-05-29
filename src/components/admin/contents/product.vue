@@ -1,5 +1,7 @@
 <template>
     <div>
-        this is product        
+        <router-view></router-view>      
     </div>
 </template>
+
+
