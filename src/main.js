@@ -5,9 +5,7 @@ import 'preline'
 import axios from './plugins/axios'
 import router from './plugins/router'
 
-
 const app = createApp(App)
 app.use(router)
-app.mount('#app')
-
 app.config.globalProperties.$axios = axios;
+app.mount('#app')

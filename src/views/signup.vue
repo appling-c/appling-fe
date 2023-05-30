@@ -57,9 +57,13 @@
 
         <p class="mt-2 text-base text-gray-600 dark:text-gray-400">
           이미 계정이 있나요?
-          <router-link to="/login" class="text-blue-600 decoration-2 hover:underline font-medium" href="../examples/html/signin.html">
+          <router-link to="/login" class="text-blue-600 decoration-2 hover:underline font-medium">
             여기서 로그인하기
           </router-link>
+        </p>
+
+        <p @click="temp" class="mt-2 text-base text-gray-600 dark:text-gray-400">
+          어둠의 경로로 가입 테스트하기
         </p>
 
         <form>
@@ -120,40 +124,41 @@
 </template>
 
 <script>
-
+import api from '../plugins/api'
 export default {
   data(){
     return {
-      name : "최고은", nickname : "김루나", email : "luna@luna.com", password : "123123", birth :"19960918"
+      name: "",
+      nickname: "",
+      email: "",
+      password: "",
+      birth: ""
     }
   },
   methods: {
+    temp() { 
+      this.name = "최고은";
+      this.nickname = "김루나";
+      this.email = "luna@luna.com"
+      this.password = "123123";
+      this.birth = "19980909"
+    },
     async submit(){
-    //console.log(name, nickname, email, password, birth)
-//  try {
-//         const rs = await this.$axios.get('api/member');
-//         console.log(rs);
-//       } catch (err) {
-//         console.error(err);
-//       }
-//   return;
-    const user = 
-    {
-      name: this.name, 
-      nickname: this.nickname, 
-      email: this.email, 
-      password:this.password, 
-      birth:this.birth
-    }
+      const user = {
+        name: this.name, 
+        nickname: this.nickname, 
+        email: this.email, 
+        password:this.password, 
+        birth:this.birth
+      }
 
-    try {
-        const rs = await this.$axios.post('api/member/join', {...user});
-        console.log(rs);
+      try {
+        await api.memberjoin(user).then((result) => { 
+          this.$router.push(`/${result}`)
+        })
       } catch (err) {
         console.error(err);
       }
-  
-
   }
   },
 }
