@@ -1,3 +1,18 @@
+<script>
+import api from '../../plugins/api'
+export default {
+  methods: {
+    async calltokentest() { 
+      await api.calltokentest().then((response) => { 
+        console.log(response);
+      })
+    }
+  },
+  mounted() { 
+    this.calltokentest();
+  }
+}
+</script>
 <template>
     <div>
     <!-- Clients -->

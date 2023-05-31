@@ -7,7 +7,7 @@ export default ({mode}) => {
   return defineConfig({
   server: {
     proxy: {
-      '/api': "http://3.34.1.129:8000",
+      '/api': {target :  "http://3.34.1.129:8000", changeOrigin: true},
     }
   },
   plugins: [
