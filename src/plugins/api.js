@@ -1,9 +1,8 @@
 
-import { ref } from "vue"
 import instance from "./axios"
 const ENDPOINT = {
     MEMEBERLOGIN: "/api/auth/login", 
-    MEMEBERINFO: "/api/v1/hello", 
+    MEMEBERINFO: "/api/member", 
     MEMEBERREFRESH: "/api/auth/refresh", 
     MEMBERJOIN : "/api/auth/join"
 }
@@ -15,7 +14,7 @@ const api = {
     },
     
     /**
-     * 사용자 로그인
+     * 회원가입
      */
     memberjoin: async function (payload) { 
         await instance.post(ENDPOINT.MEMBERJOIN, { ...payload }).then((response) => { 
@@ -29,16 +28,17 @@ const api = {
     },
 
     /**
-     * 사용자 로그인
+     * 로그인
+     * 액세스토큰 받기
+     * 사용자 정보 가져오기
      */
     memberlogin: async function (payload) { 
-        await api.memberaccsstoken(payload).then(() => { 
-            api.memberinfo()
-        })
-        // const [, resultpath] = await Promise.all([
-        //     api.memberaccsstoken(payload),
-        //     api.memberinfo()])
-        // return resultpath;
+        // 액세스 토큰 받기
+        await api.memberaccsstoken(payload)
+
+        // 사용자 정보 가져오기(구매자/판매자에 따라 리다이렉팅 페이지가 다름)
+        const resultpath = await api.memberinfo()
+        return resultpath
     },
 
     /**
@@ -49,7 +49,6 @@ const api = {
             const { code, data } = response.data;
             if (code == "0000") { 
                 const { access_token, refresh_token } = data;
-                console.log(access_token, refresh_token)
                 // 토큰저장
                 sessionStorage.setItem('access_token', access_token);
                 sessionStorage.setItem('refresh_token', refresh_token);
@@ -64,7 +63,7 @@ const api = {
         let resultpath = '';
         await instance.get(ENDPOINT.MEMEBERINFO).then((result) => { 
             const { data, message } = result.data;
-            console.log(data, message)
+            
             sessionStorage.setItem('user', { ...data })
             const role = data.role
             if (message == 'success') {
@@ -81,14 +80,11 @@ const api = {
      */
     memberaccesstoken: async function () { 
         const refresh_token = sessionStorage.getItem('refresh_token')
-        const access_token = sessionStorage.getItem('access_token')
-        if (!refresh_token) { 
-            return alert('사용자 정보가 만료되었습니다. 다시로그인해주세요.')
-        }
         await instance.get(`${ENDPOINT.MEMEBERREFRESH}/${refresh_token}`).then((response) => { 
             const { code, data } = response.data;
             if (code == "0000") { 
                 const { access_token, refresh_token } = data;
+                alert('(test)토큰재발급')
                 // 토큰저장
                 sessionStorage.setItem('access_token', access_token);
                 sessionStorage.setItem('refresh_token', refresh_token);

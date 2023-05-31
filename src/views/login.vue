@@ -13,11 +13,11 @@ export default {
       this.password = "123123";
     },
     async submit() { 
+      // 사용자 로그인 처리
       const user = { email:this.email, password: this.password };
       try {
         await api.memberlogin(user).then((result) => { 
-          console.log(result)
-         // this.$router.push(`/${result}`)
+          this.$router.push(`/${result}`)
         })
       } catch (err) { 
         console.log(err)
