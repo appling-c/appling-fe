@@ -9,14 +9,17 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   (config) => {
-    console.log('axios.js request : ', config);
+
+    
+    //console.log('axios.js request : ', config);
     
     // 세션스토리지에 저장된 토큰을 헤더에 저장
     const access_token = sessionStorage.getItem('access_token')
+   // console.log('*** request header ***', access_token)
     if (access_token) {
       config.headers["Authorization"] = `Bearer ${access_token}`
     } 
-    
+    alert('url:'+config.url)
     return config
   }, 
   (error) => {
@@ -26,16 +29,17 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   (response) => {
-    console.log('axios.js response : ', response);
+    //console.log('axios.js response : ', response);
     return response
   },
   (error) => {
     const { config, response: { status } } = error;
-    console.log('error response', error)
+    //console.log('error response', error)
     const refresh_token = sessionStorage.getItem('refresh_token')
     
     if (status == 403) { 
       // 토큰없음, 토큰만료
+      alert('[1], 403에러')
       const originconfig = config;
 
       // 토큰이 없고, 리프레시 토큰도 없는 경우 > 로그인 만료
@@ -45,12 +49,16 @@ instance.interceptors.response.use(
       }
 
       // 토큰 재발급 요청
-      api.memberaccesstoken();
+      api.memberaccesstoken().then(() => { 
+        setTimeout(() => { 
+          alert('[3], 토큰 업데이트 후 이전에 요청한 API 재요청')
+           return Promise.resolve(instance(originconfig))
+         }, 2000)
+      });
 
       // 토큰을 새로운 토큰으로 업데이트 한 후 이전에 요청한 API 재요청
-      setTimeout(() => { 
-        return Promise.resolve(instance(originconfig))
-      }, 500)
+      //console.log(originconfig)
+      
     }
     
     return Promise.reject(error);

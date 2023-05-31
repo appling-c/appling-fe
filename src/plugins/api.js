@@ -1,15 +1,37 @@
 
+import { ref } from "vue";
 import instance from "./axios"
 const ENDPOINT = {
     MEMEBERLOGIN: "/api/auth/login", 
     MEMEBERINFO: "/api/member", 
     MEMEBERREFRESH: "/api/auth/refresh", 
-    MEMBERJOIN : "/api/auth/join"
+    MEMBERJOIN: "/api/auth/join", 
+    MEMBRESELLER : "/api/member/seller"
 }
 const api = {
+    /**
+     * 구매자 -> 판매자 권한 신청
+     */
+    memberseller: async function() { 
+        await instance.get(ENDPOINT.MEMBRESELLER).then((response) => { 
+            const { data } = response.data;
+            return data;
+        })
+    },
+    
+    logout: function () {
+        sessionStorage.removeItem('access_token')
+        sessionStorage.removeItem('refresh_token');
+        sessionStorage.removeItem('user')
+        sessionStorage.removeItem('islogin')
+    },
+
+    /**
+     * 토큰 만료 -> 재발급 프로세스 테스트용 API
+     */
     calltokentest: async function () {
         await instance.get('/api/v1/hello').then((response) => { 
-            console.log(response)
+            return response;
         })    
     },
     
@@ -64,7 +86,8 @@ const api = {
         await instance.get(ENDPOINT.MEMEBERINFO).then((result) => { 
             const { data, message } = result.data;
             
-            sessionStorage.setItem('user', { ...data })
+            sessionStorage.setItem('user', JSON.stringify(data))
+            sessionStorage.setItem('islogin', true)
             const role = data.role
             if (message == 'success') {
                 resultpath = role === 'USER' ? 'commerce' : 'admin/dashboard';
@@ -80,14 +103,16 @@ const api = {
      */
     memberaccesstoken: async function () { 
         const refresh_token = sessionStorage.getItem('refresh_token')
+        
         await instance.get(`${ENDPOINT.MEMEBERREFRESH}/${refresh_token}`).then((response) => { 
             const { code, data } = response.data;
             if (code == "0000") { 
                 const { access_token, refresh_token } = data;
-                alert('(test)토큰재발급')
                 // 토큰저장
                 sessionStorage.setItem('access_token', access_token);
                 sessionStorage.setItem('refresh_token', refresh_token);
+
+                alert('[2]. 재발급')
             }
         })
     },
