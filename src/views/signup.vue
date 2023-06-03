@@ -151,12 +151,14 @@ export default {
         password:this.password, 
         birth:this.birth
       }
-
+      // 회원가입
       try {
         await api.memberjoin(user).then((result) => { 
-          this.$router.push(`/${result}`)
+          alert('회원가입이 완료되었습니다. 로그인화면으로 이동합니다.')
+          return this.$router.push(`/${result}`)
         })
       } catch (err) {
+        alert('회원가입에 실패하였습니다. 관리자에게 문의하세요.')
         console.error(err);
       }
   }

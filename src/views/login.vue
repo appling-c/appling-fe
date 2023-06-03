@@ -13,6 +13,7 @@ export default {
       this.password = "123123";
     },
     async submit() { 
+      // 사용자 로그인 처리
       const user = { email:this.email, password: this.password };
       try {
         await api.memberlogin(user).then((result) => { 
@@ -45,7 +46,7 @@ export default {
 
           <div class="mt-5">
             <!-- Form -->
-            <form>
+            
               <div class="grid gap-y-4">
                 <!-- Form Group -->
                 <div>
@@ -91,9 +92,9 @@ export default {
                 </div>
                 <!-- End Checkbox -->
 
-                <button @click="submit" type="submit" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">Sign in</button>
+                <button @click="submit" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">Sign in</button>
               </div>
-            </form>
+            
             <!-- End Form -->
           </div>
         </div>

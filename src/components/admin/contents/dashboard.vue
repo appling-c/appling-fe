@@ -1,17 +1,5 @@
-<script>
-export default {
-  
-  async mounted(){
-    console.log(this)
-    try {
-        const rs = await this.$axios.get('/member');
-        console.log(rs);
-      } catch (err) {
-        console.error(err);
-      }
-  
-  }
-}
+<script setup>
+  const islogin = JSON.parse(sessionStorage.getItem('islogin'));
 </script>
 
 <template>
