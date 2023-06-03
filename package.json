@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@toast-ui/editor": "^3.2.2",
     "axios": "^1.4.0",
     "preline": "^1.8.0",
     "vue": "^3.2.47",
