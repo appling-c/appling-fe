@@ -10,6 +10,7 @@ import commerce_search from '../components/commerce/search.vue'
 import commerce_detail from '../components/commerce/detail.vue'
 import commerce_cartlist from '../components/commerce/cartlist.vue'
 import commerce_regist from '../components/commerce/regist.vue'
+import commerce_pricing from '../components/commerce/pricing.vue'
 import Login from '../views/login.vue' 
 import Signup from '../views/signup.vue' 
 import { createWebHistory, createRouter } from "vue-router";
@@ -40,9 +41,13 @@ const routes = [
                 path: 'cartlist', 
                 component : commerce_cartlist
             }, 
-             {
+            {
                 path: 'regist', 
                 component : commerce_regist
+            },
+            {
+                path: 'pricing', 
+                component : commerce_pricing
             }, 
             
         ]
