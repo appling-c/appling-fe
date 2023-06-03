@@ -55,11 +55,26 @@ const api = {
      */
     memberlogin: async function (payload) { 
         // 액세스 토큰 받기
-        await api.memberaccesstoken(payload)
+        await api.loginccesstoken(payload)
 
         // 사용자 정보 가져오기(구매자/판매자에 따라 리다이렉팅 페이지가 다름)
         const resultpath = await api.memberinfo()
         return resultpath
+    },
+
+    /**
+     * user token 발행, 토큰저장
+     */
+     loginccesstoken: async function (payload) { 
+        await instance.post(ENDPOINT.MEMEBERLOGIN, { ...payload }).then((response) => { 
+            const { code, data } = response.data;
+            if (code == "0000") { 
+                const { access_token, refresh_token } = data;
+                // 토큰저장
+                sessionStorage.setItem('access_token', access_token);
+                sessionStorage.setItem('refresh_token', refresh_token);
+            }
+        })
     },
 
     /**
