@@ -16,7 +16,7 @@ import Signup from '../views/signup.vue'
 import { createWebHistory, createRouter } from "vue-router";
 
 const routes = [
-    { path: '/', component: Admin }, 
+    { path: '/', component: Commerce }, 
     {
         path: '/commerce',
         component: Commerce,
