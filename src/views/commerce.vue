@@ -14,6 +14,11 @@ export default {
       location.href="/commerce/main"
     }
   },
+  mounted(){
+    if(this.$route.fullPath == '/'){
+      this.$router.push('/commerce/main')
+    }
+  }
 }
 
 
