@@ -1,21 +1,21 @@
-<script setup>
-import { onMounted } from "vue";
+<script>
 import api from '../plugins/api'
-import router from "../plugins/router";
-const islogin = JSON.parse(sessionStorage.getItem('islogin'));
-const user = JSON.parse(sessionStorage.getItem('user'))
 
-onMounted(() => { 
-  if (islogin) { 
-    const { name } = user;
-  }
-})
-
-function logout() { 
-  api.logout();
-
-  router.push('/commerce/main')
+export default {
+  data(){
+    return {
+      islogin : JSON.parse(sessionStorage.getItem('islogin')),
+      user : JSON.parse(sessionStorage.getItem('user'))
+    }
+  },
+  methods: {
+    logout() { 
+      api.logout();
+      location.href="/commerce/main"
+    }
+  },
 }
+
 
 
 </script>
