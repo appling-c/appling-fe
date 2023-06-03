@@ -30,16 +30,16 @@
                         <blockquote class="text-center p-4 sm:px-7">
                             <p class="text-xl font-medium text-gray-800 md:text-xl md:leading-normal xl:text-xl xl:leading-normal dark:text-gray-200">
                             안녕하세요 윤순희 농부입니다.<br/>
-                    진짜 정성다해 키웠어요<br/>
-                    고구마는 섬유질과
-                    칼륨이 풍부합니다.<br/>
+                            진짜 정성다해 키웠어요<br/>
+                            고구마는 섬유질과
+                            칼륨이 풍부합니다.<br/>
 
-                    다이어트식품으로 단원 으뜸입니다.<br/>
-                    가장 좋은 것으로 선별하여
-                    산지직송합니다.<br/>
+                            다이어트식품으로 단원 으뜸입니다.<br/>
+                            가장 좋은 것으로 선별하여
+                            산지직송합니다.<br/>
 
-                    ** 크기는 특상, 중상, 한입크기로 배송 됩니다 **
-                            </p>
+                            ** 크기는 특상, 중상, 한입크기로 배송 됩니다 **
+                                    </p>
                             <p class="mt-5 text-gray-800 dark:text-gray-200">
                             상품에 대한 자세한 문의사항은 아래의 연락처로 문의주세요.
                             </p>

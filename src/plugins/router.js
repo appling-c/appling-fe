@@ -3,7 +3,8 @@ import Admin from '../views/admin.vue'
 import admin_dashboard from '../components/admin/contents/dashboard.vue'
 import admin_product from '../components/admin/contents/product.vue'
 import admin_calendar from '../components/admin/contents/calendar.vue'
-import admmin_product_template from '../components/admin/contents/product/template.vue'
+import admmin_template from '../components/admin/contents/template.vue'
+
 import Commerce from '../views/commerce.vue' 
 import commerce_main from '../components/commerce/main.vue'
 import commerce_search from '../components/commerce/search.vue'
@@ -11,6 +12,7 @@ import commerce_detail from '../components/commerce/detail.vue'
 import commerce_cartlist from '../components/commerce/cartlist.vue'
 import commerce_regist from '../components/commerce/regist.vue'
 import commerce_pricing from '../components/commerce/pricing.vue'
+
 import Login from '../views/login.vue' 
 import Signup from '../views/signup.vue' 
 import { createWebHistory, createRouter } from "vue-router";
@@ -73,11 +75,11 @@ const routes = [
                 children : [
                     {
                         path : "",
-                        component : admmin_product_template
+                        component : admin_product
                     },
                     {
                         path : "template",
-                        component : admmin_product_template
+                        component : admmin_template
                     }
                     
                 ]
