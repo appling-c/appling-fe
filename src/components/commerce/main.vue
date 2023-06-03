@@ -6,6 +6,9 @@ export default {
       await api.calltokentest().then((response) => { 
         console.log(response);
       })
+    },
+    gopricing(){
+      this.$router.push('/commerce/pricing')
     }
   },
   mounted() { 
@@ -151,95 +154,97 @@ export default {
         </div>
       </div>
       <!-- End Hero -->
-      <!-- Features -->
-      <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <!-- Card Blog -->
+<div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+  <!-- Title -->
+  <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+    <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">애플링 최고 인기 상품! <br/>산지에서 바로 보내는 초신선 농산물 구경하기</h2>
+    <p class="mt-1 text-gray-600 dark:text-gray-400">산지에 바로 주문하는 유통 다이어트로 판매자는 더 높은 가격에,<br/> 소비자는 더 낮은 가격에 국산 농산물을 거래해보세요.</p>
+  </div>
+  <!-- End Title -->
 
-      <!-- Grid -->
-      <div class="mt-5 lg:mt-16 grid lg:grid-cols-3 gap-8 lg:gap-12">
-          <div class="lg:col-span-1">
-          <h2 class="font-bold text-2xl md:text-3xl text-gray-800 dark:text-gray-200">
-              서비스 하나로 농산물 유통 혁신
-          </h2>
-          <p class="mt-2 md:mt-4 text-gray-500">
-  산지에 바로 주문하는 유통 다이어트로 생산자는 더 높은 가격에, 소비자는 더 낮은 가격에 국산 농산물을 거래합니다.</p>
-          </div>
-          <!-- End Col -->
-
-          <div class="lg:col-span-2">
-          <div class="grid sm:grid-cols-2 gap-8 md:gap-12">
-              <!-- Icon Block -->
-              <div class="flex gap-x-5">
-              <svg class="flex-shrink-0 mt-1 w-6 h-6 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5ZM3 8.062C3 6.76 4.235 5.765 5.53 5.886a26.58 26.58 0 0 0 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.933.933 0 0 1-.765.935c-.845.147-2.34.346-4.235.346-1.895 0-3.39-.2-4.235-.346A.933.933 0 0 1 3 9.219V8.062Zm4.542-.827a.25.25 0 0 0-.217.068l-.92.9a24.767 24.767 0 0 1-1.871-.183.25.25 0 0 0-.068.495c.55.076 1.232.149 2.02.193a.25.25 0 0 0 .189-.071l.754-.736.847 1.71a.25.25 0 0 0 .404.062l.932-.97a25.286 25.286 0 0 0 1.922-.188.25.25 0 0 0-.068-.495c-.538.074-1.207.145-1.98.189a.25.25 0 0 0-.166.076l-.754.785-.842-1.7a.25.25 0 0 0-.182-.135Z"/>
-                  <path d="M8.5 1.866a1 1 0 1 0-1 0V3h-2A4.5 4.5 0 0 0 1 7.5V8a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1v1a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1v-.5A4.5 4.5 0 0 0 10.5 3h-2V1.866ZM14 7.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.5A3.5 3.5 0 0 1 5.5 4h5A3.5 3.5 0 0 1 14 7.5Z"/>
-              </svg>
-              <div class="grow">
-                  <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
-              서비스 하나로 농산물 유통 혁신
-                  </h3>
-                  <p class="mt-1 text-gray-600 dark:text-gray-400">
-  산지에 바로 주문하는 유통 다이어트로 생산자는 더 높은 가격에, 소비자는 더 낮은 가격에 국산 농산물을 거래합니다.                </p>
-              </div>
-              </div>
-              <!-- End Icon Block -->
-
-              <!-- Icon Block -->
-              <div class="flex gap-x-5">
-              <svg class="flex-shrink-0 mt-1 w-6 h-6 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z"/>
-              </svg>
-              <div class="grow">
-                  <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
-  산지에서 바로 보내는
-  초신선 농산물                </h3>
-                  <p class="mt-1 text-gray-600 dark:text-gray-400">
-  농민이 주문을 받은 직후 포장부터 배송까지
-  원스톱으로 처리해 가장 신선한 농산물을
-  받아볼 수 있습니다.                </p>
-              </div>
-              </div>
-              <!-- End Icon Block -->
-
-              <!-- Icon Block -->
-              <div class="flex gap-x-5">
-              <svg class="flex-shrink-0 mt-1 w-6 h-6 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
-                  <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
-              </svg>
-              <div class="grow">
-                  <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
-  생산자와 소비자
-  모두 웃는 균형 이익
-                  </h3>
-                  <p class="mt-1 text-gray-600 dark:text-gray-400">
-  거래 가격 알고리즘을 통해 식자재 구입 부담을
-  줄여주는 동시에, 농민의 이익을 보장하는
-  균형이익 실현에 초점을 맞췄습니다.
-                  </p>
-              </div>
-              </div>
-              <!-- End Icon Block -->
-
-              <!-- Icon Block -->
-              <div class="flex gap-x-5">
-              <svg class="flex-shrink-0 mt-1 w-6 h-6 text-blue-600 dark:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="m8 2.42-.717-.737c-1.13-1.161-3.243-.777-4.01.72-.35.685-.451 1.707.236 3.062C4.16 6.753 5.52 8.32 8 10.042c2.479-1.723 3.839-3.29 4.491-4.577.687-1.355.587-2.377.236-3.061-.767-1.498-2.88-1.882-4.01-.721L8 2.42Zm-.49 8.5c-10.78-7.44-3-13.155.359-10.063.045.041.089.084.132.129.043-.045.087-.088.132-.129 3.36-3.092 11.137 2.624.357 10.063l.235.468a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419 1.003.288.578.235 1.15.076 1.629-.157.469-.422.867-.588 1.115l-.004.007a.25.25 0 1 1-.416-.278c.168-.252.4-.6.533-1.003.133-.396.163-.824-.049-1.246l-.013-.028c-.24-.48-.38-.758-.448-1.102a3.177 3.177 0 0 1-.052-.45l-.04.08a.25.25 0 1 1-.447-.224l.235-.468ZM6.013 2.06c-.649-.18-1.483.083-1.85.798-.131.258-.245.689-.08 1.335.063.244.414.198.487-.043.21-.697.627-1.447 1.359-1.692.217-.073.304-.337.084-.398Z"/>
-              </svg>
-              <div class="grow">
-                  <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
-  필환경 시대 가치소비로 주목받다
-                  </h3>
-                  <p class="mt-1 text-gray-600 dark:text-gray-400">
-  최근 ‘필(必)환경’ 바람과 ‘가치 소비’ 바람을 타고 못난이 농산물이 주목받기 시작했다. 이러한 움직임을 ‘푸드 리퍼브’라고 한다. 푸드 리퍼브는 기준에 미치지 못하는 외관으로 상품 가치를 잃은 식품을 적극적으로 구매하거나, 그 농산물을 활용해 새 식품 혹은 제품으로 재탄생시키는 트렌드다.                </p>
-              </div>
-              </div>
-              <!-- End Icon Block -->
-          </div>
-          </div>
-          <!-- End Col -->
+  <!-- Grid -->
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Card -->
+    <a class="group rounded-xl overflow-hidden" href="#">
+      <div class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
+        <img class="w-full h-full absolute top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src="/src/assets/apple-title.png" alt="Image Description">
+        <span class="absolute top-0 right-0 rounded-tr-xl rounded-bl-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 dark:bg-gray-900">
+          프리미엄
+        </span>
       </div>
-      <!-- End Grid -->
+
+      <div class="mt-7">
+        <h3 class="text-xl font-semibold text-gray-800 group-hover:text-gray-600 dark:text-gray-200">
+          [자연 햇살 농원] 평창 700 고지에서 직접 재배한 무공해 사과
+        </h3>
+        <p class="mt-3 text-gray-800 dark:text-gray-200">
+          #평창여행 #평창한우#평창여행 #평창사과 #평창한우
+        </p>
+        <p class="mt-5 inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 group-hover:underline font-medium">
+          더보기👀
+          <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </p>
       </div>
-      <!-- End Features -->
+    </a>
+    <!-- End Card -->
+
+    <!-- Card -->
+    <a class="group rounded-xl overflow-hidden" href="#">
+      <div class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
+        <img class="w-full h-full absolute top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src="/src/assets/potato.png" alt="Image Description">
+        <span class="absolute top-0 right-0 rounded-tr-xl rounded-bl-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 dark:bg-gray-900">
+          베이직
+        </span>
+      </div>
+
+      <div class="mt-7">
+        <h3 class="text-xl font-semibold text-gray-800 group-hover:text-gray-600 dark:text-gray-200">
+          [꿀고구마맛집] 해남 베니하루카 꿀 고구마 밤고구마 호박고구마
+        </h3>
+        <p class="mt-3 text-gray-800 dark:text-gray-200">
+          농부의 땀과 정성으로 재배 수확한 황토 고구마
+        </p>
+        <p class="mt-5 inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 group-hover:underline font-medium">
+          더보기👀
+          <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </p>
+      </div>
+    </a>
+    <!-- End Card -->
+
+    <!-- Card -->
+    <a class="group relative flex flex-col w-full min-h-[15rem] bg-center bg-cover rounded-xl hover:shadow-lg transition bg-[url('/src/assets/back-darken.png')]" href="#">
+      <div class="flex-auto p-4 md:p-6">
+        <h3 class="text-xl text-white/[.9] group-hover:text-white"><span class="font-bold">애플링</span> 서비스에 가입하여 상품을 구매하고, 판매해보세요.</h3>
+      </div>
+      <div class="pt-0 p-4 md:p-6">
+        <div class="inline-flex items-center gap-2 text-sm font-medium text-white group-hover:text-white/[.7]">
+          자세히 보기
+          <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+    <!-- End Card -->
+  </div>
+  <!-- End Grid -->
+</div>
+<!-- End Card Blog -->
+
+     <div class="max-w-2xl mx-auto text-center pt-20 pb-6 lg:pb-16">
+      <h2 class="text-2xl font-bold sm:text-3xl md:text-4xl dark:text-white">Blog Sections</h2>
+      <p class="mt-4 md:text-lg text-gray-600 dark:text-gray-400">Quickly get a project started with any of our examples ranging from using parts of the UI to custom components and layouts using Tailwind CSS.</p>
+      <div class="mt-5">
+        <a @click="gopricing" class="inline-flex justify-center items-center gap-x-3 text-center bg-blue-600 hover:bg-blue-700 border border-transparent text-white text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:focus:ring-offset-gray-800">
+          멤버십 자세히 보기
+        </a>
+      </div>
+    </div>
   </div>
 </template>
