@@ -13,9 +13,8 @@ const api = {
      * 구매자 -> 판매자 권한 신청
      */
     memberseller: async function() { 
-        await instance.get(ENDPOINT.MEMBRESELLER).then((response) => { 
-            const { data } = response.data;
-            return data;
+        return await instance.post(ENDPOINT.MEMBRESELLER).then((response) => { 
+            return response.data.data.message;
         })
     },
     
@@ -56,26 +55,11 @@ const api = {
      */
     memberlogin: async function (payload) { 
         // 액세스 토큰 받기
-        await api.memberaccsstoken(payload)
+        await api.memberaccesstoken(payload)
 
         // 사용자 정보 가져오기(구매자/판매자에 따라 리다이렉팅 페이지가 다름)
         const resultpath = await api.memberinfo()
         return resultpath
-    },
-
-    /**
-     * user token 발행, 토큰저장
-     */
-    memberaccsstoken: async function (payload) { 
-        await instance.post(ENDPOINT.MEMEBERLOGIN, { ...payload }).then((response) => { 
-            const { code, data } = response.data;
-            if (code == "0000") { 
-                const { access_token, refresh_token } = data;
-                // 토큰저장
-                sessionStorage.setItem('access_token', access_token);
-                sessionStorage.setItem('refresh_token', refresh_token);
-            }
-        })
     },
 
     /**
@@ -103,7 +87,6 @@ const api = {
      */
     memberaccesstoken: async function () { 
         const refresh_token = sessionStorage.getItem('refresh_token')
-        
         await instance.get(`${ENDPOINT.MEMEBERREFRESH}/${refresh_token}`).then((response) => { 
             const { code, data } = response.data;
             if (code == "0000") { 
@@ -111,10 +94,15 @@ const api = {
                 // 토큰저장
                 sessionStorage.setItem('access_token', access_token);
                 sessionStorage.setItem('refresh_token', refresh_token);
-
-                alert('[2]. 재발급')
+                
             }
         })
+
+        return new Promise(resolve => {
+            setTimeout(() => {
+              resolve('success');
+            }, 500);
+          });
     },
 }
 

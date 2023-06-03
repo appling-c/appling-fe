@@ -42,9 +42,8 @@
 <script setup>
 import api from '../../plugins/api'
 function submit() { 
-    api.memberseller().then((response) => { 
-        alert(response)
-        this.$router.push('/commerce/main')
+    api.memberseller().then((message) => {         
+        return alert(message)
     })
 }
 </script>
