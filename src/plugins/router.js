@@ -1,9 +1,11 @@
 
 import Admin from '../views/admin.vue' 
 import admin_dashboard from '../components/admin/contents/dashboard.vue'
-import admin_product from '../components/admin/contents/product.vue'
+import admin_regist from '../components/admin/contents/regist.vue'
 import admin_calendar from '../components/admin/contents/calendar.vue'
-import admmin_template from '../components/admin/contents/template.vue'
+import admin_template from '../components/admin/contents/template.vue'
+import admin_summary from '../components/admin/contents/summary.vue'
+import admin_waybill from '../components/admin/contents/waybill.vue'
 
 import Commerce from '../views/commerce.vue' 
 import commerce_main from '../components/commerce/main.vue'
@@ -18,70 +20,40 @@ import Signup from '../views/signup.vue'
 import { createWebHistory, createRouter } from "vue-router";
 
 const routes = [
+    { path: '/login', component: Login }, 
+    { path: '/signup', component: Signup },  
     { path: '/', component: Commerce }, 
+    
     {
-        path: '/commerce',
+        path: '/commerce', // 구매자
         component: Commerce,
         children: [
-            {
-                path: "",
-                component: commerce_main
-            }, 
-            {
-                path: "main",
-                component: commerce_main
-            }, 
-            {
-                path: 'search', 
-                component : commerce_search
-            }, 
-            {
-                path: 'detail', 
-                component : commerce_detail
-            }, 
-            {
-                path: 'cartlist', 
-                component : commerce_cartlist
-            }, 
-            {
-                path: 'regist', 
-                component : commerce_regist
-            },
-            {
-                path: 'pricing', 
-                component : commerce_pricing
-            }, 
-            
+            { path: "",component: commerce_main }, // 메인
+            { path: "main",component: commerce_main },  // 메인 
+            { path: 'search', component : commerce_search }, // 상품 검색 결과
+            { path: 'detail', component : commerce_detail }, // 상품 상세
+            { path: 'cartlist', component : commerce_cartlist }, // 장바구니
+            { path: 'regist', component : commerce_regist }, // 구매자 -> 판매자 등록 페이지
+            { path: 'pricing', component : commerce_pricing }, // 멤버십 안내 페이지
         ]
     },
-    { path: '/login', component: Login }, 
-    { path: '/signup', component: Signup }, 
 
     {
         path: '/admin',
         component: Admin,
         children: [
+            { path: '', component: admin_dashboard,}, // 메인(대시보드)
+            { path: 'dashboard', component: admin_dashboard, }, // 메인(대시보드)
             {
-                path: '',
-                component: admin_dashboard,
+                path: 'product', // 상품관리 
+                children: [
+                    { path : "regist", component : admin_regist }, // 상품등록(일반등록)
+                    { path : "summary", component : admin_summary },    // 상품등록(간편등록)
+                    { path : "template", component : admin_template },  //템플릿만들기
+                    { path : "waybill", component : admin_waybill }     // 운송장 등록하기
+                ]
             },
-            {
-                path: 'dashboard',
-                component: admin_dashboard,
-            },   
-            {
-                path : "product",
-                component : admin_product
-            },
-            {
-                path : "template",
-                component : admmin_template
-            },
-            {
-                path: 'calendar',
-                component: admin_calendar,
-            },
-        
+            { path: 'calendar', component: admin_calendar, },   // 상품달력
         ],
     },
  ]
