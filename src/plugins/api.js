@@ -67,6 +67,7 @@ const api = {
      */
      loginccesstoken: async function (payload) { 
         await instance.post(ENDPOINT.MEMEBERLOGIN, { ...payload }).then((response) => { 
+            console.log(response)
             const { code, data } = response.data;
             if (code == "0000") { 
                 const { access_token, refresh_token } = data;

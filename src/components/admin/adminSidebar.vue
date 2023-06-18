@@ -2,11 +2,34 @@
     <!-- Sidebar -->
   <div id="application-sidebar" class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden fixed top-0 left-0 bottom-0 z-[60] w-64 bg-white border-r border-gray-200 pt-7 pb-10 overflow-y-auto scrollbar-y lg:block lg:translate-x-0 lg:right-auto lg:bottom-0 dark:scrollbar-y dark:bg-gray-800 dark:border-gray-700">
     <div class="px-6">
-      <a class="flex-none text-2xl font-semibold dark:text-white" href="#" aria-label="Brand">🍎 나의 애플링</a>
+      <a class="flex-none text-2xl font-semibold dark:text-white" href="#" aria-label="Brand">🍎 {{name}}님</a>
     </div>
 
     <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
+      <div class="mr-5 lg:mr-0 lg:hidden">
+        <a class="flex-none text-xl font-semibold dark:text-white" href="#" aria-label="Brand">🍎</a>
+      </div>
+
+      <div class="w-full flex items-center justify-end ml-auto sm:justify-between sm:gap-x-3 sm:order-3">
+        <div class="sm:hidden">
+          <button type="button" class="inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-gray-800 dark:hover:bg-slate-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800">
+            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="hidden sm:block">
+          <label for="icon" class="sr-only">Search</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none z-20 pl-4">
+             
+            </div>
+          </div>
+        </div>
+      </div>
       <ul class="space-y-1.5">
+        
         <li>
           <router-link to="/admin/dashboard" class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-base text-slate-700 rounded-md hover:bg-gray-100 dark:bg-gray-900 dark:text-white" href="javascript:;">
             <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -95,8 +118,6 @@
           상품 달력
         </router-link>
         </li>
-
-
         <li>
           <router-link to="/commerce" class="flex items-center gap-x-3.5 py-2 px-2.5 text-base text-slate-700 rounded-md hover:bg-gray-100 dark:bg-gray-900 dark:text-white" href="javascript:;">
             <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">

@@ -68,21 +68,14 @@ const routes = [
             {
                 path: 'dashboard',
                 component: admin_dashboard,
+            },   
+            {
+                path : "product",
+                component : admin_product
             },
             {
-                path: 'product',
-                component: admin_product,
-                children : [
-                    {
-                        path : "",
-                        component : admin_product
-                    },
-                    {
-                        path : "template",
-                        component : admmin_template
-                    }
-                    
-                ]
+                path : "template",
+                component : admmin_template
             },
             {
                 path: 'calendar',
