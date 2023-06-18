@@ -1,9 +1,14 @@
 
 import Admin from '../views/admin.vue' 
 import admin_dashboard from '../components/admin/contents/dashboard.vue'
-import admin_regist from '../components/admin/contents/regist.vue'
 import admin_calendar from '../components/admin/contents/calendar.vue'
-import admin_template from '../components/admin/contents/template.vue'
+
+import admin_product_regist from '../components/admin/product/product_regist.vue'
+import admin_product_detail from '../components/admin/product/product_detail.vue'
+
+import admin_template_regist from '../components/admin/template/template_regist.vue'
+import admin_template_detail from '../components/admin/template/template_detail.vue'
+
 import admin_summary from '../components/admin/contents/summary.vue'
 import admin_waybill from '../components/admin/contents/waybill.vue'
 
@@ -47,9 +52,11 @@ const routes = [
             {
                 path: 'product', // 상품관리 
                 children: [
-                    { path : "regist", component : admin_regist }, // 상품등록(일반등록)
+                    { path : "regist", component : admin_product_regist }, // 상품등록(일반등록)
+                    { path : "regist/detail", component : admin_product_detail }, // 상품등록(일반등록)
                     { path : "summary", component : admin_summary },    // 상품등록(간편등록)
-                    { path : "template", component : admin_template },  //템플릿만들기
+                    { path : "template", component : admin_template_regist },  //템플릿만들기
+                    { path : "template/detail", component : admin_template_detail },  //템플릿만들기
                     { path : "waybill", component : admin_waybill }     // 운송장 등록하기
                 ]
             },
