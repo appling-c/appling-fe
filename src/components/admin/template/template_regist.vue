@@ -1,4 +1,6 @@
 <script>
+import api from '/src/plugins/api.js'
+
 export default {
     data() { 
         return {
@@ -10,7 +12,7 @@ export default {
             notice1: "", 
             notice2: "", 
             producer: "", 
-            imagesrc : "", 
+            imagesrc : "", image_url : ""
         }
     }, 
     mounted() {
@@ -24,6 +26,51 @@ export default {
         this.producer = "시어리네 해남고구마";
         this.imagesrc = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT146adSwcAtPQGdM6AAKh9BJjybJBhnbxbA&usqp=CAU'
         
+    }, 
+    methods: {
+        async imageonserver(imageFormData) { 
+            return await api.imageonserver(imageFormData).then((response) => { 
+                
+                if(response.data.code == '0000'){
+                    return response.data.data.image_url
+                }else{
+                    alert(response.data.message)
+                    return ''
+                }
+            })
+        },
+        async fileInput(event){
+            
+            const imageFormData = new FormData()
+            imageFormData.append('image',event.target.files[0])
+
+            await this.imageonserver(imageFormData).then((url)=> {
+                this.image_url = url;
+            })
+        },
+        async submit(){
+
+            const params =  {
+                "price" : 9000,
+                "origin" : "원산지",
+                "producer" : this.producer,
+                "image1" : "https://image1",
+                "image2" : "https://image2",
+                "image3" : "https://image3",
+                "main_title" : this.title,
+                "main_explanation" : this.subtitle,
+                "product_main_explanation" : this.description,
+                "product_sub_explanation" : this.notice1,
+                "origin_price" : 10000,
+                "purchase_inquiry" : this.notice2,
+                "main_image" : this.image_url
+            }
+        
+
+        await api.submittemplate(params).then((response)=> {
+            console.log(response)
+        })
+    }
     }
 }
 </script>
@@ -134,7 +181,7 @@ export default {
                             <h4 class="block text-lg mb-2 font-bold dark:text-white">상품 이미지</h4>
                             <div class="relative">
                                 <label for="file-input" class="sr-only">파일선택</label>
-                                <input type="file" name="file-input" id="file-input" class="block w-full border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
+                                <input @input="fileInput" type="file" name="file-input" id="file-input" class="block w-full border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
                                     file:bg-transparent file:border-0
                                     file:bg-gray-100 file:mr-4
                                     file:py-3 file:px-4
@@ -216,8 +263,8 @@ export default {
                         </div>
                         <!-- End Form Group -->
 
-                        <button type="submit" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-base dark:focus:ring-offset-gray-800">
-                            팜플렛 미리보기
+                        <button @click="submit" type="submit" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-base dark:focus:ring-offset-gray-800">
+                            팜플렛 저장하기
                         </button>
                         </div>
                     </div>

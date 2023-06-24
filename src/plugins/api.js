@@ -6,9 +6,32 @@ const ENDPOINT = {
     MEMEBERINFO: "/api/member", 
     MEMEBERREFRESH: "/api/auth/refresh", 
     MEMBERJOIN: "/api/auth/join", 
-    MEMBRESELLER : "/api/member/seller"
+    MEMBRESELLER : "/api/member/seller", 
+    IMAGEONSERVER : "/api/common/image", 
+    SUBMITTMEPLATE : "/api/seller/product"
 }
 const api = {
+    /**
+     * 팜플렛 등록하기
+     */
+     submittemplate: async function(param) { 
+        return await instance.post(ENDPOINT.SUBMITTMEPLATE, param, {
+        }).then((response) => { 
+            return response
+        })
+    },
+    /**
+     * 팜플렛/상품 등록하기 > 이미지 등록 url 얻기
+     */
+     imageonserver: async function(param) { 
+        return await instance.post(ENDPOINT.IMAGEONSERVER, param, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+              }
+        }).then((response) => { 
+            return response
+        })
+    },
     /**
      * 구매자 -> 판매자 권한 신청
      */
