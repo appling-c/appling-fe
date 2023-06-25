@@ -69,6 +69,8 @@ export default {
 
         await api.submittemplate(params).then((response)=> {
             console.log(response)
+
+            
         })
     }
     }

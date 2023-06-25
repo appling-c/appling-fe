@@ -4,6 +4,7 @@
 
 <template>
   <div>
+  
      <router-view />    
     <!-- <hello-world></hello-world> -->
   </div>
