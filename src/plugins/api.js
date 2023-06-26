@@ -8,9 +8,19 @@ const ENDPOINT = {
     MEMBERJOIN: "/api/auth/join", 
     MEMBRESELLER : "/api/member/seller", 
     IMAGEONSERVER : "/api/common/image", 
-    SUBMITTMEPLATE : "/api/seller/product"
+    SUBMITTMEPLATE : "/api/seller/product", 
+    PRODUCTSERACH : "/api/product"
 }
 const api = {
+    /**
+     * 상품 리스트 가져오기
+     */
+     getproductlist: async function(payload) { 
+        return await instance.get(`${ENDPOINT.PRODUCTSERACH}?search=${payload.keyword}&page=${payload.page}&size=${payload.size}`, {
+        }).then((response) => { 
+            return response
+        })
+    },
     /**
      * 팜플렛 등록하기
      */

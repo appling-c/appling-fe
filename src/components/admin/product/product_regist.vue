@@ -265,6 +265,7 @@
 
 
 <script>
+import api from '/src/plugins/api.js'
 
 export default {
   props: {
@@ -328,7 +329,7 @@ export default {
 
         const params =  {
             "price" : this.price,
-            "origin" : "원산지",
+            "origin" : this.origin,
             "producer" : this.producer,
             "image1" : "https://image1",
             "image2" : "https://image2",
@@ -341,23 +342,32 @@ export default {
             "purchase_inquiry" : this.notice2,
             "main_image" : this.image_url
         }
+      
 
-        console.log(params)
+    await api.submittemplate(params).then((response)=> {
+        if(response.data.code === "0001"){
           this.$emit("openModal", {
             title : "등록되었습니다.", 
             subtitle : "등록한 상품은 상품내역에서 확인할 수 있습니다. <br/> 등록한 상품으로 템플릿을 만들어 상품을 홍보해보세요!", 
             btn: {
                 confirmText : "확인", 
                 cancelText : "취소"
-          }
-        })
-        return;
-
-    await api.submittemplate(params).then((response)=> {
-        console.log(response)
+            }
+          })
+        }else{
+          this.$emit("openModal", {
+            title : "오류가 발생했습니다.", 
+            subtitle : `${response.data.code}: 잠시후 다시 시도해 주세요.`, 
+            btn: {
+                confirmText : "확인", 
+                cancelText : "취소"
+            }
+          })
+        }
     })
   }, 
   mounted(){
+    this.origin = "시어리"
     this.title = "해남 퍽퍽한 밤고구마 꿀밤고구마 베니하루카 특상 3kg 5kg 10kg";
     this.subtitle = "큐어링 숙성으로 최고의 맛과 숙성을 보장합니다.";
     this.description = `안녕하세요 윤순희 농부입니다.<br/>진짜 정성다해 키웠어요<br/>고구마는 섬유질과칼륨이 풍부합니다.<br/>다이어트식품으로 단원 으뜸입니다.<br/>가장 좋은 것으로 선별하여 산지직송합니다.<br/> ** 크기는 특상, 중상, 한입크기로 배송 됩니다 **`
