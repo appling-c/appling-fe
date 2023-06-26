@@ -52,7 +52,7 @@ const routes = [
             {
                 path: 'product', // 상품관리 
                 children: [
-                    { path : "regist", component : admin_product_regist }, // 상품등록(일반등록)
+                    { path : "regist/:id", component : admin_product_regist }, // 상품등록/수정(일반등록)
                     { path : "regist/detail", component : admin_product_detail }, // 상품등록(일반등록)
                     { path : "summary", component : admin_summary },    // 상품등록(간편등록)
                     { path : "template", component : admin_template_regist },  //템플릿만들기
