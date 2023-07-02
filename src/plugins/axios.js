@@ -32,7 +32,7 @@ instance.interceptors.response.use(
     const { config, response: { status } } = error;
     const refresh_token = sessionStorage.getItem('refresh_token')
     
-    if (status == 403) { 
+    if (status == 403 || status == 401) { 
       // 토큰없음, 토큰만료
       const originconfig = config;
 

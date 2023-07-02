@@ -12,6 +12,13 @@ export default {
       this.email = "luna@luna.com"
       this.password = "123123";
     },
+    kakaologin(){
+       return location.href = `
+        https://kauth.kakao.com/oauth/authorize?client_id=04376f3d0a7618a3622f9c541d90d272&redirect_uri=${
+          procee.env == 'development' ? 'http://localhost:5173' : 'http://3.34.1.129:5173'
+        }/oauth/kakao/login&response_type=code`
+     
+    },
     async submit() { 
       // 사용자 로그인 처리
       const user = { email:this.email, password: this.password };
@@ -34,9 +41,9 @@ export default {
       <div class="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
         <div class="p-4 sm:p-7">
           <div class="text-center">
-            <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">Sign in</h1>
+            <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">로그인</h1>
             <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-              Don't have an account yet?
+              
               <a @click="temp" class="text-blue-600 decoration-2 hover:underline font-medium" >
                 어둠의 경로로 로그인하기
               </a>
@@ -67,7 +74,6 @@ export default {
                 <div>
                   <div class="flex justify-between items-center">
                     <label for="password" class="block text-sm mb-2 dark:text-white">비밀번호</label>
-                    <a class="text-sm text-blue-600 decoration-2 hover:underline font-medium">Forgot password?</a>
                   </div>
                   <div class="relative">
                     <input v-model="password" autocomplete="off"  type="password" id="password" name="password" class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400" required aria-describedby="password-error">
@@ -81,18 +87,13 @@ export default {
                 </div>
                 <!-- End Form Group -->
 
-                <!-- Checkbox -->
-                <div class="flex items-center">
-                  <div class="flex">
-                    <input id="remember-me" name="remember-me" type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
-                  </div>
-                  <div class="ml-3">
-                    <label for="remember-me" class="text-sm dark:text-white">Remember me</label>
-                  </div>
-                </div>
-                <!-- End Checkbox -->
+                <button @click="submit" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">로그인</button>
+                <button @click="kakaologin" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
+                  </svg> 카카오톡 로그인하기
+                </button>
 
-                <button @click="submit" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">Sign in</button>
               </div>
             
             <!-- End Form -->
