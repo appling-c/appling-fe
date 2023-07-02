@@ -155,11 +155,11 @@ export default {
       try {
         await api.memberjoin(user).then((result) => { 
           alert('회원가입이 완료되었습니다. 로그인화면으로 이동합니다.')
-          return this.$router.push(`/${result}`)
+          return this.$router.push(`/commerce/main`)
         })
       } catch (err) {
-        alert('회원가입에 실패하였습니다. 관리자에게 문의하세요.')
-        console.error(err);
+        
+        alert(err?.response?.data.errors[0].detail);
       }
   }
   },
