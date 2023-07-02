@@ -1,11 +1,13 @@
 <script>
-//import TheAdminHeader from "../components/admin/adminHeader.vue"
-import TheAdminSideToggle from "../components/admin/adminSideToggle.vue"
-import TheAdminSidebar from "../components/admin/adminSidebar.vue"
+import TheAdminHeader from "../components/admin/adminHeader.vue"
+//import TheAdminSideToggle from "../components/admin/adminSideToggle.vue"
+import TheAdminSidebar from "../components/admin/adminSidebar.bk.vue"
 
 export default { 
   components: {
-    TheAdminSidebar, TheAdminSideToggle
+    TheAdminSidebar, 
+    //TheAdminSideToggle,
+     TheAdminHeader
   },
   data(){
     return {
@@ -93,15 +95,15 @@ export default {
 
 <div class="bg-gray-50 dark:bg-slate-900">
 
-  <!-- <the-admin-header/> -->
+  <the-admin-header/>
 
   <!-- ========== MAIN CONTENT ========== -->
-  <the-admin-side-toggle/>
+  <!-- <the-admin-side-toggle/> -->
 
-  <the-admin-sidebar/>
+  <!-- <the-admin-sidebar/> -->
 
   <!-- Content -->
-   <div class="w-full pt-10 px-4 sm:px-6 md:px-8 lg:pl-72">
+   <div class="w-full pt-10 px-4 sm:px-6 md:px-8">
   <router-view @openModal="openModal" :confirm="confirm"></router-view>
    </div>
   <!-- End Content -->

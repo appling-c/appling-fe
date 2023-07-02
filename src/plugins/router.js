@@ -20,6 +20,7 @@ import commerce_cartlist from '../components/commerce/cartlist.vue'
 import commerce_regist from '../components/commerce/regist.vue'
 import commerce_pricing from '../components/commerce/pricing.vue'
 
+import kakaoLogin from '../views/kakaoLogin.vue'
 import Login from '../views/login.vue' 
 import Signup from '../views/signup.vue' 
 import { createWebHistory, createRouter } from "vue-router";
@@ -28,6 +29,7 @@ const routes = [
     { path: '/login', component: Login }, 
     { path: '/signup', component: Signup },  
     { path: '/', component: Commerce }, 
+    { path : "/oauth/kakao/login", component : kakaoLogin }, 
     
     {
         path: '/commerce', // 구매자

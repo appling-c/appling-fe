@@ -9,9 +9,48 @@ const ENDPOINT = {
     MEMBRESELLER : "/api/member/seller", 
     IMAGEONSERVER : "/api/common/image", 
     SUBMITTMEPLATE : "/api/seller/product", 
-    PRODUCTSERACH : "/api/product"
+    PRODUCTSERACH : "/api/product", 
+    KAKAOLOGIN_AUTH : "/api/oauth/kakao?code=", 
+    KAKAOLOGIN_AUTH_KAKAO_TOKEN : "/api/oauth/kakao/login?access_token="
 }
 const api = {
+    /**
+     * 카카오 로그인 리다이렉팅
+     */
+    kakaologin: async function(code){
+        let kakao_access_token = '';
+        await instance.get(`${ENDPOINT.KAKAOLOGIN_AUTH}${code}`, {
+        }).then((response) => { 
+            const { data } = response;
+            const {code} = data;
+            if(code == "0000"){
+                const {access_token, refresh_token} = data.data; 
+                kakao_access_token = access_token;               
+                
+            }
+        })
+
+       await instance.get(`${ENDPOINT.KAKAOLOGIN_AUTH_KAKAO_TOKEN}${kakao_access_token}`).then((auth)=> {                    
+            const {access_token, refresh_token} =  auth.data.data;
+            this._save_token({access_token, refresh_token});
+            
+        })
+
+        return await this.memberinfo().then((resultpath)=> {
+            return resultpath;
+        })
+        
+    },
+    
+     /**
+     * 상품 상세 조회
+     */
+    getproductlistbyid: async function(payload) { 
+    return await instance.get(`${ENDPOINT.PRODUCTSERACH}/${payload}`, {
+    }).then((response) => { 
+        return response
+    })
+    },
     /**
      * 상품 리스트 가져오기
      */
@@ -100,16 +139,25 @@ const api = {
      */
      loginccesstoken: async function (payload) { 
         await instance.post(ENDPOINT.MEMEBERLOGIN, { ...payload }).then((response) => { 
-            console.log(response)
             const { code, data } = response.data;
             if (code == "0000") { 
                 const { access_token, refresh_token } = data;
-                // 토큰저장
-                sessionStorage.setItem('access_token', access_token);
-                sessionStorage.setItem('refresh_token', refresh_token);
+                this._save_token({access_token, refresh_token})
             }
         })
     },
+
+    /**
+     * user token 발행, 토큰저장
+     */
+    _save_token(payload){
+       // 토큰저장
+       const {access_token, refresh_token} = payload;
+       sessionStorage.setItem('access_token', access_token);
+       sessionStorage.setItem('refresh_token', refresh_token);
+    },
+
+
 
     /**
      * 사용자 정보 가져오기

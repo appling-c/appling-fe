@@ -4,9 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "NODE_ENV=development vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": " NODE_ENV=production vite"
   },
   "dependencies": {
     "@toast-ui/editor": "^3.2.2",
@@ -22,5 +23,6 @@
     "postcss": "^8.4.23",
     "tailwindcss": "^3.3.2",
     "vite": "^4.3.2"
-  }
+  }, 
+  "NODE_ENV" : "development"
 }
