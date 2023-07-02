@@ -97,15 +97,7 @@ const api = {
         sessionStorage.removeItem('islogin')
     },
 
-    /**
-     * 토큰 만료 -> 재발급 프로세스 테스트용 API
-     */
-    calltokentest: async function () {
-        await instance.get('/api/v1/hello').then((response) => { 
-            return response;
-        })    
-    },
-    
+   
     /**
      * 회원가입
      */
