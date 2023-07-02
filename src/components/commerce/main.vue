@@ -2,18 +2,12 @@
 import api from '../../plugins/api'
 export default {
   methods: {
-    async calltokentest() { 
-      await api.calltokentest().then((response) => { 
-        console.log(response);
-      })
-    },
+    
     gopricing(){
       this.$router.push('/commerce/pricing')
     }
   },
-  mounted() { 
-    this.calltokentest();
-  }
+  
 }
 </script>
 <template>
