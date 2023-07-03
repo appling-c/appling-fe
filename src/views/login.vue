@@ -12,11 +12,10 @@ export default {
       this.email = "luna@luna.com"
       this.password = "123123";
     },
-    kakaologin(){
+    kakaologin() {
+      const returnurl = import.meta.env.DEV ?'http://localhost:5173' : 'http://3.34.1.129:5173'
        return location.href = `
-        https://kauth.kakao.com/oauth/authorize?client_id=04376f3d0a7618a3622f9c541d90d272&redirect_uri=${
-          procee.env == 'development' ? 'http://localhost:5173' : 'http://3.34.1.129:5173'
-        }/oauth/kakao/login&response_type=code`
+        https://kauth.kakao.com/oauth/authorize?client_id=04376f3d0a7618a3622f9c541d90d272&redirect_uri=${returnurl}/oauth/kakao/login&response_type=code`
      
     },
     async submit() { 
