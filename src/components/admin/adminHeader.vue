@@ -91,9 +91,6 @@
 <script setup>
 import api from '../../plugins/api'
 import router from '../../plugins/router'
-let userInfo = JSON.parse(sessionStorage.getItem('user'));
-const name = userInfo?.name;
-const email = userInfo?.email;
 
 async function logout() { 
   api.logout()

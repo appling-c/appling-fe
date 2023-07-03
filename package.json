@@ -12,6 +12,7 @@
   "dependencies": {
     "@toast-ui/editor": "^3.2.2",
     "axios": "^1.4.0",
+    "html2canvas": "^1.4.1",
     "moment": "^2.29.4",
     "preline": "^1.8.0",
     "vue": "^3.2.47",
@@ -23,6 +24,6 @@
     "postcss": "^8.4.23",
     "tailwindcss": "^3.3.2",
     "vite": "^4.3.2"
-  }, 
-  "NODE_ENV" : "development"
+  },
+  "NODE_ENV": "development"
 }
