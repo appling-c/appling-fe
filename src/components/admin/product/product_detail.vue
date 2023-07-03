@@ -218,7 +218,10 @@
                     </button>
                     <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 mt-2 divide-y divide-gray-200 min-w-[10rem] z-10 bg-white shadow-2xl rounded-lg p-2 dark:divide-gray-700 dark:bg-gray-800 dark:border dark:border-gray-700 hidden" aria-labelledby="hs-table-dropdown-1" style="">
                     <div class="py-2 first:pt-0 last:pb-0">
-                        <a class="flex items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
+                        <!-- <button type="button" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800" data-hs-overlay="#hs-scroll-inside-body-modal">
+                            Scroll inside body
+                        </button> -->
+                        <a @click="showtemplate(litem)" data-hs-overlay="#hs-scroll-inside-body-modal" class="flex items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
                         팜플렛 미리보기
                         </a>
                         <a class="flex items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
@@ -275,6 +278,12 @@
         </div>
         </div>
         <!-- End Footer -->
+
+        <the-preview-popup :contents="contents" />
+
+        
+
+        
     </div>
     </div>
 </div>
@@ -292,13 +301,14 @@
 import api from '/src/plugins/api.js'
 import moment from 'moment'
 import common from '/src/plugins/common.js'
+import ThePreviewPopup from '../template/preview_popup.vue'
 
 export default {
+    components: {
+        ThePreviewPopup
+    },
     async created(){
         await this.getproductlists()
-    },
-    filters:{
-        
     },
     data(){
         return {
@@ -307,10 +317,13 @@ export default {
             page:0, 
             keyword : "", 
             total_page : 1, 
-            islastpage : false
+            islastpage: false, 
+            contents : null
+            
         }
     }, 
     methods: {
+        
         won_filter(num){
             return common.comma(num)
         },
@@ -343,6 +356,9 @@ export default {
         }, 
         moveto(id){
             this.$router.push(`/admin/product/regist/${id}`)
+        }, 
+        showtemplate(item) {
+            this.contents = item;
         }
         
     }

@@ -41,7 +41,7 @@
               <!-- End Col -->
 
               <div class="sm:col-span-3">
-                <label for="af-submit-application-full-name" class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
                   상품 큰 제목
                 </label>
               </div>
@@ -49,26 +49,26 @@
 
               <div class="sm:col-span-9">
                 <div class="sm:flex">
-                  <input v-model="title"  id="af-submit-application-email" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                  <input v-model="title" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
                 </div>
               </div>
               <!-- End Col -->
 
               <div class="sm:col-span-3">
-                <label for="af-submit-application-email" class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
                   상품 작은 제목
                 </label>
               </div>
               <!-- End Col -->
 
               <div class="sm:col-span-9">
-                <input v-model="subtitle"  id="af-submit-application-email" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                <input v-model="subtitle" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
               </div>
               <!-- End Col -->
 
               <div v-if="mode == 'regist'" class="sm:col-span-3">
                 <div class="inline-block">
-                  <label for="af-submit-application-phone" class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                  <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
                     상품 이미지
                   </label>
                 </div>
@@ -76,7 +76,7 @@
               <!-- End Col -->
 
               <div   v-if="mode == 'regist'" class="sm:col-span-9">
-                <label for="af-submit-application-resume-cv" class="sr-only">파일선택</label>
+                <label class="sr-only">파일선택</label>
                 <input  @input="fileInput" type="file" name="af-submit-application-resume-cv" id="af-submit-application-resume-cv" class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
                   file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-2 file:px-3 dark:file:bg-gray-700 dark:file:text-gray-400">
               </div>        
@@ -84,7 +84,7 @@
 
               <div class="sm:col-span-3">
                 <div class="inline-block">
-                  <label for="af-submit-application-current-company" class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                  <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
                     상품 설명
                   </label>
                 </div>
@@ -93,13 +93,13 @@
 
               <div class="sm:col-span-9">
                 <div class="sm:col-span-9">
-                  <textarea  v-html="description"  id="af-submit-application-bio" class="py-2 px-3 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" rows="6" ></textarea>
+                  <textarea  v-model="description" id="product_main_explanation" class="py-2 px-3 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" rows="6" ></textarea>
                 </div>        
               </div>
               <!-- End Col -->
 
               <div class="sm:col-span-3">
-                <label for="af-submit-application-resume-cv" class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
                   카테고리
                 </label>
               </div>
@@ -160,50 +160,50 @@
               <!-- End Col -->
 
               <div class="sm:col-span-3">
-                <label for="af-submit-application-twitter-url" class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
                   보관방법 및 취급방법
                 </label>
               </div>
               <!-- End Col -->
 
               <div class="sm:col-span-9">
-                <textarea v-model="notice1" id="af-submit-application-bio" class="py-2 px-3 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" rows="6" placeholder="Add a cover letter or anything else you want to share."></textarea>
+                <textarea v-model="notice1" id="product_sub_explanation" class="py-2 px-3 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" rows="6" placeholder="Add a cover letter or anything else you want to share."></textarea>
               </div>
               <!-- End Col -->
 
               <div class="sm:col-span-3">
-                <label for="af-submit-application-github-url" class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
                   소비자 안전을 위한 주의사항
                 </label>
               </div>
               <!-- End Col -->
 
               <div class="sm:col-span-9">
-                <textarea  v-model="notice2" id="af-submit-application-bio" class="py-2 px-3 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" rows="6" placeholder="Add a cover letter or anything else you want to share."></textarea>
+                <textarea  v-model="notice2" id="purchase_inquiry" class="py-2 px-3 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" rows="6" placeholder="Add a cover letter or anything else you want to share."></textarea>
               </div>
               <!-- End Col -->
 
               <div class="sm:col-span-3">
-                <label for="af-submit-application-portfolio-url" class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                <label  class="inline-block text-base font-medium text-gray-500 mt-2.5">
                   원산지
                 </label>
               </div>
               <!-- End Col -->
 
               <div class="sm:col-span-9">
-                <input v-model="origin" id="af-submit-application-portfolio-url" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                <input v-model="origin"  type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
               </div>
               <!-- End Col -->
 
               <div class="sm:col-span-3">
-                <label for="af-submit-application-portfolio-url" class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
                   생산자(수입자)
                 </label>
               </div>
               <!-- End Col -->
 
               <div class="sm:col-span-9">
-                <input v-model="producer" id="af-submit-application-portfolio-url" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                <input v-model="producer" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
               </div>
               <!-- End Col -->
             </div>
@@ -259,7 +259,6 @@ export default {
         subtitle: "", 
         description: "", 
         price: "", 
-        phonenumber: "", 
         notice1: "", 
         notice2: "", 
         producer: "", 
@@ -322,25 +321,31 @@ export default {
           }
         })
     },
-    async submit(){
+    async submit() {
+      this.description = document.getElementById("product_main_explanation").value;
+      this.notice1 = document.getElementById("product_sub_explanation").value;
+      this.notice2 = document.getElementById("purchase_inquiry").value;
 
-        const params =  {
-            "price" : Number(this.price), 
-            "origin" : this.origin,
-            "producer" : this.producer,
-            "image1" : "https://image1",
-            "image2" : "https://image2",
-            "image3" : "https://image3",
-            "main_title" : this.title,
-            "main_explanation" : this.subtitle,
-            "product_main_explanation" : this.description,
-            "product_sub_explanation" : this.notice1,
-            "origin_price" : Number(this.origin_price),
-            "purchase_inquiry" : this.notice2,
-            "main_image" : this.image_url
+      const params = {
+        "price" : Number(this.price), 
+        "origin" : this.origin,
+        "producer" : this.producer,
+        "image1" : "https://image1",
+        "image2" : "https://image2",
+        "image3" : "https://image3",
+        "main_title" : this.title,
+        "main_explanation" : this.subtitle,
+        "product_main_explanation" : this.description,
+        "product_sub_explanation" : this.notice1,
+        "origin_price" : Number(this.origin_price),
+        "purchase_inquiry" : this.notice2,
+        "main_image" : this.image_url
         }
-      
 
+      if (this.id > 0) { 
+        params["id"] = Number(this.id)
+      }
+      
       await api.submittemplate(params).then((response)=> {
           if(response.data.code === "0001"){
             this.$emit("openModal", {
@@ -362,22 +367,9 @@ export default {
             })
           }
       })
+    }, 
   }, 
   mounted(){
-    this.origin = "시어리"
-    this.title = "해남 퍽퍽한 밤고구마 꿀밤고구마 베니하루카 특상 3kg 5kg 10kg";
-    this.subtitle = "큐어링 숙성으로 최고의 맛과 숙성을 보장합니다.";
-    this.description = `안녕하세요 윤순희 농부입니다.<br/>진짜 정성다해 키웠어요<br/>고구마는 섬유질과칼륨이 풍부합니다.<br/>다이어트식품으로 단원 으뜸입니다.<br/>가장 좋은 것으로 선별하여 산지직송합니다.<br/> ** 크기는 특상, 중상, 한입크기로 배송 됩니다 **`
-    this.price = "12,060원(100g당 402원)"
-    this.phonenumber = "010-9999-9999"
-    this.notice1 = "수령후 박스에서 꺼낸 후 펴서 수분을 날려주세요. 여름철 고구마는 겨울용 고구마와 다르게 보관시 싹이 날 수 있고 2주이상 보관시 썪을수 있습니다. 자연스러운 현상입니다.";
-    this.notice2 = "고구마 알러지 있으신분은 섭취를 삼가해 주시기바랍니다.";
-    this.producer = "시어리네 해남고구마";
-    this.imagesrc = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT146adSwcAtPQGdM6AAKh9BJjybJBhnbxbA&usqp=CAU'
-  }
-  }, 
-  mounted(){
-    console.log(this.$route.params)
     this.id = this.$route.params.id;
     if(this.id > 0){
       this.mode = 'modify'
