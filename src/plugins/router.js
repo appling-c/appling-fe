@@ -51,7 +51,7 @@ const routes = [
                 path: 'product', // 상품관리 
                 children: [
                     { path : "regist/:id", component : admin_product_regist }, // 상품등록/수정
-                    { path : "regist/detail", component : admin_product_detail }, // 상품등록
+                    { path : "list", component : admin_product_detail }, // 상품 리스트
                     { path : "waybill", component : admin_waybill }     // 운송장 등록하기
                 ]
             },
