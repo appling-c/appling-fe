@@ -4,7 +4,7 @@
             <div class="max-h-full overflow-hidden flex flex-col bg-white border shadow-sm rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
             <div class="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700">
                 <h3 class="font-bold text-gray-800 dark:text-white">
-                Modal title
+                팜플렛 미리보기
                 </h3>
                 <button type="button" class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-sm dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800" data-hs-overlay="#hs-scroll-inside-body-modal">
                 <span class="sr-only">Close</span>
@@ -17,41 +17,39 @@
             <div class="p-4 overflow-y-auto">
                 <div class="space-y-4">
                     <div class="sm:order-2">
-            <div class="relative rounded-lg">
-                <!-- Blog Article -->
-                <div class="bg-white border border-gray-200 rounded-xl shadow-sm max-w-3xl px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto">
-                <div class="max-w-2xl">
-                    <!-- Content -->
-                    <div class="space-y-5 md:space-y-8">
-                    <div class="space-y-3">
-                        <h2 class="text-2xl font-bold md:text-3xl dark:text-white">{{ title }}</h2>
-                    </div>
+                        <div class="relative rounded-lg">
+                            <!-- Blog Article -->
+                            <div id="preview_contents" class="bg-white border border-gray-200 rounded-xl shadow-sm max-w-3xl px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto">
+                                <div class="max-w-2xl">
+                                <!-- Content -->
+                                    <div class="space-y-5 md:space-y-8">
+                                        <div class="space-y-3">
+                                            <h2 class="text-2xl font-bold md:text-3xl dark:text-white">{{ title }}</h2>
+                                        </div>
+                                        <p class="text-lg text-gray-800 dark:text-gray-200">{{ subtitle }}</p>
+                                        
+                                        <figure>
+                                            <img class="w-full object-cover rounded-xl" :src="image_url" alt="Image Description">
+                                        </figure>
 
-                    <p class="text-lg text-gray-800 dark:text-gray-200">{{ subtitle }}</p>
-
-                    <figure>
-                        <img class="w-full object-cover rounded-xl" :src="image_url" alt="Image Description">
-                    </figure>
-
-                    <blockquote class="text-center p-4 sm:px-7">
-                        <p v-html="description" class="text-xl font-medium text-gray-800 md:text-xl md:leading-normal xl:text-xl xl:leading-normal dark:text-gray-200"></p>
-                        <p class="mt-5 text-gray-800 dark:text-gray-200">
-                        상품에 대한 자세한 문의사항은 아래의 연락처로 문의주세요.
-                        </p>
-                    </blockquote>
-
-                    <ul class="list-disc list-outside space-y-5 pl-5 text-lg text-gray-800 dark:text-gray-200">
-                        <li class="pl-2"> 판매가 <div class="text-gray-500 decoration-2 font-medium">{{ won_filter(price) }}원 (원가 : {{ won_filter(origin_price) }}원)</div> </li>
-                        <li class="pl-2"> 보관방법,취급방법 <div  v-html="notice1" class="text-gray-500 decoration-2 font-medium" ></div></li>
-                        <li class="pl-2"> 소비자안전을 위한 주의사항 <div v-html="notice2" class="text-gray-500 decoration-2 font-medium" ></div></li>
-                        <li class="pl-2"> 생산자(수입자) <div class="text-gray-500 decoration-2 font-medium" >{{ producer }}</div></li>
-                    </ul>
-
+                                        <blockquote class="text-center p-4 sm:px-7">
+                                            <p v-html="description" class="text-xl font-medium text-gray-800 md:text-xl md:leading-normal xl:text-xl xl:leading-normal dark:text-gray-200"></p>
+                                            <p class="mt-5 text-gray-800 dark:text-gray-200">
+                                                상품에 대한 자세한 문의사항은 아래의 연락처로 문의주세요.
+                                            </p>
+                                        </blockquote>
+                                        
+                                        <ul class="list-disc list-outside space-y-5 pl-5 text-lg text-gray-800 dark:text-gray-200">
+                                            <li class="pl-2"> 판매가 <div class="text-gray-500 decoration-2 font-medium">{{ won_filter(price) }}원 (원가 : {{ won_filter(origin_price) }}원)</div> </li>
+                                            <li class="pl-2"> 보관방법,취급방법 <div  v-html="notice1" class="text-gray-500 decoration-2 font-medium" ></div></li>
+                                            <li class="pl-2"> 소비자안전을 위한 주의사항 <div v-html="notice2" class="text-gray-500 decoration-2 font-medium" ></div></li>
+                                            <li class="pl-2"> 생산자(수입자) <div class="text-gray-500 decoration-2 font-medium" >{{ producer }}</div></li>
+                                        </ul>
                                     </div>
                                     <!-- End Content -->
                                 </div>
                             </div>
-                <!-- End Blog Article -->
+                            <!-- End Blog Article -->
                         </div>
                     </div>
                 </div>
@@ -60,7 +58,7 @@
                 <button type="button" class="hs-dropdown-toggle py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800" data-hs-overlay="#hs-scroll-inside-body-modal">
                 닫기
                 </button>
-                <a class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800" href="#">
+                <a @click="download" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
                     <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1h-2z"/>
                         <path fill-rule="evenodd" d="M7.646.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 1.707V10.5a.5.5 0 0 1-1 0V1.707L5.354 3.854a.5.5 0 1 1-.708-.708l3-3z"/>
@@ -77,13 +75,14 @@
                 </a>
             </div>
             </div>
+            <a id="btn-Convert-Html2Image" ></a>
         </div>
     </div>
 </template>
 
 <script>
 import common from '/src/plugins/common.js'
-
+import html2canvas from 'html2canvas';
 export default {
     props: {
         contents: Object, 
@@ -116,7 +115,8 @@ export default {
             imagesrc: "",
             image_url: "", 
             origin_price : "", 
-            origin : "", 
+            origin: "", 
+            canvas : null
         }
     },
     methods: {
@@ -124,6 +124,7 @@ export default {
             return common.comma(num)
         },
         kakaoShare() { 
+            // 카카오톡 공유하기
             const item = this.contents;
             const main_title = item.main_title;
             const sub_title = item.main_explanation;
@@ -166,10 +167,32 @@ export default {
             ],
             });
         },
+        download() {
+            // 팜플렛 이미지 다운로드
+            const element = document.getElementById("preview_contents");
+            html2canvas(element, {
+                allowTaint: true, 
+                useCORS : true
+            }).then(canvas => {
+                canvas_element = canvas;  
+                const imageData = canvas_element.toDataURL("image/png", 1);
+                const newData = imageData.replace(/^data:image\/png/, "data:application/octet-stream");
+                document.getElementById("btn-Convert-Html2Image").setAttribute("download", "your_pic_name.png");
+                document.getElementById("btn-Convert-Html2Image").setAttribute("href", newData);
+                document.getElementById("btn-Convert-Html2Image").click()
+            })
+        }
     }, 
     mounted() { 
         Kakao.init('bfdc56a39210639e056f66e470d11426');
-        
     }
 }
+let canvas_element;
 </script>
+
+<style>
+#btn-Convert-Html2Image{
+    display: none;
+}
+
+</style>
