@@ -47,14 +47,9 @@ const routes = [
         children: [
             { path: '', component: admin_dashboard,}, // 메인(대시보드)
             { path: 'dashboard', component: admin_dashboard, }, // 메인(대시보드)
-            {
-                path: 'product', // 상품관리 
-                children: [
-                    { path : "regist/:id", component : admin_product_regist }, // 상품등록/수정
-                    { path : "list", component : admin_product_detail }, // 상품 리스트
-                    { path : "waybill", component : admin_waybill }     // 운송장 등록하기
-                ]
-            },
+            { path : "product/regist/:id", component : admin_product_regist }, // 상품등록/수정
+            { path : "product/list", component : admin_product_detail }, // 상품 리스트
+            { path : "product/waybill", component : admin_waybill },     // 운송장 등록하기
             { path: 'calendar', component: admin_calendar, },   // 상품달력
         ],
     },
