@@ -10,7 +10,7 @@ export default {
   methods: {
 
     gotoproducts(category_id){
-      this.$router.push(`/commerce/serach?id=${category_id}`)
+      this.$router.push(`/commerce/search`)
     },
     
     gopricing(){
