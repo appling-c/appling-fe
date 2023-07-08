@@ -19,12 +19,14 @@ import commerce_pricing from '../components/commerce/pricing.vue'
 import kakaoLogin from '../views/kakaoLogin.vue'
 import Login from '../views/login.vue' 
 import Signup from '../views/signup.vue' 
+import myAccount from "../views/myAccount.vue"
 import { createWebHistory, createRouter } from "vue-router";
 
 const routes = [
     { path: '/login', component: Login }, 
     { path: '/signup', component: Signup },  
     { path: '/', component: Commerce }, 
+    { path: '/account', component: myAccount }, 
     { path : "/oauth/kakao/login", component : kakaoLogin }, 
     
     {
@@ -34,7 +36,7 @@ const routes = [
             { path: "",component: commerce_main }, // 메인
             { path: "main",component: commerce_main },  // 메인 
             { path: 'search', component : commerce_search }, // 상품 검색 결과
-            { path: 'detail', component : commerce_detail }, // 상품 상세
+            { path: 'detail/:id', component : commerce_detail }, // 상품 상세
             { path: 'cartlist', component : commerce_cartlist }, // 장바구니
             { path: 'regist', component : commerce_regist }, // 구매자 -> 판매자 등록 페이지
             { path: 'pricing', component : commerce_pricing }, // 멤버십 안내 페이지
@@ -47,14 +49,9 @@ const routes = [
         children: [
             { path: '', component: admin_dashboard,}, // 메인(대시보드)
             { path: 'dashboard', component: admin_dashboard, }, // 메인(대시보드)
-            {
-                path: 'product', // 상품관리 
-                children: [
-                    { path : "regist/:id", component : admin_product_regist }, // 상품등록/수정
-                    { path : "list", component : admin_product_detail }, // 상품 리스트
-                    { path : "waybill", component : admin_waybill }     // 운송장 등록하기
-                ]
-            },
+            { path : "product/regist/:id", component : admin_product_regist }, // 상품등록/수정
+            { path : "product/list", component : admin_product_detail }, // 상품 리스트
+            { path : "product/waybill", component : admin_waybill },     // 운송장 등록하기
             { path: 'calendar', component: admin_calendar, },   // 상품달력
         ],
     },

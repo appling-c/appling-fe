@@ -12,7 +12,7 @@
         </template>
 
         <div class="mt-5 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
-            <router-link to="/admin/product/regist/detail" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold text-blue-500 hover:text-blue-700 focus:outline-none focus:ring-2 ring-offset-gray-50 focus:ring-blue-500 focus:ring-offset-2 transition-all text-base py-3 px-4 dark:ring-offset-slate-900" href="../examples.html">
+            <router-link to="/admin/product/list" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold text-blue-500 hover:text-blue-700 focus:outline-none focus:ring-2 ring-offset-gray-50 focus:ring-blue-500 focus:ring-offset-2 transition-all text-base py-3 px-4 dark:ring-offset-slate-900" href="../examples.html">
             <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M11.2792 1.64001L5.63273 7.28646C5.43747 7.48172 5.43747 7.79831 5.63273 7.99357L11.2792 13.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
             </svg>
@@ -107,9 +107,9 @@
 
               <div class="sm:col-span-9">
                 <div class="sm:flex">
-                    <label @click="setCategory(item.value)" v-for="(item, index) in categorys" :key="index" for="af-account-gender-checkbox" class="flex py-2 px-3 block w-full border border-gray-200 shadow-sm -mt-px -ml-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-l-lg sm:mt-0 sm:first:ml-0 sm:first:rounded-tr-none sm:last:rounded-bl-none sm:last:rounded-r-lg text-base relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
-                      <input :checked="category == item.value" type="radio" name="af-account-gender-checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" :id="`af-account-category-checkbox-${item.value}`">
-                      <span class="text-base text-gray-500 ml-3 dark:text-gray-400">{{item.text}}</span>
+                    <label @click="setCategory(item.category_id)" v-for="(item, index) in categorys" :key="index" for="af-account-gender-checkbox" class="flex py-2 px-3 block w-full border border-gray-200 shadow-sm -mt-px -ml-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-l-lg sm:mt-0 sm:first:ml-0 sm:first:rounded-tr-none sm:last:rounded-bl-none sm:last:rounded-r-lg text-base relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                      <input :checked="category == item.category_id" type="radio" name="af-account-gender-checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" :id="`af-account-category-checkbox-${item.value}`">
+                      <span class="text-base text-gray-500 ml-3 dark:text-gray-400">{{item.name}}</span>
                     </label>
 
                   </div>
@@ -265,11 +265,7 @@ export default {
         imagesrc : "", image_url : "", 
         origin_price : "", 
         origin : "", 
-        categorys : [
-          {text : "과일", value : 1}, 
-          {text : "육류", value : 2},
-          {text : "기타", value : 3}
-        ], 
+        categorys : [], 
         category : 1, 
         mode : "regist"
       }
@@ -289,10 +285,20 @@ export default {
     async imageonserver(imageFormData) { 
         return await api.imageonserver(imageFormData).then((response) => { 
           if(response.data.code == '0000'){
-              return response.data.data.image_url
-          }else{
-              alert(response.data.message)
-              return ''
+            return response.data.data.image_url
+          } else {
+            alert(response.data.message)
+            return ''
+          }
+        })
+    },
+    async getcategorylist() { 
+        return await api.categorylist().then((response) => { 
+          if(response.data.code == '0000'){
+            this.categorys = response.data.data.list;
+              console.log(this.categorys)
+          } else {
+            this.categorys = [];
           }
         })
     },
@@ -304,7 +310,8 @@ export default {
           this.image_url = url;
       })
     },
-    async getproductitemlist(id){
+    async getproductitemlist(id) {
+        // 상품 수정
        return await api.getproductlistbyid(id).then((response)=> {
           if(response.data.code == '0000'){
             const userdata = response.data.data;
@@ -318,10 +325,12 @@ export default {
             this.image_url = userdata.main_image;
             this.origin = userdata.origin;
             this.producer = userdata.producer;
+            this.category = userdata.category.category_id;
           }
         })
     },
     async submit() {
+      // 상품 등록 submit
       this.description = document.getElementById("product_main_explanation").value;
       this.notice1 = document.getElementById("product_sub_explanation").value;
       this.notice2 = document.getElementById("purchase_inquiry").value;
@@ -339,7 +348,8 @@ export default {
         "product_sub_explanation" : this.notice1,
         "origin_price" : Number(this.origin_price),
         "purchase_inquiry" : this.notice2,
-        "main_image" : this.image_url
+        "main_image": this.image_url, 
+        "category_id" : this.category 
         }
 
       if (this.id > 0) { 
@@ -369,7 +379,8 @@ export default {
       })
     }, 
   }, 
-  mounted(){
+  mounted() {
+    this.getcategorylist();
     this.id = this.$route.params.id;
     if(this.id > 0){
       this.mode = 'modify'
