@@ -19,7 +19,7 @@ import commerce_pricing from '../components/commerce/pricing.vue'
 import kakaoLogin from '../views/kakaoLogin.vue'
 import Login from '../views/login.vue' 
 import Signup from '../views/signup.vue' 
-import myAccount from "../views/myAccount.vue"
+import myAccount from "../views/myaccount.vue"
 import { createWebHistory, createRouter } from "vue-router";
 
 const routes = [
