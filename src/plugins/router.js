@@ -36,7 +36,7 @@ const routes = [
             { path: "",component: commerce_main }, // 메인
             { path: "main",component: commerce_main },  // 메인 
             { path: 'search', component : commerce_search }, // 상품 검색 결과
-            { path: 'detail', component : commerce_detail }, // 상품 상세
+            { path: 'detail/:id', component : commerce_detail }, // 상품 상세
             { path: 'cartlist', component : commerce_cartlist }, // 장바구니
             { path: 'regist', component : commerce_regist }, // 구매자 -> 판매자 등록 페이지
             { path: 'pricing', component : commerce_pricing }, // 멤버십 안내 페이지
