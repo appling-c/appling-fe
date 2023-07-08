@@ -134,6 +134,10 @@ function moveto(path){
   router.push(path);
 }
 
+function account(){
+  router.push('/account')
+}
+
 
 
 </script>
