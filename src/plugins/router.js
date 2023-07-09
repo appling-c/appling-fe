@@ -7,6 +7,7 @@ import admin_product_regist from '../components/admin/product/product_regist.vue
 import admin_product_detail from '../components/admin/product/product_detail.vue'
 
 import admin_waybill from '../components/admin/contents/waybill.vue'
+import admin_brandshop from '../components/admin/contents/brandshop.vue'
 
 import Commerce from '../views/commerce.vue' 
 import commerce_main from '../components/commerce/main.vue'
@@ -40,6 +41,7 @@ const routes = [
             { path: 'cartlist', component : commerce_cartlist }, // 장바구니
             { path: 'regist', component : commerce_regist }, // 구매자 -> 판매자 등록 페이지
             { path: 'pricing', component : commerce_pricing }, // 멤버십 안내 페이지
+            
         ]
     },
 
@@ -53,6 +55,7 @@ const routes = [
             { path : "product/list", component : admin_product_detail }, // 상품 리스트
             { path : "product/waybill", component : admin_waybill },     // 운송장 등록하기
             { path: 'calendar', component: admin_calendar, },   // 상품달력
+            { path: "brandshop",component: admin_brandshop }, // 메인
         ],
     },
  ]

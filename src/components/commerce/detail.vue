@@ -104,6 +104,14 @@ export default {
             </h5>
            </div>
 
+           <figure>
+              <img class="w-full object-cover rounded-xl" 
+              :src="main_image" :alt="main_image">
+              <figcaption class="mt-3 text-sm text-center text-gray-500">
+                A woman sitting at a table.
+              </figcaption>
+            </figure>
+
 
           <blockquote class="text-center p-4 sm:px-7">
             <p class="text-xl font-medium text-gray-800 lg:text-2xl lg:leading-normal xl:text-2xl xl:leading-normal dark:text-gray-200" v-html="product_main_explanation">

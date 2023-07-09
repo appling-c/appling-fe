@@ -67,9 +67,10 @@ export default {
         </span>
       </div> -->
 
-      <div v-if="product.id % 2 == 0" class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden ">
-        <img class="w-full h-full absolute top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" :src="product.main_image" alt="Image Description">
-        <span class="absolute top-0 right-0 rounded-tr-xl rounded-bl-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 dark:bg-gray-900">
+      <div  class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden ">
+        <img class="w-full h-full absolute top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" 
+        :src="product.main_image" alt="Image Description">
+        <span v-if="product.id % 2 == 0" class="absolute top-0 right-0 rounded-tr-xl rounded-bl-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 dark:bg-gray-900">
           프리미엄
         </span>
       </div>

@@ -442,10 +442,29 @@ export default {
     async fileInput(event){
       const imageFormData = new FormData()
       imageFormData.append('image',event.target.files[0])
-
-      await this.imageonserver(imageFormData).then((url)=> {
+      
+      imageFormData.append('filename', "main_image")
+      const size = event.target.files[0].size
+      const limit_size = 1000000
+      if(size >= limit_size){
+        this.$emit("openModal", {
+          title : "이미지 등록 오류", 
+          subtitle : `등록한 이미지 크기가 너무 커요.`, 
+          btn: {
+              confirmText : "확인", 
+              cancelText : "취소"
+          }
+        })
+        event.preventDefault();
+        document.getElementById("af-submit-application-resume-cv").value = "";
+        return false;
+        return;
+      }else{
+        await this.imageonserver(imageFormData).then((url)=> {
           this.image_url = url;
-      })
+        })
+      }
+      
     },
     async getproductitemlist(id) {
         // 상품 수정
@@ -491,15 +510,16 @@ export default {
         "main_image": this.image_url, 
         "category_id" : this.category 
         }
-
+      
       if (this.id > 0) { 
+        // 수정
         params["id"] = Number(this.id)
       }
       
-      await api.submittemplate(params).then((response)=> {
-          if(response.data.code === "0001"){
+      await api.submittemplate(params, this.mode).then((response)=> {
+          if(response.data.code === "0001" || response.data.code === "0000"){
             this.$emit("openModal", {
-              title : "등록되었습니다.", 
+              title : `${this.mode == 'regist'? "등록" : "수정"}되었습니다.`, 
               subtitle : "등록한 상품은 상품내역에서 확인할 수 있습니다. <br/> 등록한 상품으로 템플릿을 만들어 상품을 홍보해보세요!", 
               btn: {
                   confirmText : "확인", 
@@ -516,6 +536,7 @@ export default {
               }
             })
           }
+          this.$router.push("/admin/product/list")
       })
     }, 
   }, 
