@@ -12,7 +12,7 @@ const ENDPOINT = {
     PRODUCTSERACH : "/api/product", 
     KAKAOLOGIN_AUTH : "/api/oauth/kakao?code=", 
     KAKAOLOGIN_AUTH_KAKAO_TOKEN: "/api/oauth/kakao/login?access_token=", 
-    CATEOGORYLIST : "/api/product/category"
+    CATEOGORYLIST : "/api/product/category", 
     
 }
 const api = {
@@ -75,7 +75,7 @@ const api = {
      * 상품 리스트 가져오기
      */
      getproductlist: async function(payload) { 
-        return await instance.get(`${ENDPOINT.PRODUCTSERACH}?search=${payload.keyword}&page=${payload.page}&size=${payload.size}`, {
+        return await instance.get(`${ENDPOINT.SUBMITTMEPLATE}?search=${payload.keyword}&page=${payload.page}&size=${payload.size}`, {
         }).then((response) => { 
             return response
         })
@@ -114,9 +114,12 @@ const api = {
      * 구매자 -> 판매자 권한 신청
      */
     memberseller: async function() { 
-        return await instance.post(ENDPOINT.MEMBRESELLER).then((response) => { 
-            return response.data.data.message;
-        })
+        // 권한 변경 
+        await instance.post(ENDPOINT.MEMBRESELLER)
+        
+        // 토큰 리프레시
+        const authupdate = await this.memberaccesstoken();
+        return authupdate
     },
     
     logout: function () {

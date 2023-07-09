@@ -41,9 +41,12 @@
 
 <script setup>
 import api from '../../plugins/api'
-function submit() { 
-    api.memberseller().then((message) => {         
-        return alert(message)
+import router from '../../plugins/router'
+
+async function submit() { 
+    await api.memberseller().then((message) => { 
+        alert(message)
+        return router.push("/commerce/main")
     })
 }
 </script>
