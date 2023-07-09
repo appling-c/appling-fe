@@ -63,7 +63,7 @@
                     다운받기
                 </button>
                 
-                <a id="kakaotalk-sharing-btn" @click="kakaoShare" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                <a lass="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
                     <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1h-2z"/>
                         <path fill-rule="evenodd" d="M7.646.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 1.707V10.5a.5.5 0 0 1-1 0V1.707L5.354 3.854a.5.5 0 1 1-.708-.708l3-3z"/>
@@ -120,50 +120,7 @@ export default {
         won_filter(num){
             return common.comma(num)
         },
-        kakaoShare() { 
-            // 카카오톡 공유하기
-            const item = this.contents;
-            const main_title = item.main_title;
-            const sub_title = item.main_explanation;
-            const regularPrice = item.origin_price;
-            const discountPrice = item.price;
-            const imageUrl = this.imagesrc
-            
-            Kakao.Share.createDefaultButton({
-            container: '#kakaotalk-sharing-btn',
-            objectType: 'commerce',
-            content: {
-                title: sub_title,
-                imageUrl,
-                link: {
-                    mobileWebUrl: 'https://developers.kakao.com',
-                    webUrl: 'https://developers.kakao.com',
-                },
-            },
-            commerce: {
-                productName: main_title,
-                regularPrice,
-                discountRate: 10,
-                discountPrice,
-            },
-            buttons: [
-                {
-                title: '구매하기',
-                link: {
-                    mobileWebUrl: 'https://developers.kakao.com',
-                    webUrl: 'https://developers.kakao.com',
-                },
-                },
-                {
-                title: '공유하기',
-                link: {
-                    mobileWebUrl: 'https://developers.kakao.com',
-                    webUrl: 'https://developers.kakao.com',
-                },
-                },
-            ],
-            });
-        },
+        
         download() {
             // 팜플렛 이미지 다운로드
             const element = document.getElementById("preview_contents");
@@ -180,9 +137,7 @@ export default {
             })
         }
     }, 
-    mounted() { 
-        Kakao.init('bfdc56a39210639e056f66e470d11426');
-    }
+
 }
 let canvas_element;
 </script>

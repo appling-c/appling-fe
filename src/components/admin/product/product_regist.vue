@@ -66,20 +66,126 @@
               </div>
               <!-- End Col -->
 
-              <div v-if="mode == 'regist'" class="sm:col-span-3">
+              <div class="sm:col-span-3">
                 <div class="inline-block">
                   <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
-                    상품 이미지
+                    메인 상품 이미지
                   </label>
                 </div>
               </div>
               <!-- End Col -->
 
-              <div   v-if="mode == 'regist'" class="sm:col-span-9">
+              <div v-if="image_url == ''" class="sm:col-span-9">
                 <label class="sr-only">파일선택</label>
-                <input  @input="fileInput" type="file" name="af-submit-application-resume-cv" id="af-submit-application-resume-cv" class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
+                <input @input="fileInput" type="file" name="af-submit-application-resume-cv" id="af-submit-application-resume-cv" 
+                class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
                   file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-2 file:px-3 dark:file:bg-gray-700 dark:file:text-gray-400">
-              </div>        
+              </div>   
+
+              <div v-else class="sm:col-span-9">
+                <p @click="removemainimage('image_url')">            
+                  <span id="badge-dismiss-default" class="inline-flex items-center px-2 py-1 mr-2 text-sm font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300">
+                    {{image_url}}
+                    <button type="button" class="inline-flex items-center p-1 ml-2 text-sm text-blue-400 bg-transparent rounded-sm hover:bg-blue-200 hover:text-blue-900 dark:hover:bg-blue-800 dark:hover:text-blue-300" data-dismiss-target="#badge-dismiss-default" aria-label="Remove">
+                      <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                      </svg>
+                      <span class="sr-only">Remove badge</span>
+                    </button>
+                  </span>
+                </p>
+              </div>   
+
+              <!-- End Col -->
+
+              <div class="sm:col-span-3">
+                <div class="inline-block">
+                  <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                    서브 상품 이미지
+                  </label>
+                </div>
+              </div>
+              <!-- End Col -->
+
+              <div v-if="image1 == ''" class="sm:col-span-9">
+                <label class="sr-only">파일선택</label>
+                <input @input="onfileInput_multiple($event,'image1')" type="file" name="af-submit-application-resume-cv" id="af-submit-application-resume-cv" 
+                class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
+                  file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-2 file:px-3 dark:file:bg-gray-700 dark:file:text-gray-400">
+              </div>   
+              <div v-else class="sm:col-span-9">
+                <p @click="removemainimage('image1')">            
+                  <span id="badge-dismiss-default" class="inline-flex items-center px-2 py-1 mr-2 text-sm font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300">
+                    {{image1}}
+                    <button type="button" class="inline-flex items-center p-1 ml-2 text-sm text-blue-400 bg-transparent rounded-sm hover:bg-blue-200 hover:text-blue-900 dark:hover:bg-blue-800 dark:hover:text-blue-300" data-dismiss-target="#badge-dismiss-default" aria-label="Remove">
+                      <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                      </svg>
+                      <span class="sr-only">Remove badge</span>
+                    </button>
+                  </span>
+                </p>  
+              </div>
+
+              <div class="sm:col-span-3">
+                <div class="inline-block">
+                  <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                    
+                  </label>
+                </div>
+              </div>
+
+              <div v-if="image2 == ''" class="sm:col-span-9">
+                <label class="sr-only">파일선택</label>
+                <input @input="onfileInput_multiple($event,'image2')" type="file" name="af-submit-application-resume-cv" id="af-submit-application-resume-cv" 
+                class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
+                  file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-2 file:px-3 dark:file:bg-gray-700 dark:file:text-gray-400">
+              </div>   
+              <div v-else class="sm:col-span-9">
+                <p @click="removemainimage('image2')">            
+                  <span id="badge-dismiss-default" class="inline-flex items-center px-2 py-1 mr-2 text-sm font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300">
+                    {{image2}}
+                    <button type="button" class="inline-flex items-center p-1 ml-2 text-sm text-blue-400 bg-transparent rounded-sm hover:bg-blue-200 hover:text-blue-900 dark:hover:bg-blue-800 dark:hover:text-blue-300" data-dismiss-target="#badge-dismiss-default" aria-label="Remove">
+                      <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                      </svg>
+                      <span class="sr-only">Remove badge</span>
+                    </button>
+                  </span>
+                </p>  
+              </div>
+
+
+              <div class="sm:col-span-3">
+                <div class="inline-block">
+                  <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                    
+                  </label>
+                </div>
+              </div>
+
+              <div v-if="image3 == ''" class="sm:col-span-9">
+                <label class="sr-only">파일선택</label>
+                <input @input="onfileInput_multiple($event,'image3')" type="file" name="af-submit-application-resume-cv" id="af-submit-application-resume-cv" 
+                class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
+                  file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-2 file:px-3 dark:file:bg-gray-700 dark:file:text-gray-400">
+              </div>   
+              <div v-else class="sm:col-span-9">
+                <p @click="removemainimage('image3')">            
+                  <span id="badge-dismiss-default" class="inline-flex items-center px-2 py-1 mr-2 text-sm font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300">
+                    {{image3}}
+                    <button type="button" class="inline-flex items-center p-1 ml-2 text-sm text-blue-400 bg-transparent rounded-sm hover:bg-blue-200 hover:text-blue-900 dark:hover:bg-blue-800 dark:hover:text-blue-300" data-dismiss-target="#badge-dismiss-default" aria-label="Remove">
+                      <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                      </svg>
+                      <span class="sr-only">Remove badge</span>
+                    </button>
+                  </span>
+                </p>  
+              </div>
+                  
+
+                   
               <!-- End Col -->
 
               <div class="sm:col-span-3">
@@ -130,7 +236,7 @@
 
               <div class="sm:col-span-3">
                 <label for="af-submit-application-resume-cv" class="inline-block text-base font-medium text-gray-500 mt-2.5">
-                  가격 정보
+                  원가
                 </label>
               </div>
               <!-- End Col -->
@@ -140,6 +246,24 @@
                   <div class="mt-2 space-y-3">
                     <div class="sm:flex gap-3">
                       <input v-model="origin_price" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="원가">
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+              <!-- End Col -->
+
+              <div class="sm:col-span-3">
+                <label for="af-submit-application-resume-cv" class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                  판매가
+                </label>
+              </div>
+              <!-- End Col -->
+
+              <div class="sm:col-span-9">
+                <div class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700">
+                  <div class="mt-2 space-y-3">
+                    <div class="sm:flex gap-3">
                       <input v-model="price"  type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="판매가">
                     </div>
                   </div>
@@ -267,7 +391,8 @@ export default {
         origin : "", 
         categorys : [], 
         category : 1, 
-        mode : "regist"
+        mode : "regist", 
+        image1 : "", image2 : "", image3 : ""
       }
   },
   watch:{
@@ -279,6 +404,18 @@ export default {
   },
   
   methods: {
+    removemainimage(fname){
+      this[`${fname}`] = "";
+    },
+    async onfileInput_multiple(event, fname){      
+      const imageFormData = new FormData();
+      imageFormData.append('image',event.target.files[0])
+
+      await this.imageonserver(imageFormData).then((url)=> {
+          this[`${fname}`] = url;
+          
+      })
+    },
     setCategory(value){
       this.category = value;
     },
@@ -326,6 +463,9 @@ export default {
             this.origin = userdata.origin;
             this.producer = userdata.producer;
             this.category = userdata.category.category_id;
+            this.image1 = userdata.image1;
+            this.image2 = userdata.image2;
+            this.image3 = userdata.image3;
           }
         })
     },
@@ -339,9 +479,9 @@ export default {
         "price" : Number(this.price), 
         "origin" : this.origin,
         "producer" : this.producer,
-        "image1" : "https://image1",
-        "image2" : "https://image2",
-        "image3" : "https://image3",
+        "image1" : this.image1,
+        "image2" : this.image2,
+        "image3" :this.image3,
         "main_title" : this.title,
         "main_explanation" : this.subtitle,
         "product_main_explanation" : this.description,
