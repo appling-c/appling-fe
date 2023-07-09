@@ -35,7 +35,6 @@ export default {
         async getproductitemlist(id) {
         // 상품 수정
         await api.getproductlistbyid(id).then((response)=> {
-            console.log(response)
             if(response.data.code == '0000'){
                 
                 const userdata = response.data.data;

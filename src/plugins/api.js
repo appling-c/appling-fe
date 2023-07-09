@@ -114,9 +114,12 @@ const api = {
      * 구매자 -> 판매자 권한 신청
      */
     memberseller: async function() { 
-        return await instance.post(ENDPOINT.MEMBRESELLER).then((response) => { 
-            return response.data.data.message;
-        })
+        // 권한 변경 
+        await instance.post(ENDPOINT.MEMBRESELLER)
+        
+        // 토큰 리프레시
+        const authupdate = await this.memberaccesstoken();
+        return authupdate
     },
     
     logout: function () {
