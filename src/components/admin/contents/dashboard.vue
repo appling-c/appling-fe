@@ -148,7 +148,7 @@
                       <td class="px-6 py-4 whitespace-nowrap text-base text-gray-800 dark:text-gray-200">경기 안성</td>
                       <td class="px-6 py-4 whitespace-nowrap text-base text-gray-800 dark:text-gray-200">[2023-03-03 13:30] 사과 10개, 약과 20개</td>
                       <td class="px-6 py-4 whitespace-nowrap text-right text-base font-medium">
-                        <a class="text-blue-500 hover:text-blue-700" href="#">연락하기</a>
+                        <a class="text-blue-500 hover:text-blue-700"  >연락하기</a>
                       </td>
                     </tr>
 
@@ -157,7 +157,7 @@
                       <td class="px-6 py-4 whitespace-nowrap text-base text-gray-800 dark:text-gray-200">경기 가평</td>
                       <td class="px-6 py-4 whitespace-nowrap text-base text-gray-800 dark:text-gray-200">[2023-03-03 13:50] 사과 10개, 약과 20개</td>
                       <td class="px-6 py-4 whitespace-nowrap text-right text-base font-medium">
-                        <a class="text-blue-500 hover:text-blue-700" href="#">연락하기</a>
+                        <a class="text-blue-500 hover:text-blue-700"  >연락하기</a>
                       </td>
                     </tr>
 
@@ -166,7 +166,7 @@
                       <td class="px-6 py-4 whitespace-nowrap text-base text-gray-800 dark:text-gray-200">경기 성남</td>
                       <td class="px-6 py-4 whitespace-nowrap text-base text-gray-800 dark:text-gray-200">[2023-03-23 13:30] 사과 10개, 약과 20개</td>
                       <td class="px-6 py-4 whitespace-nowrap text-right text-base font-medium">
-                        <a class="text-blue-500 hover:text-blue-700" href="#">연락하기</a>
+                        <a class="text-blue-500 hover:text-blue-700"  >연락하기</a>
                       </td>
                     </tr>
                   </tbody>

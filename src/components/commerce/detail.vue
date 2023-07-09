@@ -234,16 +234,16 @@ export default {
           <div class="grid lg:flex lg:justify-between lg:items-center gap-y-5 lg:gap-y-0">
             <!-- Badges/Tags -->
             <div>
-              <a class="m-0.5 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200" href="#">
+              <a class="m-0.5 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200"  >
                 Plan
               </a>
-              <a class="m-0.5 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200" href="#">
+              <a class="m-0.5 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200"  >
                 Web development
               </a>
-              <a class="m-0.5 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200" href="#">
+              <a class="m-0.5 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200"  >
                 Free
               </a>
-              <a class="m-0.5 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200" href="#">
+              <a class="m-0.5 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200"  >
                 Team
               </a>
             </div>
@@ -278,11 +278,11 @@ export default {
       <div class="sticky top-0 left-0 py-8 lg:pl-4 lg:pl-8">
         <!-- Avatar Media -->
         <div class="group flex items-center gap-x-3 border-b border-gray-200 pb-8 mb-8 dark:border-gray-700">
-          <a class="block flex-shrink-0" href="#">
+          <a class="block flex-shrink-0"  >
             <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1669837401587-f9a4cfe3126e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80" alt="Image Description">
           </a>
 
-          <a class="group grow block" href="">
+          <a class="group grow block" >
             <h5 class="group-hover:text-gray-600 text-sm font-semibold text-gray-800 dark:group-hover:text-gray-400 dark:text-gray-200">
                {{seller?.name}}
             </h5>
@@ -310,7 +310,7 @@ export default {
               평창 시얼이네 사과농원에서 판매중인 상품 모음
             </p>
           <!-- Media -->
-          <a class="group flex items-center gap-x-6" href="#">
+          <a class="group flex items-center gap-x-6"  >
             <div class="grow">
               <span class="text-sm font-bold text-gray-800 group-hover:text-blue-600 dark:text-gray-200 dark:group-hover:text-blue-500">
                 [시얼이네 농원] 바른곡물 국산 현미 1kg
@@ -324,7 +324,7 @@ export default {
           <!-- End Media -->
 
           <!-- Media -->
-          <a class="group flex items-center gap-x-6" href="#">
+          <a class="group flex items-center gap-x-6"  >
             <div class="grow">
               <span class="text-sm font-bold text-gray-800 group-hover:text-blue-600 dark:text-gray-200 dark:group-hover:text-blue-500">
                 유니드마이요거트 유기가공식품 인증 드링크 가당 180g, 3개
@@ -338,7 +338,7 @@ export default {
           <!-- End Media -->
 
           <!-- Media -->
-          <a class="group flex items-center gap-x-6" href="#">
+          <a class="group flex items-center gap-x-6"  >
             <div class="grow">
               <span class="text-sm font-bold text-gray-800 group-hover:text-blue-600 dark:text-gray-200 dark:group-hover:text-blue-500">
                 그라놀로지 시그니처 시리얼
