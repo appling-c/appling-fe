@@ -12,7 +12,7 @@ const ENDPOINT = {
     PRODUCTSERACH : "/api/product", 
     KAKAOLOGIN_AUTH : "/api/oauth/kakao?code=", 
     KAKAOLOGIN_AUTH_KAKAO_TOKEN: "/api/oauth/kakao/login?access_token=", 
-    CATEOGORYLIST : "/api/product/category"
+    CATEOGORYLIST : "/api/product/category", 
     
 }
 const api = {
@@ -75,7 +75,7 @@ const api = {
      * 상품 리스트 가져오기
      */
      getproductlist: async function(payload) { 
-        return await instance.get(`${ENDPOINT.PRODUCTSERACH}?search=${payload.keyword}&page=${payload.page}&size=${payload.size}`, {
+        return await instance.get(`${ENDPOINT.SUBMITTMEPLATE}?search=${payload.keyword}&page=${payload.page}&size=${payload.size}`, {
         }).then((response) => { 
             return response
         })

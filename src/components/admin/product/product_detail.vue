@@ -91,14 +91,14 @@
         <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
         <thead class="bg-gray-50 dark:bg-slate-800">
             <tr>
-            <th scope="col" class="pl-6 py-3 text-left">
+            <th scope="col" class="px-4 py-3 text-left">
                 <label for="hs-at-with-checkboxes-main" class="flex">
                 <input type="checkbox" class="shrink-0 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-at-with-checkboxes-main">
                 <span class="sr-only">Checkbox</span>
                 </label>
             </th>
 
-            <th scope="col" class="px-6 py-3 text-left">
+            <th scope="col" class="px-4 py-3 text-left">
                 <div class="flex items-center gap-x-2">
                 <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
                     구분
@@ -106,7 +106,7 @@
                 </div>
             </th>
 
-            <th scope="col" class="px-6 py-3 text-left">
+            <th scope="col" class="px-4 py-3 text-left">
                 <div class="flex items-center gap-x-2">
                 <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
                     상품명
@@ -114,7 +114,7 @@
                 </div>
             </th>
 
-            <th scope="col" class="px-6 py-3 text-left">
+            <th scope="col" class="px-4 py-3 text-left">
                 <div class="flex items-center gap-x-2">
                 <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
                     가격
@@ -122,7 +122,7 @@
                 </div>
             </th>
 
-            <th scope="col" class="px-6 py-3 text-left">
+            <th scope="col" class="px-4 py-3 text-left">
                 <div class="flex items-center gap-x-2">
                 <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
                     등록일
@@ -130,14 +130,15 @@
                 </div>
             </th>
 
-            <th scope="col" class="px-6 py-3 text-left">
+            <th scope="col" class="px-4 py-3 text-left">
                 <div class="flex items-center gap-x-2">
                 <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                    작성
+                    상태
                 </span>
                 </div>
             </th>
-            <th scope="col" class="px-6 py-3 text-left">
+
+            <th scope="col" class="px-4 py-3 text-left">
                 <div class="flex items-center gap-x-2">
                 <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
                    공유하기
@@ -145,7 +146,7 @@
                 </div>
             </th>
 
-            <th scope="col" class="px-6 py-3 text-left">
+            <th scope="col" class="px-4 py-3 text-left">
                 <div class="flex items-center gap-x-2">
                 <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
                    팜플렛
@@ -202,7 +203,7 @@
                 </a>
             </td>
 
-            <!-- <td  @click="moveto(litem.id)" class="h-px w-px whitespace-nowrap">
+            <td  @click="moveto(litem.id)" class="h-px w-px whitespace-nowrap">
                 <a class="block h-full p-6" href="#">
                 <span v-if="litem.id % 2 == 0" class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                     <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -218,13 +219,13 @@
                     판매 종료
                 </span>
                 </a>
-            </td> -->
-           
+            </td>
+            <!--            
             <td  @click="moveto(litem.id)" class="h-px w-px whitespace-nowrap">
                 <a class="block h-full p-6" href="#">
                 <span class="text-sm text-gray-600 dark:text-gray-400">{{litem.seller.nickname}}</span>
                 </a>
-            </td>
+            </td> -->
 
             <td id="kakaotalk-sharing-btn" @click="kakaoShare(litem)" class="h-px w-px whitespace-nowrap">
                 <a class="flex items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
