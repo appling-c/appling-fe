@@ -32,7 +32,6 @@ export default {
             if(response.data.code == '0000'){
                 
                 const userdata = response.data.data;
-                console.log(userdata)
                 this.create_at = userdata.create_at;
                 this.modified_at = userdata.modified_at;
                 this.image1 = userdata.image1;
@@ -50,7 +49,6 @@ export default {
                 this.producer = userdata.producer;
                 this.category = userdata.category.name;
                 this.seller = userdata.seller;
-                console.log(this.seller.name)
             }
             })
         },

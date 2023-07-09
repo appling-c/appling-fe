@@ -44,6 +44,9 @@ export default {
             api.updatememeberinfo(payload).then(response => { 
                 alert()
             })
+        }, 
+        cancel(){
+            this.$router.go(-1)
         }
     },
     mounted() { 
@@ -201,8 +204,8 @@ export default {
             <div class="sm:col-span-9">
             <div class="space-y-2">
                 <input v-model="currentpassword" id="af-account-password" type="password" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="현재 비밀번호">
-                <input v-model="password" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="새로운 비밀번호">
-                <input v-model="password2" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="새로운 비밀번호 확인">
+                <input v-model="password" type="password"  class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="새로운 비밀번호">
+                <input v-model="password2" type="password"  class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="새로운 비밀번호 확인">
             </div>
             </div>
             <!-- End Col -->
