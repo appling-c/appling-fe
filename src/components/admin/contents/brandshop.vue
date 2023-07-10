@@ -34,7 +34,7 @@
 
               <div class="sm:col-span-3">
                 <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
-                  상품 큰 제목
+                  홈페이지 제목
                 </label>
               </div>
               <!-- End Col -->
@@ -60,13 +60,21 @@
               <div class="sm:col-span-9">
                 <div class="sm:col-span-9">
                      <div id="editor" class="p-1.5 min-w-full inline-block align-middle"></div>
-                  <textarea  v-model="description" id="product_main_explanation" class="py-2 px-3 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" rows="6" ></textarea>
                 </div>        
               </div>
               <!-- End Col -->
 
             </div>
             <!-- End Section -->
+            <!-- End Grid -->
+            <div class="mt-5 flex justify-end gap-x-2">
+                <button @click="cancel" type="button" class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
+                    취소
+                </button>
+                <button @click="save" type="button" class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                    저장하기
+                </button>
+            </div>
         </div>
         
     </div>
@@ -75,7 +83,7 @@
 
 <script>
 import Editor from '@toast-ui/editor';
-
+import api from '../../../plugins/api';
 export default {
     data(){
         return {
@@ -83,19 +91,53 @@ export default {
         }
     },
     methods:{
-        submit(){
-            const htmlcodes = this.editor.getHTML();
-            console.log(htmlcodes)
+      save() {
+          console.log(this.editor.getHTML())
+          this.$router.push('/admin/brandshop/preview/9')
+      }, 
+      async onUploadImage(blob, callback){
+        const imageFormData = new FormData();
+        imageFormData.append('image', blob);
+        // 업로드한 이미지 사이즈 체크
+        const size = blob.size;
+        const limit_size = 1000000;
+        if (size >= limit_size) {
+          this.$emit("openModal", {
+            title: "이미지 등록 오류",
+            subtitle: `등록한 이미지 크기가 너무 커요.`,
+            btn: {
+              confirmText: "확인",
+              cancelText: "취소"
+            }
+          })
+          return false;
         }
+
+        // 이미지 S3 서버에 등록하고 src 받아오기
+        await api.imageonserver(imageFormData).then((response) => {
+          if (response.data.code == '0000') {
+            // 링크, 파일명 이벤트 콜백
+            callback(response.data.data.image_url, blob.name);
+          } else {
+            alert(response.data.message)
+            return false;
+          }
+        })
+      }
     },
-    mounted(){
-       this.editor = new Editor({
-        el: document.querySelector('#editor'),
-            height: '600px',
-            initialEditType: 'wysiwyg',
-            previewStyle: 'vertical'
-        });
-      
+  mounted() {
+    const content = `<h1>햇살을 가득 담은 평창 자연 햇살 농원 입니다.</h1><div contenteditable="false"><hr></div><h4>평창 700 고지에서 무공해 사과를 직접 재배하여 판매합니다.</h4><p><br></p><p>모든 주문은 카카오톡, 문자, 전화로 가능합니다. </p><p>아래의 번호로 문의를 남겨주세요.</p><p>010-1234-1222</p><h1>🚘 농원 둘러보기</h1><h5><strong>✔️ 영상으로 구경하기 </strong></h5><p><a href="https://youtu.be/wgelJ8zYmFc?t=219">[평창시그니처5] 봉황마을 캠핑 (feat.평창사과)</a></p><p><br></p><h5><strong>✔️ 사진으로 둘러보기</strong></h5><p><br></p><h1>🚘 이런것들을 판매해요.</h1><h5><strong>✔️ 설 특집, 부사 구경하기</strong></h5><p><br></p><h5><strong>✔️ 9월 중순, 시나노 골드 </strong></h5><p><br></p>`
+    var self = this;
+    this.editor = new Editor({
+      el: document.querySelector('#editor'),
+      height: '600px',
+      initialEditType: 'wysiwyg',
+      previewStyle: 'vertical', 
+      initialValue: content, 
+      hooks : {
+          addImageBlobHook: self.onUploadImage, // 이미지 등록 이벤트 핸들러
+        }
+    }); 
     }
 }
 </script>
