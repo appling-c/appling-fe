@@ -12,7 +12,7 @@
         </template>
 
         <div class="mt-5 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
-            <router-link to="/admin/product/list" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold text-blue-500 hover:text-blue-700 focus:outline-none focus:ring-2 ring-offset-gray-50 focus:ring-blue-500 focus:ring-offset-2 transition-all text-base py-3 px-4 dark:ring-offset-slate-900" href="../examples.html">
+            <router-link to="/admin/product/list" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold text-blue-500 hover:text-blue-700 focus:outline-none focus:ring-2 ring-offset-gray-50 focus:ring-blue-500 focus:ring-offset-2 transition-all text-base py-3 px-4 dark:ring-offset-slate-900">
             <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M11.2792 1.64001L5.63273 7.28646C5.43747 7.48172 5.43747 7.79831 5.63273 7.99357L11.2792 13.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
             </svg>
@@ -442,10 +442,29 @@ export default {
     async fileInput(event){
       const imageFormData = new FormData()
       imageFormData.append('image',event.target.files[0])
-
-      await this.imageonserver(imageFormData).then((url)=> {
+      
+      imageFormData.append('filename', "main_image")
+      const size = event.target.files[0].size
+      const limit_size = 1000000
+      if(size >= limit_size){
+        this.$emit("openModal", {
+          title : "이미지 등록 오류", 
+          subtitle : `등록한 이미지 크기가 너무 커요.`, 
+          btn: {
+              confirmText : "확인", 
+              cancelText : "취소"
+          }
+        })
+        event.preventDefault();
+        document.getElementById("af-submit-application-resume-cv").value = "";
+        return false;
+        return;
+      }else{
+        await this.imageonserver(imageFormData).then((url)=> {
           this.image_url = url;
-      })
+        })
+      }
+      
     },
     async getproductitemlist(id) {
         // 상품 수정
@@ -491,15 +510,16 @@ export default {
         "main_image": this.image_url, 
         "category_id" : this.category 
         }
-
+      
       if (this.id > 0) { 
+        // 수정
         params["id"] = Number(this.id)
       }
       
-      await api.submittemplate(params).then((response)=> {
-          if(response.data.code === "0001"){
+      await api.submittemplate(params, this.mode).then((response)=> {
+          if(response.data.code === "0001" || response.data.code === "0000"){
             this.$emit("openModal", {
-              title : "등록되었습니다.", 
+              title : `${this.mode == 'regist'? "등록" : "수정"}되었습니다.`, 
               subtitle : "등록한 상품은 상품내역에서 확인할 수 있습니다. <br/> 등록한 상품으로 템플릿을 만들어 상품을 홍보해보세요!", 
               btn: {
                   confirmText : "확인", 
@@ -516,6 +536,7 @@ export default {
               }
             })
           }
+          this.$router.push("/admin/product/list")
       })
     }, 
   }, 

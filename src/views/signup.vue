@@ -106,7 +106,7 @@
             <input id="remember-me" name="remember-me" type="checkbox" class="shrink-0 mt-1.5 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
           </div>
           <div class="ml-3">
-            <label for="remember-me" class="text-sm text-gray-600 dark:text-gray-400"><a class="text-blue-600 decoration-2 hover:underline font-medium" href="#">약관</a>에 따라 본 서비스 이용에 동의합니다.</label>
+            <label for="remember-me" class="text-sm text-gray-600 dark:text-gray-400"><a class="text-blue-600 decoration-2 hover:underline font-medium"  >약관</a>에 따라 본 서비스 이용에 동의합니다.</label>
           </div>
         </div>
         <!-- End Checkbox -->

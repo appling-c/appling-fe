@@ -90,16 +90,26 @@ const api = {
         })
     },
     /**
-     * 팜플렛 등록하기
+     * 상품 등록/수정
      */
-     submittemplate: async function(param) { 
-        return await instance.post(ENDPOINT.SUBMITTMEPLATE, param, {
-        }).then((response) => { 
-            return response
-        })
+     submittemplate: async function(param, mode) { 
+        if(mode == 'regist'){
+            // 등록
+            return await instance.post(ENDPOINT.SUBMITTMEPLATE, param, {
+            }).then((response) => { 
+                return response
+            })
+        }else{
+            // 수정
+            return await instance.put(ENDPOINT.SUBMITTMEPLATE, param, {
+            }).then((response) => { 
+                return response
+            })
+        }
+        
     },
     /**
-     * 팜플렛/상품 등록하기 > 이미지 등록 url 얻기
+     * 이미지 등록 url 얻기
      */
      imageonserver: async function(param) { 
         return await instance.post(ENDPOINT.IMAGEONSERVER, param, {

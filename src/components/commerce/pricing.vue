@@ -573,14 +573,14 @@
         <!-- End Col -->
 
         <div class="col-span-2">
-          <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-500 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800" href="#">
+          <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-500 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"  >
             Get started
           </a>
         </div>
         <!-- End Col -->
 
         <div class="col-span-2">
-          <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-3 text-center bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white transition dark:focus:ring-offset-gray-800" href="#">
+          <a class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-3 text-center bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white transition dark:focus:ring-offset-gray-800"  >
             Get started
           </a>
         </div>
