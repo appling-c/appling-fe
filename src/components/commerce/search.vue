@@ -45,7 +45,7 @@ export default {
             <input type="text" v-model="keyword" name="hs-search-article-1" id="hs-search-article-1" class="p-3 block w-full border-transparent rounded-md focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-400" placeholder="엄마손맛 간장게장">
           </div>
           <div class="flex-[0_0_auto]">
-            <a class="p-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-base dark:focus:ring-offset-gray-800" href="#">
+            <a class="p-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-base dark:focus:ring-offset-gray-800"  >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
               </svg>
@@ -59,7 +59,7 @@ export default {
   <!-- Grid -->
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
     <!-- Card -->
-    <a @click="gotodetail(product.id)" v-for="(product, index) in products" :key="index" class="group hover:bg-gray-100 rounded-xl p-5 transition-all dark:hover:bg-white/[.05]" href="#">
+    <a @click="gotodetail(product.id)" v-for="(product, index) in products" :key="index" class="group hover:bg-gray-100 rounded-xl p-5 transition-all dark:hover:bg-white/[.05]"  >
       <!-- <div class="relative aspect-w-16 aspect-h-10">
         <img class="w-full object-cover rounded-xl" :src="product.main_image" alt="Image Description">
         <span class="absolute top-0 right-0 rounded-tr-xl rounded-bl-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 dark:bg-gray-900">
@@ -67,9 +67,10 @@ export default {
         </span>
       </div> -->
 
-      <div v-if="product.id % 2 == 0" class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden ">
-        <img class="w-full h-full absolute top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" :src="product.main_image" alt="Image Description">
-        <span class="absolute top-0 right-0 rounded-tr-xl rounded-bl-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 dark:bg-gray-900">
+      <div  class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden ">
+        <img class="w-full h-full absolute top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" 
+        :src="product.main_image" alt="Image Description">
+        <span v-if="product.id % 2 == 0" class="absolute top-0 right-0 rounded-tr-xl rounded-bl-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 dark:bg-gray-900">
           프리미엄
         </span>
       </div>

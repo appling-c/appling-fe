@@ -5,8 +5,10 @@ import admin_calendar from '../components/admin/contents/calendar.vue'
 
 import admin_product_regist from '../components/admin/product/product_regist.vue'
 import admin_product_detail from '../components/admin/product/product_detail.vue'
+import admin_preview_brandshop from '../components/admin/template/preview_brandshop.vue'
 
 import admin_waybill from '../components/admin/contents/waybill.vue'
+import admin_brandshop from '../components/admin/contents/brandshop.vue'
 
 import Commerce from '../views/commerce.vue' 
 import commerce_main from '../components/commerce/main.vue'
@@ -40,6 +42,7 @@ const routes = [
             { path: 'cartlist', component : commerce_cartlist }, // 장바구니
             { path: 'regist', component : commerce_regist }, // 구매자 -> 판매자 등록 페이지
             { path: 'pricing', component : commerce_pricing }, // 멤버십 안내 페이지
+            
         ]
     },
 
@@ -47,12 +50,14 @@ const routes = [
         path: '/admin',
         component: Admin,
         children: [
-            { path: '', component: admin_dashboard,}, // 메인(대시보드)
-            { path: 'dashboard', component: admin_dashboard, }, // 메인(대시보드)
+            { path : "", component: admin_dashboard,}, // 메인(대시보드)
+            { path : "dashboard", component: admin_dashboard, }, // 메인(대시보드)
             { path : "product/regist/:id", component : admin_product_regist }, // 상품등록/수정
             { path : "product/list", component : admin_product_detail }, // 상품 리스트
             { path : "product/waybill", component : admin_waybill },     // 운송장 등록하기
-            { path: 'calendar', component: admin_calendar, },   // 상품달력
+            { path : "calendar", component: admin_calendar, },   // 상품달력
+            { path : "brandshop", component: admin_brandshop }, // 농장 소개하기
+            { path : "brandshop/preview/:id",component: admin_preview_brandshop }, // 농장 소개하기 view
         ],
     },
  ]
@@ -61,5 +66,13 @@ const router = createRouter({
     history: createWebHistory(),
     routes,
 })
+
+
+router.beforeEach((to, from, next) => {
+    // ...
+    console.log(to)
+    console.log(from)
+    next();
+  })
 
 export default router;
