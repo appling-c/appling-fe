@@ -8,10 +8,12 @@ export default {
       page:1, 
       keyword : "", 
       total_page : 1, 
+      categoryid : ""
     }
   },
   methods: {
     getproductlist(){
+      
       api.getproductlist_all().then(response=> {
         if(response.data.code !== "0000"){
             return this.products = [];
@@ -22,10 +24,17 @@ export default {
       })
     },
     gotodetail(id){
-      this.$router.push(`/commerce/detail/${id}`)
+      // 조회수 증가
+      const payload = {
+            "product_id" :id
+        }
+      api.productcount(payload).then(()=> {
+        this.$router.push(`/commerce/detail/${id}`)
+      })
     }
   },
   mounted(){
+    this.categoryid = this.$route.query.categoryid;
     this.getproductlist();
   }
 }
