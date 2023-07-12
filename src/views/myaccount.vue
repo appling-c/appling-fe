@@ -9,7 +9,13 @@ export default {
             password2 : "", 
             currentpopup: "hidden",
             email: "", name: "", nickname: "", role: "", 
-            sns_type : ""
+            sns_type : "", 
+            recipient : {
+                    name : "", 
+                    address : "", 
+                    tel : ""    
+                }
+            
         }
     },
     methods: {
@@ -202,11 +208,45 @@ export default {
             <!-- End Col -->
 
             <div class="sm:col-span-9">
-            <div class="space-y-2">
-                <input v-model="currentpassword" id="af-account-password" type="password" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="현재 비밀번호">
-                <input v-model="password" type="password"  class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="새로운 비밀번호">
-                <input v-model="password2" type="password"  class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="새로운 비밀번호 확인">
+                <div class="space-y-2">
+                    <input v-model="recipient.name" id="af-account-password" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="현재 비밀번호">
+                    <input v-model="recipient.address" type="text"  class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="새로운 비밀번호">
+                    <input v-model="recipient.tel" type="text"  class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="새로운 비밀번호 확인">
+                </div>
             </div>
+
+
+            <div class="sm:col-span-3">
+            <label for="af-account-password" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
+                수령인 정보
+            </label>
+            </div>
+            <!-- End Col -->
+
+            <div class="sm:col-span-9">
+                <div class="space-y-2">
+                    <ul class="max-w-xs flex flex-col">
+                        <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+                            <div class="flex justify-between w-full">
+                            Profile
+                            <span class="inline-flex items-center py-1 px-2 rounded-full text-xs font-medium bg-blue-500 text-white">기본</span>
+                            </div>
+                        </li>
+                        <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+                            <div class="flex justify-between w-full">
+                            Settings
+                            </div>
+                        </li>
+                        <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+                            <div class="flex justify-between w-full">
+                            Newsletter
+                            </div>
+                        </li>
+                    </ul>
+                    <input v-model="currentpassword" id="af-account-password" type="password" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="현재 비밀번호">
+                    <input v-model="password" type="password"  class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="새로운 비밀번호">
+                    <input v-model="password2" type="password"  class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="새로운 비밀번호 확인">
+                </div>
             </div>
             <!-- End Col -->
         </div>
@@ -248,7 +288,7 @@ export default {
         <h3 class="mb-2 text-2xl font-bold text-gray-800 dark:text-gray-200">내 정보 변경</h3>
         <p class="text-gray-500">변경 사항을 저장하시겠습니까?</p>
         <div class="mt-6 grid gap-y-2">
-          <a class="py-2.5 px-4 w-full inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"  >저장하기</a>
+          <a class="py-2.5 px-4 w-full inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800" href="#">저장하기</a>
           <button @click="submit" type="button" class="py-2.5 px-4 w-full inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800" data-hs-overlay="#hs-sign-out-alert-small-window">취소</button>
         </div>
       </div>
