@@ -10,7 +10,7 @@ export default {
   methods: {
 
     gotoproducts(category_id){
-      this.$router.push(`/commerce/search`)
+      this.$router.push(`/commerce/search?categoryid=${category_id}`)
     },
     
     gopricing(){
@@ -18,7 +18,12 @@ export default {
     }, 
     async getcategorylist(){
       await api.categorylist().then(response=> {
-        this.categorys = response.data.data.list;
+        this.categorys.push( {
+                "category_id": "",
+                "name": "모두보기",
+                
+            })
+        this.categorys.push(...response.data.data.list);
         
       })
     },

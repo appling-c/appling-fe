@@ -48,6 +48,13 @@
                 </svg>
                 상품 등록하기
               </button>
+
+              <button @click="searchproductstatus('')"  type="button" class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" >
+                  <path d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                상품 구경하기
+              </button>
               
             </div>
           </div>
@@ -81,6 +88,40 @@
             </div>
             </div>
         </div>
+        <ul class="flex flex-col sm:flex-row">
+            <li @click="searchproductstatus('')" class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ml-px sm:mt-0 sm:first:rounded-tr-none sm:first:rounded-bl-lg sm:last:rounded-bl-none sm:last:rounded-tr-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+                <div class="relative flex items-start w-full">
+                <div class="flex items-center h-5">
+                    <input id="hs-horizontal-list-group-item-radio-1" name="hs-horizontal-list-group-item-radio" type="radio" class="border-gray-200 rounded-full dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" checked>
+                </div>
+                <label for="hs-horizontal-list-group-item-radio-1" class="ml-3 block w-full text-sm text-gray-600 dark:text-gray-500">
+                    전체
+                </label>
+                </div>
+            </li>
+
+            <li @click="searchproductstatus('NORMAL')" class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ml-px sm:mt-0 sm:first:rounded-tr-none sm:first:rounded-bl-lg sm:last:rounded-bl-none sm:last:rounded-tr-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+                <div class="relative flex items-start w-full">
+                <div class="flex items-center h-5">
+                    <input id="hs-horizontal-list-group-item-radio-2" name="hs-horizontal-list-group-item-radio" type="radio" class="border-gray-200 rounded-full dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
+                </div>
+                <label for="hs-horizontal-list-group-item-radio-2" class="ml-3 block w-full text-sm text-gray-600 dark:text-gray-500">
+                    판매중
+                </label>
+                </div>
+            </li>
+
+            <li @click="searchproductstatus('HIDDEN')" class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ml-px sm:mt-0 sm:first:rounded-tr-none sm:first:rounded-bl-lg sm:last:rounded-bl-none sm:last:rounded-tr-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+                <div class="relative flex items-start w-full">
+                <div class="flex items-center h-5">
+                    <input id="hs-horizontal-list-group-item-radio-3" name="hs-horizontal-list-group-item-radio" type="radio" class="border-gray-200 rounded-full dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800">
+                </div>
+                <label for="hs-horizontal-list-group-item-radio-3" class="ml-3 block w-full text-sm text-gray-600 dark:text-gray-500">
+                    판매 종료
+                </label>
+                </div>
+            </li>
+        </ul>
         <!-- End Input -->
 
         
@@ -126,6 +167,14 @@
                 <div class="flex items-center gap-x-2">
                 <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
                     등록일
+                </span>
+                </div>
+            </th>
+
+            <th scope="col" class="px-4 py-3 text-left">
+                <div class="flex items-center gap-x-2">
+                <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                    조회수
                 </span>
                 </div>
             </th>
@@ -199,13 +248,19 @@
             </td>
             <td  @click="moveto(litem.id)" class="h-px w-px whitespace-nowrap">
                 <a class="block h-full p-6"  >
-                <span class="text-sm text-gray-600 dark:text-gray-400">{{date_format(litem.create_at)}}</span>
+                <span class="text-sm text-gray-600 dark:text-gray-400">{{date_format(litem.created_at)}}</span>
                 </a>
             </td>
 
             <td  @click="moveto(litem.id)" class="h-px w-px whitespace-nowrap">
                 <a class="block h-full p-6"  >
-                <span v-if="litem.id % 2 == 0" class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                <span class="text-sm text-gray-600 dark:text-gray-400">{{litem.view_cnt}}</span>
+                </a>
+            </td>
+
+            <td  @click="moveto(litem.id)" class="h-px w-px whitespace-nowrap">
+                <a class="block h-full p-6"  >
+                <span v-if="litem.status == 'NORMAL'" class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                     <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
                     </svg>
@@ -324,12 +379,16 @@ export default {
             keyword : "", 
             total_page : 1, 
             islastpage: false, 
-            contents : null
+            contents : null, 
+            status : "", 
             
         }
     }, 
     methods: {
-
+        searchproductstatus(status){
+            this.status = status;
+            this.getproductlists();
+        },
         kakaoShare(item) { 
             // 카카오톡 공유하기
             const main_title = item.main_title;
@@ -378,8 +437,12 @@ export default {
             return common.comma(num)
         },
         async getproductlists(){
+            const payload =  {size : this.size, page : this.page, keyword : this.keyword };
+            if(this.status){
+                payload["status"] = this.status;
+            }
             
-            await api.getproductlist({size : this.size, page : this.page, keyword : this.keyword }).then(response=> {
+            await api.getproductlist(payload).then(response=> {
                 if(response.data.code !== "0000"){
                     return this.lists = [];
                 }
