@@ -21,7 +21,7 @@ export default {
             image3 :"", 
             origin : "", 
             seller : null, 
-            create_at : "", 
+            created_at : "", 
             modified_at : ""
         }
     },
@@ -38,7 +38,7 @@ export default {
             if(response.data.code == '0000'){
                 
                 const userdata = response.data.data;
-                this.create_at = userdata.create_at;
+                this.created_at = userdata.created_at;
                 this.modified_at = userdata.modified_at;
                 this.image1 = userdata.image1;
                 this.image2 = userdata.image2;
@@ -88,7 +88,7 @@ export default {
 
               <ul class="text-xs text-gray-500">
                 <li class="inline-block relative pr-6 last:pr-0 last-of-type:before:hidden before:absolute before:top-1/2 before:right-2 before:-translate-y-1/2 before:w-1 before:h-1 before:bg-gray-300 before:rounded-full dark:text-gray-400 dark:before:bg-gray-600">
-                  {{create_at}}
+                  {{created_at}}
                 </li>
                 <li class="inline-block relative pr-6 last:pr-0 last-of-type:before:hidden before:absolute before:top-1/2 before:right-2 before:-translate-y-1/2 before:w-1 before:h-1 before:bg-gray-300 before:rounded-full dark:text-gray-400 dark:before:bg-gray-600">
                   {{modified_at}} (수정됨)

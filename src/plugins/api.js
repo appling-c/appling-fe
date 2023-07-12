@@ -13,9 +13,18 @@ const ENDPOINT = {
     KAKAOLOGIN_AUTH : "/api/oauth/kakao?code=", 
     KAKAOLOGIN_AUTH_KAKAO_TOKEN: "/api/oauth/kakao/login?access_token=", 
     CATEOGORYLIST : "/api/product/category", 
+    PRODUCTCOUNT : "/api/product/cnt"
     
 }
 const api = {
+    /**
+     * 상품 뷰 조회수+1
+     */
+     productcount: async function (payload) { 
+        return await instance.patch(`${ENDPOINT.PRODUCTCOUNT}`, payload).then((response) => { 
+            return response
+        })
+    },
     /**
      * 상품 리스트
      */
@@ -75,8 +84,9 @@ const api = {
      * 상품 리스트 가져오기
      */
      getproductlist: async function(payload) { 
-        return await instance.get(`${ENDPOINT.SUBMITTMEPLATE}?search=${payload.keyword}&page=${payload.page}&size=${payload.size}`, {
-        }).then((response) => { 
+         console.log({payload})
+        return await instance.get(`${ENDPOINT.SUBMITTMEPLATE}`, { params: payload}).
+        then((response) => { 
             return response
         })
     },

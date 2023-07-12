@@ -222,6 +222,27 @@
                 
               </div>
               <!-- End Col -->
+
+
+              <div class="sm:col-span-3">
+                <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                  노출 상태
+                </label>
+              </div>
+              <!-- End Col -->
+
+              <div class="sm:col-span-9">
+                <div class="sm:flex">
+                    <label @click="setproductstatus(sitem.key)" v-for="(sitem, index) in statusList" :key="index" for="af-account-gender-checkbox" class="flex py-2 px-3 block w-full border border-gray-200 shadow-sm -mt-px -ml-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-l-lg sm:mt-0 sm:first:ml-0 sm:first:rounded-tr-none sm:last:rounded-bl-none sm:last:rounded-r-lg text-base relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                      <input :checked="status == sitem.key" type="radio" name="af-account-gender-checkbox2" class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" 
+                      :id="`af-account-category-checkbox-${sitem.key}`">
+                      <span class="text-base text-gray-500 ml-3 dark:text-gray-400">{{sitem.name}}</span>
+                    </label>
+
+                  </div>
+                
+              </div>
+              <!-- End Col -->
             </div>
             <!-- End Section -->
 
@@ -392,7 +413,12 @@ export default {
         categorys : [], 
         category : 1, 
         mode : "regist", 
-        image1 : "", image2 : "", image3 : ""
+        image1 : "", image2 : "", image3 : "", 
+        statusList : [
+          {key : "NORMAL", name: "판매중"}, 
+          {key : "HIDDEN", name: "판매 종료"}, 
+        ], 
+        status : "NORMAL"
       }
   },
   watch:{
@@ -404,6 +430,9 @@ export default {
   },
   
   methods: {
+    setproductstatus(status){
+      this.status = status;
+    },
     removemainimage(fname){
       this[`${fname}`] = "";
     },
@@ -458,7 +487,6 @@ export default {
         event.preventDefault();
         document.getElementById("af-submit-application-resume-cv").value = "";
         return false;
-        return;
       }else{
         await this.imageonserver(imageFormData).then((url)=> {
           this.image_url = url;
@@ -485,6 +513,7 @@ export default {
             this.image1 = userdata.image1;
             this.image2 = userdata.image2;
             this.image3 = userdata.image3;
+            this.status = userdata.status;
           }
         })
     },
@@ -508,8 +537,9 @@ export default {
         "origin_price" : Number(this.origin_price),
         "purchase_inquiry" : this.notice2,
         "main_image": this.image_url, 
-        "category_id" : this.category 
-        }
+        "category_id" : this.category, 
+        "status" : this.status
+         }
       
       if (this.id > 0) { 
         // 수정
