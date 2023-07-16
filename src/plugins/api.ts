@@ -1,6 +1,9 @@
 
 import { ref } from "vue";
 import instance from "./axios"
+import {Token, MemberLogin} from "../types/auth";
+import { AxiosHeaders, AxiosResponse } from "axios";
+
 const ENDPOINT = {
     MEMEBERLOGIN: "/api/auth/login", 
     MEMEBERINFO: "/api/member", 
@@ -20,52 +23,41 @@ const api = {
     /**
      * 상품 뷰 조회수+1
      */
-     productcount: async function (payload) { 
-        return await instance.patch(`${ENDPOINT.PRODUCTCOUNT}`, payload).then((response) => { 
-            return response
+     productcount: async function (payload:Object) { 
+        return await instance.patch(`${ENDPOINT.PRODUCTCOUNT}`, payload).then((response:AxiosResponse) => { 
+            return response;
         })
     },
-    /**
-     * 상품 리스트
-     */
-     categorylist: async function () { 
-        return await instance.get(`${ENDPOINT.CATEOGORYLIST}`, {
-        }).then((response) => { 
-            return response
-        })
-    },
+    
     /**
      * 상품 카테고리 리스트
      */
     categorylist: async function () { 
         return await instance.get(`${ENDPOINT.CATEOGORYLIST}`, {
-        }).then((response) => { 
-            return response
+        }).then((response:AxiosResponse) => { 
+            return response;
         })
     },
     /**
      * 카카오 로그인 리다이렉팅
      */
-    kakaologin: async function(code){
-        let kakao_access_token = '';
-        await instance.get(`${ENDPOINT.KAKAOLOGIN_AUTH}${code}`, {
-        }).then((response) => { 
-            const { data } = response;
-            const {code} = data;
+    kakaologin: async function(code: string){
+        let kakao_access_token: string;
+        await instance.get(`${ENDPOINT.KAKAOLOGIN_AUTH}${code}`).then((response:AxiosResponse) => { 
+            const {data, code} = response?.data;
             if(code == "0000"){
-                const {access_token, refresh_token} = data.data; 
-                kakao_access_token = access_token;               
-                
+                const {access_token}: Token = data; 
+                kakao_access_token = access_token;      
             }
         })
 
-       await instance.get(`${ENDPOINT.KAKAOLOGIN_AUTH_KAKAO_TOKEN}${kakao_access_token}`).then((auth)=> {                    
-            const {access_token, refresh_token} =  auth.data.data;
-            this._save_token({access_token, refresh_token});
+       await instance.get(`${ENDPOINT.KAKAOLOGIN_AUTH_KAKAO_TOKEN}${kakao_access_token}`).then((auth:AxiosResponse)=> {                    
+            const data: Token = auth.data;
+            this._save_token(data);
             
         })
 
-        return await this.memberinfo().then((resultpath)=> {
+        return await this.memberinfo().then((resultpath:string)=> {
             return resultpath;
         })
         
@@ -74,45 +66,44 @@ const api = {
      /**
      * 상품 상세 조회
      */
-    getproductlistbyid: async function(payload) { 
+    getproductlistbyid: async function(payload: Object | String) { 
         return await instance.get(`${ENDPOINT.PRODUCTSERACH}/${payload}`, {
-        }).then((response) => { 
+        }).then((response:AxiosResponse) => { 
             return response
         })
     },
     /**
      * 상품 리스트 가져오기
      */
-     getproductlist: async function(payload) { 
-         console.log({payload})
+     getproductlist: async function(payload:Object) { 
         return await instance.get(`${ENDPOINT.SUBMITTMEPLATE}`, { params: payload}).
-        then((response) => { 
+        then((response:AxiosResponse) => { 
             return response
         })
     },
     /**
      * 상품 리스트 전체 가져오기
      */
-     getproductlist_all: async function(payload) { 
+     getproductlist_all: async function():Promise<{}|[]> { 
         return await instance.get(`${ENDPOINT.PRODUCTSERACH}`, {
-        }).then((response) => { 
+        }).then((response:AxiosResponse) => { 
             return response
         })
     },
     /**
      * 상품 등록/수정
      */
-     submittemplate: async function(param, mode) { 
+     submittemplate: async function(param:Object, mode:string):Promise<{}|[]> { 
         if(mode == 'regist'){
             // 등록
             return await instance.post(ENDPOINT.SUBMITTMEPLATE, param, {
-            }).then((response) => { 
+            }).then((response:AxiosResponse) => { 
                 return response
             })
         }else{
             // 수정
             return await instance.put(ENDPOINT.SUBMITTMEPLATE, param, {
-            }).then((response) => { 
+            }).then((response:AxiosResponse) => { 
                 return response
             })
         }
@@ -121,19 +112,19 @@ const api = {
     /**
      * 이미지 등록 url 얻기
      */
-     imageonserver: async function(param) { 
+     imageonserver: async function(param):Promise<{}|[]> { 
         return await instance.post(ENDPOINT.IMAGEONSERVER, param, {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+            headers:AxiosHeaders ={
+                'Content-Type':string = 'application/x-www-form-urlencoded'
               }
-        }).then((response) => { 
+        }).then((response:AxiosResponse) => { 
             return response
         })
     },
     /**
      * 구매자 -> 판매자 권한 신청
      */
-    memberseller: async function() { 
+    memberseller: async function(): Promise<string> { 
         // 권한 변경 
         await instance.post(ENDPOINT.MEMBRESELLER)
         
@@ -142,7 +133,7 @@ const api = {
         return authupdate
     },
     
-    logout: function () {
+    logout: function (): void {
         sessionStorage.removeItem('access_token')
         sessionStorage.removeItem('refresh_token');
         sessionStorage.removeItem('user')
@@ -153,7 +144,7 @@ const api = {
     /**
      * 회원가입
      */
-    memberjoin: async function (payload) { 
+    memberjoin: async function (payload): Promise<void> { 
         await instance.post(ENDPOINT.MEMBERJOIN, { ...payload }).then((response) => { 
             const { code } = response.data;
             if (code == '0000') {
@@ -169,7 +160,7 @@ const api = {
      * 액세스토큰 받기
      * 사용자 정보 가져오기
      */
-    memberlogin: async function (payload) { 
+    memberlogin: async function (payload: MemberLogin): Promise<string> { 
         // 액세스 토큰 받기
         await api.loginccesstoken(payload)
 
@@ -181,22 +172,21 @@ const api = {
     /**
      * user token 발행, 토큰저장
      */
-     loginccesstoken: async function (payload) { 
+     loginccesstoken: async function (payload:Object): Promise<void> { 
         await instance.post(ENDPOINT.MEMEBERLOGIN, { ...payload }).then((response) => { 
             const { code, data } = response.data;
             if (code == "0000") { 
-                const { access_token, refresh_token } = data;
-                this._save_token({access_token, refresh_token})
+                this._save_token(data);
             }
         })
     },
 
     /**
-     * user token 발행, 토큰저장
+     * 토큰저장
      */
-    _save_token(payload){
+    _save_token(payload:Token): void{
        // 토큰저장
-       const {access_token, refresh_token} = payload;
+       const {access_token, refresh_token}: Token = payload;
        sessionStorage.setItem('access_token', access_token);
        sessionStorage.setItem('refresh_token', refresh_token);
     },
@@ -206,14 +196,13 @@ const api = {
     /**
      * 사용자 정보 가져오기
      */
-    memberinfo: async function () {
-        let resultpath = '';
+    memberinfo: async function ():Promise<string> {
+        let resultpath:string;
         await instance.get(ENDPOINT.MEMEBERINFO).then((result) => { 
             const { data, message } = result.data;
-            
             sessionStorage.setItem('user', JSON.stringify(data))
-            sessionStorage.setItem('islogin', true)
-            const role = data.role
+            sessionStorage.setItem('islogin', "true")
+            const role:string = data.role;
             if (message == 'success') {
                 resultpath = role === 'USER' ? 'commerce' : 'admin/dashboard';
             } else { 
@@ -226,16 +215,13 @@ const api = {
     /**
      * 토큰재발급
      */
-    memberaccesstoken: async function () { 
-        const refresh_token = sessionStorage.getItem('refresh_token')
+    memberaccesstoken: async function ():Promise<string> { 
+        const refresh_token: string = sessionStorage.getItem('refresh_token')
         await instance.get(`${ENDPOINT.MEMEBERREFRESH}/${refresh_token}`).then((response) => { 
             const { code, data } = response.data;
             if (code == "0000") { 
-                const { access_token, refresh_token } = data;
                 // 토큰저장
-                sessionStorage.setItem('access_token', access_token);
-                sessionStorage.setItem('refresh_token', refresh_token);
-                
+                this._save_token(data);
             }
         })
 

@@ -81,16 +81,24 @@
 
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
+
 import Editor from '@toast-ui/editor';
 import api from '../../../plugins/api';
-export default {
-    data(){
+
+export default defineComponent({
+   data(){
         return {
-            editor : null, 
+            editor: null, 
+            limit_size: 1000000, 
+            title : ""
         }
     },
-    methods:{
+  methods:{
+      cancel(){
+        window.history.back();
+      },
       save() {
           console.log(this.editor.getHTML())
           this.$router.push('/admin/brandshop/preview/9')
@@ -100,8 +108,8 @@ export default {
         imageFormData.append('image', blob);
         // 업로드한 이미지 사이즈 체크
         const size = blob.size;
-        const limit_size = 1000000;
-        if (size >= limit_size) {
+        
+        if (size >= this.limit_size) {
           this.$emit("openModal", {
             title: "이미지 등록 오류",
             subtitle: `등록한 이미지 크기가 너무 커요.`,
@@ -139,7 +147,7 @@ export default {
         }
     }); 
     }
-}
+})
 </script>
 
 

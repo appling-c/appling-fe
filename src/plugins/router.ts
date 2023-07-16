@@ -23,8 +23,9 @@ import Login from '../views/login.vue'
 import Signup from '../views/signup.vue' 
 import myAccount from "../views/myaccount.vue"
 import { createWebHistory, createRouter } from "vue-router";
+import { RouteRecordRaw } from "vue-router";
 
-const routes = [
+const routes: <RouteRecordRaw[]> = [
     { path: '/login', component: Login }, 
     { path: '/signup', component: Signup },  
     { path: '/', component: Commerce }, 
