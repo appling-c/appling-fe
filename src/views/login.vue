@@ -1,10 +1,13 @@
-<script>
-import api from '../plugins/api'
-import MemberLogin from '@/types/auth'
+<script lang="ts">
+import api from '@/plugins/api'
+import type MemberLogin from '@/types/auth'
 export default {
   data() { 
     return {
-      user : MemberLogin,
+      user : {
+        email : "", 
+        password : ""
+      } as MemberLogin,
     }
   }, 
   methods: {

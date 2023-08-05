@@ -114,8 +114,8 @@ const api = {
      */
      imageonserver: async function(param):Promise<{}|[]> { 
         return await instance.post(ENDPOINT.IMAGEONSERVER, param, {
-            headers:AxiosHeaders ={
-                'Content-Type':string = 'application/x-www-form-urlencoded'
+            headers:{
+                'Content-Type': 'application/x-www-form-urlencoded'
               }
         }).then((response:AxiosResponse) => { 
             return response

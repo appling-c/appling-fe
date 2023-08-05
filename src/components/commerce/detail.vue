@@ -1,7 +1,6 @@
 <script>
 import api from '../../plugins/api'
-import common from '/src/plugins/common.js'
-
+import common from '../../plugins/common'
 export default {
     data(){
         return{

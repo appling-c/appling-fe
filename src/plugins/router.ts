@@ -24,8 +24,7 @@ import Signup from '../views/signup.vue'
 import myAccount from "../views/myaccount.vue"
 import { createWebHistory, createRouter } from "vue-router";
 import { RouteRecordRaw } from "vue-router";
-
-const routes: <RouteRecordRaw[]> = [
+const routes: Array<RouteRecordRaw> = [
     { path: '/login', component: Login }, 
     { path: '/signup', component: Signup },  
     { path: '/', component: Commerce }, 
@@ -61,8 +60,7 @@ const routes: <RouteRecordRaw[]> = [
             { path : "brandshop/preview/:id",component: admin_preview_brandshop }, // 농장 소개하기 view
         ],
     },
- ]
-
+  ];
 const router = createRouter({
     history: createWebHistory(),
     routes,
