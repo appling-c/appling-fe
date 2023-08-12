@@ -16,10 +16,32 @@ const ENDPOINT = {
     KAKAOLOGIN_AUTH : "/api/oauth/kakao?code=", 
     KAKAOLOGIN_AUTH_KAKAO_TOKEN: "/api/oauth/kakao/login?access_token=", 
     CATEOGORYLIST : "/api/product/category", 
-    PRODUCTCOUNT : "/api/product/cnt"
+    PRODUCTCOUNT : "/api/product/cnt", 
+    BRANDSHOPHTML : "/api/common/html"
     
 }
 const api = {
+    /**
+     * 판매자가 판매중인 상품 리스트 가져오기
+     */
+     getproductlistbysellerid: async function (payload: Object) { 
+        return await instance.get(`${ENDPOINT.PRODUCTSERACH}?seller_id=${payload}`,{
+        }).then((response:AxiosResponse) => { 
+            return response;
+        })
+    },
+    /**
+     * 농장 소개 html 저장하기
+     */
+    savebrandshophtml: async function (payload: Object) { 
+        return await instance.post(ENDPOINT.BRANDSHOPHTML, payload, {
+            headers:{
+                'Content-Type': 'application/x-www-form-urlencoded'
+              }
+        }).then((response:AxiosResponse) => { 
+            return response
+        })
+    },
     /**
      * 상품 뷰 조회수+1
      */
