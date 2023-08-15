@@ -38,7 +38,7 @@
                   </svg>
                   <div class="grow">
                     <span class="block font-semibold mb-1 text-gray-800 dark:text-gray-200">상품 등록하기</span>
-                    How you get the most accurate and up-to-date data
+                    우리 농장의 상품을 등록하고 애플링 서비스를 시작해 보세요.
                   </div>
                 </a>
 
@@ -51,10 +51,21 @@
                   </svg>
                   <div class="grow">
                     <span class="block font-semibold mb-1 text-gray-800 dark:text-gray-200">상품 관리하기</span>
-                    The latest news, feature releases, and how to grow with data
+                    판매자에게 노출할 상품을 등록하고, 수정할 수 있어요. 우리 농장의 상품을 등록하고 관리해 보세요.
                   </div>
                 </a>
 
+                <div class="my-2 border-t border-gray-100 dark:border-gray-800"></div>
+                <a  @click="moveto('/admin/product/regist/0')" class="inline-flex gap-x-5 w-full p-4 text-gray-600 rounded-md hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"  >
+                  <svg class="flex-shrink-0 w-5 h-5 mt-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M4.5 5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zM3 4.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm2 7a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-2.5.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                    <path d="M2 2a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h1v2H2a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2h-1V7h1a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm13 2v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm0 7v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm-3-4v2H4V7h8z"/>
+                  </svg>
+                  <div class="grow">
+                    <span class="block font-semibold mb-1 text-gray-800 dark:text-gray-200">농장 소개하기</span>
+                    우리 농장을 소개하는 페이지를 만들어 홍보해 보세요.
+                  </div>
+                </a>
                 <div class="my-2 border-t border-gray-100 dark:border-gray-800"></div>
 
                 <a  @click="moveto('/admin/product/regist/0')" class="inline-flex gap-x-5 w-full p-4 text-gray-600 rounded-md hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"  >
@@ -64,7 +75,7 @@
                   </svg>
                   <div class="grow">
                     <span class="block font-semibold mb-1 text-gray-800 dark:text-gray-200">운송장 관리하기</span>
-                    How you get the most accurate and up-to-date data
+                    발송한 상품을 한눈에 보고 관리할 수 있어요.
                   </div>
                 </a>
               </div>

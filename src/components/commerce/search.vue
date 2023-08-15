@@ -1,5 +1,7 @@
 <script>
 import api from '../../plugins/api'
+import {mapActions, mapGetters} from 'vuex'
+
 export default {
   data(){
     return {
@@ -12,30 +14,48 @@ export default {
     }
   },
   methods: {
-    getproductlist(){
+    // getproductlist(){
       
-      api.getproductlist_all().then(response=> {
-        if(response.data.code !== "0000"){
-            return this.products = [];
-        }
-        this.total_page = response.data.data.total_page
-        this.products = response.data.data.list;
-        this.islastpage = response.data.data.last
-      })
-    },
+    //   api.getproductlist_all().then(response=> {
+    //     if(response.data.code !== "0000"){
+    //         return this.products = [];
+    //     }
+    //     this.total_page = response.data.data.total_page
+    //     this.products = response.data.data.list;
+    //     this.islastpage = response.data.data.last
+    //   })
+    // },
     gotodetail(id){
       // 조회수 증가
       const payload = {
             "product_id" :id
         }
-      api.productcount(payload).then(()=> {
-        this.$router.push(`/commerce/detail/${id}`)
+      this.addProducetViewCount().then((path)=> {
+        this.$router.push(path);
       })
-    }
+      // api.productcount(payload).then(()=> {
+      //   this.$router.push(`/commerce/detail/${id}`)
+      // })
+    },
+    ...mapActions('cart', ['getproductlist', 'addProducetViewCount']), 
+  },
+  computed:{
+      ...mapGetters('cart', ['productSearchItem']), 
   },
   mounted(){
     this.categoryid = this.$route.query.categoryid;
+    console.log(this.productSearchItem)
     this.getproductlist();
+    // api.callhtmlstring().then(response=> {
+    //   console.log(response)
+    // });
+    // .then((response => {
+    //   const {total_page, products, islastpage} = response;
+    //   this.total_page = total_page;
+    //   this.products = products;
+    //   this.islastpage = islastpage;
+    // }));
+    //this.getproductlist();
   }
 }
 </script>
@@ -44,14 +64,14 @@ export default {
 <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
   <!-- Title -->
   <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-    <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">Customer stories</h2>
-    <p class="mt-1 text-gray-600 dark:text-gray-400">See how game-changing companies are making the most of every engagement with Preline.</p>
+    <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">상품 둘러보기</h2>
+    <p class="mt-1 text-gray-600 dark:text-gray-400">농장에서 직접 키우고 직접 판매하는 유기농 상품들을 둘러보고 저렴한 가격에 구매해요! </p>
     <!-- Form -->
       <form>
         <div class="relative z-10 flex space-x-3 p-3 bg-white border rounded-lg shadow-lg shadow-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-900/[.2]">
           <div class="flex-[1_0_0%]">
             <label for="hs-search-article-1" class="block text-base text-gray-700 font-medium dark:text-white"><span class="sr-only">키워드 검색하기!</span></label>
-            <input type="text" v-model="keyword" name="hs-search-article-1" id="hs-search-article-1" class="p-3 block w-full border-transparent rounded-md focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-400" placeholder="엄마손맛 간장게장">
+            <input type="text" v-model="keyword" name="hs-search-article-1" id="hs-search-article-1" class="p-3 block w-full border-transparent rounded-md focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-400" placeholder="키워드로 검색하기!">
           </div>
           <div class="flex-[0_0_auto]">
             <a class="p-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-base dark:focus:ring-offset-gray-800"  >

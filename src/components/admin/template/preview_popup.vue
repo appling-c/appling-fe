@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import common from '/src/plugins/common.js'
+import common from '../../../plugins/common'
 import html2canvas from 'html2canvas';
 export default {
     props: {

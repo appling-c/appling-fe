@@ -14,7 +14,7 @@ import Commerce from '../views/commerce.vue'
 import commerce_main from '../components/commerce/main.vue'
 import commerce_search from '../components/commerce/search.vue'
 import commerce_detail from '../components/commerce/detail.vue'
-import commerce_cartlist from '../components/commerce/cartlist.vue'
+import commerce_cartlist from '../components/commerce/common/cartlist.vue'
 import commerce_regist from '../components/commerce/regist.vue'
 import commerce_pricing from '../components/commerce/pricing.vue'
 
@@ -23,8 +23,8 @@ import Login from '../views/login.vue'
 import Signup from '../views/signup.vue' 
 import myAccount from "../views/myaccount.vue"
 import { createWebHistory, createRouter } from "vue-router";
-
-const routes = [
+import { RouteRecordRaw } from "vue-router";
+const routes: Array<RouteRecordRaw> = [
     { path: '/login', component: Login }, 
     { path: '/signup', component: Signup },  
     { path: '/', component: Commerce }, 
@@ -57,11 +57,11 @@ const routes = [
             { path : "product/waybill", component : admin_waybill },     // 운송장 등록하기
             { path : "calendar", component: admin_calendar, },   // 상품달력
             { path : "brandshop", component: admin_brandshop }, // 농장 소개하기
-            { path : "brandshop/preview/:id",component: admin_preview_brandshop }, // 농장 소개하기 view
+            //{ path : "brandshop/preview",component: admin_preview_brandshop }, // 농장 소개하기 view
         ],
     },
- ]
-
+    { path : "/brandshop/preview",component: admin_preview_brandshop }, // 농장 소개하기 view
+  ];
 const router = createRouter({
     history: createWebHistory(),
     routes,

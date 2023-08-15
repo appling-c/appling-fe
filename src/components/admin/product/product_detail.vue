@@ -357,9 +357,9 @@
 
 
 <script>
-import api from '/src/plugins/api.js'
+import api from '../../../plugins/api'
 import moment from 'moment'
-import common from '/src/plugins/common.js'
+import common from '../../../plugins/common'
 import ThePreviewPopup from '../template/preview_popup.vue'
 
 export default {

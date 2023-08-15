@@ -1,26 +1,36 @@
-<script>
-import api from '../plugins/api'
+<script lang="ts">
+import api from '@/plugins/api'
+import type MemberLogin from '@/types/auth'
 export default {
   data() { 
     return {
-      email: "", 
-      password : ""
+      user : {
+        email : "", 
+        password : ""
+      } as MemberLogin,
     }
   }, 
   methods: {
+    setUser(email, password){
+      this.user.email = email;
+      this.user.password = password;
+    },
     temp() { 
       this.email = "luna@luna.com"
       this.password = "123123";
+      this.setUser(this.email, this.password);
     },
     kakaologin() {
-      const returnurl = import.meta.env.DEV ?'http://localhost:5173' : 'http://3.34.1.129:5173'
+      const returnurl = import.meta.env.DEV ?
+      'http://localhost:5173' : 
+      'http://3.34.1.129:5173'
        return location.href = `
         https://kauth.kakao.com/oauth/authorize?client_id=04376f3d0a7618a3622f9c541d90d272&redirect_uri=${returnurl}/oauth/kakao/login&response_type=code`
      
     },
     async submit() { 
       // 사용자 로그인 처리
-      const user = { email:this.email, password: this.password };
+      const user = this.user;
       try {
         await api.memberlogin(user).then((result) => { 
           this.$router.push(`/${result}`)
@@ -58,7 +68,7 @@ export default {
                 <div>
                   <label for="email" class="block text-sm mb-2 dark:text-white">아이디</label>
                   <div class="relative">
-                    <input v-model="email" autocomplete="off" type="email" id="email" name="email" class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400" required aria-describedby="email-error">
+                    <input v-model="user.email" autocomplete="off" type="email" id="email" name="email" class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400" required aria-describedby="email-error">
                     <div class="hidden absolute inset-y-0 right-0 flex items-center pointer-events-none pr-3">
                       <svg class="h-5 w-5 text-red-500" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
@@ -75,7 +85,7 @@ export default {
                     <label for="password" class="block text-sm mb-2 dark:text-white">비밀번호</label>
                   </div>
                   <div class="relative">
-                    <input v-model="password" autocomplete="off"  type="password" id="password" name="password" class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400" required aria-describedby="password-error">
+                    <input v-model="user.password" autocomplete="off"  type="password" id="password" name="password" class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400" required aria-describedby="password-error">
                     <div class="hidden absolute inset-y-0 right-0 flex items-center pointer-events-none pr-3">
                       <svg class="h-5 w-5 text-red-500" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
