@@ -11,10 +11,15 @@ export default {
             email: "", name: "", nickname: "", role: "", 
             sns_type : "", 
             recipient : {
-                name : "", 
-                address : "", 
-                tel : ""    
+                name : "", address : "", tel : ""
             }
+            ,seller : {
+                tel : ""
+                , company : ""
+                , address : ""
+                , email : ""
+            }
+            
             
         }
     },
@@ -30,8 +35,24 @@ export default {
             this.name = name;
             this.nickname = nickname;
             this.sns_type = sns_type;
-            this.role = role == "MEMBER" ? "판매자" : "구매자";
+            this.role = role == "SELLER" ? "판매자" : "구매자";
+
+            if(role == "SELLER"){
+                this.getsellerinfo()
+            }
         }, 
+        async getsellerinfo(){
+            await api.getsellerinfo().then((response)=> {
+                const memberinfo = response.data.data;
+                this.seller.company = memberinfo.company;
+                if(this.seller.company){
+                    this.ismodify = true;
+                } 
+                this.seller.tel = memberinfo.tel;
+                this.seller.address = memberinfo.address;
+                this.seller.email = memberinfo.email;
+            })
+        },
         submit() { 
             if (this.currentpassword == '') { 
                 return alert("비밀번호를 입력해주세요.")
@@ -47,17 +68,33 @@ export default {
                 password: savepassword, 
                 nickname : this.nickname
             }
+            if(this.recipient.name !== ""){
+                api.updatedeliveryinfo({name : this.recipient.name, address : this.recipient.address, tel : this.recipient.tel})
+            }
             api.updatememeberinfo(payload).then(response => { 
-                alert()
+                alert(response?.data.data.message)
+                return this.$router.push("/commerce")
             })
         }, 
         cancel(){
             this.$router.go(-1)
-        }
+        }, 
+        movetosellerregist(){
+            this.$router.push("/commerce/regist")
+        }, 
+        async getdeliveryinfo(){
+            await api.getdeliveryinfo().then((response)=> {
+                const recipientinfo = response?.data?.data?.list;
+                this.recipient = {...recipientinfo};
+            })
+        },
     },
     mounted() { 
         //this.currentpopup = "open"
-        this.getmemeberinfo()
+        this.getmemeberinfo();
+        // 수령지 정보 가져오기
+        this.getdeliveryinfo();
+       
     }
 }
 </script>
@@ -199,56 +236,100 @@ export default {
             invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="maria@site.com">
             </div>
             <!-- End Col -->
+            
+            <template v-if="role == '판매자'">
+                <div class="sm:col-span-3">
+                <label for="af-account-email" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
+                    판매자 정보
+                </label>
+                </div>
+                <!-- End Col -->
 
-            <div class="sm:col-span-3">
+                <div class="sm:col-span-9">
+                <div class="space-y-2" v-if="seller.company">
+                    <div class="sm:col-span-9">
+                    <input id="af-account-email" readonly disabled v-model="seller.company" type="text" class="
+                    disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none 
+                    invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" >
+                    </div>
+                    <div class="sm:col-span-9">
+                    <input id="af-account-email" readonly disabled v-model="seller.tel" type="text" class="
+                    disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none 
+                    invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" >
+                    </div>
+                    <div class="sm:col-span-9">
+                    <input id="af-account-email" readonly disabled v-model="seller.address" type="text" class="
+                    disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none 
+                    invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" >
+                    </div>
+                    <div class="sm:col-span-9">
+                    <input id="af-account-email" readonly disabled v-model="seller.email" type="text" class="
+                    disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none 
+                    invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" >
+                    </div>
+
+                    <div class="sm:col-span-9">
+                    <button @click="movetosellerregist" type="button" class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
+                        판매자 정보 수정
+                    </button>
+                    </div>
+                </div>
+                <div class="space-y-2" v-else>
+                    <button @click="movetosellerregist" type="button" class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
+                        판매자 정보 등록하기
+                    </button>
+                </div>
+            </div>
+            </template>
+            
+
+            <!-- <div class="sm:col-span-3">
             <label for="af-account-password" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 비밀번호
             </label>
             </div>
-            <!-- End Col -->
-
             <div class="sm:col-span-9">
                 <div class="space-y-2">
                     <input v-model="recipient.name" id="af-account-password" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="현재 비밀번호">
                     <input v-model="recipient.address" type="text"  class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="새로운 비밀번호">
                     <input v-model="recipient.tel" type="text"  class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="새로운 비밀번호 확인">
                 </div>
-            </div>
+            </div> -->
 
 
             <div class="sm:col-span-3">
             <label for="af-account-password" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
                 수령인 정보
+                
             </label>
             </div>
             <!-- End Col -->
 
             <div class="sm:col-span-9">
                 <div class="space-y-2">
-                    <ul class="max-w-xs flex flex-col">
-                        <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white">
-                            <div class="flex justify-between w-full">
-                            Profile
-                            <span class="inline-flex items-center py-1 px-2 rounded-full text-xs font-medium bg-blue-500 text-white">기본</span>
+                    <div class="space-y-2">
+                        <div>
+                            <div class="flex rounded-md shadow-sm">
+                                <span class="px-4 inline-flex items-center min-w-fit rounded-l-md border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">배송지명</span>
+                                <input v-model="recipient.name" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-r-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
                             </div>
-                        </li>
-                        <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white">
-                            <div class="flex justify-between w-full">
-                            Settings
                             </div>
-                        </li>
-                        <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white">
-                            <div class="flex justify-between w-full">
-                            Newsletter
+                            <div>
+                                <div class="flex rounded-md shadow-sm">
+                                    <span class="px-4 inline-flex items-center min-w-fit rounded-l-md border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">배송지 주소</span>
+                                    <input v-model="recipient.address"  type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-r-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                                </div>
                             </div>
-                        </li>
-                    </ul>
-                    <input v-model="currentpassword" id="af-account-password" type="password" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="현재 비밀번호">
-                    <input v-model="password" type="password"  class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="새로운 비밀번호">
-                    <input v-model="password2" type="password"  class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" placeholder="새로운 비밀번호 확인">
+                            <div>
+                                <div class="flex rounded-md shadow-sm">
+                                    <span class="px-4 inline-flex items-center min-w-fit rounded-l-md border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">배송지 연락처</span>
+                                    <input v-model="recipient.tel"  type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-r-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                                </div>
+                            </div>
+                    </div>
+                    
                 </div>
             </div>
-            <!-- End Col -->
         </div>
         <!-- End Grid -->
         <div class="mt-5 flex justify-end gap-x-2">

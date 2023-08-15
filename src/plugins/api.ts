@@ -17,10 +17,30 @@ const ENDPOINT = {
     KAKAOLOGIN_AUTH_KAKAO_TOKEN: "/api/oauth/kakao/login?access_token=", 
     CATEOGORYLIST : "/api/product/category", 
     PRODUCTCOUNT : "/api/product/cnt", 
-    BRANDSHOPHTML : "/api/common/html"
+    BRANDSHOPHTML : "/api/common/html",
+    DELIVERYINFO : "/api/member/recipient"
     
 }
 const api = {
+    
+    /**
+     * 수령인 정보 수정
+     */
+     updatedeliveryinfo: async function (payload: Object) { 
+        return await instance.post(`${ENDPOINT.DELIVERYINFO}`,payload,{
+        }).then((response:AxiosResponse) => { 
+            return response
+        })
+    },
+    /**
+     * 수령인 정보 조회
+     */
+     getdeliveryinfo: async function () { 
+        return await instance.get(`${ENDPOINT.DELIVERYINFO}`,{
+        }).then((response:AxiosResponse) => { 
+            return response
+        })
+    },
     /**
      * 판매자 정보 조회
      */
@@ -30,6 +50,7 @@ const api = {
             return response
         })
     },
+
     /**
      * 판매자 정보 조회
      */
@@ -261,7 +282,7 @@ const api = {
             sessionStorage.setItem('islogin', "true")
             const role:string = data.role;
             if (message == 'success') {
-                resultpath = role === 'USER' ? 'commerce' : 'admin/dashboard';
+                resultpath = role === 'SELLER' ? 'admin/dashboard': 'commerce';
             } else { 
                 resultpath = 'login';
             }
