@@ -1,7 +1,6 @@
 <script>
 import api from '../../plugins/api'
-import common from '/src/plugins/common.js'
-
+import common from '../../plugins/common'
 export default {
     data(){
         return{
@@ -55,6 +54,12 @@ export default {
                 this.producer = userdata.producer;
                 this.category = userdata.category.name;
                 this.seller = userdata.seller;
+
+                this.seller_id = userdata.seller.seller_id;
+
+                api.getproductlistbysellerid(this.seller_id).then((response)=> {
+                  console.log(response)
+                })
             }
             })
         },
@@ -292,10 +297,10 @@ export default {
 
           <a class="group grow block" >
             <h5 class="group-hover:text-gray-600 text-sm font-semibold text-gray-800 dark:group-hover:text-gray-400 dark:text-gray-200">
-               {{seller?.name}}
+               {{seller?.company}}
             </h5>
             <p class="text-sm text-gray-500">
-              평창 시얼이네 사과농원
+              {{seller?.address}}
             </p>
           </a>
 
@@ -315,7 +320,7 @@ export default {
 
         <div class="space-y-6">
           <p class="text-xl font-extrabold leading-none tracking-tight text-gray-900 md:text-xl lg:text-xl dark:text-white">
-              평창 시얼이네 사과농원에서 판매중인 상품 모음
+              {{seller?.company}}에서 판매중인 상품 모음
             </p>
           <!-- Media -->
           <a class="group flex items-center gap-x-6"  >

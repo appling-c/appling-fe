@@ -1,7 +1,7 @@
 
 const common = {
     
-    comma: function(num){
+    comma: function(num:string){
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
 }

@@ -392,7 +392,7 @@
 
 
 <script>
-import api from '/src/plugins/api.js'
+import api from '../../../plugins/api'
 export default {
   props: {
     confirm: Boolean,
