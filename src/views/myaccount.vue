@@ -11,10 +11,10 @@ export default {
             email: "", name: "", nickname: "", role: "", 
             sns_type : "", 
             recipient : {
-                    name : "", 
-                    address : "", 
-                    tel : ""    
-                }
+                name : "", 
+                address : "", 
+                tel : ""    
+            }
             
         }
     },

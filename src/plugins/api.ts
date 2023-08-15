@@ -22,6 +22,24 @@ const ENDPOINT = {
 }
 const api = {
     /**
+     * 판매자 정보 조회
+     */
+     updatesellerinfo: async function (payload: Object) { 
+        return await instance.put(`${ENDPOINT.MEMBRESELLER}`,payload, {
+        }).then((response:AxiosResponse) => { 
+            return response
+        })
+    },
+    /**
+     * 판매자 정보 조회
+     */
+     getsellerinfo: async function () { 
+        return await instance.get(`${ENDPOINT.MEMBRESELLER}`,{
+        }).then((response:AxiosResponse) => { 
+            return response;
+        })
+    },
+    /**
      * 판매자가 판매중인 상품 리스트 가져오기
      */
      getproductlistbysellerid: async function (payload: Object) { 
@@ -84,6 +102,13 @@ const api = {
         })
         
     },
+
+    callhtmlstring: async function(payload: Object | String) { 
+        return await instance.get(`https://appling-s3.s3.ap-northeast-2.amazonaws.com/html/2/20230805/191541_0.html`, {
+        }).then((response:AxiosResponse) => { 
+            return response
+        })
+    },
     
      /**
      * 상품 상세 조회
@@ -100,6 +125,16 @@ const api = {
      getproductlist: async function(payload:Object) { 
         return await instance.get(`${ENDPOINT.SUBMITTMEPLATE}`, { params: payload}).
         then((response:AxiosResponse) => { 
+            return response
+        })
+    },
+    /**
+     * 상품 리스트 가져오기
+     */
+     getproductlist_product_new: async function(payload:Object) { 
+        return await instance.get(`${ENDPOINT.PRODUCTSERACH}`, { params: payload}).
+        then((response:AxiosResponse) => {
+
             return response
         })
     },
@@ -146,9 +181,9 @@ const api = {
     /**
      * 구매자 -> 판매자 권한 신청
      */
-    memberseller: async function(): Promise<string> { 
+    memberseller: async function(payload:Object): Promise<string> { 
         // 권한 변경 
-        await instance.post(ENDPOINT.MEMBRESELLER)
+        await instance.post(ENDPOINT.MEMBRESELLER, payload)
         
         // 토큰 리프레시
         const authupdate = await this.memberaccesstoken();

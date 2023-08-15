@@ -5,7 +5,7 @@
     <div class="relative z-10 flex space-x-3 p-3 bg-white border rounded-lg shadow-lg shadow-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-900/[.2]">
         <div class="flex-[1_0_0%]">
         <label for="hs-search-article-1" class="block text-base text-gray-700 font-medium dark:text-white"><span class="sr-only">키워드 검색하기!</span></label>
-        <input type="text" v-model="keyword" name="hs-search-article-1" id="hs-search-article-1" class="p-3 block w-full border-transparent rounded-md focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-400" placeholder="엄마손맛 간장게장">
+        <input v-on:enter="gotoproduct('keyword', keyword)" type="text" v-model="keyword" name="hs-search-article-1" id="hs-search-article-1" class="p-3 block w-full border-transparent rounded-md focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-400" placeholder="엄마손맛 간장게장">
         </div>
         <div class="flex-[0_0_auto]">
         <a class="p-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-base dark:focus:ring-offset-gray-800"  >
@@ -38,7 +38,7 @@
 </div>
 
 <div class="mt-10 sm:mt-20">
-    <a @click="gotoproducts(citem.category_id)" v-for="(citem, index) in categorys" :key="index" class="m-1 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-base dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"  >
+    <a @click="gotoproduct('category_id', citem.category_id)" v-for="(citem, index) in categorys" :key="index" class="m-1 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-base dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"  >
     <svg class="w-3 h-auto" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
         <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5zm1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0zM1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5z"/>
     </svg>
@@ -48,9 +48,9 @@
 </div>
 </template>
 
-<script>
+<script lang="ts">
 import api from '@/plugins/api'
-
+import { mapGetters, mapActions, mapState } from 'vuex'
 export default {
     data(){
         return {
@@ -58,6 +58,9 @@ export default {
             keyword : "",
         }
     }, 
+    computed:{
+        ...mapGetters('cart', ['productSearchItem']), 
+    },
     mounted(){
         this.getcategorylist();
     },
@@ -72,6 +75,16 @@ export default {
                 
             })
         },
+        ...mapActions('cart', ['gotoSearchResult']), 
+
+        gotoproduct: async function(key : string, value : string|Number): Promise<void> {
+            this.productSearchItem[`${key}`] = value;
+            await this.gotoSearchResult(this.productSearchItem).then(()=> {
+                // 검색결과로 이동 
+                return this.$router.push('/commerce/search');
+            });
+        }
+       
     }
 }
 </script>

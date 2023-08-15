@@ -1,5 +1,7 @@
 <script>
 import api from '../../plugins/api'
+import {mapActions, mapGetters} from 'vuex'
+
 export default {
   data(){
     return {
@@ -12,30 +14,48 @@ export default {
     }
   },
   methods: {
-    getproductlist(){
+    // getproductlist(){
       
-      api.getproductlist_all().then(response=> {
-        if(response.data.code !== "0000"){
-            return this.products = [];
-        }
-        this.total_page = response.data.data.total_page
-        this.products = response.data.data.list;
-        this.islastpage = response.data.data.last
-      })
-    },
+    //   api.getproductlist_all().then(response=> {
+    //     if(response.data.code !== "0000"){
+    //         return this.products = [];
+    //     }
+    //     this.total_page = response.data.data.total_page
+    //     this.products = response.data.data.list;
+    //     this.islastpage = response.data.data.last
+    //   })
+    // },
     gotodetail(id){
       // 조회수 증가
       const payload = {
             "product_id" :id
         }
-      api.productcount(payload).then(()=> {
-        this.$router.push(`/commerce/detail/${id}`)
+      this.addProducetViewCount().then((path)=> {
+        this.$router.push(path);
       })
-    }
+      // api.productcount(payload).then(()=> {
+      //   this.$router.push(`/commerce/detail/${id}`)
+      // })
+    },
+    ...mapActions('cart', ['getproductlist', 'addProducetViewCount']), 
+  },
+  computed:{
+      ...mapGetters('cart', ['productSearchItem']), 
   },
   mounted(){
     this.categoryid = this.$route.query.categoryid;
+    console.log(this.productSearchItem)
     this.getproductlist();
+    // api.callhtmlstring().then(response=> {
+    //   console.log(response)
+    // });
+    // .then((response => {
+    //   const {total_page, products, islastpage} = response;
+    //   this.total_page = total_page;
+    //   this.products = products;
+    //   this.islastpage = islastpage;
+    // }));
+    //this.getproductlist();
   }
 }
 </script>
