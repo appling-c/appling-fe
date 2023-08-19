@@ -48,71 +48,24 @@
 <script>
 import Viewer from '@toast-ui/editor/dist/toastui-editor-viewer';
 
+import api from '../../../plugins/api';
 export default {
     mounted() { 
         const content = `<h1><img src="https://appling-s3.s3.ap-northeast-2.amazonaws.com/image/4/20230710/150542_0.jpeg" alt="b3911f649e325b7be6991ae7a67bf876.jpeg" contenteditable="false">햇살을 가득 담은 평창 자연 햇살 농원 입니다.</h1><div contenteditable="false"><hr></div><h4>평창 700 고지에서 무공해 사과를 직접 재배하여 판매합니다.</h4><p><br></p><p>모든 주문은 카카오톡, 문자, 전화로 가능합니다.</p><p>아래의 번호로 문의를 남겨주세요.</p><p>010-1234-1222</p><h1>🚘 농원 둘러보기</h1><h5><strong>✔️ 영상으로 구경하기</strong></h5><p><a href="https://youtu.be/wgelJ8zYmFc?t=219">[평창시그니처5] 봉황마을 캠핑 (feat.평창사과)</a></p><p><br></p><h5><strong>✔️ 사진으로 둘러보기</strong></h5><p><br></p><h1>🚘 이런것들을 판매해요.</h1><h5><strong>✔️ 설 특집, 부사 구경하기</strong></h5><p><br></p><h5><strong>✔️ 9월 중순, 시나노 골드</strong></h5><p><br></p>`
         const id = this.$router.param;
-        console.log(id)
         new Viewer({
             el: document.querySelector('#viewer'),
             initialValue : content
         });
-        this.readSingleFile();
+        console.log('111')
+        this.readhtmlfile();
 
-        var request;
-        var url = "https://appling-s3.s3.ap-northeast-2.amazonaws.com/html/2/20230805/194929_0.html"
-        console.log(getFile())
-        function getFile(U) {
-          var X = new XMLHttpRequest();
-          X.open('GET', url, false);
-          X.send();
-        return X.responseText;
-        
-        }
     }, 
     methods: {
-      readSingleFile(evt) {
-          //Retrieve the first (and only!) File from the FileList object
-          var f = "https://appling-s3.s3.ap-northeast-2.amazonaws.com/html/2/20230805/194929_0.html"
-
-           var req = new window.XMLHttpRequest();
-            req.open('GET', "https://appling-s3.s3.ap-northeast-2.amazonaws.com/html/2/20230805/194929_0.html", false);
-            req.onreadystatechange = () => {
-            if (req.readyState === 4 ) {
-              done = true;
-              callback(
-                !!(
-                  req.responseXML &&
-                  req.responseXML.title &&
-                  req.responseXML.title === "&&<"
-                ),
-              );
-            }
-          };
-            console.log(req)
-            try {
-              req.responseType = 'document';
-              console.log(req)
-            } catch(e) {
-              return true;
-            }
-            return false;
-
-          // if (f) {
-          //   var r = new FileReader();
-          //   r.onload = function(e) { 
-          //     var contents = e.target.result;
-          //     alert( "Got the file.n" 
-          //           +"name: " + f.name + "n"
-          //           +"type: " + f.type + "n"
-          //           +"size: " + f.size + " bytesn"
-          //           + "contents:" + contents
-          //         );  
-          //   }
-          //   //r.readAsText(f);
-          // } else { 
-          //   alert("Failed to load file");
-          // }
+      async readhtmlfile() {
+          await api.getsellerintroduce().then(response=> {
+            console.log(response)
+          })
         }
     }
 }
