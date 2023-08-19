@@ -138,7 +138,8 @@ import router from '../../plugins/router'
 
 async function logout() { 
   api.logout()
-  router.push('/commerce/main')
+  //router.push('/commerce/main')
+  router.go(0);
 }
 
 function moveto(path){

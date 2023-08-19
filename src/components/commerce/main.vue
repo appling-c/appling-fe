@@ -167,7 +167,7 @@ export default {
 </div>
 <!-- End Card Blog -->
 
-     <div class="max-w-2xl mx-auto text-center pt-20 pb-6 lg:pb-16">
+     <!-- <div class="max-w-2xl mx-auto text-center pt-20 pb-6 lg:pb-16">
       <h2 class="text-2xl font-bold sm:text-3xl md:text-4xl dark:text-white">Blog Sections</h2>
       <p class="mt-4 md:text-lg text-gray-600 dark:text-gray-400">Quickly get a project started with any of our examples ranging from using parts of the UI to custom components and layouts using Tailwind CSS.</p>
       <div class="mt-5">
@@ -175,6 +175,6 @@ export default {
           멤버십 자세히 보기
         </a>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>

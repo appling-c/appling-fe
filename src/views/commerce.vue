@@ -11,7 +11,8 @@ export default {
   methods: {
     logout() { 
       api.logout();
-      this.$router.push('/commerce/main')
+      //this.$router.push('/commerce/main')
+      this.$router.go(0);
     }, 
     account(){
       this.$router.push('/account')
