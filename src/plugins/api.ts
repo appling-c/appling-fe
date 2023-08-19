@@ -18,11 +18,24 @@ const ENDPOINT = {
     CATEOGORYLIST : "/api/product/category", 
     PRODUCTCOUNT : "/api/product/cnt", 
     BRANDSHOPHTML : "/api/common/html",
-    DELIVERYINFO : "/api/member/recipient"
+    DELIVERYINFO : "/api/member/recipient",
+    MEMBERSELLERINTRODUCE : "/api/member/seller/introduce"
     
 }
 const api = {
-    
+    /**
+     * 소개글 불러오기
+     */
+     getsellerintroduce: async function () { 
+        return await instance.get(`${ENDPOINT.MEMBERSELLERINTRODUCE}`,{
+            // headers:{
+            //     'Content-Type': 'text/html'
+            // }
+        }).then((response:AxiosResponse) => { 
+            console.log(response)
+            return response
+        })
+    },
     /**
      * 수령인 정보 수정
      */
