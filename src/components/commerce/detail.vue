@@ -1,6 +1,8 @@
 <script>
 import api from '../../plugins/api'
 import common from '../../plugins/common'
+import {mapActions} from 'vuex'
+
 export default {
     data(){
         return{
@@ -25,6 +27,7 @@ export default {
         }
     },
     methods:{
+          ...mapActions('cart', ['updateSpinnerStatus']), 
       back(){
         this.$router.push("/commerce/search")
       },
@@ -33,6 +36,7 @@ export default {
         },
         async getproductitemlist(id) {
         // 상품 수정
+        this.updateSpinnerStatus(true);
         await api.getproductlistbyid(id).then((response)=> {
             if(response.data.code == '0000'){
                 
@@ -60,6 +64,8 @@ export default {
                 api.getproductlistbysellerid(this.seller_id).then((response)=> {
                   console.log(response)
                 })
+
+                this.updateSpinnerStatus(false);
             }
             })
         },

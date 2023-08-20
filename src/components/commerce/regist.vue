@@ -171,6 +171,8 @@
 <script lang="ts">
 import api from '../../plugins/api'
 import router from '../../plugins/router'
+import {mapActions} from 'vuex'
+
 export default {
 
     data(){
@@ -184,6 +186,7 @@ export default {
         }
     },
     methods: {
+            ...mapActions('cart', ['updateSpinnerStatus']), 
         async submit() { 
             const payload = {
                 "company" : this.company, 
@@ -203,14 +206,18 @@ export default {
                 return alert("판매장 이메일 주소를 입력해주세요.")
             }
 
+            this.updateSpinnerStatus(true);
+
+
             if(this.ismodify){
                 await api.updatesellerinfo(payload).then((message) => { 
-                    
+                    this.updateSpinnerStatus(false);
                     alert(message.data.data.message)
                     return router.push("/commerce/main")
                 })
             }else{
                 await api.memberseller(payload).then((message) => { 
+                    this.updateSpinnerStatus(false);
                     alert(message.data.data.message)
                     return router.push("/commerce/main")
                 })
@@ -234,6 +241,7 @@ export default {
     },
     async mounted() {
         // 등록한 판매자 정보 가져오기
+        this.updateSpinnerStatus(true);
         await api.getsellerinfo().then((response)=> {
             const memberinfo = response.data.data;
             this.company = memberinfo.company;
@@ -244,6 +252,8 @@ export default {
             this.address = memberinfo.address;
             this.email = memberinfo.email;
             this.zonecode = memberinfo?.zonecode;
+            this.updateSpinnerStatus(false);
+
         })
 
         

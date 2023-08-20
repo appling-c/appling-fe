@@ -304,6 +304,7 @@
 <script>
 import api from '../plugins/api';
 import TheAdminHeader from "../components/admin/adminHeader.vue"
+import {mapActions} from 'vuex'
 
 export default {    
     components: {
@@ -333,6 +334,7 @@ export default {
         }
     },
     methods: {
+        ...mapActions('cart', ['updateSpinnerStatus']), 
         async showAddresspopup(){
             
             var self = this;
@@ -389,10 +391,14 @@ export default {
                 password: savepassword, 
                 nickname : this.nickname
             }
+            this.updateSpinnerStatus(true);
+            
             if(this.recipient.name !== ""){
                 api.updatedeliveryinfo({name : this.recipient.name, address : this.recipient.address, tel : this.recipient.tel})
             }
+            
             api.updatememeberinfo(payload).then(response => { 
+                this.updateSpinnerStatus(false);
                 alert(response?.data.data.message)
                 return this.$router.push("/commerce")
             })
