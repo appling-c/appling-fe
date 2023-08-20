@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
  import cart from './modules/cart'
+ import auth from './modules/auth'
 // import products from './modules/products'
 
 // const debug = process.env.NODE_ENV !== 'production'
@@ -7,6 +8,7 @@ import { createStore } from 'vuex'
 export default createStore({
     modules: {
         cart,
+        auth
         //products
     },
 //   strict: debug,
