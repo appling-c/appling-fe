@@ -6,24 +6,24 @@ import {mapActions} from 'vuex'
 export default {
     data(){
         return{
-            id : 0, 
-            main_title: "", 
-            main_explanation: "", 
-            description: "", 
-            product_main_explanation : "", 
-            product_sub_explanation : "", 
-            purchase_inquiry : "", 
-            price: "", 
-            producer: "", 
-            main_image : "",
-            origin_price : "", 
-            image1 : "", 
-            image2 : "", 
-            image3 :"", 
-            origin : "", 
-            seller : null, 
-            created_at : "", 
-            modified_at : ""
+          id : 0, 
+          main_title: "", 
+          main_explanation: "", 
+          description: "", 
+          product_main_explanation : "", 
+          product_sub_explanation : "", 
+          purchase_inquiry : "", 
+          price: "", 
+          producer: "", 
+          main_image : "",
+          origin_price : "", 
+          image1 : "", 
+          image2 : "", 
+          image3 :"", 
+          origin : "", 
+          seller : null, 
+          created_at : "", 
+          modified_at : ""
         }
     },
     methods:{

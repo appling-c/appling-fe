@@ -2,7 +2,7 @@
     <!-- ========== HEADER ========== -->
     <the-admin-header/>
     <div class="w-full pt-10 px-4 sm:px-6 md:px-8">
-    <header>
+    <header class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
       <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">안녕하세요, 우리 농장을 소개합니다.🍃</h1>
       <p class="mt-2 text-lg text-gray-800 dark:text-gray-400">이 곳은 손님들이 우리 농장 소개 페이지를 보는 화면인데요. 소개 문구가 넘나 어렵네요.</p>
       <p class="mt-2 text-m text-gray-800 dark:text-gray-200">정말 좋은데, 소개페이지 정말 좋은데, 표현할 방법이 없네! 별이 다섯개~!</p>

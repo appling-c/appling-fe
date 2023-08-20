@@ -1,6 +1,6 @@
 <template>
     <div>
-      <header>
+      <header class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">📦 상품 {{mode =='modify' ? '수정하기' : '등록하기'}}</h1>
         <template v-if="mode == 'regist'">
           <p class="mt-2 text-lg text-gray-800 dark:text-gray-600">상품 정보를 등록한 후 한장짜리 <span class="text-blue-600">팜플렛</span>을 만들어 홍보해보세요!</p>
@@ -426,7 +426,7 @@ export default {
   watch:{
     confirm(){
       // 등록 -> 확인 
-      this.$router.push('/admin/product/regist/detail');
+      this.$router.push('/admin/product/detail/detail');
     }, 
     
   },

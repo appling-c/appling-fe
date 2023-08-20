@@ -53,7 +53,7 @@ const routes: Array<RouteRecordRaw> = [
         children: [
             { path : "", component: admin_dashboard,}, // 메인(대시보드)
             { path : "dashboard", component: admin_dashboard, }, // 메인(대시보드)
-            { path : "product/regist/:id", component : admin_product_detail }, // 상품등록/수정
+            { path : "product/detail/:id", component : admin_product_detail }, // 상품등록/수정
             { path : "product/list", component : admin_product_list }, // 상품 관리하기
             { path : "product/waybill", component : admin_waybill },     // 운송장 등록하기
             { path : "calendar", component: admin_calendar, },   // 상품달력
