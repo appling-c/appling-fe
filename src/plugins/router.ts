@@ -3,7 +3,7 @@ import Admin from '../views/admin.vue'
 import admin_dashboard from '../components/admin/contents/dashboard.vue'
 import admin_calendar from '../components/admin/contents/calendar.vue'
 
-import admin_product_regist from '../components/admin/product/product_list.vue'
+import admin_product_detail from '../components/admin/product/product_detail.vue'
 import admin_product_list from '../components/admin/product/product_list.vue'
 import admin_preview_brandshop from '../components/admin/template/preview_brandshop.vue'
 
@@ -53,7 +53,7 @@ const routes: Array<RouteRecordRaw> = [
         children: [
             { path : "", component: admin_dashboard,}, // 메인(대시보드)
             { path : "dashboard", component: admin_dashboard, }, // 메인(대시보드)
-            { path : "product/regist/:id", component : admin_product_regist }, // 상품등록/수정
+            { path : "product/regist/:id", component : admin_product_detail }, // 상품등록/수정
             { path : "product/list", component : admin_product_list }, // 상품 리스트
             { path : "product/waybill", component : admin_waybill },     // 운송장 등록하기
             { path : "calendar", component: admin_calendar, },   // 상품달력
