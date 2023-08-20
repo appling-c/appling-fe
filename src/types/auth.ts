@@ -8,3 +8,14 @@ export default interface MemberLogin {
     password : string;
 }
 
+
+export default interface userInfoInterface {
+    created_at: string; 
+    email : string; 
+    member_id : string;
+    modified_at : Number; 
+    name : Number;
+    nickname : string;
+    role : string; 
+    status : string; 
+}

@@ -14,48 +14,46 @@ export default {
     }
   },
   methods: {
-    // getproductlist(){
+    getproductlist(){
       
-    //   api.getproductlist_all().then(response=> {
-    //     if(response.data.code !== "0000"){
-    //         return this.products = [];
-    //     }
-    //     this.total_page = response.data.data.total_page
-    //     this.products = response.data.data.list;
-    //     this.islastpage = response.data.data.last
-    //   })
-    // },
-    gotodetail(id){
+      // api.getproductlist_all().then(response=> {
+      //   if(response.data.code !== "0000"){
+      //       return this.products = [];
+      //   }
+      //   this.total_page = response.data.data.total_page
+      //   this.products = response.data.data.list;
+      //   this.islastpage = response.data.data.last
+      // })
+    },
+    async gotodetail(id){
       // 조회수 증가
       const payload = {
             "product_id" :id
         }
-      this.addProducetViewCount().then((path)=> {
-        this.$router.push(path);
+      await this.addProducetViewCount(payload).then(()=> {
+       this.$router.push(`/commerce/detail/${id}`);
       })
-      // api.productcount(payload).then(()=> {
-      //   this.$router.push(`/commerce/detail/${id}`)
-      // })
     },
-    ...mapActions('cart', ['getproductlist', 'addProducetViewCount']), 
+    ...mapActions('cart', ['getproductlist', 'addProducetViewCount', 'updateSpinnerStatus']), 
   },
   computed:{
       ...mapGetters('cart', ['productSearchItem']), 
   },
-  mounted(){
+  beforeMount(){
     this.categoryid = this.$route.query.categoryid;
-    console.log(this.productSearchItem)
-    this.getproductlist();
-    // api.callhtmlstring().then(response=> {
-    //   console.log(response)
-    // });
-    // .then((response => {
-    //   const {total_page, products, islastpage} = response;
-    //   this.total_page = total_page;
-    //   this.products = products;
-    //   this.islastpage = islastpage;
-    // }));
-    //this.getproductlist();
+    this.getproductlist().then((response => {
+      this.updateSpinnerStatus(false)
+      if(response.data.code !== "0000"){
+            return this.products = [];
+        }
+      const {total_page, list, islastpage} = response?.data.data;
+      this.total_page = total_page;
+      this.products = list;
+      this.islastpage = islastpage;
+    }));
+  },
+  mounted(){
+    this.updateSpinnerStatus(true)
   }
 }
 </script>
@@ -137,5 +135,7 @@ export default {
   <!-- End Grid -->
   
 </div>
+
+  
 <!-- End Card Blog -->
 </template>

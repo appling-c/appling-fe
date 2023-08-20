@@ -393,6 +393,8 @@
 
 <script>
 import api from '../../../plugins/api'
+import {mapActions} from 'vuex'
+
 export default {
   props: {
     confirm: Boolean,
@@ -430,6 +432,7 @@ export default {
   },
   
   methods: {
+        ...mapActions('cart', ['updateSpinnerStatus']), 
     setproductstatus(status){
       this.status = status;
     },
@@ -462,7 +465,6 @@ export default {
         return await api.categorylist().then((response) => { 
           if(response.data.code == '0000'){
             this.categorys = response.data.data.list;
-              console.log(this.categorys)
           } else {
             this.categorys = [];
           }
@@ -496,6 +498,8 @@ export default {
     },
     async getproductitemlist(id) {
         // 상품 수정
+        this.updateSpinnerStatus(true);
+
        return await api.getproductlistbyid(id).then((response)=> {
           if(response.data.code == '0000'){
             const userdata = response.data.data;
@@ -514,6 +518,8 @@ export default {
             this.image2 = userdata.image2;
             this.image3 = userdata.image3;
             this.status = userdata.status;
+            this.updateSpinnerStatus(false);
+
           }
         })
     },
@@ -545,8 +551,9 @@ export default {
         // 수정
         params["id"] = Number(this.id)
       }
-      
+      this.updateSpinnerStatus(true);
       await api.submittemplate(params, this.mode).then((response)=> {
+          this.updateSpinnerStatus(false);
           if(response.data.code === "0001" || response.data.code === "0000"){
             this.$emit("openModal", {
               title : `${this.mode == 'regist'? "등록" : "수정"}되었습니다.`, 
