@@ -361,7 +361,7 @@ import api from '../../../plugins/api'
 import moment from 'moment'
 import common from '../../../plugins/common'
 import ThePreviewPopup from '../template/preview_popup.vue'
-
+import {mapActions} from 'vuex'
 export default {
     components: {
         ThePreviewPopup
@@ -385,6 +385,8 @@ export default {
         }
     }, 
     methods: {
+                ...mapActions('cart', ['updateSpinnerStatus']), 
+
         movetporegist(){
             this.$router.push("/admin/product/regist/0")
         },
@@ -444,7 +446,7 @@ export default {
             if(this.status){
                 payload["status"] = this.status;
             }
-            
+            this.updateSpinnerStatus(true);
             await api.getproductlist(payload).then(response=> {
                 if(response.data.code !== "0000"){
                     return this.lists = [];
@@ -452,6 +454,7 @@ export default {
                 this.total_page = response.data.data.total_page
                 this.lists = response.data.data.list;
                 this.islastpage = response.data.data.last
+                this.updateSpinnerStatus(false);
             })
         },
         date_format(date){

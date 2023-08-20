@@ -465,7 +465,6 @@ export default {
         return await api.categorylist().then((response) => { 
           if(response.data.code == '0000'){
             this.categorys = response.data.data.list;
-              console.log(this.categorys)
           } else {
             this.categorys = [];
           }
