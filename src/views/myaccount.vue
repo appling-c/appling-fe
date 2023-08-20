@@ -140,47 +140,57 @@
                 
                 <template v-if="role == '판매자'">
                     <div class="sm:col-span-3">
-                    <label for="af-account-email" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
-                        판매자 정보
-                    </label>
+                        <label for="af-account-email" class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200">
+                            판매자 정보
+                        </label>
                     </div>
                     <!-- End Col -->
-
                     <div class="sm:col-span-9">
-                    <div class="space-y-2" v-if="seller.company">
-                        <div class="sm:col-span-9">
-                        <input id="af-account-email" readonly disabled v-model="seller.company" type="text" class="
-                        disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none 
-                        invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" >
+                        <div class="space-y-2" v-if="seller.company">
+                            <div class="space-y-2">
+                                <div>
+                                    <div class="flex rounded-md shadow-sm">
+                                        <span class="px-4 inline-flex items-center min-w-fit rounded-l-md border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">이름</span>
+                                        <input v-model="seller.company" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-r-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                                    </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex rounded-md shadow-sm">
+                                            <span class="px-4 inline-flex items-center min-w-fit rounded-l-md border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">주소</span>
+                                            <input v-model="seller.address"  type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-r-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex rounded-md shadow-sm">
+                                            <span class="px-4 inline-flex items-center min-w-fit rounded-l-md border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">우편번호</span>
+                                            <input v-model="seller.zonecode"  type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-r-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex rounded-md shadow-sm">
+                                            <span class="px-4 inline-flex items-center min-w-fit rounded-l-md border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">연락처</span>
+                                            <input v-model="seller.tel"  type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-r-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex rounded-md shadow-sm">
+                                            <span class="px-4 inline-flex items-center min-w-fit rounded-l-md border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">이메일 주소</span>
+                                            <input v-model="seller.email"  type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-r-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="sm:col-span-9">
+                                <button @click="movetosellerregist" type="button" class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
+                                    판매자 정보 수정
+                                </button>
+                            </div>
                         </div>
-                        <div class="sm:col-span-9">
-                        <input id="af-account-email" readonly disabled v-model="seller.tel" type="text" class="
-                        disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none 
-                        invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" >
-                        </div>
-                        <div class="sm:col-span-9">
-                        <input id="af-account-email" readonly disabled v-model="seller.address" type="text" class="
-                        disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none 
-                        invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" >
-                        </div>
-                        <div class="sm:col-span-9">
-                        <input id="af-account-email" readonly disabled v-model="seller.email" type="text" class="
-                        disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none 
-                        invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400" >
-                        </div>
-
-                        <div class="sm:col-span-9">
-                        <button @click="movetosellerregist" type="button" class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
-                            판매자 정보 수정
-                        </button>
+                        <div class="space-y-2" v-else>
+                            <button @click="movetosellerregist" type="button" class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
+                                판매자 정보 등록하기
+                            </button>
                         </div>
                     </div>
-                    <div class="space-y-2" v-else>
-                        <button @click="movetosellerregist" type="button" class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
-                            판매자 정보 등록하기
-                        </button>
-                    </div>
-                </div>
                 </template>
                 
 
@@ -211,19 +221,30 @@
                         <div class="space-y-2">
                             <div>
                                 <div class="flex rounded-md shadow-sm">
-                                    <span class="px-4 inline-flex items-center min-w-fit rounded-l-md border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">배송지명</span>
+                                    <span class="px-4 inline-flex items-center min-w-fit rounded-l-md border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">이름</span>
                                     <input v-model="recipient.name" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-r-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
                                 </div>
                                 </div>
                                 <div>
                                     <div class="flex rounded-md shadow-sm">
-                                        <span class="px-4 inline-flex items-center min-w-fit rounded-l-md border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">배송지 주소</span>
-                                        <input v-model="recipient.address"  type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-r-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                                        <span class="px-4 inline-flex items-center min-w-fit rounded-l-md border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">주소</span>
+                                        <input  @click="showAddresspopup" v-model="recipient.address" readonly type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-r-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                                        <button @click="showAddresspopup" readonly type="button" class="inline-flex flex-shrink-0 justify-center items-center h-[2.875rem] w-[2.875rem] rounded-r-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm">
+                                            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                            </svg>
+                                        </button>   
                                     </div>
                                 </div>
                                 <div>
                                     <div class="flex rounded-md shadow-sm">
-                                        <span class="px-4 inline-flex items-center min-w-fit rounded-l-md border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">배송지 연락처</span>
+                                        <span class="px-4 inline-flex items-center min-w-fit rounded-l-md border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">우편번호</span>
+                                        <input v-model="recipient.zonecode" readonly type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-r-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex rounded-md shadow-sm">
+                                        <span class="px-4 inline-flex items-center min-w-fit rounded-l-md border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">연락처</span>
                                         <input v-model="recipient.tel"  type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-r-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
                                     </div>
                                 </div>
@@ -298,19 +319,31 @@ export default {
             email: "", name: "", nickname: "", role: "", 
             sns_type : "", 
             recipient : {
-                name : "", address : "", tel : ""
+                name : "", address : "", tel : "", zonecode : ""
             }
             ,seller : {
                 tel : ""
                 , company : ""
                 , address : ""
                 , email : ""
+                , zonecode : ""
             }
             
             
         }
     },
     methods: {
+        async showAddresspopup(){
+            
+            var self = this;
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    const {address, zonecode} = data;
+                    self.recipient.address = address;
+                    self.recipient.zonecode = zonecode;
+                }
+            }).open();
+        }, 
         closemodal() { 
             this.currentpopup = "hidden"
             this.passwordcheck = true;
@@ -338,6 +371,7 @@ export default {
                 this.seller.tel = memberinfo.tel;
                 this.seller.address = memberinfo.address;
                 this.seller.email = memberinfo.email;
+                this.seller.zonecode = memberinfo?.zonecode;
             })
         },
         submit() { 

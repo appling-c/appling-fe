@@ -91,13 +91,12 @@ const actions = {
 
   async getproductlist({state, getters}){
     const payload = {...state.productSearchItem};
-    
-    console.log(payload)
     await api.getproductlist_product_new(payload).then(response=> {
         console.log(response)
     })
 
-  }
+  }, 
+  
 }
 
 // mutations
