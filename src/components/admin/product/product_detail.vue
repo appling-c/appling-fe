@@ -42,7 +42,7 @@
             
 
             <div class="mt-5 grid sm:flex gap-2">
-              <button type="button" class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+              <button @click="movetporegist()" type="button" class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
                 <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" >
                   <path d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                 </svg>
@@ -361,7 +361,7 @@ import api from '../../../plugins/api'
 import moment from 'moment'
 import common from '../../../plugins/common'
 import ThePreviewPopup from '../template/preview_popup.vue'
-
+import {mapActions} from 'vuex'
 export default {
     components: {
         ThePreviewPopup
@@ -385,6 +385,11 @@ export default {
         }
     }, 
     methods: {
+                ...mapActions('cart', ['updateSpinnerStatus']), 
+
+        movetporegist(){
+            this.$router.push("/admin/product/regist/0")
+        },
         searchproductstatus(status){
             this.status = status;
             this.getproductlists();
@@ -441,7 +446,7 @@ export default {
             if(this.status){
                 payload["status"] = this.status;
             }
-            
+            this.updateSpinnerStatus(true);
             await api.getproductlist(payload).then(response=> {
                 if(response.data.code !== "0000"){
                     return this.lists = [];
@@ -449,6 +454,7 @@ export default {
                 this.total_page = response.data.data.total_page
                 this.lists = response.data.data.list;
                 this.islastpage = response.data.data.last
+                this.updateSpinnerStatus(false);
             })
         },
         date_format(date){

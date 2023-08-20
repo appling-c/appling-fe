@@ -4,6 +4,7 @@ import api from '@/plugins/api'
 // initial state
 // shape: [{ id, quantity }]
 const state = () => ({
+  isShowSpinner : false,
   items: [],
   checkoutStatus: null, 
   //productSearchItem : Object,
@@ -48,6 +49,9 @@ const getters = {
 //   }, 
   productSearchItem:(state) => {
       return state.productSearchItem;
+  },
+  spinnerStatus:(state) => {
+    return state.isShowSpinner;
   }
 }
 
@@ -89,15 +93,21 @@ const actions = {
     // 상품 검색 결과로 리다이렉팅
   }, 
 
-  async getproductlist({state, getters}){
-    const payload = {...state.productSearchItem};
-    
-    console.log(payload)
-    await api.getproductlist_product_new(payload).then(response=> {
-        console.log(response)
-    })
+  updateSpinnerStatus({state, commit}, spinnerStatus){
+    // 상품 검색 목록 저장
+    commit('updateSpinnerStatus', spinnerStatus);
+    // 상품 검색 결과로 리다이렉팅
+  }, 
 
-  }
+  async getproductlist({state}){
+    const payload = {...state.productSearchItem};
+    return await api.getproductlist_product_new(payload);
+  }, 
+
+  async addProducetViewCount({},payload){
+    return await api.productcount(payload);
+  }, 
+  
 }
 
 // mutations
@@ -123,6 +133,9 @@ const mutations = {
 //   }, 
   setProductSearchItem(state, payload){
     state.productSearchItem = {...payload};
+  },
+  updateSpinnerStatus(state, payload){
+    state.isShowSpinner = payload;
   }
 }
 

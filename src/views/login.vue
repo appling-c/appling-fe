@@ -1,6 +1,7 @@
 <script lang="ts">
 import api from '@/plugins/api'
 import type MemberLogin from '@/types/auth'
+import {mapActions} from 'vuex'
 export default {
   data() { 
     return {
@@ -11,6 +12,7 @@ export default {
     }
   }, 
   methods: {
+    ...mapActions('cart', ['updateSpinnerStatus']), 
     setUser(email, password){
       this.user.email = email;
       this.user.password = password;
@@ -31,8 +33,10 @@ export default {
     async submit() { 
       // 사용자 로그인 처리
       const user = this.user;
+      this.updateSpinnerStatus(true);
       try {
         await api.memberlogin(user).then((result) => { 
+          this.updateSpinnerStatus(false);
           this.$router.push(`/${result}`)
         })
       } catch (err) { 

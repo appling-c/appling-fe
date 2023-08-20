@@ -125,6 +125,7 @@
 
 <script>
 import api from '../plugins/api'
+import {mapActions} from 'vuex'
 export default {
   data(){
     return {
@@ -136,6 +137,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions('cart', ['updateSpinnerStatus']), 
     temp() { 
       this.name = "최고은";
       this.nickname = "김루나";
@@ -151,9 +153,11 @@ export default {
         password:this.password, 
         birth:this.birth
       }
+      this.updateSpinnerStatus(true);
       // 회원가입
       try {
         await api.memberjoin(user).then((result) => { 
+          this.updateSpinnerStatus(false);
           alert('회원가입이 완료되었습니다. 로그인화면으로 이동합니다.')
           return this.$router.push(`/commerce/main`)
         })
