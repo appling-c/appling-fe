@@ -30,6 +30,7 @@ const routes: Array<RouteRecordRaw> = [
     { path: '/', component: Commerce }, 
     { path: '/account', component: myAccount }, 
     { path : "/oauth/kakao/login", component : kakaoLogin }, 
+     
     
     {
         path: '/commerce', // 구매자
