@@ -107,7 +107,8 @@
 </template>
 
 <script>
-import api from '../plugins/api'
+import api from '@/plugins/api'
+import UserAthendicateService from "@/services/UserAthendicateService"
 
 export default {
   data(){
@@ -118,7 +119,7 @@ export default {
   },
   methods: {
     logout() { 
-      api.logout();
+      UserAthendicateService.logout();
       //this.$router.push('/commerce/main')
       this.$router.go(0);
     }, 

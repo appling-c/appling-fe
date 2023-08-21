@@ -157,9 +157,10 @@
 <script setup>
 import api from '../../plugins/api'
 import router from '../../plugins/router'
+import UserAthendicateService from "@/services/UserAthendicateService"
 
 async function logout() { 
-  api.logout()
+  UserAthendicateService.logout()
   //router.push('/commerce/main')
   router.go(0);
 }

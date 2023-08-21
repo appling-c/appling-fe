@@ -305,7 +305,7 @@
 import api from '../plugins/api';
 import TheAdminHeader from "../components/admin/TheAdminHeader.vue"
 import {mapActions} from 'vuex'
-
+import MemberService from "@/services/MemberService"
 export default {    
     components: {
         TheAdminHeader
@@ -364,7 +364,7 @@ export default {
             }
         }, 
         async getsellerinfo(){
-            await api.getsellerinfo().then((response)=> {
+            await MemberService.getsellerinfo().then((response)=> {
                 const memberinfo = response.data.data;
                 this.seller.company = memberinfo.company;
                 if(this.seller.company){
@@ -394,7 +394,7 @@ export default {
             this.updateSpinnerStatus(true);
             
             if(this.recipient.name !== ""){
-                api.updatedeliveryinfo({name : this.recipient.name, address : this.recipient.address, tel : this.recipient.tel})
+                MemberService.updatedeliveryinfo({name : this.recipient.name, address : this.recipient.address, tel : this.recipient.tel})
             }
             
             api.updatememeberinfo(payload).then(response => { 
@@ -410,7 +410,7 @@ export default {
             this.$router.push("/commerce/regist")
         }, 
         async getdeliveryinfo(){
-            await api.getdeliveryinfo().then((response)=> {
+            await MemberService.getdeliveryinfo().then((response)=> {
                 const recipientinfo = response?.data?.data?.list;
                 this.recipient = {...recipientinfo};
             })

@@ -138,7 +138,7 @@
 
 <script>
 import Viewer from '@toast-ui/editor/dist/toastui-editor-viewer';
-import TheAdminHeader from "@/components/admin/adminHeader.vue"
+import TheAdminHeader from "@/components/admin/TheAdminHeader.vue"
 import api from '../../../plugins/api';
 export default {
     components: {
@@ -157,7 +157,7 @@ export default {
     }, 
     methods: {
       async readhtmlfile() {
-          await api.getsellerintroduce().then(response=> {
+          await MemberService.getsellerintroduce().then(response=> {
             console.log(response)
           })
         }

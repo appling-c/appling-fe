@@ -360,8 +360,10 @@
 import api from '../../../plugins/api'
 import moment from 'moment'
 import common from '../../../plugins/common'
-import ThePreviewPopup from '../template/preview_popup.vue'
+import ThePreviewPopup from '../template/TemplatePreviewPopup.vue'
 import {mapActions} from 'vuex'
+import ProductService from "@/services/ProductService"
+
 export default {
   components: {
       ThePreviewPopup
@@ -447,7 +449,7 @@ export default {
               payload["status"] = this.status;
           }
           this.updateSpinnerStatus(true);
-          await api.getproductlist(payload).then(response=> {
+          await ProductService.getproductlist(payload).then(response=> {
               if(response.data.code !== "0000"){
                   return this.lists = [];
               }

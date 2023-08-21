@@ -2,6 +2,7 @@
 import api from '../../plugins/api'
 import common from '../../plugins/common'
 import {mapActions} from 'vuex'
+import ProductService from "@/services/ProductService"
 
 export default {
     data(){
@@ -37,7 +38,7 @@ export default {
         async getproductitemlist(id) {
         // 상품 수정
         this.updateSpinnerStatus(true);
-        await api.getproductlistbyid(id).then((response)=> {
+        await ProductService.getproductlistbyid(id).then((response)=> {
             if(response.data.code == '0000'){
                 
                 const userdata = response.data.data;
@@ -61,7 +62,7 @@ export default {
 
                 this.seller_id = userdata.seller.seller_id;
 
-                api.getproductlistbysellerid(this.seller_id).then((response)=> {
+                ProductService.getproductlistbysellerid(this.seller_id).then((response)=> {
                   console.log(response)
                 })
 

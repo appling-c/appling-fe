@@ -126,6 +126,8 @@
 <script>
 import api from '../plugins/api'
 import {mapActions} from 'vuex'
+import UserAthendicateService from "@/services/UserAthendicateService"
+
 export default {
   data(){
     return {
@@ -156,7 +158,7 @@ export default {
       this.updateSpinnerStatus(true);
       // 회원가입
       try {
-        await api.memberjoin(user).then((result) => { 
+        await UserAthendicateService.memberjoin(user).then((result) => { 
           this.updateSpinnerStatus(false);
           alert('회원가입이 완료되었습니다. 로그인화면으로 이동합니다.')
           return this.$router.push(`/commerce/main`)

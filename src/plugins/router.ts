@@ -8,8 +8,8 @@ import admin_product_list from '../components/admin/product/ProductList.vue'
 
 
 import admin_waybill from '../components/admin/Waybill.vue'
-import admin_brandshop_regist from '../components/admin/brandshop/admin_brandshop_regist.vue'
-import admin_brandshop_view from '../components/admin/brandshop/admin_brandshop_view.vue'
+import admin_brandshop_regist from '../components/admin/brandshop/BrandshopRegist.vue'
+import admin_brandshop_view from '../components/admin/brandshop/BrandshopView.vue'
 
 import Commerce from '../views/commerce.vue' 
 import commerce_main from '../components/commerce/CommerceMain.vue'

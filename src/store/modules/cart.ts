@@ -1,6 +1,7 @@
 // import shop from '../../api/shop'
 // import nested from './nested'
 import api from '@/plugins/api'
+import ProductService from '../../services/ProductService';
 // initial state
 // shape: [{ id, quantity }]
 const state = () => ({
@@ -101,11 +102,11 @@ const actions = {
 
   async getproductlist({state}){
     const payload = {...state.productSearchItem};
-    return await api.getproductlist_product_new(payload);
+    return await ProductService.getproductlist_product_new(payload);
   }, 
 
   async addProducetViewCount({},payload){
-    return await api.productcount(payload);
+    return await ProductService.productcount(payload);
   }, 
   
 }

@@ -77,6 +77,8 @@
 <script lang="ts">
 import api from '@/plugins/api'
 import { mapGetters, mapActions, mapState } from 'vuex'
+import ProductService from "@/services/ProductService"
+
 export default {
     data(){
         return {
@@ -92,7 +94,7 @@ export default {
     },
     methods: {
         async getcategorylist(){
-            await api.categorylist().then(response=> {
+            await ProductService.categorylist().then(response=> {
                 this.categorys.push( {
                         "category_id": "",
                         "name": "모두보기",

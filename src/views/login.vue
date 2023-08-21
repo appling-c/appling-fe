@@ -1,6 +1,7 @@
 <script lang="ts">
 import api from '@/plugins/api'
 import type MemberLogin from '@/types/auth'
+import UserAthendicateService from "@/services/UserAthendicateService"
 import {mapActions} from 'vuex'
 export default {
   data() { 
@@ -35,7 +36,7 @@ export default {
       const user = this.user;
       this.updateSpinnerStatus(true);
       try {
-        await api.memberlogin(user).then((result) => { 
+        await UserAthendicateService.memberlogin(user).then((result) => { 
           this.updateSpinnerStatus(false);
           this.$router.push(`/${result}`)
         })

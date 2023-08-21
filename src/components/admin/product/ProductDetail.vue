@@ -394,6 +394,8 @@
 <script>
 import api from '../../../plugins/api'
 import {mapActions} from 'vuex'
+import ProductService from "@/services/ProductService"
+import CommonService from "@/services/CommonService"
 
 export default {
   props: {
@@ -452,7 +454,7 @@ export default {
       this.category = value;
     },
     async imageonserver(imageFormData) { 
-        return await api.imageonserver(imageFormData).then((response) => { 
+        return await CommonService.imageonserver(imageFormData).then((response) => { 
           if(response.data.code == '0000'){
             return response.data.data.image_url
           } else {
@@ -462,7 +464,7 @@ export default {
         })
     },
     async getcategorylist() { 
-        return await api.categorylist().then((response) => { 
+        return await ProductService.categorylist().then((response) => { 
           if(response.data.code == '0000'){
             this.categorys = response.data.data.list;
           } else {
@@ -500,7 +502,7 @@ export default {
         // 상품 수정
         this.updateSpinnerStatus(true);
 
-       return await api.getproductlistbyid(id).then((response)=> {
+       return await ProductService.getproductlistbyid(id).then((response)=> {
           if(response.data.code == '0000'){
             const userdata = response.data.data;
             this.title = userdata.main_title;
@@ -552,7 +554,7 @@ export default {
         params["id"] = Number(this.id)
       }
       this.updateSpinnerStatus(true);
-      await api.submittemplate(params, this.mode).then((response)=> {
+      await ProductService.submittemplate(params, this.mode).then((response)=> {
           this.updateSpinnerStatus(false);
           if(response.data.code === "0001" || response.data.code === "0000"){
             this.$emit("openModal", {

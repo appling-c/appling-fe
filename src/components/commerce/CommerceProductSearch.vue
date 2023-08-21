@@ -14,17 +14,7 @@ export default {
     }
   },
   methods: {
-    getproductlist(){
-      
-      // api.getproductlist_all().then(response=> {
-      //   if(response.data.code !== "0000"){
-      //       return this.products = [];
-      //   }
-      //   this.total_page = response.data.data.total_page
-      //   this.products = response.data.data.list;
-      //   this.islastpage = response.data.data.last
-      // })
-    },
+    
     async gotodetail(id){
       // 조회수 증가
       const payload = {

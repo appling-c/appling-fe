@@ -86,6 +86,7 @@ import { defineComponent } from 'vue'
 
 import Editor from '@toast-ui/editor';
 import api from '../../../plugins/api';
+import CommonService from "@/services/CommonService"
 
 export default defineComponent({
    data(){
@@ -109,7 +110,7 @@ export default defineComponent({
           
           formData.append("html", blob, "test1.html");
           
-          await api.savebrandshophtml(formData).then((response)=> {
+          await CommonService.savebrandshophtml(formData).then((response)=> {
             this.$emit("openModal", {
               title: "등록 성공",
               subtitle: `우리 농장 소개하기 페이지가 성공적으로 등록되었어요.`,
@@ -143,7 +144,7 @@ export default defineComponent({
         }
 
         // 이미지 S3 서버에 등록하고 src 받아오기
-        await api.imageonserver(imageFormData).then((response) => {
+        await CommonService.imageonserver(imageFormData).then((response) => {
           if (response.data.code == '0000') {
             // 링크, 파일명 이벤트 콜백
             callback(response.data.data.image_url, blob.name);
