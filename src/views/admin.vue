@@ -1,5 +1,5 @@
 <script>
-import TheAdminHeader from "../components/admin/adminHeader.vue"
+import TheAdminHeader from "../components/admin/TheAdminHeader.vue"
 export default { 
   components: {
      TheAdminHeader
@@ -89,7 +89,7 @@ export default {
 </div>
 
 <div class="bg-gray-50 dark:bg-slate-900">
-  <the-admin-header/>
+  <TheAdminHeader/>
   <!-- ========== MAIN CONTENT ========== -->
   <div class="w-full pt-10 px-4 sm:px-6 md:px-8">
     <router-view @openModal="openModal" :confirm="confirm"></router-view>

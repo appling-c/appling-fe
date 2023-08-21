@@ -25,7 +25,7 @@ export default {
     kakaologin() {
       const returnurl = import.meta.env.DEV ?
       'http://localhost:5173' : 
-      'http://3.34.1.129:5173'
+      'http://54.198.136.122:5173'
        return location.href = `
         https://kauth.kakao.com/oauth/authorize?client_id=04376f3d0a7618a3622f9c541d90d272&redirect_uri=${returnurl}/oauth/kakao/login&response_type=code`
      

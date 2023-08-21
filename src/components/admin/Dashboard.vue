@@ -3,11 +3,6 @@
 </script>
 
 <template>
-  
-    <!-- Page Heading -->
-    <!-- Card Section -->
-
-<!-- End Card Section -->
     <header>
       <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">나의 수입 한 눈에 보기👀</h1>
       <p class="mt-2 text-lg text-gray-800 dark:text-gray-400">이번달, 내가 올린 상품의 매출액과 일정을 한 눈에 확인해보세요!</p>

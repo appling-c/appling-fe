@@ -5,21 +5,26 @@ import {Token, MemberLogin} from "../types/auth";
 import { AxiosHeaders, AxiosResponse } from "axios";
 
 const ENDPOINT = {
-    MEMEBERLOGIN: "/api/auth/login", 
-    MEMEBERINFO: "/api/member", 
-    MEMEBERREFRESH: "/api/auth/refresh", 
-    MEMBERJOIN: "/api/auth/join", 
-    MEMBRESELLER : "/api/member/seller", 
-    IMAGEONSERVER : "/api/common/image", 
-    SUBMITTMEPLATE : "/api/seller/product", 
-    PRODUCTSERACH : "/api/product", 
-    KAKAOLOGIN_AUTH : "/api/oauth/kakao?code=", 
+    KAKAOLOGIN_AUTH: "/api/oauth/kakao?code=", 
     KAKAOLOGIN_AUTH_KAKAO_TOKEN: "/api/oauth/kakao/login?access_token=", 
-    CATEOGORYLIST : "/api/product/category", 
-    PRODUCTCOUNT : "/api/product/cnt", 
-    BRANDSHOPHTML : "/api/common/html",
-    DELIVERYINFO : "/api/member/recipient",
-    MEMBERSELLERINTRODUCE : "/api/member/seller/introduce"
+    
+    API_AUTH_LOGIN: "/api/auth/login", 
+    API_AUTH_REFRESH: "/api/auth/refresh", 
+    API_AUTH_JOIN: "/api/auth/join", 
+    
+    API_MEMEBER: "/api/member", 
+    API_MEMBRER_SELLER : "/api/member/seller", 
+    API_MEMBER_RECIPIENT : "/api/member/recipient",
+    API_MEMBER_SELLER_INTRODUCE : "/api/member/seller/introduce",
+    
+    API_SELLER_PRODUCT : "/api/seller/product", 
+    
+    API_PRODUCT: "/api/product", 
+    API_PRODUCT_CATEOGORY : "/api/product/category", 
+    API_PRODUCT_COUNT : "/api/product/cnt", 
+    
+    API_COMMON_HTML: "/api/common/html",
+    API_COMMON_IMAGE  : "/api/common/image", 
     
 }
 const api = {
@@ -27,7 +32,7 @@ const api = {
      * 소개글 불러오기
      */
      getsellerintroduce: async function () { 
-        return await instance.get(`${ENDPOINT.MEMBERSELLERINTRODUCE}`,{
+        return await instance.get(`${ENDPOINT.API_MEMBER_SELLER_INTRODUCE}`,{
             // headers:{
             //     'Content-Type': 'text/html'
             // }
@@ -40,7 +45,7 @@ const api = {
      * 수령인 정보 수정
      */
      updatedeliveryinfo: async function (payload: Object) { 
-        return await instance.post(`${ENDPOINT.DELIVERYINFO}`,payload,{
+        return await instance.post(`${ENDPOINT.API_MEMBER_RECIPIENT}`,payload,{
         }).then((response:AxiosResponse) => { 
             return response
         })
@@ -49,7 +54,7 @@ const api = {
      * 수령인 정보 조회
      */
      getdeliveryinfo: async function () { 
-        return await instance.get(`${ENDPOINT.DELIVERYINFO}`,{
+        return await instance.get(`${ENDPOINT.API_MEMBER_RECIPIENT}`,{
         }).then((response:AxiosResponse) => { 
             return response
         })
@@ -58,7 +63,7 @@ const api = {
      * 판매자 정보 조회
      */
      updatesellerinfo: async function (payload: Object) { 
-        return await instance.put(`${ENDPOINT.MEMBRESELLER}`,payload, {
+        return await instance.put(`${ENDPOINT.API_MEMBRER_SELLER}`,payload, {
         }).then((response:AxiosResponse) => { 
             return response
         })
@@ -68,7 +73,7 @@ const api = {
      * 판매자 정보 조회
      */
      getsellerinfo: async function () { 
-        return await instance.get(`${ENDPOINT.MEMBRESELLER}`,{
+        return await instance.get(`${ENDPOINT.API_MEMBRER_SELLER}`,{
         }).then((response:AxiosResponse) => { 
             return response;
         })
@@ -77,7 +82,7 @@ const api = {
      * 판매자가 판매중인 상품 리스트 가져오기
      */
      getproductlistbysellerid: async function (payload: Object) { 
-        return await instance.get(`${ENDPOINT.PRODUCTSERACH}?seller_id=${payload}`,{
+        return await instance.get(`${ENDPOINT.API_PRODUCT}?seller_id=${payload}`,{
         }).then((response:AxiosResponse) => { 
             return response;
         })
@@ -86,7 +91,7 @@ const api = {
      * 농장 소개 html 저장하기
      */
     savebrandshophtml: async function (payload: Object) { 
-        return await instance.post(ENDPOINT.BRANDSHOPHTML, payload, {
+        return await instance.post(ENDPOINT.API_COMMON_HTML, payload, {
             headers:{
                 'Content-Type': 'application/x-www-form-urlencoded'
               }
@@ -98,7 +103,7 @@ const api = {
      * 상품 뷰 조회수+1
      */
      productcount: async function (payload:Object) { 
-        return await instance.patch(`${ENDPOINT.PRODUCTCOUNT}`, payload).then((response:AxiosResponse) => { 
+        return await instance.patch(`${ENDPOINT.API_PRODUCT_COUNT}`, payload).then((response:AxiosResponse) => { 
             return response;
         })
     },
@@ -107,7 +112,7 @@ const api = {
      * 상품 카테고리 리스트
      */
     categorylist: async function () { 
-        return await instance.get(`${ENDPOINT.CATEOGORYLIST}`, {
+        return await instance.get(`${ENDPOINT.API_PRODUCT_CATEOGORY}`, {
         }).then((response:AxiosResponse) => { 
             return response;
         })
@@ -148,7 +153,7 @@ const api = {
      * 상품 상세 조회
      */
     getproductlistbyid: async function(payload: Object | String) { 
-        return await instance.get(`${ENDPOINT.PRODUCTSERACH}/${payload}`, {
+        return await instance.get(`${ENDPOINT.API_PRODUCT}/${payload}`, {
         }).then((response:AxiosResponse) => { 
             return response
         })
@@ -157,7 +162,7 @@ const api = {
      * 상품 리스트 가져오기
      */
      getproductlist: async function(payload:Object) { 
-        return await instance.get(`${ENDPOINT.SUBMITTMEPLATE}`, { params: payload}).
+        return await instance.get(`${ENDPOINT.API_SELLER_PRODUCT}`, { params: payload}).
         then((response:AxiosResponse) => { 
             return response
         })
@@ -166,7 +171,7 @@ const api = {
      * 상품 리스트 가져오기
      */
      getproductlist_product_new: async function(payload:Object) { 
-        return await instance.get(`${ENDPOINT.PRODUCTSERACH}`, { params: payload}).
+        return await instance.get(`${ENDPOINT.API_PRODUCT}`, { params: payload}).
         then((response:AxiosResponse) => {
 
             return response
@@ -176,7 +181,7 @@ const api = {
      * 상품 리스트 전체 가져오기
      */
      getproductlist_all: async function():Promise<{}|[]> { 
-        return await instance.get(`${ENDPOINT.PRODUCTSERACH}`, {
+        return await instance.get(`${ENDPOINT.API_SELLER_PRODUCT}`, {
         }).then((response:AxiosResponse) => { 
             return response
         })
@@ -187,13 +192,13 @@ const api = {
      submittemplate: async function(param:Object, mode:string):Promise<{}|[]> { 
         if(mode == 'regist'){
             // 등록
-            return await instance.post(ENDPOINT.SUBMITTMEPLATE, param, {
+            return await instance.post(ENDPOINT.API_SELLER_PRODUCT, param, {
             }).then((response:AxiosResponse) => { 
                 return response
             })
         }else{
             // 수정
-            return await instance.put(ENDPOINT.SUBMITTMEPLATE, param, {
+            return await instance.put(ENDPOINT.API_SELLER_PRODUCT, param, {
             }).then((response:AxiosResponse) => { 
                 return response
             })
@@ -204,7 +209,7 @@ const api = {
      * 이미지 등록 url 얻기
      */
      imageonserver: async function(param):Promise<{}|[]> { 
-        return await instance.post(ENDPOINT.IMAGEONSERVER, param, {
+        return await instance.post(ENDPOINT.API_COMMON_IMAGE, param, {
             headers:{
                 'Content-Type': 'application/x-www-form-urlencoded'
               }
@@ -217,7 +222,7 @@ const api = {
      */
     memberseller: async function(payload:Object): Promise<string> { 
         // 권한 변경 
-        await instance.post(ENDPOINT.MEMBRESELLER, payload)
+        await instance.post(ENDPOINT.API_MEMBRER_SELLER, payload)
         
         // 토큰 리프레시
         const authupdate = await this.memberaccesstoken();
@@ -236,7 +241,7 @@ const api = {
      * 회원가입
      */
     memberjoin: async function (payload): Promise<void> { 
-        await instance.post(ENDPOINT.MEMBERJOIN, { ...payload }).then((response) => { 
+        await instance.post(ENDPOINT.API_AUTH_JOIN, { ...payload }).then((response) => { 
             const { code } = response.data;
             if (code == '0000') {
                 return 'login';
@@ -264,7 +269,7 @@ const api = {
      * user token 발행, 토큰저장
      */
      loginccesstoken: async function (payload:Object): Promise<void> { 
-        await instance.post(ENDPOINT.MEMEBERLOGIN, { ...payload }).then((response) => { 
+        await instance.post(ENDPOINT.API_AUTH_LOGIN, { ...payload }).then((response) => { 
             const { code, data } = response.data;
             if (code == "0000") { 
                 this._save_token(data);
@@ -289,7 +294,7 @@ const api = {
      */
     memberinfo: async function ():Promise<string> {
         let resultpath:string;
-        await instance.get(ENDPOINT.MEMEBERINFO).then((result) => { 
+        await instance.get(ENDPOINT.API_MEMEBER).then((result) => { 
             const { data, message } = result.data;
             sessionStorage.setItem('user', JSON.stringify(data))
             sessionStorage.setItem('islogin', "true")
@@ -300,7 +305,7 @@ const api = {
                 resultpath = 'login';
             }
         })
-        return resultpath
+        return resultpath;
     }, 
 
     /**
@@ -308,7 +313,7 @@ const api = {
      */
     memberaccesstoken: async function ():Promise<string> { 
         const refresh_token: string = sessionStorage.getItem('refresh_token')
-        await instance.get(`${ENDPOINT.MEMEBERREFRESH}/${refresh_token}`).then((response) => { 
+        await instance.get(`${ENDPOINT.API_AUTH_REFRESH}/${refresh_token}`).then((response) => { 
             const { code, data } = response.data;
             if (code == "0000") { 
                 // 토큰저장

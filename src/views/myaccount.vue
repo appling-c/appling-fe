@@ -1,5 +1,5 @@
 <template>
-     <the-admin-header/>
+     <TheAdminHeader/>
         <div id="hs-modal-recover-account" class="hs-overlay w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto" :class="currentpopup">
         <div class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto">
             <div class="bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
@@ -303,7 +303,7 @@
 
 <script>
 import api from '../plugins/api';
-import TheAdminHeader from "../components/admin/adminHeader.vue"
+import TheAdminHeader from "../components/admin/TheAdminHeader.vue"
 import {mapActions} from 'vuex'
 
 export default {    
