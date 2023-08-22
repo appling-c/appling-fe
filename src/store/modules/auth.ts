@@ -1,18 +1,10 @@
 // import shop from '../../api/shop'
 // import nested from './nested'
 import api from '@/plugins/api'
+import userInfoInterface from '../../types/auth';
+
 const state = () => ({
-  
-  userInfoInterface : {
-        created_at: String, 
-        email : String, 
-        member_id : String,   
-        modified_at : Number, 
-        name : Number, 
-        nickname : String,
-        role : String, 
-        status : String, 
-    }
+  userInfoInterface : {} as userInfoInterface
 })
 
 // getters

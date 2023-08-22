@@ -2,31 +2,14 @@
 // import nested from './nested'
 import api from '@/plugins/api'
 import ProductService from '../../services/ProductService';
+import productSearchInterface from '../../types/auth';
 // initial state
 // shape: [{ id, quantity }]
 const state = () => ({
   isShowSpinner : false,
   items: [],
   checkoutStatus: null, 
-  //productSearchItem : Object,
-  productSearchItem : {
-    category_id: "", 
-    seller_id : "", 
-    keyword : "",   
-    page : 0, 
-    size : 100, 
-    search : "",    // 검색어
-    status : "",    // 상품상태(노출, 미노출)
-}
-//   productSearchInterface : {
-//     category_id: String, 
-//     seller_id : String, 
-//     keyword : String,   
-//     page : Number, 
-//     size : Number, 
-//     search : String,    // 검색어
-//     status : String,    // 상품상태(노출, 미노출)
-// }
+  productSearchItem: {} as productSearchInterface
 })
 
 // getters
