@@ -1,13 +1,13 @@
 <template>
-  <TheCommerceHeader/>
+  <TheCommerceHeader />
   <router-view></router-view>
 </template>
 
 <script>
-import TheCommerceHeader from '../components/commerce/common/TheCommerceHeader.vue';
+import TheCommerceHeader from "../components/commerce/common/TheCommerceHeader.vue";
 export default {
   components: {
-    TheCommerceHeader
-  }
-}
+    TheCommerceHeader,
+  },
+};
 </script>

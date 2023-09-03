@@ -1,5 +1,3 @@
 <template>
-    <div>
-        waybill
-    </div>
+  <div>waybill</div>
 </template>
