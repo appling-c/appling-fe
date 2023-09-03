@@ -1,30 +1,14 @@
-<script>
+<script lang="ts">
 import api from '../../plugins/api'
 import common from '../../plugins/common'
 import {mapActions} from 'vuex'
 import ProductService from "@/services/ProductService"
+import productDetailInterface from '../../types/auth';
 
 export default {
     data(){
         return{
-          id : 0, 
-          main_title: "", 
-          main_explanation: "", 
-          description: "", 
-          product_main_explanation : "", 
-          product_sub_explanation : "", 
-          purchase_inquiry : "", 
-          price: "", 
-          producer: "", 
-          main_image : "",
-          origin_price : "", 
-          image1 : "", 
-          image2 : "", 
-          image3 :"", 
-          origin : "", 
-          seller : null, 
-          created_at : "", 
-          modified_at : ""
+          productDetailItem: {} as productDetailInterface
         }
     },
     methods:{
@@ -40,26 +24,8 @@ export default {
         this.updateSpinnerStatus(true);
         await ProductService.getproductlistbyid(id).then((response)=> {
             if(response.data.code == '0000'){
-                
-                const userdata = response.data.data;
-                this.created_at = userdata.created_at;
-                this.modified_at = userdata.modified_at;
-                this.image1 = userdata.image1;
-                this.image2 = userdata.image2;
-                this.image3 = userdata.image3;
-                this.main_title = userdata.main_title;
-                this.main_explanation = userdata.main_explanation;
-                this.product_main_explanation = userdata.product_main_explanation;
-                this.product_sub_explanation = userdata.product_sub_explanation;
-                this.origin_price = userdata.origin_price;
-                this.price = userdata.price;
-                this.purchase_inquiry = userdata.purchase_inquiry;
-                this.main_image = userdata.main_image;
-                this.origin = userdata.origin;
-                this.producer = userdata.producer;
-                this.category = userdata.category.name;
-                this.seller = userdata.seller;
-
+              const userdata = response.data.data;
+                this.productDetailItem = { ...userdata };
                 this.seller_id = userdata.seller.seller_id;
 
                 ProductService.getproductlistbysellerid(this.seller_id).then((response)=> {
@@ -100,25 +66,25 @@ export default {
 
               <ul class="text-xs text-gray-500">
                 <li class="inline-block relative pr-6 last:pr-0 last-of-type:before:hidden before:absolute before:top-1/2 before:right-2 before:-translate-y-1/2 before:w-1 before:h-1 before:bg-gray-300 before:rounded-full dark:text-gray-400 dark:before:bg-gray-600">
-                  {{created_at}}
+                  {{productDetailItem.created_at}}
                 </li>
                 <li class="inline-block relative pr-6 last:pr-0 last-of-type:before:hidden before:absolute before:top-1/2 before:right-2 before:-translate-y-1/2 before:w-1 before:h-1 before:bg-gray-300 before:rounded-full dark:text-gray-400 dark:before:bg-gray-600">
-                  {{modified_at}} (수정됨)
+                  {{productDetailItem.modified_at}} (수정됨)
                 </li>
               </ul>
           <div class="text-center p-4 sm:px-7">
-            <h2 v-html="main_explanation" class="text-2xl font-semibold dark:text-white">
+            <h2 v-html="productDetailItem.main_explanation" class="text-2xl font-semibold dark:text-white">
             </h2>
             <h5 class="py-10 mx-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-3xl dark:text-white">
               애플링 특가
               <span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
-                {{won_filter(price)}}원</span>에 구매해보세요!
+                {{won_filter(productDetailItem.price)}}원</span>에 구매해보세요!
             </h5>
            </div>
 
            <figure>
               <img class="w-full object-cover rounded-xl" 
-              :src="main_image" :alt="main_image">
+              :src="productDetailItem.main_image" :alt="productDetailItem.main_image">
               <figcaption class="mt-3 text-sm text-center text-gray-500">
                 A woman sitting at a table.
               </figcaption>
@@ -136,14 +102,14 @@ export default {
           <div class="text-center">
             <div class="grid lg:grid-cols-2 gap-3">
               <div class="grid grid-cols-2 lg:grid-cols-1 gap-3">
-                <figure v-if="image1 !== ''" class="relative w-full h-60">
+                <figure v-if="productDetailItem.image1 !== ''" class="relative w-full h-60">
                   <img class="w-full h-full absolute top-0 left-0 object-cover rounded-xl" :src="image1" alt="Image Description">
                 </figure>
-                <figure v-if="image2 !== ''"  class="relative w-full h-60">
+                <figure v-if="productDetailItem.image2 !== ''"  class="relative w-full h-60">
                   <img class="w-full h-full absolute top-0 left-0 object-cover rounded-xl" :src="image2" alt="Image Description">
                 </figure>
               </div>
-              <figure v-if="image3 !== ''"  class="relative w-full h-72 sm:h-96 lg:h-full">
+              <figure v-if="productDetailItem.image3 !== ''"  class="relative w-full h-72 sm:h-96 lg:h-full">
                 <img class="w-full h-full absolute top-0 left-0 object-cover rounded-xl" :src="image3" alt="Image Description">
               </figure>
             </div>
@@ -156,12 +122,12 @@ export default {
 
           <div class="space-y-3">
             <h3 class="text-2xl font-semibold dark:text-white">보관방법 및 취급방법</h3>
-            <p class="text-lg text-gray-800 dark:text-gray-200" v-html="product_sub_explanation"></p>
+            <p class="text-lg text-gray-800 dark:text-gray-200" v-html="productDetailItem.product_sub_explanation"></p>
           </div>
 
           <div class="space-y-3">
             <h3 class="text-2xl font-semibold dark:text-white">소비자 안전을 위한 주의사항</h3>
-            <p class="text-lg text-gray-800 dark:text-gray-200" v-html="purchase_inquiry"></p>
+            <p class="text-lg text-gray-800 dark:text-gray-200" v-html="productDetailItem.purchase_inquiry"></p>
           </div>
 
           <!-- Icon Blocks -->
@@ -184,7 +150,7 @@ export default {
                         원산지
                         </h3>
                         <p class="mt-1 text-gray-600 dark:text-gray-400">
-                        {{origin}}
+                        {{productDetailItem.origin}}
                         </p>
                     </div>
                     </div>
@@ -202,7 +168,7 @@ export default {
                         상품 분류
                         </h3>
                         <p class="mt-1 text-gray-600 dark:text-gray-400">
-                        {{category}}
+                        {{productDetailItem.category}}
                         </p>
                     </div>
                     </div>
@@ -221,7 +187,7 @@ export default {
                         생산자(수입자)
                         </h3>
                         <p class="mt-1 text-gray-600 dark:text-gray-400">
-                        {{producer}}
+                        {{productDetailItem.producer}}
                         </p>
                     </div>
                     </div>
@@ -304,10 +270,10 @@ export default {
 
           <a class="group grow block" >
             <h5 class="group-hover:text-gray-600 text-sm font-semibold text-gray-800 dark:group-hover:text-gray-400 dark:text-gray-200">
-               {{seller?.company}}
+               {{productDetailItem.seller?.company}}
             </h5>
             <p class="text-sm text-gray-500">
-              {{seller?.address}}
+              {{productDetailItem.seller?.address}}
             </p>
           </a>
 
@@ -327,7 +293,7 @@ export default {
 
         <div class="space-y-6">
           <p class="text-xl font-extrabold leading-none tracking-tight text-gray-900 md:text-xl lg:text-xl dark:text-white">
-              {{seller?.company}}에서 판매중인 상품 모음
+              {{productDetailItem.seller?.company}}에서 판매중인 상품 모음
             </p>
           <!-- Media -->
           <a class="group flex items-center gap-x-6"  >

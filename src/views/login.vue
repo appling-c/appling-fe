@@ -6,10 +6,7 @@ import {mapActions} from 'vuex'
 export default {
   data() { 
     return {
-      user : {
-        email : "", 
-        password : ""
-      } as MemberLogin,
+      user : {} as MemberLogin,
     }
   }, 
   methods: {

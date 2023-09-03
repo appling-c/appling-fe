@@ -5,28 +5,25 @@ import {Token, MemberLogin} from "../types/auth";
 const ENDPOINT = {
     KAKAOLOGIN_AUTH: "/api/oauth/kakao?code=", 
     KAKAOLOGIN_AUTH_KAKAO_TOKEN: "/api/oauth/kakao/login?access_token=", 
-    
     API_AUTH_LOGIN: "/api/auth/login", 
     API_AUTH_REFRESH: "/api/auth/refresh", 
     API_AUTH_JOIN: "/api/auth/join", 
-    
-    API_MEMEBER: "/api/member", 
-    API_MEMBRER_SELLER : "/api/member/seller", 
-    API_MEMBER_RECIPIENT : "/api/member/recipient",
-    API_MEMBER_SELLER_INTRODUCE : "/api/member/seller/introduce",
-    
-    API_SELLER_PRODUCT : "/api/seller/product", 
-    
-    API_PRODUCT: "/api/product", 
-    API_PRODUCT_CATEOGORY : "/api/product/category", 
-    API_PRODUCT_COUNT : "/api/product/cnt", 
-    
-    API_COMMON_HTML: "/api/common/html",
-    API_COMMON_IMAGE  : "/api/common/image", 
-    
+    API_MEMEBER: "/api/member",     
 }
 
 class UserAthendicateService {
+    /**
+     * 회원정보수정
+     */
+     public async updatememberinfo(payload:Object): Promise<void> { 
+        await instance.patch(ENDPOINT.API_MEMEBER, { ...payload }).then((response) => { 
+            return response;
+        })
+     }
+    
+     /**
+     * 로그아웃
+     */
     logout (): void {
         sessionStorage.removeItem('access_token')
         sessionStorage.removeItem('refresh_token');
@@ -140,6 +137,8 @@ class UserAthendicateService {
      * 사용자 정보 가져오기
      */
     public async memberlogin(payload: MemberLogin): Promise<string> { 
+        
+        
         // 액세스 토큰 받기
         await this.loginccesstoken(payload)
 

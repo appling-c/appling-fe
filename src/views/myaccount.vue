@@ -306,6 +306,7 @@ import api from '../plugins/api';
 import TheAdminHeader from "../components/admin/TheAdminHeader.vue"
 import {mapActions} from 'vuex'
 import MemberService from "@/services/MemberService"
+import UserAthendicateService from '@/services/UserAthendicateService';
 export default {    
     components: {
         TheAdminHeader
@@ -392,12 +393,14 @@ export default {
                 nickname : this.nickname
             }
             this.updateSpinnerStatus(true);
-            
+
+            // 수령인 정보 업데이트
             if(this.recipient.name !== ""){
                 MemberService.updatedeliveryinfo({name : this.recipient.name, address : this.recipient.address, tel : this.recipient.tel})
             }
-            
-            api.updatememeberinfo(payload).then(response => { 
+
+            // 회원 정보 업데이트
+            UserAthendicateService.updatememberinfo(payload).then(response => { 
                 this.updateSpinnerStatus(false);
                 alert(response?.data.data.message)
                 return this.$router.push("/commerce")

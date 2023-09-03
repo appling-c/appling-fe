@@ -1,160 +1,198 @@
 <template>
  <!-- Blog Article -->
-<div class="max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto">
-  <div class="grid lg:grid-cols-3 gap-y-8 lg:gap-y-0 lg:gap-x-6 lg:gap-x-12">
-    <!-- Content -->
-    <div class="lg:col-span-2">
-      <div class="py-8 lg:pr-4 lg:pr-8">
-        <div class="space-y-5 lg:space-y-8">
-          <a class="inline-flex items-center gap-x-1.5 text-sm text-gray-600 decoration-2 hover:underline dark:text-blue-400" href="#">
-            <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-            </svg>
-            Back to Blog
-          </a>
-
-          <h2 class="text-3xl font-bold lg:text-4xl lg:text-5xl dark:text-white">Announcing a free plan for small teams</h2>
-<!-- Table Section -->
+ <!-- Features -->
 <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-  <!-- Card -->
-  <div class="flex flex-col">
-      <div class="flex flex-col">
-  <div class="-m-1.5 overflow-x-auto">
-    <div class="p-1.5 min-w-full inline-block align-middle">
-      <div class="overflow-hidden">
-        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-          <caption class="py-2 text-left text-sm text-gray-600 dark:text-gray-500">List of users</caption>
-          <thead>
-            <tr>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Age</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Address</th>
-              <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Action</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-            <tr>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">John Brown</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">45</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">New York No. 1 Lake Park</td>
-              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <a class="text-blue-500 hover:text-blue-700" href="#">Delete</a>
-              </td>
-            </tr>
+  <!-- Grid -->
+  <div class="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
+    <div>
+      <table class="rounded-xl">
+        <caption>Statement Summary</caption>
+        <thead>
+          <tr>
+            <th scope="col">Account</th>
+            <th scope="col">Due Date</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Period</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Account">Visa3412</td>
+            <td data-label="Due Date">평창 시얼이네 농장 유기농 사과 10pcs</td>
+            <td data-label="Amount">
+              
+            </td>
+            <td data-label="Period">$1,190</td>
+          </tr>
+          <tr>
+            <td scope="row" data-label="Account">Visa - 6076</td>
+            <td data-label="Due Date">03/01/2016</td>
+            <td data-label="Amount">$2,443</td>
+            <td data-label="Period">02/01/2016 - 02/29/2016</td>
+          </tr>
+          <tr>
+            <td scope="row" data-label="Account">Corporate AMEX</td>
+            <td data-label="Due Date">03/01/2016</td>
+            <td data-label="Amount">$1,181</td>
+            <td data-label="Period">02/01/2016 - 02/29/2016</td>
+          </tr>
+          <tr>
+            <td scope="row" data-label="Acount">Visa - 3412</td>
+            <td data-label="Due Date">02/01/2016</td>
+            <td data-label="Amount">$842</td>
+            <td data-label="Period">01/01/2016 - 01/31/2016</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- End Col -->
 
-            <tr>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">Jim Green</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">27</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">London No. 1 Lake Park</td>
-              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <a class="text-blue-500 hover:text-blue-700" href="#">Delete</a>
-              </td>
-            </tr>
+    <div class="mt-5 sm:mt-10 lg:mt-0">
+      <div class="space-y-6 sm:space-y-8">
+        <!-- Title -->
+        <div class="space-y-2 md:space-y-4">
+          <h2 class="font-bold text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
+            Summary
+          </h2>
+          <p class="text-gray-500">
+            Besides working with start-up enterprises as a partner for digitalization, we have built enterprise products for common pain points that we have encountered in various products and projects.
+          </p>
+        </div>
+        <!-- End Title -->
 
-            <tr>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">Joe Black</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">31</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">Sidney No. 1 Lake Park</td>
-              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <a class="text-blue-500 hover:text-blue-700" href="#">Delete</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <!-- List -->
+        <ul role="list" class="space-y-2 sm:space-y-4">
+          <li class="flex space-x-3">
+            <!-- Solid Check -->
+            <svg class="flex-shrink-0 h-6 w-6 text-blue-600 dark:text-blue-500" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.1965 7.85999C15.1965 3.71785 11.8387 0.359985 7.69653 0.359985C3.5544 0.359985 0.196533 3.71785 0.196533 7.85999C0.196533 12.0021 3.5544 15.36 7.69653 15.36C11.8387 15.36 15.1965 12.0021 15.1965 7.85999Z" fill="currentColor" fill-opacity="0.1"/>
+              <path d="M10.9295 4.88618C11.1083 4.67577 11.4238 4.65019 11.6343 4.82904C11.8446 5.00788 11.8702 5.32343 11.6914 5.53383L7.44139 10.5338C7.25974 10.7475 6.93787 10.77 6.72825 10.5837L4.47825 8.5837C4.27186 8.40024 4.25327 8.0842 4.43673 7.87781C4.62019 7.67142 4.93622 7.65283 5.14261 7.83629L7.01053 9.49669L10.9295 4.88618Z" fill="currentColor"/>
+            </svg>
+            <!-- End Solid Check -->
+
+            <span class="text-sm sm:text-base text-gray-500">
+              <span class="font-bold">Easy & fast</span> designing
+            </span>
+          </li>
+
+          <li class="flex space-x-3">
+            <!-- Solid Check -->
+            <svg class="flex-shrink-0 h-6 w-6 text-blue-600 dark:text-blue-500" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.1965 7.85999C15.1965 3.71785 11.8387 0.359985 7.69653 0.359985C3.5544 0.359985 0.196533 3.71785 0.196533 7.85999C0.196533 12.0021 3.5544 15.36 7.69653 15.36C11.8387 15.36 15.1965 12.0021 15.1965 7.85999Z" fill="currentColor" fill-opacity="0.1"/>
+              <path d="M10.9295 4.88618C11.1083 4.67577 11.4238 4.65019 11.6343 4.82904C11.8446 5.00788 11.8702 5.32343 11.6914 5.53383L7.44139 10.5338C7.25974 10.7475 6.93787 10.77 6.72825 10.5837L4.47825 8.5837C4.27186 8.40024 4.25327 8.0842 4.43673 7.87781C4.62019 7.67142 4.93622 7.65283 5.14261 7.83629L7.01053 9.49669L10.9295 4.88618Z" fill="currentColor"/>
+            </svg>
+            <!-- End Solid Check -->
+
+            <span class="text-sm sm:text-base text-gray-500">
+              Powerful <span class="font-bold">features</span>
+            </span>
+          </li>
+
+          <li class="flex space-x-3">
+            <!-- Solid Check -->
+            <svg class="flex-shrink-0 h-6 w-6 text-blue-600 dark:text-blue-500" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.1965 7.85999C15.1965 3.71785 11.8387 0.359985 7.69653 0.359985C3.5544 0.359985 0.196533 3.71785 0.196533 7.85999C0.196533 12.0021 3.5544 15.36 7.69653 15.36C11.8387 15.36 15.1965 12.0021 15.1965 7.85999Z" fill="currentColor" fill-opacity="0.1"/>
+              <path d="M10.9295 4.88618C11.1083 4.67577 11.4238 4.65019 11.6343 4.82904C11.8446 5.00788 11.8702 5.32343 11.6914 5.53383L7.44139 10.5338C7.25974 10.7475 6.93787 10.77 6.72825 10.5837L4.47825 8.5837C4.27186 8.40024 4.25327 8.0842 4.43673 7.87781C4.62019 7.67142 4.93622 7.65283 5.14261 7.83629L7.01053 9.49669L10.9295 4.88618Z" fill="currentColor"/>
+            </svg>
+            <!-- End Solid Check -->
+
+            <span class="text-sm sm:text-base text-gray-500">
+              User Experience Design
+            </span>
+          </li>
+        </ul>
+        <!-- End List -->
       </div>
     </div>
+    <!-- End Col -->
   </div>
-</div>
-    
-  </div>
-  <!-- End Card -->
-</div>
-<!-- End Table Section -->
-          
-        </div>
-      </div>
-    </div>
-    <!-- End Content -->
-
-    <!-- Sidebar -->
-    <div class="lg:col-span-1 lg:w-full lg:h-full lg:bg-gradient-to-r lg:from-gray-50 lg:via-transparent lg:to-transparent dark:from-slate-800">
-      <div class="sticky top-0 left-0 py-8 lg:pl-4 lg:pl-8">
-        <!-- Avatar Media -->
-        <div class="group flex items-center gap-x-3 border-b border-gray-200 pb-8 mb-8 dark:border-gray-700">
-          <a class="block flex-shrink-0" href="#">
-            <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1669837401587-f9a4cfe3126e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80" alt="Image Description">
-          </a>
-
-          <a class="group grow block" href="">
-            <h5 class="group-hover:text-gray-600 text-sm font-semibold text-gray-800 dark:group-hover:text-gray-400 dark:text-gray-200">
-              Leyla Ludic
-            </h5>
-            <p class="text-sm text-gray-500">
-              UI/UX enthusiast
-            </p>
-          </a>
-
-          <div class="grow">
-            <div class="flex justify-end">
-              <button type="button" class="py-1.5 px-2.5 inline-flex justify-center items-center gap-x-1.5 rounded-full border border-transparent font-semibold bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 text-xs">
-                <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                  <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
-                </svg>
-                Follow
-              </button>
-            </div>
-          </div>
-        </div>
-        <!-- End Avatar Media -->
-
-        <div class="space-y-6">
-          <!-- Media -->
-          <a class="group flex items-center gap-x-6" href="#">
-            <div class="grow">
-              <span class="text-sm font-bold text-gray-800 group-hover:text-blue-600 dark:text-gray-200 dark:group-hover:text-blue-500">
-                5 Reasons to Not start a UX Designer Career in 2022/2023
-              </span>
-            </div>
-
-            <div class="flex-shrink-0 relative rounded-lg overflow-hidden w-20 h-20">
-              <img class="w-full h-full absolute top-0 left-0 object-cover rounded-lg" src="https://images.unsplash.com/photo-1567016526105-22da7c13161a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80" alt="Image Description">
-            </div>
-          </a>
-          <!-- End Media -->
-
-          <!-- Media -->
-          <a class="group flex items-center gap-x-6" href="#">
-            <div class="grow">
-              <span class="text-sm font-bold text-gray-800 group-hover:text-blue-600 dark:text-gray-200 dark:group-hover:text-blue-500">
-                If your UX Portfolio has this 20% Well Done, it Will Give You an 80% Result
-              </span>
-            </div>
-
-            <div class="flex-shrink-0 relative rounded-lg overflow-hidden w-20 h-20">
-              <img class="w-full h-full absolute top-0 left-0 object-cover rounded-lg" src="https://images.unsplash.com/photo-1542125387-c71274d94f0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80" alt="Image Description">
-            </div>
-          </a>
-          <!-- End Media -->
-
-          <!-- Media -->
-          <a class="group flex items-center gap-x-6" href="#">
-            <div class="grow">
-              <span class="text-sm font-bold text-gray-800 group-hover:text-blue-600 dark:text-gray-200 dark:group-hover:text-blue-500">
-                7 Principles of Icon Design
-              </span>
-            </div>
-
-            <div class="flex-shrink-0 relative rounded-lg overflow-hidden w-20 h-20">
-              <img class="w-full h-full absolute top-0 left-0 object-cover rounded-lg" src="https://images.unsplash.com/photo-1586232702178-f044c5f4d4b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80" alt="Image Description">
-            </div>
-          </a>
-          <!-- End Media -->
-        </div>
-      </div>
-    </div>
-    <!-- End Sidebar -->
-  </div>
+  <!-- End Grid -->
 </div>
 <!-- End Blog Article -->
 </template>
+
+
+<style scoped>
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+
+</style>

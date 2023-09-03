@@ -1,6 +1,6 @@
 import axios, {AxiosInstance} from 'axios';
 import api from './api';
-import UserAthendicateService from "@/services/UserAthendicateService"
+import UserAthendicateService from '@/services/UserAthendicateService';
 
 const instance: AxiosInstance = axios.create({
   headers: {
