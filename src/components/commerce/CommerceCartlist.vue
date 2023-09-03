@@ -11,35 +11,51 @@
           </caption>
           <thead>
             <tr>
-              <th scope="col">Account</th>
-              <th scope="col">Due Date</th>
-              <th scope="col">Amount</th>
-              <th scope="col">Period</th>
+              <th scope="col">상품명</th>
+              <th scope="col">수량</th>
+              <th scope="col">가격</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td data-label="Account">Visa3412</td>
               <td data-label="Due Date">평창 시얼이네 농장 유기농 사과 10pcs</td>
-              <td data-label="Amount"></td>
+              <td data-label="Account">
+                <select
+                  class="
+                    py-3
+                    px-4
+                    pr-9
+                    block
+                    w-full
+                    border-gray-200
+                    rounded-md
+                    text-sm
+                    focus:border-blue-500 focus:ring-blue-500
+                    dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
+                    sm:p-4
+                  "
+                >
+                  <option selected>수량</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                </select>
+              </td>
               <td data-label="Period">$1,190</td>
             </tr>
             <tr>
               <td scope="row" data-label="Account">Visa - 6076</td>
               <td data-label="Due Date">03/01/2016</td>
-              <td data-label="Amount">$2,443</td>
               <td data-label="Period">02/01/2016 - 02/29/2016</td>
             </tr>
             <tr>
               <td scope="row" data-label="Account">Corporate AMEX</td>
               <td data-label="Due Date">03/01/2016</td>
-              <td data-label="Amount">$1,181</td>
               <td data-label="Period">02/01/2016 - 02/29/2016</td>
             </tr>
             <tr>
               <td scope="row" data-label="Acount">Visa - 3412</td>
               <td data-label="Due Date">02/01/2016</td>
-              <td data-label="Amount">$842</td>
               <td data-label="Period">01/01/2016 - 01/31/2016</td>
             </tr>
           </tbody>
