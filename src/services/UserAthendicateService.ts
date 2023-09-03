@@ -141,10 +141,10 @@ class UserAthendicateService {
      */
     public async memberlogin(payload: MemberLogin): Promise<string> { 
         // 액세스 토큰 받기
-        await api.loginccesstoken(payload)
+        await this.loginccesstoken(payload)
 
         // 사용자 정보 가져오기(구매자/판매자에 따라 리다이렉팅 페이지가 다름)
-        const resultpath = await api.memberinfo()
+        const resultpath = await this.memberinfo()
         return resultpath
     }
 }

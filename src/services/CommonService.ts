@@ -6,7 +6,7 @@ const ENDPOINT = {
     
     API_COMMON_HTML: "/api/common/html",
     API_COMMON_IMAGE  : "/api/common/image", 
-    
+    API_COMMON_HTML_REGIST : "/api/member/seller/introduce"
 }
 
 class CommonService {
@@ -14,13 +14,20 @@ class CommonService {
      * 농장 소개 html 저장하기
      */
     public async savebrandshophtml(payload: Object) { 
-        return await instance.post(ENDPOINT.API_COMMON_HTML, payload, {
+        let htmlurl = '';
+        await instance.post(ENDPOINT.API_COMMON_HTML, payload, {
             headers:{
                 'Content-Type': 'application/x-www-form-urlencoded'
               }
         }).then((response:AxiosResponse) => { 
-            return response
+            htmlurl = response.data?.data?.url;
+            return htmlurl;
         })
+
+        return instance.post(ENDPOINT.API_COMMON_HTML_REGIST, { "url" : htmlurl })
+            .then((response:AxiosResponse)=> {
+              return response;
+          })
     }
 
     public async callhtmlstring(payload: Object | String) { 
@@ -43,12 +50,7 @@ class CommonService {
             return response
         })
     }
-    
-
-
-
-    
+       
 }
-
 
 export default new CommonService();

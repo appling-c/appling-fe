@@ -13,7 +13,7 @@
           <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M11.2792 1.64001L5.63273 7.28646C5.43747 7.48172 5.43747 7.79831 5.63273 7.99357L11.2792 13.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
           </svg>
-          상품 등록/수정 바로가기
+          상품 관리하기
         </router-link>
 
         <!-- <iframe src="https://appling-s3.s3.ap-northeast-2.amazonaws.com/html/2/20230805/191541_0.html" width="300px" height=200px></iframe> -->
@@ -25,28 +25,7 @@
         <div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
             <!-- Section -->
             <div class="grid sm:grid-cols-12 gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700">
-              <div class="sm:col-span-12">
-                <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                  상품 정보를 입력해주세요.
-                </h2>
-              </div>
-              <!-- End Col -->
-
-              <div class="sm:col-span-3">
-                <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
-                  홈페이지 제목
-                </label>
-              </div>
-              <!-- End Col -->
-
-              <div class="sm:col-span-9">
-                <div class="sm:flex">
-                  <input v-model="title" type="text" class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
-                </div>
-              </div>
-              <!-- End Col -->
-
-
+              
               <div class="sm:col-span-3">
                 <div class="inline-block">
                   <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
@@ -93,7 +72,6 @@ export default defineComponent({
         return {
             editor: null, 
             limit_size: 1000000, 
-            title : ""
         }
     },
   methods:{
@@ -101,10 +79,10 @@ export default defineComponent({
         window.history.back();
       },
       async save() {
-          console.log(this.editor.getHTML())
           const formData = new FormData();
-          //const content = this.editor.getHTML(); // the body of the new file…
-          const content = `<h1><img src="https://appling-s3.s3.ap-northeast-2.amazonaws.com/image/4/20230710/150542_0.jpeg" alt="b3911f649e325b7be6991ae7a67bf876.jpeg" contenteditable="false">햇살을 가득 담은 평창 자연 햇살 농원 입니다.</h1><div contenteditable="false"><hr></div><h4>평창 700 고지에서 무공해 사과를 직접 재배하여 판매합니다.</h4><p><br></p><p>모든 주문은 카카오톡, 문자, 전화로 가능합니다.</p><p>아래의 번호로 문의를 남겨주세요.</p><p>010-1234-1222</p><h1>🚘 농원 둘러보기</h1><h5><strong>✔️ 영상으로 구경하기</strong></h5><p><a href="https://youtu.be/wgelJ8zYmFc?t=219">[평창시그니처5] 봉황마을 캠핑 (feat.평창사과)</a></p><p><br></p><h5><strong>✔️ 사진으로 둘러보기</strong></h5><p><br></p><h1>🚘 이런것들을 판매해요.</h1><h5><strong>✔️ 설 특집, 부사 구경하기</strong></h5><p><br></p><h5><strong>✔️ 9월 중순, 시나노 골드</strong></h5><p><br></p>`
+          let content = this.editor.getHTML(); // the body of the new file…
+          content = `<html><meta charset="utf-8"/>` + content + `</html>`
+          //const content = `<html><h1><img src="https://appling-s3.s3.ap-northeast-2.amazonaws.com/image/4/20230710/150542_0.jpeg" alt="b3911f649e325b7be6991ae7a67bf876.jpeg" contenteditable="false">햇살을 가득 담은 평창 자연 햇살 농원 입니다.</h1><div contenteditable="false"><hr></div><h4>평창 700 고지에서 무공해 사과를 직접 재배하여 판매합니다.</h4><p><br></p><p>모든 주문은 카카오톡, 문자, 전화로 가능합니다.</p><p>아래의 번호로 문의를 남겨주세요.</p><p>010-1234-1222</p><h1>🚘 농원 둘러보기</h1><h5><strong>✔️ 영상으로 구경하기</strong></h5><p><a href="https://youtu.be/wgelJ8zYmFc?t=219">[평창시그니처5] 봉황마을 캠핑 (feat.평창사과)</a></p><p><br></p><h5><strong>✔️ 사진으로 둘러보기</strong></h5><p><br></p><h1>🚘 이런것들을 판매해요.</h1><h5><strong>✔️ 설 특집, 부사 구경하기</strong></h5><p><br></p><h5><strong>✔️ 9월 중순, 시나노 골드</strong></h5><p><br></p></html>`
 
           const blob = new Blob([content], { type: "application/x-www-form-urlencoded" });
           

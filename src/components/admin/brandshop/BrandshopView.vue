@@ -140,25 +140,34 @@
 import Viewer from '@toast-ui/editor/dist/toastui-editor-viewer';
 import TheAdminHeader from "@/components/admin/TheAdminHeader.vue"
 import api from '../../../plugins/api';
+import MemberService from "@/services/MemberService"
+
 export default {
     components: {
       TheAdminHeader
     },
+    data(){
+      return {
+        content : "", 
+        viewer : null
+      }
+    },
     mounted() { 
-        const content = `<h1><img src="https://appling-s3.s3.ap-northeast-2.amazonaws.com/image/4/20230710/150542_0.jpeg" alt="b3911f649e325b7be6991ae7a67bf876.jpeg" contenteditable="false">햇살을 가득 담은 평창 자연 햇살 농원 입니다.</h1><div contenteditable="false"><hr></div><h4>평창 700 고지에서 무공해 사과를 직접 재배하여 판매합니다.</h4><p><br></p><p>모든 주문은 카카오톡, 문자, 전화로 가능합니다.</p><p>아래의 번호로 문의를 남겨주세요.</p><p>010-1234-1222</p><h1>🚘 농원 둘러보기</h1><h5><strong>✔️ 영상으로 구경하기</strong></h5><p><a href="https://youtu.be/wgelJ8zYmFc?t=219">[평창시그니처5] 봉황마을 캠핑 (feat.평창사과)</a></p><p><br></p><h5><strong>✔️ 사진으로 둘러보기</strong></h5><p><br></p><h1>🚘 이런것들을 판매해요.</h1><h5><strong>✔️ 설 특집, 부사 구경하기</strong></h5><p><br></p><h5><strong>✔️ 9월 중순, 시나노 골드</strong></h5><p><br></p>`
+        this.content = `<h1><img src="https://appling-s3.s3.ap-northeast-2.amazonaws.com/image/4/20230710/150542_0.jpeg" alt="b3911f649e325b7be6991ae7a67bf876.jpeg" contenteditable="false">햇살을 가득 담은 평창 자연 햇살 농원 입니다.</h1><div contenteditable="false"><hr></div><h4>평창 700 고지에서 무공해 사과를 직접 재배하여 판매합니다.</h4><p><br></p><p>모든 주문은 카카오톡, 문자, 전화로 가능합니다.</p><p>아래의 번호로 문의를 남겨주세요.</p><p>010-1234-1222</p><h1>🚘 농원 둘러보기</h1><h5><strong>✔️ 영상으로 구경하기</strong></h5><p><a href="https://youtu.be/wgelJ8zYmFc?t=219">[평창시그니처5] 봉황마을 캠핑 (feat.평창사과)</a></p><p><br></p><h5><strong>✔️ 사진으로 둘러보기</strong></h5><p><br></p><h1>🚘 이런것들을 판매해요.</h1><h5><strong>✔️ 설 특집, 부사 구경하기</strong></h5><p><br></p><h5><strong>✔️ 9월 중순, 시나노 골드</strong></h5><p><br></p>`
         const id = this.$router.param;
-        new Viewer({
-            el: document.querySelector('#viewer'),
-            initialValue : content
-        });
-        console.log('111')
+        
+        //console.log('111')
         this.readhtmlfile();
 
     }, 
     methods: {
       async readhtmlfile() {
           await MemberService.getsellerintroduce().then(response=> {
-            console.log(response)
+            this.content = response.data;
+            this.viewer = new Viewer({
+              el: document.querySelector('#viewer'),
+              initialValue : this.content
+            });
           })
         }
     }

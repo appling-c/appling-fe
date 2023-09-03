@@ -1,5 +1,6 @@
 import axios, {AxiosInstance} from 'axios';
 import api from './api';
+import UserAthendicateService from "@/services/UserAthendicateService"
 
 const instance: AxiosInstance = axios.create({
   headers: {
@@ -43,7 +44,7 @@ instance.interceptors.response.use(
       }
 
       // 토큰 재발급 요청
-      return api.memberaccesstoken().then((response)=> {
+      return UserAthendicateService.memberaccesstoken().then((response)=> {
         console.log('토큰 재발급 요청')
         const retry = instance(originconfig)
         return retry
