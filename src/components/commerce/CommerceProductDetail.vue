@@ -8,6 +8,7 @@ export default {
   data() {
     return {
       productDetailItem: {} as productDetailInterface,
+      sellerProductList: [],
     };
   },
   methods: {
@@ -27,19 +28,25 @@ export default {
           this.productDetailItem = { ...userdata };
           this.seller_id = userdata.seller.seller_id;
 
-          ProductService.getproductlistbysellerid(this.seller_id).then((response) => {
-            console.log(response);
-          });
-
           this.updateSpinnerStatus(false);
         }
       });
+    },
+    movetodetail(id: number) {
+      return this.$router.push(`/commerce/detail/${id}`);
     },
   },
   async mounted() {
     this.id = this.$route.params.id;
     if (this.id > 0) {
       await this.getproductitemlist(this.id);
+      // 판매자가 판매중인 상품 리스트 가져오기
+      ProductService.getproductlistbysellerid(this.seller_id).then((response) => {
+        this.sellerProductList = response.data.data.list;
+        if (this.sellerProductList.length > 0) {
+          this.sellerProductList = this.sellerProductList.slice(0, 5);
+        }
+      });
     }
   },
 };
@@ -63,7 +70,7 @@ export default {
               상품 리스트로 돌아가기
             </a>
 
-            <h2 class="text-3xl font-bold lg:text-4xl lg:text-5xl dark:text-white">{{ main_title }}</h2>
+            <h2 class="text-3xl font-bold lg:text-4xl lg:text-5xl dark:text-white">{{ productDetailItem.main_title }}</h2>
 
             <ul class="text-xs text-gray-500">
               <li
@@ -111,7 +118,7 @@ export default {
             <blockquote class="text-center p-4 sm:px-7">
               <p
                 class="text-xl font-medium text-gray-800 lg:text-2xl lg:leading-normal xl:text-2xl xl:leading-normal dark:text-gray-200"
-                v-html="product_main_explanation"
+                v-html="productDetailItem?.product_main_explanation"
               ></p>
               <p class="mt-5 text-gray-800 dark:text-gray-200">Nicole Grazioso</p>
             </blockquote>
@@ -119,14 +126,14 @@ export default {
             <div class="text-center">
               <div class="grid lg:grid-cols-2 gap-3">
                 <div class="grid grid-cols-2 lg:grid-cols-1 gap-3">
-                  <figure v-if="productDetailItem.image1 !== ''" class="relative w-full h-60">
+                  <figure v-if="productDetailItem?.image1 !== ''" class="relative w-full h-60">
                     <img class="w-full h-full absolute top-0 left-0 object-cover rounded-xl" :src="image1" alt="Image Description" />
                   </figure>
-                  <figure v-if="productDetailItem.image2 !== ''" class="relative w-full h-60">
+                  <figure v-if="productDetailItem?.image2 !== ''" class="relative w-full h-60">
                     <img class="w-full h-full absolute top-0 left-0 object-cover rounded-xl" :src="image2" alt="Image Description" />
                   </figure>
                 </div>
-                <figure v-if="productDetailItem.image3 !== ''" class="relative w-full h-72 sm:h-96 lg:h-full">
+                <figure v-if="productDetailItem?.image3 !== ''" class="relative w-full h-72 sm:h-96 lg:h-full">
                   <img class="w-full h-full absolute top-0 left-0 object-cover rounded-xl" :src="image3" alt="Image Description" />
                 </figure>
               </div>
@@ -196,7 +203,7 @@ export default {
                         <div class="ml-5 sm:ml-8">
                           <h3 class="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200">상품 분류</h3>
                           <p class="mt-1 text-gray-600 dark:text-gray-400">
-                            {{ productDetailItem.category }}
+                            {{ productDetailItem?.category?.name }}
                           </p>
                         </div>
                       </div>
@@ -335,59 +342,6 @@ export default {
                 </a>
               </div>
               <!-- End Badges/Tags -->
-
-              <div class="flex justify-end items-center gap-x-1.5">
-                <div class="block h-3 border-r border-gray-300 mx-1.5 dark:border-gray-600"></div>
-
-                <!-- Button -->
-
-                <div class="hs-dropdown relative inline-flex">
-                  <button
-                    type="button"
-                    id="blog-article-share-dropdown"
-                    class="
-                      hs-dropdown-toggle
-                      py-2
-                      px-3
-                      inline-flex
-                      justify-center
-                      items-center
-                      gap-x-1.5
-                      sm:gap-x-2
-                      rounded-md
-                      font-medium
-                      bg-white
-                      text-gray-700
-                      align-middle
-                      hover:bg-gray-100
-                      focus:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-300
-                      transition-all
-                      text-sm
-                      dark:bg-slate-900
-                      dark:hover:bg-slate-800
-                      dark:focus:bg-slate-800
-                      dark:border-gray-700
-                      dark:text-gray-400
-                      dark:hover:text-white
-                      dark:focus:ring-slate-900
-                      dark:focus:ring-offset-blue-500
-                    "
-                  >
-                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                      <path
-                        fill-rule="evenodd"
-                        d="M3.5 6a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 1 0-1h2A1.5 1.5 0 0 1 14 6.5v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-8A1.5 1.5 0 0 1 3.5 5h2a.5.5 0 0 1 0 1h-2z"
-                      />
-                      <path
-                        fill-rule="evenodd"
-                        d="M7.646.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 1.707V10.5a.5.5 0 0 1-1 0V1.707L5.354 3.854a.5.5 0 1 1-.708-.708l3-3z"
-                      />
-                    </svg>
-                    문의하기
-                  </button>
-                </div>
-                <!-- Button -->
-              </div>
             </div>
           </div>
         </div>
@@ -437,14 +391,7 @@ export default {
                     text-xs
                   "
                 >
-                  <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                    <path
-                      fill-rule="evenodd"
-                      d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"
-                    />
-                  </svg>
-                  Follow
+                  농장 구경가기
                 </button>
               </div>
             </div>
@@ -456,55 +403,15 @@ export default {
               {{ productDetailItem.seller?.company }}에서 판매중인 상품 모음
             </p>
             <!-- Media -->
-            <a class="group flex items-center gap-x-6">
+            <a @click="movetodetail(product.id)" v-for="(product, pIndex) in sellerProductList" :key="pIndex" class="group flex items-center gap-x-6">
               <div class="grow">
                 <span class="text-sm font-bold text-gray-800 group-hover:text-blue-600 dark:text-gray-200 dark:group-hover:text-blue-500">
-                  [시얼이네 농원] 바른곡물 국산 현미 1kg
+                  {{ product?.main_title }}
                 </span>
               </div>
 
               <div class="flex-shrink-0 relative rounded-lg overflow-hidden w-20 h-20">
-                <img
-                  class="w-full h-full absolute top-0 left-0 object-cover rounded-lg"
-                  src="https://images.unsplash.com/photo-1567016526105-22da7c13161a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-                  alt="Image Description"
-                />
-              </div>
-            </a>
-            <!-- End Media -->
-
-            <!-- Media -->
-            <a class="group flex items-center gap-x-6">
-              <div class="grow">
-                <span class="text-sm font-bold text-gray-800 group-hover:text-blue-600 dark:text-gray-200 dark:group-hover:text-blue-500">
-                  유니드마이요거트 유기가공식품 인증 드링크 가당 180g, 3개
-                </span>
-              </div>
-
-              <div class="flex-shrink-0 relative rounded-lg overflow-hidden w-20 h-20">
-                <img
-                  class="w-full h-full absolute top-0 left-0 object-cover rounded-lg"
-                  src="https://images.unsplash.com/photo-1542125387-c71274d94f0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-                  alt="Image Description"
-                />
-              </div>
-            </a>
-            <!-- End Media -->
-
-            <!-- Media -->
-            <a class="group flex items-center gap-x-6">
-              <div class="grow">
-                <span class="text-sm font-bold text-gray-800 group-hover:text-blue-600 dark:text-gray-200 dark:group-hover:text-blue-500">
-                  그라놀로지 시그니처 시리얼
-                </span>
-              </div>
-
-              <div class="flex-shrink-0 relative rounded-lg overflow-hidden w-20 h-20">
-                <img
-                  class="w-full h-full absolute top-0 left-0 object-cover rounded-lg"
-                  src="https://images.unsplash.com/photo-1586232702178-f044c5f4d4b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-                  alt="Image Description"
-                />
+                <img class="w-full h-full absolute top-0 left-0 object-cover rounded-lg" :src="product.main_image" alt="Image Description" />
               </div>
             </a>
             <!-- End Media -->

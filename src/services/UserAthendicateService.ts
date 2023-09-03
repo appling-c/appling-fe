@@ -46,7 +46,7 @@ class UserAthendicateService {
    * 토큰재발급
    */
   public async memberaccesstoken(): Promise<string> {
-    const { refresh_token: string } = store.state.auth.userToken;
+    const { refresh_token } = store.state.auth.userToken;
     await instance.get(`${ENDPOINT.API_AUTH_REFRESH}/${refresh_token}`).then((response) => {
       const { code, data } = response.data;
       if (code == "0000") {
