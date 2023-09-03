@@ -17,10 +17,18 @@
 
             <div id="navbar-collapse-with-animation" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block">
                 <div class="overflow-hidden overflow-y-auto max-h-[75vh] scrollbar-y">
-                <div class="flex flex-col gap-x-0 mt-5 divide-y divide-dashed divide-gray-200 md:flex-row md:items-center md:justify-end md:gap-x-7 md:mt-0 md:pl-7 md:divide-y-0 md:divide-solid dark:divide-gray-700">
+                  <div class="flex flex-col gap-x-0 mt-5 divide-y divide-dashed divide-gray-200 md:flex-row md:items-center md:justify-end md:gap-x-7 md:mt-0 md:pl-7 md:divide-y-0 md:divide-solid dark:divide-gray-700">
+
+                    <div class="hs-dropdown [--strategy:static] md:[--strategy:absolute] [--adaptive:none]  py-3 md:py-6">
+                    <button @click="signup" type="button" class="flex items-center w-full text-gray-800 hover:text-gray-600 font-medium dark:text-gray-200 dark:hover:text-gray-500">
+                        
+                        🛒장바구니
+                    </button>
+                    </div>
+
                     <div class="hs-dropdown [--strategy:static] md:[--strategy:absolute] [--adaptive:none] md:[--trigger:hover] py-3 md:py-6">
-                    <button v-if="islogin" type="button" class="flex items-center w-full text-gray-800 hover:text-gray-600 font-medium dark:text-gray-200 dark:hover:text-gray-500">
-                        내 계정
+                    <button v-if="userInfoInterface.islogin" type="button" class="flex items-center w-full text-gray-800 hover:text-gray-600 font-medium dark:text-gray-200 dark:hover:text-gray-500">
+                        🍎마이애플링
                         <svg class="ml-2 w-2.5 h-2.5 text-gray-600" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                         </svg>
@@ -39,19 +47,19 @@
                             판매자 권한을 요청하고 상품을 판매할 수 있습니다.
                         </div>
                         </router-link>
-
-                        <div class="my-2 border-t border-gray-100 dark:border-gray-800"></div>
-
-                        <router-link to="/admin/dashboard" class="inline-flex gap-x-5 w-full p-4 text-gray-600 rounded-md hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"  >
-                        <svg class="flex-shrink-0 w-5 h-5 mt-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z"/>
-                            <path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"/>
-                        </svg>
-                        <div class="grow">
-                            <span class="block font-semibold mb-1 text-gray-800 dark:text-gray-200">판매자 대시보드 바로가기</span>
-                            Google의 혁신적인 데이터 센터와 세계적인 광섬유 네트워크를 통해 실행되는 고성능 가상 머신으로 확장하세요.
-                        </div>
-                        </router-link>
+                        <template v-if="userInfoInterface.role == 'SELLER'">
+                          <div class="my-2 border-t border-gray-100 dark:border-gray-800"></div>
+                          <router-link to="/admin/dashboard" class="inline-flex gap-x-5 w-full p-4 text-gray-600 rounded-md hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"  >
+                          <svg class="flex-shrink-0 w-5 h-5 mt-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                              <path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z"/>
+                              <path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"/>
+                          </svg>
+                          <div class="grow">
+                              <span class="block font-semibold mb-1 text-gray-800 dark:text-gray-200">판매자 대시보드 바로가기</span>
+                              Google의 혁신적인 데이터 센터와 세계적인 광섬유 네트워크를 통해 실행되는 고성능 가상 머신으로 확장하세요.
+                          </div>
+                          </router-link>
+                        </template>
 
                         <div class="my-2 border-t border-gray-100 dark:border-gray-800"></div>
 
@@ -81,8 +89,8 @@
                     </div>
                     </div>
 
-                    <div class="hs-dropdown [--strategy:static] md:[--strategy:absolute] [--adaptive:none]  py-3 md:py-6">
-                    <button @click="signup" v-if="!islogin" type="button" class="flex items-center w-full text-gray-800 hover:text-gray-600 font-medium dark:text-gray-200 dark:hover:text-gray-500">
+                    <div v-if="!userInfoInterface.islogin" class="hs-dropdown [--strategy:static] md:[--strategy:absolute] [--adaptive:none]  py-3 md:py-6">
+                    <button @click="signup" type="button" class="flex items-center w-full text-gray-800 hover:text-gray-600 font-medium dark:text-gray-200 dark:hover:text-gray-500">
                         <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                         <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
                         </svg>
@@ -90,8 +98,8 @@
                     </button>
                     </div>
 
-                    <div class="hs-dropdown [--strategy:static] md:[--strategy:absolute] [--adaptive:none]  py-3 md:py-6">
-                    <button @click="login" v-if="!islogin" type="button" class="flex items-center w-full text-gray-800 hover:text-gray-600 font-medium dark:text-gray-200 dark:hover:text-gray-500">
+                    <div v-if="!userInfoInterface.islogin"  class="hs-dropdown [--strategy:static] md:[--strategy:absolute] [--adaptive:none]  py-3 md:py-6">
+                    <button @click="login" type="button" class="flex items-center w-full text-gray-800 hover:text-gray-600 font-medium dark:text-gray-200 dark:hover:text-gray-500">
                         <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                         <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
                         </svg>
@@ -106,21 +114,18 @@
     </header>
 </template>
 
-<script>
-import api from '@/plugins/api'
+<script lang="ts">
 import UserAthendicateService from "@/services/UserAthendicateService"
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
-  data(){
-    return {
-      islogin : JSON.parse(sessionStorage.getItem('islogin')),
-      user : JSON.parse(sessionStorage.getItem('user'))
-    }
+  computed :{
+      ...mapGetters('auth', ['userInfoInterface']), 
   },
+  
   methods: {
     logout() { 
       UserAthendicateService.logout();
-      //this.$router.push('/commerce/main')
       this.$router.go(0);
     }, 
     account(){

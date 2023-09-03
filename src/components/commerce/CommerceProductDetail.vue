@@ -1,5 +1,4 @@
 <script lang="ts">
-import api from '../../plugins/api'
 import common from '../../plugins/common'
 import {mapActions} from 'vuex'
 import ProductService from "@/services/ProductService"

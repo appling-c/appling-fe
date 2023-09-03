@@ -392,7 +392,6 @@
 
 
 <script>
-import api from '../../../plugins/api'
 import {mapActions} from 'vuex'
 import ProductService from "@/services/ProductService"
 import CommonService from "@/services/CommonService"

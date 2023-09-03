@@ -64,7 +64,6 @@
 import { defineComponent } from 'vue'
 
 import Editor from '@toast-ui/editor';
-import api from '../../../plugins/api';
 import CommonService from "@/services/CommonService"
 
 export default defineComponent({

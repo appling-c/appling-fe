@@ -139,7 +139,6 @@
 <script>
 import Viewer from '@toast-ui/editor/dist/toastui-editor-viewer';
 import TheAdminHeader from "@/components/admin/TheAdminHeader.vue"
-import api from '../../../plugins/api';
 import MemberService from "@/services/MemberService"
 
 export default {

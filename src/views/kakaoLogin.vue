@@ -4,7 +4,6 @@
 
 
 <script>
-import api from '../plugins/api'
 import {mapActions} from 'vuex'
 import UserAthendicateService from "@/services/UserAthendicateService"
 export default {

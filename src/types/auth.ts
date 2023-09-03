@@ -1,3 +1,8 @@
+export default interface UserType {
+    MEMBER : "MEMBER", 
+    SELLER : "SELLER"
+}
+
 export default interface Token {
     access_token : string;
     refresh_token : string;
@@ -18,6 +23,7 @@ export default interface userInfoInterface {
     nickname : string;
     role : string; 
     status : string; 
+    islogin : Boolean;
 }
 
 export default interface productSearchInterface {

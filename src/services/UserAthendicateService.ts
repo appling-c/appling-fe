@@ -1,7 +1,7 @@
 import instance from "@/plugins/axios"
 import { AxiosHeaders, AxiosResponse } from "axios";
 import {Token, MemberLogin} from "../types/auth";
-
+import store from '../store';
 const ENDPOINT = {
     KAKAOLOGIN_AUTH: "/api/oauth/kakao?code=", 
     KAKAOLOGIN_AUTH_KAKAO_TOKEN: "/api/oauth/kakao/login?access_token=", 
@@ -25,10 +25,7 @@ class UserAthendicateService {
      * 로그아웃
      */
     logout (): void {
-        sessionStorage.removeItem('access_token')
-        sessionStorage.removeItem('refresh_token');
-        sessionStorage.removeItem('user')
-        sessionStorage.removeItem('islogin')
+        store.dispatch('auth/updateUserInfoInterface', {});
     }
     
     /**
@@ -49,7 +46,7 @@ class UserAthendicateService {
      * 토큰재발급
      */
     public async memberaccesstoken():Promise<string> { 
-        const refresh_token: string = sessionStorage.getItem('refresh_token')
+        const {refresh_token : string} = store.state.auth.userToken;
         await instance.get(`${ENDPOINT.API_AUTH_REFRESH}/${refresh_token}`).then((response) => { 
             const { code, data } = response.data;
             if (code == "0000") { 
@@ -108,8 +105,9 @@ class UserAthendicateService {
     _save_token(payload:Token): void{
         // 토큰저장
         const {access_token, refresh_token}: Token = payload;
-        sessionStorage.setItem('access_token', access_token);
-        sessionStorage.setItem('refresh_token', refresh_token);
+        store.dispatch('auth/saveUserToken', {
+            access_token, refresh_token
+        });
     }
 
     /**
@@ -118,9 +116,11 @@ class UserAthendicateService {
     public async memberinfo():Promise<string> {
         let resultpath:string;
         await instance.get(ENDPOINT.API_MEMEBER).then((result) => { 
-            const { data, message } = result.data;
-            sessionStorage.setItem('user', JSON.stringify(data))
-            sessionStorage.setItem('islogin', "true")
+            let { data, message } = result.data;
+            // store 저장 
+            data['islogin'] = true;
+            store.dispatch('auth/updateUserInfoInterface', data);
+
             const role:string = data.role;
             if (message == 'success') {
                 resultpath = role === 'SELLER' ? 'admin/dashboard': 'commerce';
@@ -138,9 +138,8 @@ class UserAthendicateService {
      */
     public async memberlogin(payload: MemberLogin): Promise<string> { 
         
-        
         // 액세스 토큰 받기
-        await this.loginccesstoken(payload)
+        await this.loginccesstoken(payload);
 
         // 사용자 정보 가져오기(구매자/판매자에 따라 리다이렉팅 페이지가 다름)
         const resultpath = await this.memberinfo()

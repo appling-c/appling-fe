@@ -169,7 +169,6 @@
 </template>
 
 <script lang="ts">
-import api from '../../plugins/api'
 import router from '../../plugins/router'
 import {mapActions} from 'vuex'
 import UserAthendicateService from "@/services/UserAthendicateService"

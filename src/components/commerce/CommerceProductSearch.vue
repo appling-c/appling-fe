@@ -1,5 +1,4 @@
 <script>
-import api from '../../plugins/api'
 import {mapActions, mapGetters} from 'vuex'
 
 export default {

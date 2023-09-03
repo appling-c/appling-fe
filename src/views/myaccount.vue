@@ -302,14 +302,16 @@
 </template>
 
 <script>
-import api from '../plugins/api';
 import TheAdminHeader from "../components/admin/TheAdminHeader.vue"
-import {mapActions} from 'vuex'
+import { mapActions, mapGetters} from 'vuex'
 import MemberService from "@/services/MemberService"
 import UserAthendicateService from '@/services/UserAthendicateService';
 export default {    
     components: {
         TheAdminHeader
+    },
+    computed :{
+      ...mapGetters('auth', ['userInfoInterface']), 
     },
     data() { 
         return {
@@ -352,7 +354,7 @@ export default {
             this.passwordcheck = true;
         }, 
         getmemeberinfo() { 
-            const userobj = JSON.parse(sessionStorage.getItem("user"))
+            const userobj = this.userInfoInterface;
             const { email, name, nickname, role, sns_type } = userobj;
             this.email = email;
             this.name = name;

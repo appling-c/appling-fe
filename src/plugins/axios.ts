@@ -1,7 +1,6 @@
 import axios, {AxiosInstance} from 'axios';
-import api from './api';
 import UserAthendicateService from '@/services/UserAthendicateService';
-
+import store from '../store';
 const instance: AxiosInstance = axios.create({
   headers: {
     "Content-Type": "application/json", 
@@ -10,9 +9,9 @@ const instance: AxiosInstance = axios.create({
 
 instance.interceptors.request.use(
   (config) => {
-  
+    
     // 세션스토리지에 저장된 토큰을 헤더에 저장
-    const access_token = sessionStorage.getItem('access_token')
+    const { access_token } = store.state.auth.userToken;
     
     if (access_token) {
       config.headers["Authorization"] = `Bearer ${access_token}`
@@ -31,7 +30,7 @@ instance.interceptors.response.use(
   },
   (error) => {
     const { config, response: { status } } = error;
-    const refresh_token = sessionStorage.getItem('refresh_token')
+    const { refresh_token } = store.state.auth.userToken;
     
     if (status == 403 || status == 401) { 
       // 토큰없음, 토큰만료

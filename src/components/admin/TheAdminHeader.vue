@@ -155,7 +155,6 @@
 </template>
 
 <script setup>
-import api from '../../plugins/api'
 import router from '../../plugins/router'
 import UserAthendicateService from "@/services/UserAthendicateService"
 

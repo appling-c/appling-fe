@@ -1,5 +1,4 @@
 <script>
-import api from '../../plugins/api'
 import TheSearchBar from './common/TheSearchBar.vue'
 export default {
   components: { TheSearchBar },

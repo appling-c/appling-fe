@@ -1,7 +1,3 @@
-<script setup>
-  const islogin = JSON.parse(sessionStorage.getItem('islogin'));
-</script>
-
 <template>
     <header>
       <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">나의 수입 한 눈에 보기👀</h1>
