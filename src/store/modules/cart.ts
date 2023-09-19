@@ -3,6 +3,7 @@
 import api from "@/plugins/api";
 import ProductService from "../../services/ProductService";
 import productSearchInterface from "../../types/auth";
+import productInventory from "../../types/auth";
 // initial state
 // shape: [{ id, quantity }]
 const state = () => ({
@@ -10,6 +11,7 @@ const state = () => ({
   items: [],
   checkoutStatus: null,
   productSearchItem: {} as productSearchInterface,
+  inventory: [],
 });
 
 // getters
@@ -37,6 +39,9 @@ const getters = {
   spinnerStatus: (state) => {
     return state.isShowSpinner;
   },
+  inventory: (state) => {
+    return state.inventory;
+  },
 };
 
 // actions
@@ -57,19 +62,25 @@ const actions = {
   //     }
   //   },
 
-  //   addProductToCart ({ state, commit }, product) {
-  //     commit('setCheckoutStatus', null)
-  //     if (product.inventory > 0) {
-  //       const cartItem = state.items.find(item => item.id === product.id)
-  //       if (!cartItem) {
-  //         commit('pushProductToCart', { id: product.id })
-  //       } else {
-  //         commit('incrementItemQuantity', cartItem)
-  //       }
-  //       // remove 1 item from stock
-  //       commit('products/decrementProductInventory', { id: product.id }, { root: true })
-  //     }
-  //   },
+  addProductToCart({ state, commit }, product) {
+    // commit("setCheckoutStatus", null);
+    console.log(product);
+    let inventory = state.inventory;
+    let cartItem = inventory.findIndex((item) => item.productID === product.productID);
+
+    if (cartItem > -1) {
+      //commit("pushProductToCart", product);
+      inventory[cartItem].count = inventory[cartItem].count * 1 + product.count * 1;
+      inventory[cartItem].price += product.price;
+    } else {
+      inventory.push(product);
+      //commit("incrementItemQuantity", cartItem);
+    }
+
+    commit("updateProductCart", inventory);
+    // remove 1 item from stock
+    //commit("products/decrementProductInventory", { id: product.id }, { root: true });
+  },
 
   gotoSearchResult({ state, commit }, productSearchItem) {
     // 상품 검색 목록 저장
@@ -119,6 +130,9 @@ const mutations = {
   },
   updateSpinnerStatus(state, payload) {
     state.isShowSpinner = payload;
+  },
+  updateProductCart(state, payload) {
+    state.inventory = payload;
   },
 };
 

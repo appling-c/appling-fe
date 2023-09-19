@@ -7,7 +7,7 @@
       <div>
         <table class="rounded-xl">
           <caption>
-            Statement Summary
+            주문 내역
           </caption>
           <thead>
             <tr>
@@ -17,8 +17,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td data-label="Due Date">평창 시얼이네 농장 유기농 사과 10pcs</td>
+            <tr v-for="(invent, index) in inventoryList" :key="index">
+              <td data-label="Due Date">{{ invent.productName }}</td>
               <td data-label="Account">
                 <select
                   class="
@@ -34,6 +34,7 @@
                     dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
                     sm:p-4
                   "
+                  v-model="invent.count"
                 >
                   <option selected>수량</option>
                   <option>1</option>
@@ -41,22 +42,7 @@
                   <option>3</option>
                 </select>
               </td>
-              <td data-label="Period">$1,190</td>
-            </tr>
-            <tr>
-              <td scope="row" data-label="Account">Visa - 6076</td>
-              <td data-label="Due Date">03/01/2016</td>
-              <td data-label="Period">02/01/2016 - 02/29/2016</td>
-            </tr>
-            <tr>
-              <td scope="row" data-label="Account">Corporate AMEX</td>
-              <td data-label="Due Date">03/01/2016</td>
-              <td data-label="Period">02/01/2016 - 02/29/2016</td>
-            </tr>
-            <tr>
-              <td scope="row" data-label="Acount">Visa - 3412</td>
-              <td data-label="Due Date">02/01/2016</td>
-              <td data-label="Period">01/01/2016 - 01/31/2016</td>
+              <td data-label="Period">{{ invent.price }}</td>
             </tr>
           </tbody>
         </table>
@@ -67,11 +53,75 @@
         <div class="space-y-6 sm:space-y-8">
           <!-- Title -->
           <div class="space-y-2 md:space-y-4">
-            <h2 class="font-bold text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">Summary</h2>
-            <p class="text-gray-500">
-              Besides working with start-up enterprises as a partner for digitalization, we have built enterprise products for common pain points that we have
-              encountered in various products and projects.
-            </p>
+            <h2 class="font-bold text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">배송정보 입력하기</h2>
+            <template v-if="!isLogin">
+              <p class="text-gray-500">애플링 회원 가입/로그인 후 주문할 수 있어요.</p>
+              <button
+                type="button"
+                class="
+                  w-full
+                  py-3
+                  px-4
+                  inline-flex
+                  justify-center
+                  items-center
+                  gap-2
+                  rounded-md
+                  border
+                  font-medium
+                  bg-white
+                  text-gray-700
+                  shadow-sm
+                  align-middle
+                  hover:bg-gray-50
+                  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600
+                  transition-all
+                  text-sm
+                  dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800
+                "
+              >
+                로그인
+              </button>
+            </template>
+            <template v-else>
+              <p class="text-gray-500">운송장에 사용할 주문인, 수령인 정보를 선택해주세요.</p>
+
+              <h6>주문자 정보</h6>
+
+              <TheUserAddressForm @update-user-address-form="(data) => (this.orderInfo = data)" />
+
+              <h6>수령인 정보</h6>
+
+              <TheUserAddressForm @update-user-address-form="(data) => (this.deiveryInfo = data)" />
+
+              <button
+                @click="setOrder()"
+                type="button"
+                class="
+                  w-full
+                  py-3
+                  px-4
+                  inline-flex
+                  justify-center
+                  items-center
+                  gap-2
+                  rounded-md
+                  border
+                  font-medium
+                  bg-white
+                  text-gray-700
+                  shadow-sm
+                  align-middle
+                  hover:bg-gray-50
+                  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600
+                  transition-all
+                  text-sm
+                  dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800
+                "
+              >
+                주문하기
+              </button>
+            </template>
           </div>
           <!-- End Title -->
 
@@ -161,6 +211,42 @@
   </div>
   <!-- End Blog Article -->
 </template>
+
+<script lang="ts">
+import { mapGetters } from "vuex";
+import TheUserAddressForm from "./common/TheUserAddressForm.vue";
+
+export default {
+  components: {
+    TheUserAddressForm,
+  },
+  computed: {
+    ...mapGetters("cart", ["inventory"]),
+    ...mapGetters("auth", ["userInfoInterface"]),
+  },
+  data() {
+    return {
+      inventoryList: [],
+      isLogin: false,
+      orderInfo: {},
+      deiveryInfo: {},
+    };
+  },
+  methods: {
+    setOrder() {
+      console.log(this.inventory, this.orderInfo, this.deiveryInfo);
+    },
+  },
+  mounted() {
+    this.inventoryList = this.inventory;
+    if (Object.keys(this.userInfoInterface).length == 0) {
+      this.isLogin = false;
+    } else {
+      this.isLogin = true;
+    }
+  },
+};
+</script>
 
 <style scoped>
 table {

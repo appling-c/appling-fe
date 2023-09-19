@@ -3,16 +3,40 @@ import common from "../../plugins/common";
 import { mapActions } from "vuex";
 import ProductService from "@/services/ProductService";
 import productDetailInterface from "../../types/auth";
-
 export default {
+
   data() {
     return {
       productDetailItem: {} as productDetailInterface,
       sellerProductList: [],
+      countOptionList: [],
+      count: "1",
+      countdirect: "",
     };
   },
   methods: {
     ...mapActions("cart", ["updateSpinnerStatus"]),
+    ...mapActions("cart", ["addProductToCart"]),
+    saveCartList() {
+      if (this.count == "direct" && this.countdirect == "") {
+        return alert("수량을 입력해주세요.");
+      }
+      let count = this.count;
+      if (this.count == "direct") {
+        count = this.countdirect;
+      }
+
+      const addCartItem = {
+        count,
+        productID: this.id,
+        productName: this.productDetailItem.main_title,
+        price: this.productDetailItem.price * count,
+      };
+
+      this.addProductToCart(addCartItem);
+
+      console.log(addCartItem);
+    },
     back() {
       this.$router.push("/commerce/search");
     },
@@ -37,6 +61,13 @@ export default {
     },
   },
   async mounted() {
+    for (var i = 0; i < 10; i++) {
+      this.countOptionList.push({
+        key: i + 1,
+        value: i + 1,
+      });
+    }
+
     this.id = this.$route.params.id;
     if (this.id > 0) {
       await this.getproductitemlist(this.id);
@@ -234,28 +265,6 @@ export default {
                         </div>
                       </div>
                       <!-- End Icon Block -->
-
-                      <!-- Icon Block -->
-                      <div class="flex">
-                        <svg
-                          class="flex-shrink-0 mt-2 h-8 w-8 text-gray-800 dark:text-white"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          viewBox="0 0 16 16"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="m8 2.42-.717-.737c-1.13-1.161-3.243-.777-4.01.72-.35.685-.451 1.707.236 3.062C4.16 6.753 5.52 8.32 8 10.042c2.479-1.723 3.839-3.29 4.491-4.577.687-1.355.587-2.377.236-3.061-.767-1.498-2.88-1.882-4.01-.721L8 2.42Zm-.49 8.5c-10.78-7.44-3-13.155.359-10.063.045.041.089.084.132.129.043-.045.087-.088.132-.129 3.36-3.092 11.137 2.624.357 10.063l.235.468a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419 1.003.288.578.235 1.15.076 1.629-.157.469-.422.867-.588 1.115l-.004.007a.25.25 0 1 1-.416-.278c.168-.252.4-.6.533-1.003.133-.396.163-.824-.049-1.246l-.013-.028c-.24-.48-.38-.758-.448-1.102a3.177 3.177 0 0 1-.052-.45l-.04.08a.25.25 0 1 1-.447-.224l.235-.468ZM6.013 2.06c-.649-.18-1.483.083-1.85.798-.131.258-.245.689-.08 1.335.063.244.414.198.487-.043.21-.697.627-1.447 1.359-1.692.217-.073.304-.337.084-.398Z"
-                          />
-                        </svg>
-                        <div class="ml-5 sm:ml-8">
-                          <h3 class="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200">누누 사랑해</h3>
-                          <p class="mt-1 text-gray-600 dark:text-gray-400">누누야 사랑해 !!!!!</p>
-                        </div>
-                      </div>
-                      <!-- End Icon Block -->
                     </div>
                     <!-- End Col -->
                   </div>
@@ -430,48 +439,7 @@ export default {
         <div class="hs-tooltip inline-block">
           <button
             type="button"
-            class="hs-tooltip-toggle flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
-          >
-            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path
-                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
-              />
-            </svg>
-            담기
-            <span
-              class="
-                hs-tooltip-content
-                hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible
-                opacity-0
-                transition-opacity
-                inline-block
-                absolute
-                invisible
-                z-10
-                py-1
-                px-2
-                bg-gray-900
-                text-xs
-                font-medium
-                text-white
-                rounded-md
-                shadow-sm
-                dark:bg-black
-              "
-              role="tooltip"
-            >
-              장바구니 담기
-            </span>
-          </button>
-        </div>
-        <!-- Button -->
-
-        <div class="block h-3 border-r border-gray-300 mx-3 dark:border-gray-600"></div>
-
-        <!-- Button -->
-        <div class="hs-tooltip inline-block">
-          <button
-            type="button"
+            data-hs-overlay="#hs-modal-signin"
             class="hs-tooltip-toggle flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
           >
             <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -535,4 +503,138 @@ export default {
     </div>
   </div>
   <!-- End Sticky Share Group -->
+
+  <div id="hs-modal-signin" class="hs-overlay hidden w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto">
+    <div
+      class="
+        hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500
+        mt-0
+        opacity-0
+        ease-out
+        transition-all
+        sm:max-w-lg sm:w-full
+        m-3
+        sm:mx-auto
+      "
+    >
+      <div class="bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
+        <div class="p-4 sm:p-7">
+          <div class="text-center">
+            <h2 class="block text-2xl font-bold text-gray-800 dark:text-gray-200">장바구니에 담기</h2>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">수량을 선택해주세요.</p>
+          </div>
+
+          <div class="mt-5">
+            <!-- Form -->
+
+            <div class="grid gap-y-4">
+              <!-- Form Group -->
+              <div>
+                <label for="email" class="block text-sm mb-2 dark:text-white">수량</label>
+                <select
+                  class="
+                    py-3
+                    px-4
+                    pr-9
+                    block
+                    w-full
+                    border-gray-200
+                    rounded-md
+                    text-sm
+                    focus:border-blue-500 focus:ring-blue-500
+                    dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
+                  "
+                  v-model="count"
+                >
+                  <option selected disabled>수량을 선택해주세요.</option>
+                  <option v-for="(opt, index) in countOptionList" :key="index">{{ opt.value }}</option>
+                  <option value="direct">직접입력</option>
+                </select>
+                <div v-if="count == 'direct'" class="relative">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="
+                      py-3
+                      px-4
+                      block
+                      w-full
+                      border-gray-200
+                      rounded-md
+                      text-sm
+                      focus:border-blue-500 focus:ring-blue-500
+                      dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400
+                    "
+                    required
+                    aria-describedby="email-error"
+                    v-model="countdirect"
+                  />
+                  <div class="hidden absolute inset-y-0 right-0 flex items-center pointer-events-none pr-3">
+                    <svg class="h-5 w-5 text-red-500" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                      <path
+                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <p class="hidden text-xs text-red-600 mt-2" id="email-error">Please include a valid email address so we can get back to you</p>
+              </div>
+              <!-- End Form Group -->
+
+              <button
+                class="
+                  py-3
+                  px-4
+                  inline-flex
+                  justify-center
+                  items-center
+                  gap-2
+                  rounded-md
+                  border border-transparent
+                  font-semibold
+                  bg-blue-500
+                  text-white
+                  hover:bg-blue-600
+                  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+                  transition-all
+                  text-sm
+                  dark:focus:ring-offset-gray-800
+                "
+                @click="saveCartList()"
+              >
+                담기
+              </button>
+              <button
+                type="button"
+                class="
+                  py-2.5
+                  px-4
+                  inline-flex
+                  justify-center
+                  items-center
+                  gap-2
+                  rounded-md
+                  border border-transparent
+                  font-semibold
+                  bg-blue-500
+                  text-white
+                  hover:bg-blue-600
+                  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+                  transition-all
+                  text-sm
+                  dark:focus:ring-offset-gray-800
+                "
+                data-hs-overlay="#hs-modal-signin"
+              >
+                Cancel
+              </button>
+            </div>
+
+            <!-- End Form -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
