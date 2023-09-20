@@ -1,11 +1,14 @@
 <script>
 import TheSearchBar from "./common/TheSearchBar.vue";
+import { mapActions, mapGetters } from "vuex";
+
 export default {
   components: { TheSearchBar },
   data() {
     return {
       categorys: [],
       keyword: "",
+      products: [],
     };
   },
   methods: {
@@ -16,8 +19,29 @@ export default {
     gopricing() {
       this.$router.push("/commerce/pricing");
     },
+
+    async gotodetail(id) {
+      // 조회수 증가
+      const payload = {
+        product_id: id,
+      };
+      await this.addProducetViewCount(payload).then(() => {
+        this.$router.push(`/commerce/detail/${id}`);
+      });
+    },
+    ...mapActions("cart", ["getproductlist", "addProducetViewCount", "updateSpinnerStatus"]),
   },
-  mounted() {},
+  mounted() {
+    this.getproductlist().then((response) => {
+      this.updateSpinnerStatus(false);
+      if (response.data.code !== "0000") {
+        return (this.products = []);
+      }
+      const { list } = response?.data.data;
+
+      this.products = list;
+    });
+  },
 };
 </script>
 <template>
@@ -58,7 +82,7 @@ export default {
         <div class="text-center">
           <h1 class="text-4xl sm:text-6xl font-bold text-gray-800 dark:text-gray-200">둘러보기👀</h1>
 
-          <p class="mt-3 text-gray-600 dark:text-gray-400">아래의 키워드를 눌러 상품을 둘러보세요!</p>
+          <p class="mt-3 text-gray-600 dark:text-gray-400">아래의 키워드를 선택하고 상품을 둘러보세요!</p>
 
           <the-search-bar />
         </div>
@@ -70,7 +94,7 @@ export default {
       <!-- Title -->
       <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
         <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">
-          애플링 최고 인기 상품! <br />산지에서 바로 보내는 초신선 농산물 구경하기
+          애플링 최고 인기 상품!<br />산지에서 바로 보내는<br />초신선 농산물을 소개합니다.
         </h2>
         <p class="mt-1 text-gray-600 dark:text-gray-400">
           산지에 바로 주문하는 유통 다이어트로 판매자는 더 높은 가격에,<br />
@@ -82,11 +106,11 @@ export default {
       <!-- Grid -->
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Card -->
-        <a class="group rounded-xl overflow-hidden">
+        <a class="group rounded-xl overflow-hidden" @click="gotodetail(products[0]?.id)">
           <div class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
             <img
               class="w-full h-full absolute top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl"
-              src="/src/assets/apple-title.png"
+              :src="products[0]?.main_image"
               alt="Image Description"
             />
             <span class="absolute top-0 right-0 rounded-tr-xl rounded-bl-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 dark:bg-gray-900">
@@ -96,9 +120,9 @@ export default {
 
           <div class="mt-7">
             <h3 class="text-xl font-semibold text-gray-800 group-hover:text-gray-600 dark:text-gray-200">
-              [자연 햇살 농원] 평창 700 고지에서 직접 재배한 무공해 사과
+              {{ products[0]?.main_title }}
             </h3>
-            <p class="mt-3 text-gray-800 dark:text-gray-200">#평창여행 #평창한우#평창여행 #평창사과 #평창한우</p>
+            <p class="mt-3 text-gray-800 dark:text-gray-200">{{ products[0]?.main_explanation }}</p>
             <p class="mt-5 inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 group-hover:underline font-medium">
               더보기👀
               <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -115,23 +139,23 @@ export default {
         <!-- End Card -->
 
         <!-- Card -->
-        <a class="group rounded-xl overflow-hidden">
+        <a class="group rounded-xl overflow-hidden" @click="gotodetail(products[1]?.id)">
           <div class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
             <img
               class="w-full h-full absolute top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl"
-              src="/src/assets/potato.png"
+              :src="products[1]?.main_image"
               alt="Image Description"
             />
             <span class="absolute top-0 right-0 rounded-tr-xl rounded-bl-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 dark:bg-gray-900">
-              베이직
+              프리미엄
             </span>
           </div>
 
           <div class="mt-7">
             <h3 class="text-xl font-semibold text-gray-800 group-hover:text-gray-600 dark:text-gray-200">
-              [꿀고구마맛집] 해남 베니하루카 꿀 고구마 밤고구마 호박고구마
+              {{ products[1]?.main_title }}
             </h3>
-            <p class="mt-3 text-gray-800 dark:text-gray-200">농부의 땀과 정성으로 재배 수확한 황토 고구마</p>
+            <p class="mt-3 text-gray-800 dark:text-gray-200">{{ products[1]?.main_explanation }}</p>
             <p class="mt-5 inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 group-hover:underline font-medium">
               더보기👀
               <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -161,10 +185,11 @@ export default {
             transition
             bg-[url('/src/assets/back-darken.png')]
           "
+          href="/signup"
         >
           <div class="flex-auto p-4 md:p-6">
             <h3 class="text-xl text-white/[.9] group-hover:text-white">
-              <span class="font-bold">애플링</span> 서비스에 가입하여 상품을 구매하고, 판매해보세요.
+              <span class="font-bold font-red-400">애플링</span> 가족이 되고 상품 구매, 판매 서비스를 시작하세요!
             </h3>
           </div>
           <div class="pt-0 p-4 md:p-6">
