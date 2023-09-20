@@ -4,7 +4,6 @@ import { mapActions } from "vuex";
 import ProductService from "@/services/ProductService";
 import productDetailInterface from "../../types/auth";
 export default {
-
   data() {
     return {
       productDetailItem: {} as productDetailInterface,
@@ -158,14 +157,15 @@ export default {
               <div class="grid lg:grid-cols-2 gap-3">
                 <div class="grid grid-cols-2 lg:grid-cols-1 gap-3">
                   <figure v-if="productDetailItem?.image1 !== ''" class="relative w-full h-60">
-                    <img class="w-full h-full absolute top-0 left-0 object-cover rounded-xl" :src="image1" alt="Image Description" />
+                    <img class="w-full h-full absolute top-0 left-0 object-cover rounded-xl" :src="productDetailItem?.image1" alt="Image Description" />
                   </figure>
                   <figure v-if="productDetailItem?.image2 !== ''" class="relative w-full h-60">
-                    <img class="w-full h-full absolute top-0 left-0 object-cover rounded-xl" :src="image2" alt="Image Description" />
+                    <img class="w-full h-full absolute top-0 left-0 object-cover rounded-xl" :src="productDetailItem?.image2" alt="Image Description" />
                   </figure>
                 </div>
+                
                 <figure v-if="productDetailItem?.image3 !== ''" class="relative w-full h-72 sm:h-96 lg:h-full">
-                  <img class="w-full h-full absolute top-0 left-0 object-cover rounded-xl" :src="image3" alt="Image Description" />
+                  <img class="w-full h-full absolute top-0 left-0 object-cover rounded-xl" :src="productDetailItem?.image3" alt="Image Description" />
                 </figure>
               </div>
 

@@ -844,7 +844,7 @@ export default {
     async imageonserver(imageFormData) {
       return await CommonService.imageonserver(imageFormData).then((response) => {
         if (response.data.code == "0000") {
-          return response.data.data.image_url;
+          return response.data.data.url;
         } else {
           alert(response.data.message);
           return "";
