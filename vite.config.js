@@ -11,7 +11,7 @@ export default ({ mode }) => {
     build: {
       outDir: "dist",
     },
-    base: process.env.VITE_APP_BASE_URL,
+    //base: process.env.VITE_APP_BASE_URL,
 
     server: {
       proxy: {
