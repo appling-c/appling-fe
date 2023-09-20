@@ -4,7 +4,7 @@ import store from "../store";
 
 //console.log(import.meta.env.VITE_APP_BASE_URL);
 const instance: AxiosInstance = axios.create({
-  //baseURL: import.meta.env.VITE_APP_BASE_URL,
+  baseURL: import.meta.env.VITE_APP_BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
