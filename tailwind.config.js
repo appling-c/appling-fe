@@ -12,7 +12,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        
+        gmarket : ['gmarket'],
       sans: ["'Noto Sans'", ...defaultTheme.fontFamily.sans],
       
       },
