@@ -4,13 +4,15 @@ import path from "path";
 
 export default ({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
-
+  
   return defineConfig({
-    publicDir: 'assets',
-    root: './',
+    publicDir: "assets",
+    root: "./",
     build: {
       outDir: "dist",
     },
+    base: process.env.VITE_APP_BASE_URL,
+
     server: {
       proxy: {
         "/api": { target: "http://3.34.124.71:8000", changeOrigin: true },
