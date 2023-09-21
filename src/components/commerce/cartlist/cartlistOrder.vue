@@ -10,7 +10,7 @@
                   <col />
                   <col width="20%" />
                   <col width="10%" />
-                  <col width="10%" />
+                  <col width="15%" />
                 </colgroup>
 
                 <thead class="bg-gray-50 dark:bg-gray-700">
