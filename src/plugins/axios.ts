@@ -40,6 +40,7 @@ instance.interceptors.response.use(
     } = error;
     const { refresh_token } = store.state.auth.userToken;
 
+
     if (status == 403 || status == 401) {
       // 토큰없음, 토큰만료
       const originconfig = config;

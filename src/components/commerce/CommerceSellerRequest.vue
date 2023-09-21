@@ -642,19 +642,26 @@ export default {
   async mounted() {
     // 등록한 판매자 정보 가져오기
     this.updateSpinnerStatus(true);
-    await MemberService.getsellerinfo().then((response) => {
-      const memberinfo = response.data.data;
-      this.company = memberinfo.company;
-      if (this.company) {
-        this.ismodify = true;
-      }
-      this.tel = memberinfo.tel;
-      this.address = memberinfo.address;
-      this.email = memberinfo.email;
-      this.zonecode = memberinfo?.zonecode;
-      this.address_detail = memberinfo?.address_detail;
+    try {
+      await MemberService.getsellerinfo().then((response) => {
+        console.log(response);
+        const memberinfo = response.data.data;
+        this.company = memberinfo.company;
+        if (this.company) {
+          this.ismodify = true;
+        }
+        this.tel = memberinfo.tel;
+        this.address = memberinfo.address;
+        this.email = memberinfo.email;
+        this.zonecode = memberinfo?.zonecode;
+        this.address_detail = memberinfo?.address_detail;
+        this.updateSpinnerStatus(false);
+      });
+    } catch (e) {
+      alert(e.response.data.detail);
       this.updateSpinnerStatus(false);
-    });
+      return this.$router.go(-1);
+    }
   },
 };
 </script>
