@@ -26,7 +26,7 @@ export default {
       }
 
       const addCartItem = {
-        originPrice : this.productDetailItem.price,
+        originPrice: this.productDetailItem.price,
         count,
         productID: this.id,
         productName: this.productDetailItem.main_title,
