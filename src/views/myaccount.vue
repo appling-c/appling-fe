@@ -513,6 +513,37 @@
                           dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
                         "
                       />
+                      <span
+                        class="
+                          px-4
+                          inline-flex
+                          items-center
+                          min-w-fit
+                          rounded-l-md
+                          border border-r-0 border-gray-200
+                          bg-gray-50
+                          text-sm text-gray-500
+                          dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400
+                        "
+                        >상세주소</span
+                      >
+                      <input
+                        v-model="seller.address_detail"
+                        type="text"
+                        class="
+                          py-2
+                          px-3
+                          pr-11
+                          block
+                          w-full
+                          border-gray-200
+                          shadow-sm
+                          rounded-r-md
+                          text-sm
+                          focus:z-10 focus:border-blue-500 focus:ring-blue-500
+                          dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
+                        "
+                      />
                     </div>
                   </div>
                   <div>
@@ -717,7 +748,7 @@
               for="af-account-password"
               class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200"
             >
-              수령인 정보
+              배송지
             </label>
           </div>
           <!-- End Col -->
@@ -725,7 +756,7 @@
           <div class="sm:col-span-9">
             <div class="space-y-2">
               <div class="space-y-2">
-                <button
+                <!-- <button
                   @click="addDeliveryAddress()"
                   type="button"
                   class="
@@ -749,7 +780,7 @@
                   "
                 >
                   배송지 추가
-                </button>
+                </button> -->
 
                 <div>
                   <div class="flex rounded-md shadow-sm">
@@ -872,6 +903,41 @@
                         text-sm text-gray-500
                         dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400
                       "
+                      >상세주소</span
+                    >
+                    <input
+                      v-model="recipient.address_detail"
+                      type="text"
+                      class="
+                        py-2
+                        px-3
+                        pr-11
+                        block
+                        w-full
+                        border-gray-200
+                        shadow-sm
+                        rounded-r-md
+                        text-sm
+                        focus:z-10 focus:border-blue-500 focus:ring-blue-500
+                        dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
+                      "
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div class="flex rounded-md shadow-sm">
+                    <span
+                      class="
+                        px-4
+                        inline-flex
+                        items-center
+                        min-w-fit
+                        rounded-l-md
+                        border border-r-0 border-gray-200
+                        bg-gray-50
+                        text-sm text-gray-500
+                        dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400
+                      "
                       >우편번호</span
                     >
                     <input
@@ -929,7 +995,7 @@
                     />
                   </div>
                 </div>
-
+                <!-- 
                 <span
                   class="
                     inline-flex
@@ -975,101 +1041,7 @@
                       />
                     </svg>
                   </button>
-                </span>
-
-                <span
-                  class="
-                    inline-flex
-                    items-center
-                    gap-1.5
-                    py-1.5
-                    pl-3
-                    pr-2
-                    rounded-full
-                    text-xs
-                    font-medium
-                    bg-blue-100
-                    text-blue-800
-                  "
-                >
-                  시얼이네
-                  <button
-                    type="button"
-                    class="
-                      flex-shrink-0
-                      h-4
-                      w-4
-                      inline-flex
-                      items-center
-                      justify-center
-                      rounded-full
-                      text-blue-600
-                      hover:bg-blue-200 hover:text-blue-500
-                      focus:outline-none focus:bg-blue-200 focus:text-blue-500
-                    "
-                  >
-                    <span class="sr-only">Remove badge</span>
-                    <svg
-                      class="h-4 w-4"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
-                      />
-                    </svg>
-                  </button>
-                </span>
-
-                <span
-                  class="
-                    inline-flex
-                    items-center
-                    gap-1.5
-                    py-1.5
-                    pl-3
-                    pr-2
-                    rounded-full
-                    text-xs
-                    font-medium
-                    bg-blue-100
-                    text-blue-800
-                  "
-                >
-                  누누네
-                  <button
-                    type="button"
-                    class="
-                      flex-shrink-0
-                      h-4
-                      w-4
-                      inline-flex
-                      items-center
-                      justify-center
-                      rounded-full
-                      text-blue-600
-                      hover:bg-blue-200 hover:text-blue-500
-                      focus:outline-none focus:bg-blue-200 focus:text-blue-500
-                    "
-                  >
-                    <span class="sr-only">Remove badge</span>
-                    <svg
-                      class="h-4 w-4"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
-                      />
-                    </svg>
-                  </button>
-                </span>
+                </span> -->
               </div>
             </div>
           </div>
@@ -1276,6 +1248,7 @@
                 dark:hover:text-white
                 dark:focus:ring-offset-gray-800
               "
+              data-hs-overlay="#hs-sign-out-alert-small-window"
               >저장하기</a
             >
             <button
@@ -1340,6 +1313,7 @@ export default {
         address: "",
         tel: "",
         zonecode: "",
+        address_detail: "",
       },
       seller: {
         tel: "",
@@ -1390,12 +1364,13 @@ export default {
         this.seller.address = memberinfo.address;
         this.seller.email = memberinfo.email;
         this.seller.zonecode = memberinfo?.zonecode;
+        this.seller.address_detail = memberinfo?.address_detail;
       });
     },
     submit() {
-      if (this.currentpassword == "") {
-        return alert("비밀번호를 입력해주세요.");
-      }
+      // if (this.currentpassword == "") {
+      //   return alert("비밀번호를 입력해주세요.");
+      // }
 
       const payload = {
         name: this.name,
@@ -1404,25 +1379,28 @@ export default {
       };
       this.updateSpinnerStatus(true);
 
+      this.addDeliveryAddress();
+
       //회원 정보 업데이트
-      UserAthendicateService.updatememberinfo(payload).then((response) => {
-        this.updateSpinnerStatus(false);
-        alert(response?.data.data.message);
-        return this.$router.push("/commerce");
-      });
+      // UserAthendicateService.updatememberinfo(payload).then((response) => {
+      //   this.updateSpinnerStatus(false);
+      //   alert(response?.data.data.message);
+      //   return this.$router.push("/commerce");
+      // });
+      this.updateSpinnerStatus(false);
+      alert("저장되었습니다.");
     },
     addDeliveryAddress() {
       // 수령인 정보 업데이트
-      this.updateSpinnerStatus(true);
+      //this.updateSpinnerStatus(true);
       if (this.recipient.name !== "") {
         MemberService.updatedeliveryinfo({
           name: this.recipient.name,
           address: this.recipient.address,
           tel: this.recipient.tel,
           zonecode: this.recipient.zonecode,
+          address_detail: this.recipient.address_detail,
         });
-
-        this.updateSpinnerStatus(false);
       }
     },
     cancel() {
@@ -1433,8 +1411,7 @@ export default {
     },
     async getdeliveryinfo() {
       await MemberService.getdeliveryinfo().then((response) => {
-        const recipientinfo = response?.data?.data?.list;
-        console.log(recipientinfo);
+        const recipientinfo = response?.data?.data?.list[0];
         this.recipient = { ...recipientinfo };
       });
     },

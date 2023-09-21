@@ -3,12 +3,18 @@
   <TheAdminHeader />
   <div class="w-full pt-10 px-4 sm:px-6 md:px-8">
     <header class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-      <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">안녕하세요, 우리 농장을 소개합니다.🍃</h1>
-      <p class="mt-2 text-lg text-gray-800 dark:text-gray-400">이 곳은 손님들이 우리 농장 소개 페이지를 보는 화면인데요. 소개 문구가 넘나 어렵네요.</p>
-      <p class="mt-2 text-m text-gray-800 dark:text-gray-200">정말 좋은데, 소개페이지 정말 좋은데, 표현할 방법이 없네! 별이 다섯개~!</p>
+      <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">
+        안녕하세요, 우리 농장을 소개합니다.🍃
+      </h1>
+      <p class="mt-2 text-lg text-gray-800 dark:text-gray-400">
+        이 곳은 손님들이 우리 농장 소개 페이지를 보는 화면인데요. 소개 문구가 넘나 어렵네요.
+      </p>
+      <p class="mt-2 text-m text-gray-800 dark:text-gray-200">
+        정말 좋은데, 소개페이지 정말 좋은데, 표현할 방법이 없네! 별이 다섯개~!
+      </p>
 
       <div class="mt-5 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
-        <router-link
+        <!-- <router-link
           to="/admin/brandshop"
           class="
             w-full
@@ -24,7 +30,11 @@
             text-white text-sm
             font-medium
             rounded-md
-            focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white
+            focus:outline-none
+            focus:ring-2
+            focus:ring-blue-600
+            focus:ring-offset-2
+            focus:ring-offset-white
             transition
             py-3
             px-4
@@ -32,36 +42,10 @@
           "
         >
           농장 소개 수정하기
-        </router-link>
+        </router-link> -->
 
-        <router-link
-          to="/admin/brandshop"
-          class="
-            w-full
-            sm:w-auto
-            inline-flex
-            justify-center
-            items-center
-            gap-x-3
-            text-center
-            bg-blue-600
-            hover:bg-blue-700
-            border border-transparent
-            text-white text-sm
-            font-medium
-            rounded-md
-            focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white
-            transition
-            py-3
-            px-4
-            dark:focus:ring-offset-gray-800
-          "
-        >
-          카카오톡 공유하기
-        </router-link>
-
-        <router-link
-          to="/admin/dashboard"
+        <a
+          @click="$router.back()"
           class="
             w-full
             sm:w-auto
@@ -92,8 +76,8 @@
               stroke-linecap="round"
             ></path>
           </svg>
-          메인으로 돌아가기
-        </router-link>
+          돌아가기
+        </a>
       </div>
     </header>
     <!-- ========== END HEADER ========== -->
@@ -117,7 +101,9 @@
                   <!-- Tooltip -->
                   <div class="hs-tooltip inline-block [--trigger:hover] [--placement:bottom]">
                     <div class="hs-tooltip-toggle sm:mb-1 block text-left cursor-pointer">
-                      <span class="font-semibold text-gray-800 dark:text-gray-200"> Leyla Ludic </span>
+                      <span class="font-semibold text-gray-800 dark:text-gray-200">
+                        Leyla Ludic
+                      </span>
 
                       <!-- Dropdown Card -->
                       <div
@@ -156,7 +142,8 @@
                             </div>
                           </div>
                           <p class="text-sm text-gray-400">
-                            Leyla is a Customer Success Specialist at Preline and spends her time speaking to in-house recruiters all over the world.
+                            Leyla is a Customer Success Specialist at Preline and spends her time
+                            speaking to in-house recruiters all over the world.
                           </p>
                         </div>
                         <!-- End Body -->
@@ -190,12 +177,25 @@
                                 bg-blue-600
                                 text-white
                                 hover:bg-blue-700
-                                focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900
+                                focus:outline-none
+                                focus:ring-2
+                                focus:ring-blue-500
+                                focus:ring-offset-2
+                                focus:ring-offset-gray-900
                                 text-xs
                               "
                             >
-                              <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                              <svg
+                                class="w-3.5 h-3.5"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                viewBox="0 0 16 16"
+                              >
+                                <path
+                                  d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+                                />
                                 <path
                                   fill-rule="evenodd"
                                   d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"
@@ -220,7 +220,14 @@
                         pr-6
                         last:pr-0
                         last-of-type:before:hidden
-                        before:absolute before:top-1/2 before:right-2 before:-translate-y-1/2 before:w-1 before:h-1 before:bg-gray-300 before:rounded-full
+                        before:absolute
+                        before:top-1/2
+                        before:right-2
+                        before:-translate-y-1/2
+                        before:w-1
+                        before:h-1
+                        before:bg-gray-300
+                        before:rounded-full
                         dark:text-gray-400 dark:before:bg-gray-600
                       "
                     >
@@ -233,7 +240,14 @@
                         pr-6
                         last:pr-0
                         last-of-type:before:hidden
-                        before:absolute before:top-1/2 before:right-2 before:-translate-y-1/2 before:w-1 before:h-1 before:bg-gray-300 before:rounded-full
+                        before:absolute
+                        before:top-1/2
+                        before:right-2
+                        before:-translate-y-1/2
+                        before:w-1
+                        before:h-1
+                        before:bg-gray-300
+                        before:rounded-full
                         dark:text-gray-400 dark:before:bg-gray-600
                       "
                     >
@@ -263,19 +277,35 @@
                       shadow-sm
                       align-middle
                       hover:bg-gray-50
-                      focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600
+                      focus:outline-none
+                      focus:ring-2
+                      focus:ring-offset-2
+                      focus:ring-offset-white
+                      focus:ring-blue-600
                       transition-all
                       text-xs
                       sm:text-sm
-                      dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800
+                      dark:bg-slate-900
+                      dark:hover:bg-slate-800
+                      dark:border-gray-700
+                      dark:text-gray-400
+                      dark:hover:text-white
+                      dark:focus:ring-offset-gray-800
                     "
                   >
-                    <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <svg
+                      class="w-3.5 h-3.5"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                    >
                       <path
                         d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
                       />
                     </svg>
-                    Tweet
+                    카카오톡 공유하기
                   </button>
                 </div>
                 <!-- End Button Group -->
@@ -314,19 +344,23 @@ export default {
   mounted() {
     this.content = `<h1><img src="https://appling-s3.s3.ap-northeast-2.amazonaws.com/image/4/20230710/150542_0.jpeg" alt="b3911f649e325b7be6991ae7a67bf876.jpeg" contenteditable="false">햇살을 가득 담은 평창 자연 햇살 농원 입니다.</h1><div contenteditable="false"><hr></div><h4>평창 700 고지에서 무공해 사과를 직접 재배하여 판매합니다.</h4><p><br></p><p>모든 주문은 카카오톡, 문자, 전화로 가능합니다.</p><p>아래의 번호로 문의를 남겨주세요.</p><p>010-1234-1222</p><h1>🚘 농원 둘러보기</h1><h5><strong>✔️ 영상으로 구경하기</strong></h5><p><a href="https://youtu.be/wgelJ8zYmFc?t=219">[평창시그니처5] 봉황마을 캠핑 (feat.평창사과)</a></p><p><br></p><h5><strong>✔️ 사진으로 둘러보기</strong></h5><p><br></p><h1>🚘 이런것들을 판매해요.</h1><h5><strong>✔️ 설 특집, 부사 구경하기</strong></h5><p><br></p><h5><strong>✔️ 9월 중순, 시나노 골드</strong></h5><p><br></p>`;
     const id = this.$router.param;
-
+    console.log(this.$router);
     //console.log('111')
-    this.readhtmlfile();
+    this.readhtmlfile(id);
   },
   methods: {
-    async readhtmlfile() {
-      await MemberService.getsellerintroduce().then((response) => {
-        this.content = response.data;
-        this.viewer = new Viewer({
-          el: document.querySelector("#viewer"),
-          initialValue: this.content,
-        });
+    async readhtmlfile(id) {
+      this.viewer = new Viewer({
+        el: document.querySelector("#viewer"),
+        initialValue: this.content,
       });
+      // await MemberService.getsellerintroduce(4).then((response) => {
+      //   this.content = response.data;
+      //   this.viewer = new Viewer({
+      //     el: document.querySelector("#viewer"),
+      //     initialValue: this.content,
+      //   });
+      // });
     },
   },
 };

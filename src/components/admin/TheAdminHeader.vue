@@ -220,7 +220,7 @@
                   <div class="my-2 border-t border-gray-100 dark:border-gray-800"></div>
 
                   <a
-                    @click="moveto('/brandshop/preview')"
+                    @click="moveto(`/brandshop/preview/${userInfoInterface?.member_id}`)"
                     class="
                       inline-flex
                       gap-x-5
@@ -614,25 +614,36 @@
   <!-- ========== END HEADER ========== -->
 </template>
 
-<script setup>
+<script>
 import router from "../../plugins/router";
 import UserAthendicateService from "@/services/UserAthendicateService";
+import { mapGetters } from "vuex";
 
-async function logout() {
-  UserAthendicateService.logout();
-  //router.push('/commerce/main')
-  router.go(0);
-}
+export default {
+  computed: {
+    ...mapGetters("auth", ["userInfoInterface"]),
+  },
+  methods: {
+    async logout() {
+      UserAthendicateService.logout();
+      //router.push('/commerce/main')
+      router.go(0);
+    },
 
-function moveto(path) {
-  router.push(path);
-}
+    moveto(path) {
+      router.push(path);
+    },
 
-function account() {
-  router.push("/account");
-}
+    account() {
+      router.push("/account");
+    },
 
-function movetoCommerce() {
-  router.push("/commerce");
-}
+    movetoCommerce() {
+      router.push("/commerce");
+    },
+  },
+  mounted() {
+    console.log(this.userInfoInterface);
+  },
+};
 </script>
