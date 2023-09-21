@@ -88,7 +88,8 @@ class UserAthendicateService {
     });
 
     await instance.get(`${ENDPOINT.KAKAOLOGIN_AUTH_KAKAO_TOKEN}${kakao_access_token}`).then((auth: AxiosResponse) => {
-      const data: Token = auth.data;
+      //const data = auth.data;
+      const data = auth.data.data;
       this._save_token(data);
     });
 
