@@ -58,7 +58,7 @@ const routes: Array<RouteRecordRaw> = [
       //{ path : "brandshop/preview",component: admin_preview_brandshop }, // 농장 소개하기 view
     ],
   },
-  { path: "/brandshop/preview", component: admin_brandshop_view }, // 농장 소개하기 view
+  { path: "/brandshop/preview/:id", component: admin_brandshop_view }, // 농장 소개하기 view
 ];
 const router = createRouter({
   history: createWebHistory(),
