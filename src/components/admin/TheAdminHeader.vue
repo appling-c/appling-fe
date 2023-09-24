@@ -533,7 +533,7 @@
                       <span class="block font-semibold mb-1 text-gray-800 dark:text-gray-200"
                         >내 정보</span
                       >
-                      닉네임 변경, 비밀번호 변경, 개인정보 변경
+                      내 정보, 비밀번호 변경, 개인정보 관리
                     </div>
                   </a>
 
@@ -626,8 +626,8 @@ export default {
   methods: {
     async logout() {
       UserAthendicateService.logout();
-      //router.push('/commerce/main')
-      router.go(0);
+      router.push("/commerce/main");
+      //router.go(0);
     },
 
     moveto(path) {

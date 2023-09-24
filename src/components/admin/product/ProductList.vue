@@ -1,11 +1,16 @@
 <template>
   <div>
     <header class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-      <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">📦 상품 관리하기</h1>
+      <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">
+        📦 상품 관리하기
+      </h1>
       <p class="mt-2 text-lg text-gray-800 dark:text-gray-600">
-        상품 정보를 등록한 후 한장짜리 <span class="text-blue-600">팜플렛</span>을 만들어 홍보해보세요!
+        상품 정보를 등록한 후 한장짜리 <span class="text-blue-600">팜플렛</span>을 만들어
+        홍보해보세요!
       </p>
-      <p class="mt-2 text-base text-gray-800 dark:text-gray-400">등록 이후에도 수정이 가능합니다.</p>
+      <p class="mt-2 text-base text-gray-800 dark:text-gray-400">
+        등록 이후에도 수정이 가능합니다.
+      </p>
       <div class="mt-5 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
         <router-link
           to="/admin/product/detail/0"
@@ -50,10 +55,32 @@
       <div class="flex flex-col">
         <div class="-m-1.5 overflow-x-auto">
           <div class="p-1.5 min-w-full inline-block align-middle">
-            <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-slate-900 dark:border-gray-700">
+            <div
+              class="
+                bg-white
+                border border-gray-200
+                rounded-xl
+                shadow-sm
+                overflow-hidden
+                dark:bg-slate-900 dark:border-gray-700
+              "
+            >
               <!-- Body -->
-              <div class="max-w-sm w-full min-h-[400px] flex flex-col justify-center mx-auto px-6 py-4">
-                <div class="flex justify-center items-center w-[46px] h-[46px] bg-gray-100 rounded-md dark:bg-gray-800">
+              <div
+                class="max-w-sm w-full min-h-[400px] flex flex-col justify-center mx-auto px-6 py-4"
+              >
+                <div
+                  class="
+                    flex
+                    justify-center
+                    items-center
+                    w-[46px]
+                    h-[46px]
+                    bg-gray-100
+                    rounded-md
+                    dark:bg-gray-800
+                  "
+                >
                   <svg
                     class="w-6 h-6 text-gray-600 dark:text-gray-400"
                     xmlns="http://www.w3.org/2000/svg"
@@ -71,8 +98,12 @@
                   </svg>
                 </div>
 
-                <h2 class="mt-5 font-semibold text-gray-800 dark:text-white">등록된 상품이 없습니다.</h2>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">상품을 등록하고 관리해보세요.</p>
+                <h2 class="mt-5 font-semibold text-gray-800 dark:text-white">
+                  등록된 상품이 없습니다.
+                </h2>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                  상품을 등록하고 관리해보세요.
+                </p>
 
                 <div class="mt-5 grid sm:flex gap-2">
                   <button
@@ -97,8 +128,20 @@
                       dark:focus:ring-offset-gray-800
                     "
                   >
-                    <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <svg
+                      class="w-3 h-3"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                    >
+                      <path
+                        d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
                     </svg>
                     새로운 상품 등록하기👀
                   </button>
@@ -125,8 +168,20 @@
                       dark:focus:ring-offset-gray-800
                     "
                   >
-                    <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <svg
+                      class="w-3 h-3"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                    >
+                      <path
+                        d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
                     </svg>
                     상품 구경하기
                   </button>
@@ -147,9 +202,28 @@
       <div class="flex flex-col">
         <div class="-m-1.5 overflow-x-auto">
           <div class="p-1.5 min-w-full inline-block align-middle">
-            <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-slate-900 dark:border-gray-700">
+            <div
+              class="
+                bg-white
+                border border-gray-200
+                rounded-xl
+                shadow-sm
+                overflow-hidden
+                dark:bg-slate-900 dark:border-gray-700
+              "
+            >
               <!-- Header -->
-              <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
+              <div
+                class="
+                  px-6
+                  py-4
+                  grid
+                  gap-3
+                  md:flex md:justify-between md:items-center
+                  border-b border-gray-200
+                  dark:border-gray-700
+                "
+              >
                 <!-- Input -->
                 <div class="sm:col-span-1">
                   <label for="hs-as-table-product-review-search" class="sr-only">Search</label>
@@ -173,8 +247,17 @@
                       "
                       placeholder="Search"
                     />
-                    <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none pl-4">
-                      <svg class="h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <div
+                      class="absolute inset-y-0 left-0 flex items-center pointer-events-none pl-4"
+                    >
+                      <svg
+                        class="h-4 w-4 text-gray-400"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        viewBox="0 0 16 16"
+                      >
                         <path
                           d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
                         />
@@ -199,7 +282,12 @@
                       -mt-px
                       first:rounded-t-lg first:mt-0
                       last:rounded-b-lg
-                      sm:-ml-px sm:mt-0 sm:first:rounded-tr-none sm:first:rounded-bl-lg sm:last:rounded-bl-none sm:last:rounded-tr-lg
+                      sm:-ml-px
+                      sm:mt-0
+                      sm:first:rounded-tr-none
+                      sm:first:rounded-bl-lg
+                      sm:last:rounded-bl-none
+                      sm:last:rounded-tr-lg
                       dark:bg-gray-800 dark:border-gray-700 dark:text-white
                     "
                   >
@@ -212,12 +300,21 @@
                           class="
                             border-gray-200
                             rounded-full
-                            dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800
+                            dark:bg-gray-800
+                            dark:border-gray-700
+                            dark:checked:bg-blue-500
+                            dark:checked:border-blue-500
+                            dark:focus:ring-offset-gray-800
                           "
                           checked
                         />
                       </div>
-                      <label for="hs-horizontal-list-group-item-radio-1" class="ml-3 block w-full text-sm text-gray-600 dark:text-gray-500"> 전체 </label>
+                      <label
+                        for="hs-horizontal-list-group-item-radio-1"
+                        class="ml-3 block w-full text-sm text-gray-600 dark:text-gray-500"
+                      >
+                        전체
+                      </label>
                     </div>
                   </li>
 
@@ -237,7 +334,12 @@
                       -mt-px
                       first:rounded-t-lg first:mt-0
                       last:rounded-b-lg
-                      sm:-ml-px sm:mt-0 sm:first:rounded-tr-none sm:first:rounded-bl-lg sm:last:rounded-bl-none sm:last:rounded-tr-lg
+                      sm:-ml-px
+                      sm:mt-0
+                      sm:first:rounded-tr-none
+                      sm:first:rounded-bl-lg
+                      sm:last:rounded-bl-none
+                      sm:last:rounded-tr-lg
                       dark:bg-gray-800 dark:border-gray-700 dark:text-white
                     "
                   >
@@ -250,11 +352,20 @@
                           class="
                             border-gray-200
                             rounded-full
-                            dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800
+                            dark:bg-gray-800
+                            dark:border-gray-700
+                            dark:checked:bg-blue-500
+                            dark:checked:border-blue-500
+                            dark:focus:ring-offset-gray-800
                           "
                         />
                       </div>
-                      <label for="hs-horizontal-list-group-item-radio-2" class="ml-3 block w-full text-sm text-gray-600 dark:text-gray-500"> 판매중 </label>
+                      <label
+                        for="hs-horizontal-list-group-item-radio-2"
+                        class="ml-3 block w-full text-sm text-gray-600 dark:text-gray-500"
+                      >
+                        판매중
+                      </label>
                     </div>
                   </li>
 
@@ -274,7 +385,12 @@
                       -mt-px
                       first:rounded-t-lg first:mt-0
                       last:rounded-b-lg
-                      sm:-ml-px sm:mt-0 sm:first:rounded-tr-none sm:first:rounded-bl-lg sm:last:rounded-bl-none sm:last:rounded-tr-lg
+                      sm:-ml-px
+                      sm:mt-0
+                      sm:first:rounded-tr-none
+                      sm:first:rounded-bl-lg
+                      sm:last:rounded-bl-none
+                      sm:last:rounded-tr-lg
                       dark:bg-gray-800 dark:border-gray-700 dark:text-white
                     "
                   >
@@ -287,11 +403,20 @@
                           class="
                             border-gray-200
                             rounded-full
-                            dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800
+                            dark:bg-gray-800
+                            dark:border-gray-700
+                            dark:checked:bg-blue-500
+                            dark:checked:border-blue-500
+                            dark:focus:ring-offset-gray-800
                           "
                         />
                       </div>
-                      <label for="hs-horizontal-list-group-item-radio-3" class="ml-3 block w-full text-sm text-gray-600 dark:text-gray-500"> 판매 종료 </label>
+                      <label
+                        for="hs-horizontal-list-group-item-radio-3"
+                        class="ml-3 block w-full text-sm text-gray-600 dark:text-gray-500"
+                      >
+                        판매 종료
+                      </label>
                     </div>
                   </li>
                 </ul>
@@ -314,7 +439,11 @@
                             text-blue-600
                             pointer-events-none
                             focus:ring-blue-500
-                            dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800
+                            dark:bg-gray-800
+                            dark:border-gray-700
+                            dark:checked:bg-blue-500
+                            dark:checked:border-blue-500
+                            dark:focus:ring-offset-gray-800
                           "
                           id="hs-at-with-checkboxes-main"
                         />
@@ -324,56 +453,148 @@
 
                     <th scope="col" class="px-4 py-3 text-left">
                       <div class="flex items-center gap-x-2">
-                        <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"> 구분 </span>
+                        <span
+                          class="
+                            text-xs
+                            font-semibold
+                            uppercase
+                            tracking-wide
+                            text-gray-800
+                            dark:text-gray-200
+                          "
+                        >
+                          구분
+                        </span>
                       </div>
                     </th>
 
                     <th scope="col" class="px-4 py-3 text-left">
                       <div class="flex items-center gap-x-2">
-                        <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"> 상품명 </span>
+                        <span
+                          class="
+                            text-xs
+                            font-semibold
+                            uppercase
+                            tracking-wide
+                            text-gray-800
+                            dark:text-gray-200
+                          "
+                        >
+                          상품명
+                        </span>
                       </div>
                     </th>
 
                     <th scope="col" class="px-4 py-3 text-left">
                       <div class="flex items-center gap-x-2">
-                        <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"> 가격 </span>
+                        <span
+                          class="
+                            text-xs
+                            font-semibold
+                            uppercase
+                            tracking-wide
+                            text-gray-800
+                            dark:text-gray-200
+                          "
+                        >
+                          가격
+                        </span>
                       </div>
                     </th>
 
                     <th scope="col" class="px-4 py-3 text-left">
                       <div class="flex items-center gap-x-2">
-                        <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"> 등록일 </span>
+                        <span
+                          class="
+                            text-xs
+                            font-semibold
+                            uppercase
+                            tracking-wide
+                            text-gray-800
+                            dark:text-gray-200
+                          "
+                        >
+                          등록일
+                        </span>
                       </div>
                     </th>
 
                     <th scope="col" class="px-4 py-3 text-left">
                       <div class="flex items-center gap-x-2">
-                        <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"> 조회수 </span>
+                        <span
+                          class="
+                            text-xs
+                            font-semibold
+                            uppercase
+                            tracking-wide
+                            text-gray-800
+                            dark:text-gray-200
+                          "
+                        >
+                          조회수
+                        </span>
                       </div>
                     </th>
 
                     <th scope="col" class="px-4 py-3 text-left">
                       <div class="flex items-center gap-x-2">
-                        <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"> 상태 </span>
+                        <span
+                          class="
+                            text-xs
+                            font-semibold
+                            uppercase
+                            tracking-wide
+                            text-gray-800
+                            dark:text-gray-200
+                          "
+                        >
+                          상태
+                        </span>
                       </div>
                     </th>
 
                     <th scope="col" class="px-4 py-3 text-left">
                       <div class="flex items-center gap-x-2">
-                        <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"> 공유하기 </span>
+                        <span
+                          class="
+                            text-xs
+                            font-semibold
+                            uppercase
+                            tracking-wide
+                            text-gray-800
+                            dark:text-gray-200
+                          "
+                        >
+                          공유하기
+                        </span>
                       </div>
                     </th>
 
                     <th scope="col" class="px-4 py-3 text-left">
                       <div class="flex items-center gap-x-2">
-                        <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"> 팜플렛 </span>
+                        <span
+                          class="
+                            text-xs
+                            font-semibold
+                            uppercase
+                            tracking-wide
+                            text-gray-800
+                            dark:text-gray-200
+                          "
+                        >
+                          팜플렛
+                        </span>
                       </div>
                     </th>
                   </tr>
                 </thead>
 
                 <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                  <tr v-for="(litem, index) in lists" :key="index" class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800">
+                  <tr
+                    v-for="(litem, index) in lists"
+                    :key="index"
+                    class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800"
+                  >
                     <td class="h-px w-px whitespace-nowrap">
                       <div class="pl-6 py-3">
                         <label for="hs-at-with-checkboxes-1" class="flex">
@@ -386,7 +607,11 @@
                               text-blue-600
                               pointer-events-none
                               focus:ring-blue-500
-                              dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800
+                              dark:bg-gray-800
+                              dark:border-gray-700
+                              dark:checked:bg-blue-500
+                              dark:checked:border-blue-500
+                              dark:focus:ring-offset-gray-800
                             "
                             id="hs-at-with-checkboxes-1"
                           />
@@ -399,7 +624,10 @@
                       <a class="block h-full p-6">
                         <div class="flex items-center gap-x-3">
                           <div class="grow">
-                            <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">{{ litem?.category?.name }}</span>
+                            <span
+                              class="block text-sm font-semibold text-gray-800 dark:text-gray-200"
+                              >{{ litem?.category?.name }}</span
+                            >
                           </div>
                         </div>
                       </a>
@@ -407,29 +635,45 @@
 
                     <td @click="moveto(litem.id)" class="h-px w-72 min-w-[18rem]">
                       <a class="block h-full p-6">
-                        <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">{{ litem.main_title }}</span>
-                        <span class="block text-sm text-gray-500">{{ litem.main_explanation }}</span>
+                        <span
+                          class="block text-sm font-semibold text-gray-800 dark:text-gray-200"
+                          >{{ litem.main_title }}</span
+                        >
+                        <span class="block text-sm text-gray-500">{{
+                          litem.main_explanation
+                        }}</span>
                       </a>
                     </td>
                     <td @click="moveto(litem.id)" class="h-px w-px whitespace-nowrap">
                       <a class="block h-full p-6">
                         <div class="flex items-center gap-x-3">
                           <div class="grow">
-                            <span style="text-decoration: line-through" class="block text-sm text-gray-500">{{ won_filter(litem.origin_price) }}원</span>
-                            <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">{{ won_filter(litem.price) }}원</span>
+                            <span
+                              style="text-decoration: line-through"
+                              class="block text-sm text-gray-500"
+                              >{{ won_filter(litem.origin_price) }}원</span
+                            >
+                            <span
+                              class="block text-sm font-semibold text-gray-800 dark:text-gray-200"
+                              >{{ won_filter(litem.price) }}원</span
+                            >
                           </div>
                         </div>
                       </a>
                     </td>
                     <td @click="moveto(litem.id)" class="h-px w-px whitespace-nowrap">
                       <a class="block h-full p-6">
-                        <span class="text-sm text-gray-600 dark:text-gray-400">{{ date_format(litem.created_at) }}</span>
+                        <span class="text-sm text-gray-600 dark:text-gray-400">{{
+                          date_format(litem.created_at)
+                        }}</span>
                       </a>
                     </td>
 
                     <td @click="moveto(litem.id)" class="h-px w-px whitespace-nowrap">
                       <a class="block h-full p-6">
-                        <span class="text-sm text-gray-600 dark:text-gray-400">{{ litem.view_cnt }}</span>
+                        <span class="text-sm text-gray-600 dark:text-gray-400">{{
+                          litem.view_cnt
+                        }}</span>
                       </a>
                     </td>
 
@@ -451,7 +695,14 @@
                             dark:bg-green-900 dark:text-green-200
                           "
                         >
-                          <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                          <svg
+                            class="w-2.5 h-2.5"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            viewBox="0 0 16 16"
+                          >
                             <path
                               d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
                             />
@@ -475,7 +726,14 @@
                             dark:bg-red-900 dark:text-green-200
                           "
                         >
-                          <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                          <svg
+                            class="w-2.5 h-2.5"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            viewBox="0 0 16 16"
+                          >
                             <path
                               d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
                             ></path>
@@ -491,7 +749,11 @@
               </a>
           </td> -->
 
-                    <td id="kakaotalk-sharing-btn" @click="kakaoShare(litem)" class="h-px w-px whitespace-nowrap">
+                    <td
+                      id="kakaotalk-sharing-btn"
+                      @click="kakaoShare(litem)"
+                      class="h-px w-px whitespace-nowrap"
+                    >
                       <a
                         class="
                           flex
@@ -506,7 +768,14 @@
                           dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300
                         "
                       >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="w-6 h-6"
+                        >
                           <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -537,7 +806,14 @@
                           dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300
                         "
                       >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="w-6 h-6"
+                        >
                           <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -552,7 +828,17 @@
               <!-- End Table -->
 
               <!-- Footer -->
-              <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-gray-700">
+              <div
+                class="
+                  px-6
+                  py-4
+                  grid
+                  gap-3
+                  md:flex md:justify-between md:items-center
+                  border-t border-gray-200
+                  dark:border-gray-700
+                "
+              >
                 <div class="max-w-sm space-y-3">
                   <select
                     @change="getproductlists"
@@ -599,13 +885,29 @@
                         shadow-sm
                         align-middle
                         hover:bg-gray-50
-                        focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600
+                        focus:outline-none
+                        focus:ring-2
+                        focus:ring-offset-2
+                        focus:ring-offset-white
+                        focus:ring-blue-600
                         transition-all
                         text-sm
-                        dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800
+                        dark:bg-slate-900
+                        dark:hover:bg-slate-800
+                        dark:border-gray-700
+                        dark:text-gray-400
+                        dark:hover:text-white
+                        dark:focus:ring-offset-gray-800
                       "
                     >
-                      <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                      <svg
+                        class="w-3 h-3"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        viewBox="0 0 16 16"
+                      >
                         <path
                           fill-rule="evenodd"
                           d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
@@ -633,14 +935,30 @@
                         shadow-sm
                         align-middle
                         hover:bg-gray-50
-                        focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600
+                        focus:outline-none
+                        focus:ring-2
+                        focus:ring-offset-2
+                        focus:ring-offset-white
+                        focus:ring-blue-600
                         transition-all
                         text-sm
-                        dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800
+                        dark:bg-slate-900
+                        dark:hover:bg-slate-800
+                        dark:border-gray-700
+                        dark:text-gray-400
+                        dark:hover:text-white
+                        dark:focus:ring-offset-gray-800
                       "
                     >
                       Next
-                      <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                      <svg
+                        class="w-3 h-3"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        viewBox="0 0 16 16"
+                      >
                         <path
                           fill-rule="evenodd"
                           d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
@@ -709,16 +1027,16 @@ export default {
       const regularPrice = item.origin_price;
       const discountPrice = item.price;
       const imageUrl = item.main_image;
+      const productID = item.id;
 
-      Kakao.Share.createDefaultButton({
-        container: "#kakaotalk-sharing-btn",
+      Kakao.Share.sendDefault({
         objectType: "commerce",
         content: {
-          title: sub_title,
-          imageUrl,
+          title: main_title,
+          imageUrl: imageUrl,
           link: {
-            mobileWebUrl: "https://developers.kakao.com",
-            webUrl: "https://developers.kakao.com",
+            mobileWebUrl: `http://www.appling.me/commerce/detail/${productID}`,
+            webUrl: `http://www.appling.me/commerce/detail/${productID}`,
           },
         },
         commerce: {
@@ -729,20 +1047,38 @@ export default {
         },
         buttons: [
           {
-            title: "구매하기",
+            title: "상품 구매하러 가기!",
             link: {
-              mobileWebUrl: "https://developers.kakao.com",
-              webUrl: "https://developers.kakao.com",
-            },
-          },
-          {
-            title: "공유하기",
-            link: {
-              mobileWebUrl: "https://developers.kakao.com",
-              webUrl: "https://developers.kakao.com",
+              mobileWebUrl: `http://www.appling.me/commerce/detail/${productID}`,
+              webUrl: `http://www.appling.me/commerce/detail/${productID}`,
             },
           },
         ],
+        // container: "#kakaotalk-sharing-btn",
+        // objectType: "commerce",
+        // content: {
+        //   title: sub_title,
+        //   imageUrl,
+        //   link: {
+        //     mobileWebUrl: `http://www.appling.me/commerce/detail/${productID}`,
+        //     webUrl: `http://www.appling.me/commerce/detail/${productID}`,
+        //   },
+        // },
+        // commerce: {
+        //   productName: main_title,
+        //   regularPrice,
+        //   discountRate: 10,
+        //   discountPrice,
+        // },
+        // buttons: [
+        //   {
+        //     title: "상품 구매하러 가기!",
+        //     link: {
+        //       mobileWebUrl: `http://www.appling.me/commerce/detail/${productID}`,
+        //       webUrl: `http://www.appling.me/commerce/detail/${productID}`,
+        //     },
+        //   },
+        // ],
       });
     },
 
