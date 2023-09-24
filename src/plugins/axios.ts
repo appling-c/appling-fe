@@ -40,14 +40,14 @@ instance.interceptors.response.use(
     } = error;
     const { refresh_token } = store.state.auth.userToken;
 
-
     if (status == 403 || status == 401) {
       // 토큰없음, 토큰만료
       const originconfig = config;
 
       // 토큰이 없고, 리프레시 토큰도 없는 경우 > 로그인 만료
       if (!refresh_token) {
-        alert("사용자 정보가 만료되었습니다. 다시로그인해주세요.");
+        alert("사용자 정보가 만료되었습니다. 메인으로 이동합니다.");
+        location.href = `/commerce/main`;
         return;
       }
 

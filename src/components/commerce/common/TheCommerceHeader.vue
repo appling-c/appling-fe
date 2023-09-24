@@ -195,8 +195,8 @@
                 </svg>
               </button>
 
+              <!-- 판매자가 아닌 경우에만 노출 -->
               <div
-                v-if="userInfoInterface.role !== 'SELLER'"
                 class="
                   hs-dropdown-menu
                   transition-[opacity,margin]
@@ -220,6 +220,7 @@
                 "
               >
                 <router-link
+                  v-if="userInfoInterface.role == 'MEMBER'"
                   to="/commerce/regist"
                   class="
                     inline-flex
@@ -337,7 +338,7 @@
               </div>
             </div>
 
-            <div v-if="userInfoInterface.role == 'MEMBER'" class="pt-3 md:pt-0">
+            <div v-if="userInfoInterface.role == 'SELLER'" class="pt-3 md:pt-0">
               <button
                 type="button"
                 class="
@@ -452,7 +453,7 @@
 
 <script lang="ts">
 import UserAthendicateService from "@/services/UserAthendicateService";
-import { mapActions, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   computed: {

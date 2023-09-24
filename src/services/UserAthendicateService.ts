@@ -15,8 +15,8 @@ class UserAthendicateService {
   /**
    * 회원정보수정
    */
-  public async updatememberinfo(payload: Object): Promise<void> {
-    await instance.patch(ENDPOINT.API_MEMEBER, { ...payload }).then((response) => {
+  public async updatememberinfo(payload: Object): Promise<any> {
+    return await instance.patch(ENDPOINT.API_MEMEBER, { ...payload }).then((response) => {
       return response;
     });
   }
@@ -87,11 +87,13 @@ class UserAthendicateService {
       }
     });
 
-    await instance.get(`${ENDPOINT.KAKAOLOGIN_AUTH_KAKAO_TOKEN}${kakao_access_token}`).then((auth: AxiosResponse) => {
-      //const data = auth.data;
-      const data = auth.data.data;
-      this._save_token(data);
-    });
+    await instance
+      .get(`${ENDPOINT.KAKAOLOGIN_AUTH_KAKAO_TOKEN}${kakao_access_token}`)
+      .then((auth: AxiosResponse) => {
+        //const data = auth.data;
+        const data = auth.data.data;
+        this._save_token(data);
+      });
 
     return await this.memberinfo().then((resultpath: string) => {
       return resultpath;

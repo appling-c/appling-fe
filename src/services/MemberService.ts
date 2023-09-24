@@ -2,7 +2,6 @@ import instance from "@/plugins/axios";
 import { AxiosHeaders, AxiosResponse } from "axios";
 
 const ENDPOINT = {
-  API_MEMEBER: "/api/member",
   API_MEMBRER_SELLER: "/api/member/seller",
   API_MEMBER_RECIPIENT: "/api/member/recipient",
   API_MEMBER_SELLER_INTRODUCE: "/api/common/introduce",
@@ -10,7 +9,7 @@ const ENDPOINT = {
 
 class MemberService {
   /**
-   * 판매자 정보 조회
+   * 판매자 정보 수정(덮어쓰기)
    */
   public async updatesellerinfo(payload: Object) {
     return await instance
@@ -26,6 +25,17 @@ class MemberService {
   public async getsellerinfo() {
     return await instance
       .get(`${ENDPOINT.API_MEMBRER_SELLER}`, {})
+      .then((response: AxiosResponse) => {
+        return response;
+      });
+  }
+
+  /**
+   * 판매자 정보 등록
+   */
+  public async registSellerInfo(payload: Object) {
+    return await instance
+      .post(`${ENDPOINT.API_MEMBRER_SELLER}`, payload, {})
       .then((response: AxiosResponse) => {
         return response;
       });

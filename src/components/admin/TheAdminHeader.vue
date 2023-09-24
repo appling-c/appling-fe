@@ -626,8 +626,8 @@ export default {
   methods: {
     async logout() {
       UserAthendicateService.logout();
-      //router.push('/commerce/main')
-      router.go(0);
+      router.push('/commerce/main')
+      //router.go(0);
     },
 
     moveto(path) {

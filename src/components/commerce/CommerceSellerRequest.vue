@@ -415,6 +415,8 @@
               <div class="sm:flex">
                 <input
                   type="text"
+                  readonly
+                  disabled
                   v-model="zonecode"
                   class="
                     py-2
@@ -647,13 +649,15 @@ export default {
       this.updateSpinnerStatus(true);
 
       if (this.ismodify) {
+        // 판매자 정보 수정
         await MemberService.updatesellerinfo(payload).then((message) => {
           this.updateSpinnerStatus(false);
           alert(message.data.data.message);
           return router.push("/commerce/main");
         });
       } else {
-        await UserAthendicateService.memberseller(payload).then((message) => {
+        // 판매자 정보 등록
+        await MemberService.registSellerInfo(payload).then((message) => {
           this.updateSpinnerStatus(false);
           alert(message.data.data.message);
           return router.push("/commerce/main");
@@ -690,9 +694,7 @@ export default {
         this.updateSpinnerStatus(false);
       });
     } catch (e) {
-      alert(e.response.data.errors[0].detail);
       this.updateSpinnerStatus(false);
-      return this.$router.go(-1);
     }
   },
 };
