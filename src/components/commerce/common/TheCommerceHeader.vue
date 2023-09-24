@@ -297,7 +297,7 @@
                     <span class="block font-semibold mb-1 text-gray-800 dark:text-gray-200"
                       >내 정보</span
                     >
-                    내정보 수정, 배송지 관리
+                    내 정보, 비밀번호 변경
                   </div>
                 </a>
 

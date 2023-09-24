@@ -1072,7 +1072,7 @@
           </span>
           <!-- End Icon -->
 
-          <h3 class="mb-2 text-2xl font-bold text-gray-800 dark:text-gray-200">내 정보 변경</h3>
+          <h3 class="mb-2 text-2xl font-bold text-gray-800 dark:text-gray-200">내 정보 수정하기</h3>
           <p class="text-gray-500">변경 사항을 저장하시겠습니까?</p>
           <div class="mt-6 grid gap-y-2">
             <a
