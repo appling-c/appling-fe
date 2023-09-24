@@ -13,9 +13,17 @@ export default {
       countdirect: "",
     };
   },
+  created() {
+    Kakao.init("bfdc56a39210639e056f66e470d11426");
+  },
   methods: {
     ...mapActions("cart", ["updateSpinnerStatus"]),
     ...mapActions("cart", ["addProductToCart"]),
+    // kakaoShare() {
+    //   // 카카오톡 공유하기
+
+    //   console.log("?", Kakao.isInitialized);
+    // },
     saveCartList() {
       if (this.count == "direct" && this.countdirect == "") {
         return alert("수량을 입력해주세요.");
@@ -88,6 +96,42 @@ export default {
         }
       });
     }
+
+    let item = this.productDetailItem;
+    const main_title = item.main_title;
+    const sub_title = item.main_explanation;
+    const regularPrice = item.origin_price;
+    const discountPrice = item.price;
+    const imageUrl = item.main_image;
+    const productID = item.id;
+
+    Kakao.Share.createDefaultButton({
+      container: "#kakao-article-share",
+      objectType: "commerce",
+      content: {
+        title: `🍎애플링 특가 ${discountPrice.toLocaleString()}원에 구매해보세요!`,
+        imageUrl,
+        link: {
+          mobileWebUrl: `http://www.appling.me/commerce/detail/${productID}`,
+          webUrl: `http://www.appling.me/commerce/detail/${productID}`,
+        },
+      },
+      commerce: {
+        productName: main_title,
+        regularPrice,
+        discountRate: 10,
+        discountPrice,
+      },
+      buttons: [
+        {
+          title: "상품 구매하러 가기",
+          link: {
+            mobileWebUrl: `http://www.appling.me/commerce/detail/${productID}`,
+            webUrl: `http://www.appling.me/commerce/detail/${productID}`,
+          },
+        },
+      ],
+    });
   },
 };
 </script>
@@ -621,12 +665,11 @@ export default {
     <div class="inline-block bg-white shadow-md rounded-full py-3 px-4 dark:bg-gray-800">
       <div class="flex items-center gap-x-1.5">
         <!-- Button -->
-        <div class="hs-tooltip inline-block">
+        <div class="inline-block">
           <button
             type="button"
             data-hs-overlay="#hs-modal-signin"
             class="
-              hs-tooltip-toggle
               flex
               items-center
               gap-x-2
@@ -648,30 +691,6 @@ export default {
               />
             </svg>
             구매하기
-            <span
-              class="
-                hs-tooltip-content
-                hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible
-                opacity-0
-                transition-opacity
-                inline-block
-                absolute
-                invisible
-                z-10
-                py-1
-                px-2
-                bg-gray-900
-                text-xs
-                font-medium
-                text-white
-                rounded-md
-                shadow-sm
-                dark:bg-black
-              "
-              role="tooltip"
-            >
-              구매하기
-            </span>
           </button>
         </div>
         <!-- Button -->
@@ -679,12 +698,11 @@ export default {
         <div class="block h-3 border-r border-gray-300 mx-3 dark:border-gray-600"></div>
 
         <!-- Button -->
-        <div class="hs-dropdown relative inline-flex">
+        <div class="inline-flex">
           <button
             type="button"
-            id="blog-article-share-dropdown"
+            id="kakao-article-share"
             class="
-              hs-dropdown-toggle
               flex
               items-center
               gap-x-2
