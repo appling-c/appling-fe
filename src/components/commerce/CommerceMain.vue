@@ -47,7 +47,7 @@ export default {
 <template>
   <div>
     <div style="padding-top: 13rem" class="max-w-2xl mx-auto text-center pt-20 pb-6 lg:pb-32">
-      <h2 class="text-2xl font-bold sm:text-3xl md:text-4xl dark:text-white">
+      <h2 class="text-2xl font-bold sm:text-3xl md:text-4xl">
         판매자와 소비자의 연결고리,<br />
         어서오세요, 애플링입니다.🍎
       </h2>
@@ -80,9 +80,13 @@ export default {
     <div class="relative overflow-hidden">
       <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-24">
         <div class="text-center">
-          <h1 class="text-4xl sm:text-6xl font-bold text-gray-800 dark:text-gray-200">둘러보기👀</h1>
+          <h1 class="text-4xl sm:text-6xl font-bold text-gray-800 dark:text-gray-200">
+            둘러보기👀
+          </h1>
 
-          <p class="mt-3 text-gray-600 dark:text-gray-400">아래의 키워드를 선택하고 상품을 둘러보세요!</p>
+          <p class="mt-3 text-gray-600 dark:text-gray-400">
+            아래의 키워드를 선택하고 상품을 둘러보세요!
+          </p>
 
           <the-search-bar />
         </div>
@@ -109,21 +113,66 @@ export default {
         <a class="group rounded-xl overflow-hidden" @click="gotodetail(products[0]?.id)">
           <div class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
             <img
-              class="w-full h-full absolute top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl"
+              class="
+                w-full
+                h-full
+                absolute
+                top-0
+                left-0
+                object-cover
+                group-hover:scale-105
+                transition-transform
+                duration-500
+                ease-in-out
+                rounded-xl
+              "
               :src="products[0]?.main_image"
               alt="Image Description"
             />
-            <span class="absolute top-0 right-0 rounded-tr-xl rounded-bl-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 dark:bg-gray-900">
+            <span
+              class="
+                absolute
+                top-0
+                right-0
+                rounded-tr-xl rounded-bl-xl
+                text-xs
+                font-medium
+                bg-gray-800
+                text-white
+                py-1.5
+                px-3
+                dark:bg-gray-900
+              "
+            >
               프리미엄
             </span>
           </div>
 
           <div class="mt-7">
-            <h3 class="text-xl font-semibold text-gray-800 group-hover:text-gray-600 dark:text-gray-200">
+            <h3
+              class="
+                text-xl
+                font-semibold
+                text-gray-800
+                group-hover:text-gray-600
+                dark:text-gray-200
+              "
+            >
               {{ products[0]?.main_title }}
             </h3>
             <p class="mt-3 text-gray-800 dark:text-gray-200">{{ products[0]?.main_explanation }}</p>
-            <p class="mt-5 inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 group-hover:underline font-medium">
+            <p
+              class="
+                mt-5
+                inline-flex
+                items-center
+                gap-x-1.5
+                text-blue-600
+                decoration-2
+                group-hover:underline
+                font-medium
+              "
+            >
               더보기👀
               <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path
@@ -142,21 +191,66 @@ export default {
         <a class="group rounded-xl overflow-hidden" @click="gotodetail(products[1]?.id)">
           <div class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
             <img
-              class="w-full h-full absolute top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl"
+              class="
+                w-full
+                h-full
+                absolute
+                top-0
+                left-0
+                object-cover
+                group-hover:scale-105
+                transition-transform
+                duration-500
+                ease-in-out
+                rounded-xl
+              "
               :src="products[1]?.main_image"
               alt="Image Description"
             />
-            <span class="absolute top-0 right-0 rounded-tr-xl rounded-bl-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 dark:bg-gray-900">
+            <span
+              class="
+                absolute
+                top-0
+                right-0
+                rounded-tr-xl rounded-bl-xl
+                text-xs
+                font-medium
+                bg-gray-800
+                text-white
+                py-1.5
+                px-3
+                dark:bg-gray-900
+              "
+            >
               프리미엄
             </span>
           </div>
 
           <div class="mt-7">
-            <h3 class="text-xl font-semibold text-gray-800 group-hover:text-gray-600 dark:text-gray-200">
+            <h3
+              class="
+                text-xl
+                font-semibold
+                text-gray-800
+                group-hover:text-gray-600
+                dark:text-gray-200
+              "
+            >
               {{ products[1]?.main_title }}
             </h3>
             <p class="mt-3 text-gray-800 dark:text-gray-200">{{ products[1]?.main_explanation }}</p>
-            <p class="mt-5 inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 group-hover:underline font-medium">
+            <p
+              class="
+                mt-5
+                inline-flex
+                items-center
+                gap-x-1.5
+                text-blue-600
+                decoration-2
+                group-hover:underline
+                font-medium
+              "
+            >
               더보기👀
               <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path
@@ -189,11 +283,22 @@ export default {
         >
           <div class="flex-auto p-4 md:p-6">
             <h3 class="text-xl text-white/[.9] group-hover:text-white">
-              <span class="font-bold font-red-400">애플링</span> 가족이 되고 상품 구매, 판매 서비스를 시작하세요!
+              <span class="font-bold font-red-400">애플링</span> 가족이 되고 상품 구매, 판매
+              서비스를 시작하세요!
             </h3>
           </div>
           <div class="pt-0 p-4 md:p-6">
-            <div class="inline-flex items-center gap-2 text-sm font-medium text-white group-hover:text-white/[.7]">
+            <div
+              class="
+                inline-flex
+                items-center
+                gap-2
+                text-sm
+                font-medium
+                text-white
+                group-hover:text-white/[.7]
+              "
+            >
               자세히 보기
               <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path

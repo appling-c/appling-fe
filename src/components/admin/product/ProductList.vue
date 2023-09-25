@@ -595,7 +595,7 @@
                     :key="index"
                     class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800"
                   >
-                    <td class="h-px w-px whitespace-nowrap">
+                    <td class="h-px whitespace-nowrap">
                       <div class="pl-6 py-3">
                         <label for="hs-at-with-checkboxes-1" class="flex">
                           <input
@@ -620,8 +620,8 @@
                       </div>
                     </td>
 
-                    <td @click="moveto(litem.id)" class="h-px w-px whitespace-nowrap">
-                      <a class="block h-full p-6">
+                    <td @click="moveto(litem.id)" class="h-px whitespace-nowrap">
+                      <a class="block h-full p-4">
                         <div class="flex items-center gap-x-3">
                           <div class="grow">
                             <span
@@ -634,7 +634,7 @@
                     </td>
 
                     <td @click="moveto(litem.id)" class="h-px w-72 min-w-[18rem]">
-                      <a class="block h-full p-6">
+                      <a class="block h-full p-4">
                         <span
                           class="block text-sm font-semibold text-gray-800 dark:text-gray-200"
                           >{{ litem.main_title }}</span
@@ -644,13 +644,13 @@
                         }}</span>
                       </a>
                     </td>
-                    <td @click="moveto(litem.id)" class="h-px w-px whitespace-nowrap">
-                      <a class="block h-full p-6">
+                    <td @click="moveto(litem.id)" class="h-px whitespace-nowrap">
+                      <a class="block h-full p-4">
                         <div class="flex items-center gap-x-3">
                           <div class="grow">
                             <span
                               style="text-decoration: line-through"
-                              class="block text-sm text-gray-500"
+                              class="block text-xs text-gray-500"
                               >{{ won_filter(litem.origin_price) }}원</span
                             >
                             <span
@@ -661,24 +661,24 @@
                         </div>
                       </a>
                     </td>
-                    <td @click="moveto(litem.id)" class="h-px w-px whitespace-nowrap">
-                      <a class="block h-full p-6">
+                    <td @click="moveto(litem.id)" class="h-px whitespace-nowrap">
+                      <a class="block h-full p-4">
                         <span class="text-sm text-gray-600 dark:text-gray-400">{{
                           date_format(litem.created_at)
                         }}</span>
                       </a>
                     </td>
 
-                    <td @click="moveto(litem.id)" class="h-px w-px whitespace-nowrap">
-                      <a class="block h-full p-6">
+                    <td @click="moveto(litem.id)" class="h-px whitespace-nowrap">
+                      <a class="block h-full p-4">
                         <span class="text-sm text-gray-600 dark:text-gray-400">{{
                           litem.view_cnt
                         }}</span>
                       </a>
                     </td>
 
-                    <td @click="moveto(litem.id)" class="h-px w-px whitespace-nowrap">
-                      <a class="block h-full p-6">
+                    <td @click="moveto(litem.id)" class="h-px whitespace-nowrap">
+                      <a class="block h-full p-4">
                         <span
                           v-if="litem.status == 'NORMAL'"
                           class="
@@ -743,8 +743,8 @@
                       </a>
                     </td>
                     <!--            
-          <td  @click="moveto(litem.id)" class="h-px w-px whitespace-nowrap">
-              <a class="block h-full p-6"  >
+          <td  @click="moveto(litem.id)" class="h-px whitespace-nowrap">
+              <a class="block h-full p-4"  >
               <span class="text-sm text-gray-600 dark:text-gray-400">{{litem.seller.nickname}}</span>
               </a>
           </td> -->
@@ -752,7 +752,7 @@
                     <td
                       id="kakaotalk-sharing-btn"
                       @click="kakaoShare(litem)"
-                      class="h-px w-px whitespace-nowrap"
+                      class="h-px whitespace-nowrap"
                     >
                       <a
                         class="
@@ -790,7 +790,7 @@
               </a> -->
                     </td>
 
-                    <td @click="showtemplate(litem)" class="h-px w-px whitespace-nowrap">
+                    <td @click="showtemplate(litem)" class="h-px whitespace-nowrap">
                       <a
                         data-hs-overlay="#hs-scroll-inside-body-modal"
                         class="
@@ -1126,3 +1126,86 @@ export default {
   },
 };
 </script>
+
+<style>
+/* table {
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: 0.5em 0 0.75em;
+}
+
+table tr {
+  padding: 0.35em;
+}
+
+table th,
+table td {
+  padding: 0.625em;
+  text-align: center;
+}
+
+table th {
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+} */
+
+@media screen and (max-width: 600px) {
+  .h-px {
+    height: auto;
+  }
+  .w-px {
+    width: auto;
+  }
+  .w-72 {
+    width: auto;
+  }
+  .p-6 {
+    padding: 0.5rem;
+  }
+  table {
+    border: 0;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    display: block;
+    margin-bottom: 0.625em;
+  }
+
+  table td {
+    display: block;
+    font-size: 0.8em;
+    text-align: right;
+  }
+
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+</style>
