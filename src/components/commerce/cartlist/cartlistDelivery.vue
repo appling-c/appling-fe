@@ -226,6 +226,13 @@ export default {
   components: {
     TheUserAddressForm,
   },
+  watch: {
+    order_id(value) {
+      this.getOrderList(value).then(() => {
+        this.setTotalPrice();
+      });
+    },
+  },
   computed: {
     //...mapGetters("cart", ["inventory"]),
   },
@@ -254,9 +261,6 @@ export default {
     },
   },
   async mounted() {
-    await this.getOrderList(this.order_id).then(() => {
-      this.setTotalPrice();
-    });
     //this.getOrderList(this.order_id)
   },
 };

@@ -314,8 +314,8 @@ export default {
         this.$emit("updateStep", "2");
       });
 
-      //this.$emit("setOrderId", 10);
-      //this.$emit("updateStep", "2");
+      // this.$emit("setOrderId", 10);
+      // this.$emit("updateStep", "2");
     },
   },
   mounted() {
