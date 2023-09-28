@@ -106,7 +106,7 @@ export default {
       container: "#kakao-article-share",
       objectType: "commerce",
       content: {
-        title: `🍎애플링 특가 ${discountPrice.toLocaleString()}원에 구매해보세요!`,
+        title: `🍎애플링 특가 ${discountPrice?.toLocaleString()}원에 구매해보세요!`,
         imageUrl,
         link: {
           mobileWebUrl: `http://www.appling.me/commerce/detail/${productID}`,
@@ -242,7 +242,7 @@ export default {
                     dark:decoration-blue-600
                   "
                 >
-                  {{ productDetailItem.price.toLocaleString() }}원</span
+                  {{ productDetailItem?.price?.toLocaleString() }}원</span
                 >에 구매해보세요!
               </h5>
             </div>

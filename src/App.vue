@@ -11,10 +11,20 @@ export default {
   <div>
     <router-view />
     <template v-if="spinnerStatus">
-      <div class="absolute top-0 left-0 w-full h-full bg-white/[.5] rounded-md dark:bg-gray-800/[.4]"></div>
+      <div
+        class="absolute top-0 left-0 w-full h-full bg-white/[.5] rounded-md dark:bg-gray-800/[.4]"
+      ></div>
       <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <div
-          class="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-blue-600 rounded-full"
+          class="
+            animate-spin
+            inline-block
+            w-6
+            h-6
+            border-[3px] border-current border-t-transparent
+            text-blue-600
+            rounded-full
+          "
           role="status"
           aria-label="loading"
         >
@@ -26,16 +36,14 @@ export default {
       <!-- Grid -->
       <div class="text-center">
         <div>
-          <a class="flex-none text-xl font-semibold text-black dark:text-white" href="#" aria-label="Brand">Appling</a>
+          <a class="flex-none text-base font-semibold text-black dark:text-white" aria-label="Brand"
+            >🍎Appling</a
+          >
         </div>
         <!-- End Col -->
 
         <div class="mt-3">
-          <p class="text-gray-500">
-            We're part of the
-            <a class="font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-500 dark:hover:text-blue-400" href="#">Appling</a> family.
-          </p>
-          <p class="text-gray-500">© Appling. 2023 Htmlstream. All rights reserved.</p>
+          <p class="text-gray-500">© Copyright 2023. Appling. All rights reserved.</p>
         </div>
       </div>
       <!-- End Grid -->
