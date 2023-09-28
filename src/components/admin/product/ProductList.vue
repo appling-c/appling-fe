@@ -651,11 +651,11 @@
                             <span
                               style="text-decoration: line-through"
                               class="block text-xs text-gray-500"
-                              >{{ won_filter(litem.origin_price) }}원</span
+                              >{{ litem.origin_price.toLocaleString() }}원</span
                             >
                             <span
                               class="block text-sm font-semibold text-gray-800 dark:text-gray-200"
-                              >{{ won_filter(litem.price) }}원</span
+                              >{{ litem.price.toLocaleString() }}원</span
                             >
                           </div>
                         </div>
@@ -985,7 +985,6 @@
 
 <script>
 import moment from "moment";
-import common from "../../../plugins/common";
 import ThePreviewPopup from "../template/TemplatePreviewPopup.vue";
 import { mapActions } from "vuex";
 import ProductService from "@/services/ProductService";
@@ -1080,10 +1079,6 @@ export default {
         //   },
         // ],
       });
-    },
-
-    won_filter(num) {
-      return common.comma(num);
     },
     async getproductlists() {
       const payload = { size: this.size, page: this.page, keyword: this.keyword };

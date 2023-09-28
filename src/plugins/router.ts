@@ -23,6 +23,10 @@ import Signup from "../views/signup.vue";
 import myAccount from "../views/myaccount.vue";
 import { createWebHistory, createRouter } from "vue-router";
 import { RouteRecordRaw } from "vue-router";
+
+import store from "../store";
+
+
 const routes: Array<RouteRecordRaw> = [
   { path: "/login", component: Login },
   { path: "/signup", component: Signup },
@@ -64,6 +68,8 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+
+
 
 router.beforeEach((to, from, next) => {
   // ...
