@@ -247,6 +247,7 @@
 
 <script lang="ts">
 import { mapActions, mapGetters } from "vuex";
+import OrderService from "@/services/OrderService";
 
 export default {
   props: {
@@ -260,8 +261,6 @@ export default {
     return {
       inventoryList: [],
       isLogin: false,
-      orderInfo: {},
-      deiveryInfo: {},
       optionList: [],
       totalPrice: 0,
     };
@@ -285,9 +284,7 @@ export default {
       this.updateCartItem(addCartItem);
       this.setTotalPrice();
     },
-    setOrder() {
-      console.log(this.inventory, this.orderInfo, this.deiveryInfo);
-    },
+
     setTotalPrice() {
       this.totalPrice = 0;
       if (this.inventory.length > 0) {
@@ -301,14 +298,30 @@ export default {
     moveto(path) {
       return this.$router.push(path);
     },
-    updateNextStep() {
-      this.$emit("updateStep", "2");
+    async updateNextStep() {
+      let order_list = [];
+      for (let i = 0; i < this.inventory.length; i++) {
+        order_list.push({
+          ea: Number(this.inventory[i].count),
+          product_id: Number(this.inventory[i].productID),
+        });
+      }
+
+      let order_id = 0;
+      await OrderService.saveTempOrderList(order_list).then((response) => {
+        order_id = response.data.data.order_id;
+        this.$emit("setOrderId", order_id);
+        this.$emit("updateStep", "2");
+      });
+
+      //this.$emit("setOrderId", 10);
+      //this.$emit("updateStep", "2");
     },
   },
   mounted() {
     this.inventoryList = this.inventory;
     this.isLogin = this.userInfoInterface.islogin;
-    console.log(this.isLogin);
+
     for (let i = 0; i < 10; i++) {
       this.optionList.push({
         value: i + 1,
