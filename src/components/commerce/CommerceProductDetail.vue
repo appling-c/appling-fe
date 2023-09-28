@@ -1,5 +1,4 @@
 <script lang="ts">
-import common from "../../plugins/common";
 import { mapActions } from "vuex";
 import ProductService from "@/services/ProductService";
 import productDetailInterface from "../../types/auth";
@@ -50,9 +49,7 @@ export default {
     back() {
       this.$router.push("/commerce/search");
     },
-    won_filter(num) {
-      return common.comma(num);
-    },
+
     async getproductitemlist(id) {
       // 상품 수정
       this.updateSpinnerStatus(true);
@@ -109,7 +106,7 @@ export default {
       container: "#kakao-article-share",
       objectType: "commerce",
       content: {
-        title: `🍎애플링 특가 ${discountPrice.toLocaleString()}원에 구매해보세요!`,
+        title: `🍎애플링 특가 ${discountPrice?.toLocaleString()}원에 구매해보세요!`,
         imageUrl,
         link: {
           mobileWebUrl: `http://www.appling.me/commerce/detail/${productID}`,
@@ -245,7 +242,7 @@ export default {
                     dark:decoration-blue-600
                   "
                 >
-                  {{ won_filter(productDetailItem.price) }}원</span
+                  {{ productDetailItem?.price?.toLocaleString() }}원</span
                 >에 구매해보세요!
               </h5>
             </div>

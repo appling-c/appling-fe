@@ -7,6 +7,7 @@ const state = () => ({
   userInfoInterface: {} as userInfoInterface,
   userToken: {} as Token,
 });
+import Cookies from "js-cookie";
 
 // getters
 const getters = {
@@ -38,6 +39,9 @@ const mutations = {
   },
   saveUserToken(state, payload) {
     state.userToken = payload;
+    const { access_token, refresh_token } = payload;
+    Cookies.set("access_token", access_token);
+    Cookies.set("refresh_token", refresh_token);
   },
 };
 

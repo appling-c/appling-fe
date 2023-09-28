@@ -1,6 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 import UserAthendicateService from "@/services/UserAthendicateService";
 import store from "../store";
+import Cookies from "js-cookie";
 
 let instance: AxiosInstance = axios.create({
   //baseURL: import.meta.env.VITE_APP_BASE_URL,
@@ -16,7 +17,8 @@ if (import.meta.env.PROD) {
 instance.interceptors.request.use(
   (config) => {
     // 세션스토리지에 저장된 토큰을 헤더에 저장
-    const { access_token } = store.state.auth.userToken;
+
+    const access_token = Cookies.get("access_token");
 
     if (access_token) {
       config.headers["Authorization"] = `Bearer ${access_token}`;
@@ -38,7 +40,8 @@ instance.interceptors.response.use(
       config,
       response: { status },
     } = error;
-    const { refresh_token } = store.state.auth.userToken;
+
+    const refresh_token = Cookies.get("refresh_token");
 
     if (status == 403 || status == 401) {
       // 토큰없음, 토큰만료

@@ -2,6 +2,7 @@ import instance from "@/plugins/axios";
 import { AxiosHeaders, AxiosResponse } from "axios";
 import { Token, MemberLogin } from "../types/auth";
 import store from "../store";
+import Cookies from "js-cookie";
 const ENDPOINT = {
   KAKAOLOGIN_AUTH: "/api/oauth/kakao?code=",
   KAKAOLOGIN_AUTH_KAKAO_TOKEN: "/api/oauth/kakao/login?access_token=",
@@ -26,6 +27,8 @@ class UserAthendicateService {
    */
   logout(): void {
     store.dispatch("auth/updateUserInfoInterface", {});
+    Cookies.remove("access_token");
+    Cookies.remove("refresh_token");
   }
 
   /**
@@ -46,7 +49,7 @@ class UserAthendicateService {
    * 토큰재발급
    */
   public async memberaccesstoken(): Promise<string> {
-    const { refresh_token } = store.state.auth.userToken;
+    const refresh_token = Cookies.get("refresh_token");
     await instance.get(`${ENDPOINT.API_AUTH_REFRESH}/${refresh_token}`).then((response) => {
       const { code, data } = response.data;
       if (code == "0000") {
