@@ -41,7 +41,8 @@
                       "
                     >
                       <div class="flex justify-between w-full">
-                        {{ iItem.productName }} X {{ iItem.count }}개
+                        {{ iItem.main_title }} X {{ iItem.ea }}EA,
+                        {{ (Number(iItem.ea) * Number(iItem.price)).toLocaleString() }}원
                       </div>
                     </li>
                   </ul>
@@ -213,21 +214,24 @@
 <script lang="ts">
 import { mapActions, mapGetters } from "vuex";
 import TheUserAddressForm from "../common/TheUserAddressForm.vue";
+import OrderService from "@/services/OrderService";
 
 export default {
   data() {
     return {
       totalPrice: 0,
+      inventory: [],
     };
   },
   components: {
     TheUserAddressForm,
   },
   computed: {
-    ...mapGetters("cart", ["inventory"]),
+    //...mapGetters("cart", ["inventory"]),
   },
   props: {
     currentStep: String,
+    order_id: Number,
   },
   methods: {
     setTotalPrice() {
@@ -243,9 +247,17 @@ export default {
     updateNextStep() {
       this.$emit("updateStep", "3");
     },
+    async getOrderList(id) {
+      await OrderService.getTempOrderList(id).then((response) => {
+        this.inventory = response.data.data.order_item_list;
+      });
+    },
   },
-  mounted() {
-    this.setTotalPrice();
+  async mounted() {
+    await this.getOrderList(this.order_id).then(() => {
+      this.setTotalPrice();
+    });
+    //this.getOrderList(this.order_id)
   },
 };
 </script>

@@ -94,7 +94,12 @@
       aria-labelledby="horizontal-alignment-item-2"
     >
       <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-        <the-cartlist-delivery :currentStep="currentStep" @updateStep="updateStep" />
+        <the-cartlist-delivery
+          :currentStep="currentStep"
+          @updateStep="updateStep"
+          @setOrderId="setOrderId"
+          :order_id="order_id"
+        />
       </div>
     </div>
     <div
@@ -127,11 +132,15 @@ export default {
   data() {
     return {
       currentStep: "1",
+      order_id: 0,
     };
   },
   methods: {
     updateStep(step) {
       this.currentStep = step;
+    },
+    setOrderId(id) {
+      this.order_id = id;
     },
   },
 
