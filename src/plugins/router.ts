@@ -26,7 +26,6 @@ import { RouteRecordRaw } from "vue-router";
 
 import store from "../store";
 
-
 const routes: Array<RouteRecordRaw> = [
   { path: "/login", component: Login },
   { path: "/signup", component: Signup },
@@ -69,12 +68,29 @@ const router = createRouter({
   routes,
 });
 
-
-
 router.beforeEach((to, from, next) => {
-  // ...
-  console.log(to);
-  console.log(from);
+  // 유저정보
+  const { userInfoInterface } = store.state?.auth;
+
+  // 타겟 url
+  const { fullPath: targetPath } = to;
+
+  // 셀러 페이지 접근 권한 체크
+  if (targetPath.indexOf("/admin/") !== -1) {
+    // 로그인 X
+    if (Object.keys(userInfoInterface).length == 0) {
+      alert("로그인 후 이용 가능합니다.");
+      return (location.href = "/login");
+    }
+
+    // 권한이 없을 경우
+    const { role } = userInfoInterface;
+    if (role !== "SELLER") {
+      alert("접근 권한이 없습니다.");
+      return (location.href = "/commerce/main");
+    }
+  }
+
   next();
 });
 
