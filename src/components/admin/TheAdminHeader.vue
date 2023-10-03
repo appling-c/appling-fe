@@ -16,7 +16,6 @@
         py-2.5
         sm:py-4
         lg:pl-64
-        dark:bg-gray-800 dark:border-gray-700
       "
     >
       <nav
@@ -26,7 +25,7 @@
         <div class="mr-5 lg:mr-0 lg:hidden">
           <a
             @click="moveto('/admin/dashboard')"
-            class="flex-none text-xl font-semibold dark:text-white"
+            class="flex-none text-xl font-semibold"
             href="#"
             aria-label="Brand"
             >🍎</a
@@ -71,12 +70,6 @@
                 focus:ring-offset-white
                 transition-all
                 text-xs
-                dark:bg-gray-800
-                dark:hover:bg-slate-800
-                dark:text-gray-400
-                dark:hover:text-white
-                dark:focus:ring-gray-700
-                dark:focus:ring-offset-gray-800
               "
             >
               <svg
@@ -116,12 +109,6 @@
                 focus:ring-offset-white
                 transition-all
                 text-xs
-                dark:bg-gray-800
-                dark:hover:bg-slate-800
-                dark:text-gray-400
-                dark:hover:text-white
-                dark:focus:ring-gray-700
-                dark:focus:ring-offset-gray-800
               "
               data-hs-offcanvas="#hs-offcanvas-right"
             >
@@ -166,23 +153,10 @@
                   focus:ring-offset-white
                   transition-all
                   text-xs
-                  dark:bg-gray-800
-                  dark:hover:bg-slate-800
-                  dark:text-gray-400
-                  dark:hover:text-white
-                  dark:focus:ring-gray-700
-                  dark:focus:ring-offset-gray-800
                 "
               >
                 <img
-                  class="
-                    inline-block
-                    h-[2.375rem]
-                    w-[2.375rem]
-                    rounded-full
-                    ring-2 ring-white
-                    dark:ring-gray-800
-                  "
+                  class="inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-2 ring-white"
                   src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
                   alt="Image Description"
                 />
@@ -201,13 +175,12 @@
                   shadow-md
                   rounded-lg
                   p-2
-                  dark:bg-gray-800 dark:border dark:border-gray-700
                 "
                 aria-labelledby="hs-dropdown-with-header"
               >
-                <div class="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg dark:bg-gray-700">
-                  <p class="text-sm text-gray-500 dark:text-gray-400">Signed in as</p>
-                  <p class="text-sm font-medium text-gray-800 dark:text-gray-300">james@site.com</p>
+                <div class="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg">
+                  <p class="text-sm text-gray-500">Signed in as</p>
+                  <p class="text-sm font-medium text-gray-800">james@site.com</p>
                 </div>
                 <div class="mt-2 py-2 first:pt-0 last:pb-0">
                   <a
@@ -221,7 +194,6 @@
                       text-sm text-gray-800
                       hover:bg-gray-100
                       focus:ring-2 focus:ring-blue-500
-                      dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300
                     "
                     href="#"
                   >
@@ -249,7 +221,6 @@
                       text-sm text-gray-800
                       hover:bg-gray-100
                       focus:ring-2 focus:ring-blue-500
-                      dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300
                     "
                     href="#"
                   >
@@ -280,7 +251,6 @@
                       text-sm text-gray-800
                       hover:bg-gray-100
                       focus:ring-2 focus:ring-blue-500
-                      dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300
                     "
                     href="#"
                   >
@@ -312,7 +282,6 @@
                       text-sm text-gray-800
                       hover:bg-gray-100
                       focus:ring-2 focus:ring-blue-500
-                      dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300
                     "
                     href="#"
                   >
@@ -340,21 +309,7 @@
 
     <!-- ========== MAIN CONTENT ========== -->
     <!-- Sidebar Toggle -->
-    <div
-      class="
-        sticky
-        top-0
-        inset-x-0
-        z-20
-        bg-white
-        border-y
-        px-4
-        sm:px-6
-        md:px-8
-        lg:hidden
-        dark:bg-gray-800 dark:border-gray-700
-      "
-    >
+    <div class="sticky top-0 inset-x-0 z-20 bg-white border-y px-4 sm:px-6 md:px-8 lg:hidden">
       <div class="flex items-center py-4">
         <!-- Navigation Toggle -->
         <button
@@ -376,18 +331,10 @@
 
         <!-- Breadcrumb -->
         <ol class="ml-3 flex items-center whitespace-nowrap min-w-0" aria-label="Breadcrumb">
-          <li class="flex items-center text-sm text-gray-800 dark:text-gray-400">
+          <li class="flex items-center text-sm text-gray-800">
             Application Layout
             <svg
-              class="
-                flex-shrink-0
-                mx-3
-                overflow-visible
-                h-2.5
-                w-2.5
-                text-gray-400
-                dark:text-gray-600
-              "
+              class="flex-shrink-0 mx-3 overflow-visible h-2.5 w-2.5 text-gray-400"
               width="16"
               height="16"
               viewBox="0 0 16 16"
@@ -402,12 +349,7 @@
               />
             </svg>
           </li>
-          <li
-            class="text-sm font-semibold text-gray-800 truncate dark:text-gray-400"
-            aria-current="page"
-          >
-            대시보드
-          </li>
+          <li class="text-sm font-semibold text-gray-800 truncate" aria-current="page">대시보드</li>
         </ol>
         <!-- End Breadcrumb -->
       </div>
@@ -438,13 +380,10 @@
         overflow-y-auto
         scrollbar-y
         lg:block lg:translate-x-0 lg:right-auto lg:bottom-0
-        dark:scrollbar-y dark:bg-gray-800 dark:border-gray-700
       "
     >
       <div class="px-6">
-        <a class="flex-none text-xl font-semibold dark:text-white" href="#" aria-label="Brand"
-          >🍎 마이 애플링</a
-        >
+        <a class="flex-none text-xl font-semibold" href="#" aria-label="Brand">🍎 마이 애플링</a>
       </div>
 
       <nav
@@ -464,7 +403,6 @@
                 text-sm text-slate-700
                 rounded-md
                 hover:bg-gray-100
-                dark:bg-gray-900 dark:text-white
               "
               @click="moveto('/admin/dashboard')"
             >
@@ -502,11 +440,6 @@
                 text-sm text-slate-700
                 rounded-md
                 hover:bg-gray-100
-                dark:bg-gray-800
-                dark:hover:bg-gray-900
-                dark:text-slate-400
-                dark:hover:text-slate-300
-                dark:hs-accordion-active:text-white
               "
               href="javascript:;"
             >
@@ -533,7 +466,6 @@
                   h-3
                   text-gray-600
                   group-hover:text-gray-500
-                  dark:text-gray-400
                 "
                 width="16"
                 height="16"
@@ -558,7 +490,6 @@
                   h-3
                   text-gray-600
                   group-hover:text-gray-500
-                  dark:text-gray-400
                 "
                 width="16"
                 height="16"
@@ -600,11 +531,6 @@
                       text-sm text-slate-700
                       rounded-md
                       hover:bg-gray-100
-                      dark:bg-gray-800
-                      dark:hover:bg-gray-900
-                      dark:text-slate-400
-                      dark:hover:text-slate-300
-                      dark:hs-accordion-active:text-white
                     "
                   >
                     상품관리
@@ -618,7 +544,6 @@
                         h-3
                         text-gray-600
                         group-hover:text-gray-500
-                        dark:text-gray-400
                       "
                       width="16"
                       height="16"
@@ -643,7 +568,6 @@
                         h-3
                         text-gray-600
                         group-hover:text-gray-500
-                        dark:text-gray-400
                       "
                       width="16"
                       height="16"
@@ -683,7 +607,6 @@
                             text-sm text-slate-700
                             rounded-md
                             hover:bg-gray-100
-                            dark:bg-gray-800 dark:text-slate-400 dark:hover:text-slate-300
                           "
                           @click="moveto('/admin/product/detail/0')"
                         >
@@ -701,7 +624,6 @@
                             text-sm text-slate-700
                             rounded-md
                             hover:bg-gray-100
-                            dark:bg-gray-800 dark:text-slate-400 dark:hover:text-slate-300
                           "
                           @click="moveto('/admin/product/list')"
                         >
@@ -724,11 +646,6 @@
                       text-sm text-slate-700
                       rounded-md
                       hover:bg-gray-100
-                      dark:bg-gray-800
-                      dark:hover:bg-gray-900
-                      dark:text-slate-400
-                      dark:hover:text-slate-300
-                      dark:hs-accordion-active:text-white
                     "
                     href="javascript:;"
                   >
@@ -743,7 +660,6 @@
                         h-3
                         text-gray-600
                         group-hover:text-gray-500
-                        dark:text-gray-400
                       "
                       width="16"
                       height="16"
@@ -768,7 +684,6 @@
                         h-3
                         text-gray-600
                         group-hover:text-gray-500
-                        dark:text-gray-400
                       "
                       width="16"
                       height="16"
@@ -809,7 +724,6 @@
                             text-sm text-slate-700
                             rounded-md
                             hover:bg-gray-100
-                            dark:bg-gray-800 dark:text-slate-400 dark:hover:text-slate-300
                           "
                           href="javascript:;"
                         >
@@ -827,7 +741,6 @@
                             text-sm text-slate-700
                             rounded-md
                             hover:bg-gray-100
-                            dark:bg-gray-800 dark:text-slate-400 dark:hover:text-slate-300
                           "
                           href="javascript:;"
                         >
@@ -854,11 +767,6 @@
                 text-sm text-slate-700
                 rounded-md
                 hover:bg-gray-100
-                dark:bg-gray-800
-                dark:hover:bg-gray-900
-                dark:text-slate-400
-                dark:hover:text-slate-300
-                dark:hs-accordion-active:text-white
               "
               href="javascript:;"
             >
@@ -887,7 +795,6 @@
                   h-3
                   text-gray-600
                   group-hover:text-gray-500
-                  dark:text-gray-400
                 "
                 width="16"
                 height="16"
@@ -912,7 +819,6 @@
                   h-3
                   text-gray-600
                   group-hover:text-gray-500
-                  dark:text-gray-400
                 "
                 width="16"
                 height="16"
@@ -952,7 +858,6 @@
                       text-sm text-slate-700
                       rounded-md
                       hover:bg-gray-100
-                      dark:bg-gray-800 dark:text-slate-400 dark:hover:text-slate-300
                     "
                     @click="account()"
                   >
@@ -970,7 +875,6 @@
                       text-sm text-slate-700
                       rounded-md
                       hover:bg-gray-100
-                      dark:bg-gray-800 dark:text-slate-400 dark:hover:text-slate-300
                     "
                     @click="account()"
                   >
@@ -988,7 +892,6 @@
                       text-sm text-slate-700
                       rounded-md
                       hover:bg-gray-100
-                      dark:bg-gray-800 dark:text-slate-400 dark:hover:text-slate-300
                     "
                     @click="account()"
                   >
@@ -1006,7 +909,6 @@
                       text-sm text-slate-700
                       rounded-md
                       hover:bg-gray-100
-                      dark:bg-gray-800 dark:text-slate-400 dark:hover:text-slate-300
                     "
                     @click="logout"
                   >
@@ -1030,11 +932,6 @@
                 text-sm text-slate-700
                 rounded-md
                 hover:bg-gray-100
-                dark:bg-gray-800
-                dark:hover:bg-gray-900
-                dark:text-slate-400
-                dark:hover:text-slate-300
-                dark:hs-accordion-active:text-white
               "
               href="javascript:;"
             >
@@ -1064,7 +961,6 @@
                   h-3
                   text-gray-600
                   group-hover:text-gray-500
-                  dark:text-gray-400
                 "
                 width="16"
                 height="16"
@@ -1089,7 +985,6 @@
                   h-3
                   text-gray-600
                   group-hover:text-gray-500
-                  dark:text-gray-400
                 "
                 width="16"
                 height="16"
@@ -1129,7 +1024,6 @@
                       text-sm text-slate-700
                       rounded-md
                       hover:bg-gray-100
-                      dark:bg-gray-800 dark:text-slate-400 dark:hover:text-slate-300
                     "
                     @click="moveto('/admin/brandshop')"
                   >
@@ -1147,7 +1041,6 @@
                       text-sm text-slate-700
                       rounded-md
                       hover:bg-gray-100
-                      dark:bg-gray-800 dark:text-slate-400 dark:hover:text-slate-300
                     "
                     @click="moveto(`/brandshop/preview/${userInfoInterface?.member_id}`)"
                   >
@@ -1169,7 +1062,6 @@
                 text-sm text-slate-700
                 rounded-md
                 hover:bg-gray-100
-                dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300
               "
               @click="movetoCommerce()"
             >
