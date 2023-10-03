@@ -1,8 +1,14 @@
 <template>
   <header>
-    <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">우리 농장을 소개합니다.🍃</h1>
-    <p class="mt-2 text-lg text-gray-800 dark:text-gray-400">우리 농장을 소개하는 글을 작성해서 홍보해보세요.</p>
-    <p class="mt-2 text-m text-gray-800 dark:text-gray-200">농장 소개 화면은 상품 안내글에 노출되고, 카카오톡으로 공유할 수 있습니다.</p>
+    <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">
+      우리 농장을 소개합니다.🍃
+    </h1>
+    <p class="mt-2 text-lg text-gray-800 dark:text-gray-400">
+      우리 농장을 소개하는 글을 작성해서 홍보해보세요.
+    </p>
+    <p class="mt-2 text-m text-gray-800 dark:text-gray-200">
+      농장 소개 화면은 상품 안내글에 노출되고, 카카오톡으로 공유할 수 있습니다.
+    </p>
 
     <div class="mt-5 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
       <router-link
@@ -21,7 +27,11 @@
           text-white text-sm
           font-medium
           rounded-md
-          focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white
+          focus:outline-none
+          focus:ring-2
+          focus:ring-blue-600
+          focus:ring-offset-2
+          focus:ring-offset-white
           transition
           py-3
           px-4
@@ -72,12 +82,21 @@
   <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
     <div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
       <!-- Section -->
-      <div class="grid sm:grid-cols-12 gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700">
-        <div class="sm:col-span-3">
-          <div class="inline-block">
-            <label class="inline-block text-base font-medium text-gray-500 mt-2.5"> 메인 상품 이미지 </label>
-          </div>
-        </div>
+      <div
+        class="
+          grid
+          sm:grid-cols-12
+          gap-2
+          sm:gap-4
+          py-8
+          first:pt-0
+          last:pb-0
+          border-t
+          first:border-transparent
+          border-gray-200
+          dark:border-gray-700
+        "
+      >
         <!-- End Col -->
 
         <div class="sm:col-span-9">
@@ -108,10 +127,19 @@
             shadow-sm
             align-middle
             hover:bg-gray-50
-            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600
+            focus:outline-none
+            focus:ring-2
+            focus:ring-offset-2
+            focus:ring-offset-white
+            focus:ring-blue-600
             transition-all
             text-sm
-            dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800
+            dark:bg-slate-900
+            dark:hover:bg-slate-800
+            dark:border-gray-700
+            dark:text-gray-400
+            dark:hover:text-white
+            dark:focus:ring-offset-gray-800
           "
         >
           취소
