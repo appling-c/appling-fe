@@ -13,36 +13,7 @@ export default createStore({
     auth,
     //products
   },
-  plugins: [
-    createPersistedState({
-      // storage: {
-      //   getItem(key) {
-      //     if (JSON.parse(localStorage.getItem("saveLogin"))) {
-      //       return localStorage.getItem(key);
-      //     } else {
-      //       return Cookies.get(key);
-      //       // return sessionStorage.getItem(key);
-      //     }
-      //   },
-      //   setItem(key, value) {
-      //     if (JSON.parse(localStorage.getItem("saveLogin"))) {
-      //       localStorage.setItem(key, value);
-      //     } else {
-      //       Cookies.set(key, value);
-      //       // sessionStorage.setItem(key, value);
-      //     }
-      //   },
-      //   removeItem(key) {
-      //     if (JSON.parse(localStorage.getItem("saveLogin"))) {
-      //       localStorage.removeItem(key);
-      //     } else {
-      //       Cookies.get(key);
-      //       // sessionStorage.removeItem(key);
-      //     }
-      //   },
-      // },
-    }),
-  ],
+  plugins: [createPersistedState({})],
   //   strict: debug,
   //   plugins: debug ? [createLogger()] : []
 });

@@ -95,19 +95,6 @@
                       >
                     </td>
                   </tr>
-                  <tr>
-                    <td class="py-3 pl-4">
-                      <div class="flex items-center h-5">최종 주문 금액</div>
-                    </td>
-                    <!-- <td
-                        class="px-6 py-4 text-base font-medium text-slate-800 dark:text-slate-200"
-                      ></td> -->
-                    <td class="px-6 py-4 text-base text-slate-800 dark:text-slate-200"></td>
-                    <td class="px-6 py-4 text-base text-slate-800 dark:text-slate-200"></td>
-                    <td class="px-6 py-4 text-right text-slate-800 text-base font-medium">
-                      <a class="text-slate-950 font-bold">{{ totalPrice.toLocaleString() }}원</a>
-                    </td>
-                  </tr>
                 </tbody>
               </table>
             </div>
@@ -122,26 +109,8 @@
           <div class="grid gap-12">
             <div>
               <h2 class="text-3xl text-slate-800 font-bold lg:text-4xl dark:text-white">
-                주문 전 확인해주세요!
+                최종 주문 금액 : {{ totalPrice.toLocaleString() }}원
               </h2>
-              <template v-if="!isLogin">
-                <h3 class="text-base sm:text-lg font-semibold text-slate-800 dark:text-slate-200">
-                  상품을 구매하기 위해선 애플링 회원가입/로그인이 필요해요.<br />
-                  애플링 가족이 아니라면, 회원가입 후 신선한 상품들을 저렴한 가격에 구매해 보세요.
-                </h3>
-                <p class="mt-1 text-slate-600 dark:text-slate-400">
-                  회원가입, 로그인 페이지로 이동해도 상품은 그대로 있어요!
-                </p>
-              </template>
-
-              <template v-else>
-                <h3 class="text-base sm:text-lg font-semibold text-slate-800 dark:text-slate-200">
-                  내 정보에 입력한 주소와 배송지가 일치하는지 확인해주세요.
-                </h3>
-                <p class="mt-1 text-slate-600 dark:text-slate-400">
-                  주소가 다르다면, 다음 페이지에서 변경할 수 있어요.
-                </p>
-              </template>
 
               <!-- <p class="mt-3 text-slate-800 dark:text-slate-400">
                   구매할 상품과 수량을 한 번 더 확인해주세요!<br />
@@ -149,90 +118,62 @@
                 </p> -->
             </div>
 
-            <div class="">
+            <div class="flex gap-2">
               <!-- Icon Block -->
-              <div class="">
-                <div v-if="!isLogin" class="flex gap-2">
-                  <template>
-                    <button
-                      @click="moveto('/login')"
-                      type="button"
-                      class="
-                        w-1/2
-                        py-3
-                        px-4
-                        rounded-md
-                        border
-                        font-medium
-                        bg-white
-                        text-slate-700
-                        shadow-sm
-                        align-middle
-                        hover:bg-gray-50
-                        focus:outline-none
-                        focus:ring-2
-                        focus:ring-offset-2
-                        focus:ring-offset-white
-                        focus:ring-blue-600
-                        transition-all
-                        text-base
-                      "
-                    >
-                      로그인
-                    </button>
-                    <button
-                      @click="moveto('/signup')"
-                      type="button"
-                      class="
-                        w-1/2
-                        py-3
-                        px-4
-                        rounded-md
-                        border border-transparent
-                        font-semibold
-                        bg-blue-500
-                        text-white
-                        hover:bg-blue-600
-                        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
-                        transition-all
-                        text-base
-                        dark:focus:ring-offset-gray-800
-                      "
-                    >
-                      회원가입
-                    </button>
-                  </template>
-                </div>
-                <template v-else>
-                  <button
-                    @click="updateNextStep"
-                    type="button"
-                    class="
-                      w-full
-                      py-3
-                      px-4
-                      inline-flex
-                      justify-center
-                      items-center
-                      gap-2
-                      rounded-md
-                      bg-indigo-100
-                      border border-transparent
-                      font-semibold
-                      text-indigo-500
-                      hover:text-white hover:bg-indigo-100
-                      focus:outline-none focus:ring-2
-                      ring-offset-white
-                      focus:ring-indigo-500 focus:ring-offset-2
-                      transition-all
-                      text-sm
-                      dark:focus:ring-offset-gray-800
-                    "
-                  >
-                    배송정보 입력하기
-                  </button>
-                </template>
-              </div>
+
+              <button
+                @click="movetocartlist()"
+                type="button"
+                class="
+                  w-full
+                  py-3
+                  px-4
+                  inline-flex
+                  justify-center
+                  items-center
+                  gap-2
+                  rounded-md
+                  border border-transparent
+                  text-indigo-500 text-base
+                  border-2 border-blue-200
+                  font-semibold
+                  text-blue-500
+                  hover:text-white hover:bg-blue-500 hover:border-blue-500
+                  focus:outline-none focus:ring-2 focus:ring-blue-200 focus:ring-offset-2
+                  transition-all
+                  text-sm
+                  dark:focus:ring-offset-gray-800
+                "
+              >
+                계속 쇼핑하기
+              </button>
+              <button
+                @click="updateNextStep"
+                type="button"
+                class="
+                  w-full
+                  py-3
+                  px-4
+                  inline-flex
+                  justify-center
+                  items-center
+                  gap-2
+                  rounded-md
+                  bg-indigo-100
+                  border border-transparent
+                  font-semibold
+                  text-indigo-500
+                  hover:text-white hover:bg-indigo-100
+                  focus:outline-none focus:ring-2
+                  ring-offset-white
+                  focus:ring-indigo-500 focus:ring-offset-2
+                  transition-all
+                  text-base
+                  dark:focus:ring-offset-gray-800
+                "
+              >
+                배송정보 입력하기
+              </button>
               <!-- End Icon Block -->
             </div>
           </div>
@@ -306,16 +247,20 @@ export default {
           product_id: Number(this.inventory[i].productID),
         });
       }
+      // console.log(order_list);
+      // let order_id = 0;
+      // await OrderService.saveTempOrderList(order_list).then((response) => {
+      //   order_id = response.data.data.order_id;
+      //   console.log(order_id);
+      //   this.$emit("setOrderId", order_id);
+      //   this.$emit("updateStep", "2");
+      // });
 
-      let order_id = 0;
-      await OrderService.saveTempOrderList(order_list).then((response) => {
-        order_id = response.data.data.order_id;
-        this.$emit("setOrderId", order_id);
-        this.$emit("updateStep", "2");
-      });
-
-      // this.$emit("setOrderId", 10);
-      // this.$emit("updateStep", "2");
+      this.$emit("setOrderId", 10);
+      this.$emit("updateStep", "2");
+    },
+    movetocartlist() {
+      this.$router.push("/commerce/main");
     },
   },
   mounted() {

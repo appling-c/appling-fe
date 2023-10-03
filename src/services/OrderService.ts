@@ -15,6 +15,7 @@ class OrderService {
     return await instance
       .post(`${ENDPOINT.API_ORDER}`, { order_list: payload })
       .then((response: AxiosResponse) => {
+        console.log(response);
         return response;
       });
   }

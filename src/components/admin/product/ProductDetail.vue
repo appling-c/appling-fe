@@ -149,7 +149,7 @@
 
             <div class="sm:col-span-3">
               <div class="inline-block">
-                <label class="inline-block text-base font-medium text-gray-500 mt-2.5"> 메인 상품 이미지 </label>
+                <label class="inline-block text-base font-medium text-gray-500 mt-2.5">  </label>
               </div>
             </div>
             <!-- End Col -->

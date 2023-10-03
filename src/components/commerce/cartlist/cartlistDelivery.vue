@@ -13,145 +13,68 @@
             </div>
             <!-- End Title -->
 
-            <div class="max-w-5xl mx-auto">
-              <!-- Grid -->
-              <div class="grid sm:grid-cols-2 gap-6 md:gap-12">
-                <div>
-                  <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-200">상품</h3>
-                  <p class="mt-2 text-slate-600 dark:text-slate-400"></p>
-                  <ul class="flex flex-col w-full">
-                    <li
-                      v-for="(iItem, iIndex) in inventory"
-                      :key="iIndex"
-                      class="
-                        inline-flex
-                        items-center
-                        gap-x-2
-                        py-3
-                        px-4
-                        text-sm
-                        font-medium
-                        bg-white
-                        border
-                        text-slate-800
-                        -mt-px
-                        first:rounded-t-lg first:mt-0
-                        last:rounded-b-lg
-                        dark:bg-gray-800 dark:border-gray-700 dark:text-white
-                      "
-                    >
-                      <div class="flex justify-between w-full">
-                        {{ iItem.main_title }} X {{ iItem.ea }}EA,
-                        {{ (Number(iItem.ea) * Number(iItem.price)).toLocaleString() }}원
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <!-- End Col -->
-
-                <div>
-                  <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-200">
-                    배송지 입력하기
-                  </h3>
-                  <p class="mt-2 text-slate-600 dark:text-slate-400"></p>
-                  <div class="border-b border-gray-200 dark:border-gray-700">
-                    <nav class="flex space-x-2" aria-label="Tabs" role="tablist">
-                      <button
-                        type="button"
-                        class="
-                          hs-tab-active:font-semibold
-                          hs-tab-active:border-blue-600
-                          hs-tab-active:text-blue-600
-                          py-4
-                          px-1
-                          inline-flex
-                          items-center
-                          gap-2
-                          border-b-[3px] border-transparent
-                          text-sm
-                          whitespace-nowrap
-                          text-slate-500
-                          hover:text-blue-600
-                          active
-                        "
-                        id="tabs-with-underline-item-1"
-                        data-hs-tab="#tabs-with-underline-1"
-                        aria-controls="tabs-with-underline-1"
-                        role="tab"
-                      >
-                        회원가입 정보 그대로 사용
-                      </button>
-                      <button
-                        type="button"
-                        class="
-                          hs-tab-active:font-semibold
-                          hs-tab-active:border-blue-600
-                          hs-tab-active:text-blue-600
-                          py-4
-                          px-1
-                          inline-flex
-                          items-center
-                          gap-2
-                          border-b-[3px] border-transparent
-                          text-sm
-                          whitespace-nowrap
-                          text-slate-500
-                          hover:text-blue-600
-                        "
-                        id="tabs-with-underline-item-2"
-                        data-hs-tab="#tabs-with-underline-2"
-                        aria-controls="tabs-with-underline-2"
-                        role="tab"
-                      >
-                        새로운 배송지 입력
-                      </button>
-                    </nav>
+            <!-- Blog Article -->
+            <div class="max-w-3xl px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto">
+              <div class="max-w-2xl">
+                <!-- Content -->
+                <div class="space-y-5 md:space-y-5">
+                  <div class="py-6">
+                    <div class="space-y-3">
+                      <h6 class="text-2xl font-bold md:text-3xl dark:text-white">구매자 정보</h6>
+                      <the-delivery-address-form
+                        @updateUserAddressForm="ownerInfo"
+                        :userAddressForm="ownerInfo"
+                      />
+                    </div>
                   </div>
 
-                  <div class="mt-3">
-                    <div
-                      id="tabs-with-underline-1"
-                      role="tabpanel"
-                      aria-labelledby="tabs-with-underline-item-1"
-                    >
-                      <the-user-address-form />
+                  <div class="py-6">
+                    <div class="space-y-3">
+                      <h6 class="text-2xl font-bold md:text-3xl dark:text-white">배송지 정보</h6>
+                      <the-delivery-address-form
+                        @updateUserAddressForm="recipientInfo"
+                        :userAddressForm="recipientInfo"
+                      />
                     </div>
-                    <div
-                      id="tabs-with-underline-2"
-                      class="hidden"
-                      role="tabpanel"
-                      aria-labelledby="tabs-with-underline-item-2"
-                    >
-                      <the-user-address-form />
+                  </div>
+
+                  <div class="py-6">
+                    <div class="space-y-3">
+                      <h4 class="text-2xl font-bold md:text-3xl dark:text-white">주문내역</h4>
+                      <ul class="flex flex-col w-full">
+                        <li
+                          v-for="(iItem, iIndex) in inventory"
+                          :key="iIndex"
+                          class="
+                            inline-flex
+                            items-center
+                            gap-x-2
+                            py-3
+                            px-4
+                            text-sm
+                            font-medium
+                            bg-white
+                            border
+                            text-slate-800
+                            -mt-px
+                            first:rounded-t-lg first:mt-0
+                            last:rounded-b-lg
+                            dark:bg-gray-800 dark:border-gray-700 dark:text-white
+                          "
+                        >
+                          <div class="flex justify-between w-full">
+                            {{ iItem.main_title }} X {{ iItem.ea }}EA,
+                            {{ (Number(iItem.ea) * Number(iItem.price)).toLocaleString() }}원
+                          </div>
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
-                <!-- End Col -->
-
-                <div>
-                  <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-200">금액</h3>
-                  <p class="mt-2 text-slate-600 dark:text-slate-400 text-right">
-                    {{ totalPrice.toLocaleString() }}
-                  </p>
-                </div>
-                <!-- End Col -->
-
-                <div>
-                  <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-200"></h3>
-                  <p class="mt-2 text-slate-600 dark:text-slate-400"></p>
-                </div>
-                <!-- End Col -->
-
-                <div>
-                  <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-200"></h3>
-                  <p class="mt-2 text-slate-600 dark:text-slate-400"></p>
-                </div>
-                <!-- End Col -->
-
-                <!-- End Col -->
+                <!-- End Content -->
               </div>
-              <!-- End Grid -->
             </div>
+            <!-- End Blog Article -->
           </div>
         </div>
       </div>
@@ -161,45 +84,42 @@
         <div class="max-w-2xl mx-auto">
           <!-- Grid -->
           <div class="grid gap-12">
+            <p class="mt-3 text-slate-800 dark:text-slate-400">
+              구매할 상품과 배송지를 한 번 더 확인해주세요!<br />
+              위 주문 내용을 확인 하였으며, 회원 본인은 개인정보 이용 및 제공 및 결제에 동의합니다.
+            </p>
+
+            <!-- Icon Block -->
             <div>
-              <p class="mt-3 text-slate-800 dark:text-slate-400">
-                구매할 상품과 수량을 한 번 더 확인해주세요!<br />
-                아래 주문하기 버튼을 눌러 주문을 확정할 수 있습니다.
-              </p>
+              <button
+                @click="updateNextStep"
+                type="button"
+                class="
+                  w-full
+                  py-3
+                  px-4
+                  inline-flex
+                  justify-center
+                  items-center
+                  gap-2
+                  rounded-md
+                  bg-indigo-100
+                  border border-transparent
+                  font-semibold
+                  text-indigo-500
+                  hover:text-white hover:bg-indigo-100
+                  focus:outline-none focus:ring-2
+                  ring-offset-white
+                  focus:ring-indigo-500 focus:ring-offset-2
+                  transition-all
+                  text-sm
+                  dark:focus:ring-offset-gray-800
+                "
+              >
+                주문하기
+              </button>
             </div>
-            <div>
-              <!-- Icon Block -->
-              <div>
-                <button
-                  @click="updateNextStep"
-                  type="button"
-                  class="
-                    w-full
-                    py-3
-                    px-4
-                    inline-flex
-                    justify-center
-                    items-center
-                    gap-2
-                    rounded-md
-                    bg-indigo-100
-                    border border-transparent
-                    font-semibold
-                    text-indigo-500
-                    hover:text-white hover:bg-indigo-100
-                    focus:outline-none focus:ring-2
-                    ring-offset-white
-                    focus:ring-indigo-500 focus:ring-offset-2
-                    transition-all
-                    text-sm
-                    dark:focus:ring-offset-gray-800
-                  "
-                >
-                  주문하기
-                </button>
-              </div>
-              <!-- End Icon Block -->
-            </div>
+            <!-- End Icon Block -->
           </div>
           <!-- End Grid -->
         </div>
@@ -213,7 +133,7 @@
 
 <script lang="ts">
 import { mapActions, mapGetters } from "vuex";
-import TheUserAddressForm from "../common/TheUserAddressForm.vue";
+import TheDeliveryAddressForm from "../cartlist/TheDeliveryAddressForm.vue";
 import OrderService from "@/services/OrderService";
 
 export default {
@@ -221,10 +141,24 @@ export default {
     return {
       totalPrice: 0,
       inventory: [],
+      ownerInfo: {
+        name: "",
+        address: "",
+        tel: "",
+        zonecode: "",
+        address_detail: "",
+      },
+      recipientInfo: {
+        name: "",
+        address: "",
+        tel: "",
+        zonecode: "",
+        address_detail: "",
+      },
     };
   },
   components: {
-    TheUserAddressForm,
+    TheDeliveryAddressForm,
   },
   watch: {
     order_id(value) {
@@ -234,7 +168,7 @@ export default {
     },
   },
   computed: {
-    //...mapGetters("cart", ["inventory"]),
+    ...mapGetters("auth", ["userInfoInterface"]),
   },
   props: {
     currentStep: String,
@@ -262,6 +196,7 @@ export default {
   },
   async mounted() {
     //this.getOrderList(this.order_id)
+    this.ownerInfo.name = this.userInfoInterface.name;
   },
 };
 </script>

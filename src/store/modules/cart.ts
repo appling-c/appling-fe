@@ -16,23 +16,6 @@ const state = () => ({
 
 // getters
 const getters = {
-  //   cartProducts: (state, getters, rootState) => {
-  //     return state.items.map(({ id, quantity }) => {
-  //       const product = rootState.products.all.find(product => product.id === id)
-  //       return {
-  //         id: product.id,
-  //         title: product.title,
-  //         price: product.price,
-  //         quantity
-  //       }
-  //     })
-  //   },
-
-  //   cartTotalPrice: (state, getters) => {
-  //     return getters.cartProducts.reduce((total, product) => {
-  //       return total + product.price * product.quantity
-  //     }, 0)
-  //   },
   productSearchItem: (state) => {
     return state.productSearchItem;
   },
@@ -61,6 +44,7 @@ const actions = {
   },
 
   deleteCartItem({ state, commit }, productIndex) {
+    // 장바구니 상품 삭제
     let inventory = state.inventory;
     inventory.splice(productIndex, 1);
 
@@ -68,7 +52,7 @@ const actions = {
   },
 
   addProductToCart({ state, commit }, product) {
-    // 상품 담기
+    // 장바구니 상품 담기
     let inventory = state.inventory;
     let cartItem = inventory.findIndex((item) => item.productID === product.productID);
 
@@ -111,7 +95,6 @@ const mutations = {
     state.isShowSpinner = payload;
   },
   updateProductCart(state, payload) {
-    
     state.inventory = payload;
   },
 };
