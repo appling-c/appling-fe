@@ -23,7 +23,7 @@
         aria-controls="horizontal-alignment-1"
         role="tab"
       >
-        주문내역 확인하기
+        01. 옵션선택
       </button>
       <button
         type="button"
@@ -47,7 +47,7 @@
         aria-controls="horizontal-alignment-2"
         role="tab"
       >
-        배송정보 입력하기
+        02. 배송지 입력
       </button>
       <button
         type="button"
@@ -71,12 +71,13 @@
         aria-controls="horizontal-alignment-3"
         role="tab"
       >
-        주문완료
+        03. 주문완료
       </button>
     </nav>
   </div>
 
   <div class="mt-3">
+    
     <div
       id="horizontal-alignment-1"
       :class="currentStep == '1' ? '' : 'hidden'"

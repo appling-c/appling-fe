@@ -19,7 +19,7 @@
                 >이름</span
               >
               <input
-                v-model="userAddressForm.name"
+                v-model="newUserForm.name"
                 type="text"
                 class="
                   py-2
@@ -53,7 +53,7 @@
               >
               <input
                 @click="showAddresspopup"
-                v-model="userAddressForm.address"
+                v-model="newUserForm.address"
                 readonly
                 type="text"
                 class="
@@ -122,7 +122,7 @@
                 >상세주소</span
               >
               <input
-                v-model="userAddressForm.address_detail"
+                v-model="newUserForm.address_detail"
                 type="text"
                 class="
                   py-2
@@ -155,7 +155,7 @@
                 >우편번호</span
               >
               <input
-                v-model="userAddressForm.zonecode"
+                v-model="newUserForm.zonecode"
                 readonly
                 type="text"
                 class="
@@ -189,7 +189,7 @@
                 >연락처</span
               >
               <input
-                v-model="userAddressForm.tel"
+                v-model="newUserForm.tel"
                 type="text"
                 class="
                   py-2
@@ -203,39 +203,8 @@
                   text-sm
                   focus:z-10 focus:border-blue-500 focus:ring-blue-500
                 "
+                @change.prevent="updateUserAddressForm()"
               />
-            </div>
-          </div>
-          <div>
-            <div class="flex rounded-md shadow-sm">
-              <a
-                class="
-                  py-2.5
-                  px-4
-                  w-full
-                  inline-flex
-                  justify-center
-                  items-center
-                  gap-2
-                  rounded-md
-                  border
-                  font-medium
-                  bg-white
-                  text-gray-700
-                  shadow-sm
-                  align-middle
-                  hover:bg-gray-50
-                  focus:outline-none
-                  focus:ring-2
-                  focus:ring-offset-2
-                  focus:ring-offset-white
-                  focus:ring-blue-600
-                  transition-all
-                  text-sm
-                "
-                @click="$emit('updateUserAddressForm', this.userAddressForm)"
-                >저장하기</a
-              >
             </div>
           </div>
         </div>
@@ -246,9 +215,12 @@
 
 <script lang="ts">
 export default {
+  props: {
+    userAddressForm: Object,
+  },
   data() {
     return {
-      userAddressForm: {
+      newUserForm: {
         name: "",
         address: "",
         tel: "",
@@ -256,20 +228,35 @@ export default {
         address_detail: "",
       },
     };
+    // return {
+    //   userAddressForm: {
+    //     name: "",
+    //     address: "",
+    //     tel: "",
+    //     zonecode: "",
+    //     address_detail: "",
+    //   },
+    // };
   },
 
   methods: {
+    updateUserAddressForm() {
+      this.$emit("updateUserAddressForm", this.newUserForm);
+    },
     async showAddresspopup() {
       var self = this;
       new daum.Postcode({
         oncomplete: function (data) {
           const { address, zonecode, address_detail } = data;
-          self.userAddressForm.address = address;
-          self.userAddressForm.zonecode = zonecode;
-          self.address_detail = address_detail;
+          self.newUserForm.address = address;
+          self.newUserForm.zonecode = zonecode;
+          self.newUserForm.address_detail = address_detail;
         },
       }).open();
     },
+  },
+  mounted() {
+    this.newUserForm = this.userAddressForm;
   },
 };
 </script>
