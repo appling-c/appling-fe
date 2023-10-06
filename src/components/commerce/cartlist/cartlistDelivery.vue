@@ -185,8 +185,36 @@ export default {
         this.totalPrice = 0;
       }
     },
-    updateNextStep() {
-      this.$emit("updateStep", "3");
+    async updateNextStep() {
+      
+      const keysarr = Object.keys(this.ownerInfo);
+      let ownerInfoArr = {};
+      let recipientArr = {};
+      for (var i = 0; i < keysarr.length; i++) {
+        if (this.ownerInfo[keysarr[i]] == "") {
+          //return alert("구매자 정보를 입력해주세요.");
+        } else {
+          ownerInfoArr[`owner_${keysarr[i]}`] = this.ownerInfo[keysarr[i]];
+        }
+      }
+
+      for (var j = 0; j < keysarr.length; j++) {
+        if (this.recipientInfo[keysarr[j]] == "") {
+          //return alert("배송지 정보를 입력해주세요.");
+        } else {
+          recipientArr[`recipient_${keysarr[j]}`] = this.recipientInfo[keysarr[j]];
+        }
+      }
+
+      const payload = {
+        ...ownerInfoArr,
+        ...recipientArr,
+        order_id: this.order_id,
+      };
+      await OrderService.setOrder(payload).then((response) => {
+        this.$emit("order_number", response.data.data.order_number);
+        this.$emit("updateStep", "3");
+      });
     },
     async getOrderList(id) {
       await OrderService.getTempOrderList(id).then((response) => {

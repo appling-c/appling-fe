@@ -620,7 +620,7 @@
                       </div>
                     </td>
 
-                    <td @click="moveto(litem.id)" class="h-px whitespace-nowrap">
+                    <td @click="moveto(litem.product_id)" class="h-px whitespace-nowrap">
                       <a class="block h-full p-4">
                         <div class="flex items-center gap-x-3">
                           <div class="grow">
@@ -633,7 +633,7 @@
                       </a>
                     </td>
 
-                    <td @click="moveto(litem.id)" class="h-px w-72 min-w-[18rem]">
+                    <td @click="moveto(litem.product_id)" class="h-px w-72 min-w-[18rem]">
                       <a class="block h-full p-4">
                         <span
                           class="block text-sm font-semibold text-gray-800 dark:text-gray-200"
@@ -644,7 +644,7 @@
                         }}</span>
                       </a>
                     </td>
-                    <td @click="moveto(litem.id)" class="h-px whitespace-nowrap">
+                    <td @click="moveto(litem.product_id)" class="h-px whitespace-nowrap">
                       <a class="block h-full p-4">
                         <div class="flex items-center gap-x-3">
                           <div class="grow">
@@ -661,7 +661,7 @@
                         </div>
                       </a>
                     </td>
-                    <td @click="moveto(litem.id)" class="h-px whitespace-nowrap">
+                    <td @click="moveto(litem.product_id)" class="h-px whitespace-nowrap">
                       <a class="block h-full p-4">
                         <span class="text-sm text-gray-600 dark:text-gray-400">{{
                           date_format(litem.created_at)
@@ -669,7 +669,7 @@
                       </a>
                     </td>
 
-                    <td @click="moveto(litem.id)" class="h-px whitespace-nowrap">
+                    <td @click="moveto(litem.product_id)" class="h-px whitespace-nowrap">
                       <a class="block h-full p-4">
                         <span class="text-sm text-gray-600 dark:text-gray-400">{{
                           litem.view_cnt
@@ -677,7 +677,7 @@
                       </a>
                     </td>
 
-                    <td @click="moveto(litem.id)" class="h-px whitespace-nowrap">
+                    <td @click="moveto(litem.product_id)" class="h-px whitespace-nowrap">
                       <a class="block h-full p-4">
                         <span
                           v-if="litem.status == 'NORMAL'"

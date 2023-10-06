@@ -1,12 +1,17 @@
 <template>
   <div>
     <header class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-      <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">📦 상품 {{ mode == "modify" ? "수정하기" : "등록하기" }}</h1>
+      <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">
+        📦 상품 {{ mode == "modify" ? "수정하기" : "등록하기" }}
+      </h1>
       <template v-if="mode == 'regist'">
         <p class="mt-2 text-lg text-gray-800 dark:text-gray-600">
-          상품 정보를 등록한 후 한장짜리 <span class="text-blue-600">팜플렛</span>을 만들어 홍보해보세요!
+          상품 정보를 등록한 후 한장짜리 <span class="text-blue-600">팜플렛</span>을 만들어
+          홍보해보세요!
         </p>
-        <p class="mt-2 text-base text-gray-800 dark:text-gray-400">등록 이후에도 수정이 가능합니다.</p>
+        <p class="mt-2 text-base text-gray-800 dark:text-gray-400">
+          등록 이후에도 수정이 가능합니다.
+        </p>
       </template>
 
       <template v-else>
@@ -65,14 +70,25 @@
             text-white text-base
             font-medium
             rounded-md
-            focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white
+            focus:outline-none
+            focus:ring-2
+            focus:ring-blue-600
+            focus:ring-offset-2
+            focus:ring-offset-white
             transition
             py-3
             px-4
             dark:focus:ring-offset-gray-800
           "
         >
-          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <svg
+            class="w-4 h-4"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            viewBox="0 0 16 16"
+          >
             <path
               d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
             ></path>
@@ -87,14 +103,32 @@
       <div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
         <form>
           <!-- Section -->
-          <div class="grid sm:grid-cols-12 gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700">
+          <div
+            class="
+              grid
+              sm:grid-cols-12
+              gap-2
+              sm:gap-4
+              py-8
+              first:pt-0
+              last:pb-0
+              border-t
+              first:border-transparent
+              border-gray-200
+              dark:border-gray-700
+            "
+          >
             <div class="sm:col-span-12">
-              <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">상품 정보를 입력해주세요.</h2>
+              <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                상품 정보를 입력해주세요.
+              </h2>
             </div>
             <!-- End Col -->
 
             <div class="sm:col-span-3">
-              <label class="inline-block text-base font-medium text-gray-500 mt-2.5"> 상품 큰 제목 </label>
+              <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                상품 큰 제목
+              </label>
             </div>
             <!-- End Col -->
 
@@ -122,7 +156,9 @@
             <!-- End Col -->
 
             <div class="sm:col-span-3">
-              <label class="inline-block text-base font-medium text-gray-500 mt-2.5"> 상품 작은 제목 </label>
+              <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                상품 작은 제목
+              </label>
             </div>
             <!-- End Col -->
 
@@ -149,7 +185,7 @@
 
             <div class="sm:col-span-3">
               <div class="inline-block">
-                <label class="inline-block text-base font-medium text-gray-500 mt-2.5">  </label>
+                <label class="inline-block text-base font-medium text-gray-500 mt-2.5"> </label>
               </div>
             </div>
             <!-- End Col -->
@@ -180,7 +216,19 @@
               <p @click="removemainimage('image_url')">
                 <span
                   id="badge-dismiss-default"
-                  class="inline-flex items-center px-2 py-1 mr-2 text-sm font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300"
+                  class="
+                    inline-flex
+                    items-center
+                    px-2
+                    py-1
+                    mr-2
+                    text-sm
+                    font-medium
+                    text-blue-800
+                    bg-blue-100
+                    rounded
+                    dark:bg-blue-900 dark:text-blue-300
+                  "
                 >
                   {{ image_url }}
                   <button
@@ -199,8 +247,20 @@
                     data-dismiss-target="#badge-dismiss-default"
                     aria-label="Remove"
                   >
-                    <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    <svg
+                      class="w-2 h-2"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 14 14"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                      />
                     </svg>
                     <span class="sr-only">Remove badge</span>
                   </button>
@@ -212,7 +272,9 @@
 
             <div class="sm:col-span-3">
               <div class="inline-block">
-                <label class="inline-block text-base font-medium text-gray-500 mt-2.5"> 서브 상품 이미지 </label>
+                <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                  서브 상품 이미지
+                </label>
               </div>
             </div>
             <!-- End Col -->
@@ -242,7 +304,19 @@
               <p @click="removemainimage('image1')">
                 <span
                   id="badge-dismiss-default"
-                  class="inline-flex items-center px-2 py-1 mr-2 text-sm font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300"
+                  class="
+                    inline-flex
+                    items-center
+                    px-2
+                    py-1
+                    mr-2
+                    text-sm
+                    font-medium
+                    text-blue-800
+                    bg-blue-100
+                    rounded
+                    dark:bg-blue-900 dark:text-blue-300
+                  "
                 >
                   {{ image1 }}
                   <button
@@ -261,8 +335,20 @@
                     data-dismiss-target="#badge-dismiss-default"
                     aria-label="Remove"
                   >
-                    <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    <svg
+                      class="w-2 h-2"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 14 14"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                      />
                     </svg>
                     <span class="sr-only">Remove badge</span>
                   </button>
@@ -301,7 +387,19 @@
               <p @click="removemainimage('image2')">
                 <span
                   id="badge-dismiss-default"
-                  class="inline-flex items-center px-2 py-1 mr-2 text-sm font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300"
+                  class="
+                    inline-flex
+                    items-center
+                    px-2
+                    py-1
+                    mr-2
+                    text-sm
+                    font-medium
+                    text-blue-800
+                    bg-blue-100
+                    rounded
+                    dark:bg-blue-900 dark:text-blue-300
+                  "
                 >
                   {{ image2 }}
                   <button
@@ -320,8 +418,20 @@
                     data-dismiss-target="#badge-dismiss-default"
                     aria-label="Remove"
                   >
-                    <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    <svg
+                      class="w-2 h-2"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 14 14"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                      />
                     </svg>
                     <span class="sr-only">Remove badge</span>
                   </button>
@@ -360,7 +470,19 @@
               <p @click="removemainimage('image3')">
                 <span
                   id="badge-dismiss-default"
-                  class="inline-flex items-center px-2 py-1 mr-2 text-sm font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300"
+                  class="
+                    inline-flex
+                    items-center
+                    px-2
+                    py-1
+                    mr-2
+                    text-sm
+                    font-medium
+                    text-blue-800
+                    bg-blue-100
+                    rounded
+                    dark:bg-blue-900 dark:text-blue-300
+                  "
                 >
                   {{ image3 }}
                   <button
@@ -379,8 +501,20 @@
                     data-dismiss-target="#badge-dismiss-default"
                     aria-label="Remove"
                   >
-                    <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    <svg
+                      class="w-2 h-2"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 14 14"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                      />
                     </svg>
                     <span class="sr-only">Remove badge</span>
                   </button>
@@ -392,7 +526,9 @@
 
             <div class="sm:col-span-3">
               <div class="inline-block">
-                <label class="inline-block text-base font-medium text-gray-500 mt-2.5"> 상품 설명 </label>
+                <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                  상품 설명
+                </label>
               </div>
             </div>
             <!-- End Col -->
@@ -420,7 +556,34 @@
             <!-- End Col -->
 
             <div class="sm:col-span-3">
-              <label class="inline-block text-base font-medium text-gray-500 mt-2.5"> 카테고리 </label>
+              <label class="inline-block text-base font-medium text-gray-500 mt-2.5"> 수량 </label>
+            </div>
+            <!-- End Col -->
+
+            <div class="sm:col-span-9">
+              <input
+                v-model="ea"
+                type="text"
+                class="
+                  py-2
+                  px-3
+                  pr-11
+                  block
+                  w-full
+                  border-gray-200
+                  shadow-sm
+                  text-base
+                  rounded-lg
+                  focus:border-blue-500 focus:ring-blue-500
+                  dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
+                "
+              />
+            </div>
+
+            <div class="sm:col-span-3">
+              <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                카테고리
+              </label>
             </div>
             <!-- End Col -->
 
@@ -443,7 +606,12 @@
                     -ml-px
                     first:rounded-t-lg
                     last:rounded-b-lg
-                    sm:first:rounded-l-lg sm:mt-0 sm:first:ml-0 sm:first:rounded-tr-none sm:last:rounded-bl-none sm:last:rounded-r-lg
+                    sm:first:rounded-l-lg
+                    sm:mt-0
+                    sm:first:ml-0
+                    sm:first:rounded-tr-none
+                    sm:last:rounded-bl-none
+                    sm:last:rounded-r-lg
                     text-base
                     relative
                     focus:z-10 focus:border-blue-500 focus:ring-blue-500
@@ -462,18 +630,26 @@
                       text-blue-600
                       pointer-events-none
                       focus:ring-blue-500
-                      dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800
+                      dark:bg-gray-800
+                      dark:border-gray-700
+                      dark:checked:bg-blue-500
+                      dark:checked:border-blue-500
+                      dark:focus:ring-offset-gray-800
                     "
                     :id="`af-account-category-checkbox-${item.value}`"
                   />
-                  <span class="text-base text-gray-500 ml-3 dark:text-gray-400">{{ item.name }}</span>
+                  <span class="text-base text-gray-500 ml-3 dark:text-gray-400">{{
+                    item.name
+                  }}</span>
                 </label>
               </div>
             </div>
             <!-- End Col -->
 
             <div class="sm:col-span-3">
-              <label class="inline-block text-base font-medium text-gray-500 mt-2.5"> 노출 상태 </label>
+              <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                노출 상태
+              </label>
             </div>
             <!-- End Col -->
 
@@ -496,7 +672,12 @@
                     -ml-px
                     first:rounded-t-lg
                     last:rounded-b-lg
-                    sm:first:rounded-l-lg sm:mt-0 sm:first:ml-0 sm:first:rounded-tr-none sm:last:rounded-bl-none sm:last:rounded-r-lg
+                    sm:first:rounded-l-lg
+                    sm:mt-0
+                    sm:first:ml-0
+                    sm:first:rounded-tr-none
+                    sm:last:rounded-bl-none
+                    sm:last:rounded-r-lg
                     text-base
                     relative
                     focus:z-10 focus:border-blue-500 focus:ring-blue-500
@@ -515,11 +696,17 @@
                       text-blue-600
                       pointer-events-none
                       focus:ring-blue-500
-                      dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800
+                      dark:bg-gray-800
+                      dark:border-gray-700
+                      dark:checked:bg-blue-500
+                      dark:checked:border-blue-500
+                      dark:focus:ring-offset-gray-800
                     "
                     :id="`af-account-category-checkbox-${sitem.key}`"
                   />
-                  <span class="text-base text-gray-500 ml-3 dark:text-gray-400">{{ sitem.name }}</span>
+                  <span class="text-base text-gray-500 ml-3 dark:text-gray-400">{{
+                    sitem.name
+                  }}</span>
                 </label>
               </div>
             </div>
@@ -528,19 +715,50 @@
           <!-- End Section -->
 
           <!-- Section -->
-          <div class="grid sm:grid-cols-12 gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700">
+          <div
+            class="
+              grid
+              sm:grid-cols-12
+              gap-2
+              sm:gap-4
+              py-8
+              first:pt-0
+              last:pb-0
+              border-t
+              first:border-transparent
+              border-gray-200
+              dark:border-gray-700
+            "
+          >
             <div class="sm:col-span-12">
-              <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">원가와 판매가격을 입력해주세요.</h2>
+              <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                원가와 판매가격을 입력해주세요.
+              </h2>
             </div>
             <!-- End Col -->
 
             <div class="sm:col-span-3">
-              <label for="af-submit-application-resume-cv" class="inline-block text-base font-medium text-gray-500 mt-2.5"> 원가 </label>
+              <label
+                for="af-submit-application-resume-cv"
+                class="inline-block text-base font-medium text-gray-500 mt-2.5"
+              >
+                원가
+              </label>
             </div>
             <!-- End Col -->
 
             <div class="sm:col-span-9">
-              <div class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700">
+              <div
+                class="
+                  py-6
+                  first:pt-0
+                  last:pb-0
+                  border-t
+                  first:border-transparent
+                  border-gray-200
+                  dark:border-gray-700
+                "
+              >
                 <div class="mt-2 space-y-3">
                   <div class="sm:flex gap-3">
                     <input
@@ -568,12 +786,27 @@
             <!-- End Col -->
 
             <div class="sm:col-span-3">
-              <label for="af-submit-application-resume-cv" class="inline-block text-base font-medium text-gray-500 mt-2.5"> 판매가 </label>
+              <label
+                for="af-submit-application-resume-cv"
+                class="inline-block text-base font-medium text-gray-500 mt-2.5"
+              >
+                판매가
+              </label>
             </div>
             <!-- End Col -->
 
             <div class="sm:col-span-9">
-              <div class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700">
+              <div
+                class="
+                  py-6
+                  first:pt-0
+                  last:pb-0
+                  border-t
+                  first:border-transparent
+                  border-gray-200
+                  dark:border-gray-700
+                "
+              >
                 <div class="mt-2 space-y-3">
                   <div class="sm:flex gap-3">
                     <input
@@ -603,14 +836,32 @@
           <!-- End Section -->
 
           <!-- Section -->
-          <div class="grid sm:grid-cols-12 gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700">
+          <div
+            class="
+              grid
+              sm:grid-cols-12
+              gap-2
+              sm:gap-4
+              py-8
+              first:pt-0
+              last:pb-0
+              border-t
+              first:border-transparent
+              border-gray-200
+              dark:border-gray-700
+            "
+          >
             <div class="sm:col-span-12">
-              <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">구매, 취급 관련 정보를 입력해주세요.</h2>
+              <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                구매, 취급 관련 정보를 입력해주세요.
+              </h2>
             </div>
             <!-- End Col -->
 
             <div class="sm:col-span-3">
-              <label class="inline-block text-base font-medium text-gray-500 mt-2.5"> 보관방법 및 취급방법 </label>
+              <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                보관방법 및 취급방법
+              </label>
             </div>
             <!-- End Col -->
 
@@ -636,7 +887,9 @@
             <!-- End Col -->
 
             <div class="sm:col-span-3">
-              <label class="inline-block text-base font-medium text-gray-500 mt-2.5"> 소비자 안전을 위한 주의사항 </label>
+              <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                소비자 안전을 위한 주의사항
+              </label>
             </div>
             <!-- End Col -->
 
@@ -662,7 +915,9 @@
             <!-- End Col -->
 
             <div class="sm:col-span-3">
-              <label class="inline-block text-base font-medium text-gray-500 mt-2.5"> 원산지 </label>
+              <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                원산지
+              </label>
             </div>
             <!-- End Col -->
 
@@ -688,7 +943,9 @@
             <!-- End Col -->
 
             <div class="sm:col-span-3">
-              <label class="inline-block text-base font-medium text-gray-500 mt-2.5"> 생산자(수입자) </label>
+              <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                생산자(수입자)
+              </label>
             </div>
             <!-- End Col -->
 
@@ -716,12 +973,25 @@
           <!-- End Section -->
 
           <!-- Section -->
-          <div class="py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700">
-            <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">개인정보의 수집 및 이용에 대한 동의 (필수)</h2>
+          <div
+            class="
+              py-8
+              first:pt-0
+              last:pb-0
+              border-t
+              first:border-transparent
+              border-gray-200
+              dark:border-gray-700
+            "
+          >
+            <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">
+              개인정보의 수집 및 이용에 대한 동의 (필수)
+            </h2>
             <p class="mt-3 text-base text-gray-600 dark:text-gray-400">
-              이용자 참여와 이용통계 분석 등의 서비스를 위해 회원 가입시 아래의 개인정보를 수집하고 있습니다. 가. 필수정보: 아이디, 이름, 성별, 출생년도,
-              비밀번호, 이메일 나. 서비스 이용 과정에서 아래와 같은 정보들이 자동으로 생성되어 수집될 수 있습니다. (접속로그, 접속IP정보, 쿠키, 방문 일시,
-              서비스 이용기록, 불량 이용 기록)
+              이용자 참여와 이용통계 분석 등의 서비스를 위해 회원 가입시 아래의 개인정보를 수집하고
+              있습니다. 가. 필수정보: 아이디, 이름, 성별, 출생년도, 비밀번호, 이메일 나. 서비스 이용
+              과정에서 아래와 같은 정보들이 자동으로 생성되어 수집될 수 있습니다. (접속로그,
+              접속IP정보, 쿠키, 방문 일시, 서비스 이용기록, 불량 이용 기록)
             </p>
 
             <div class="mt-5 flex">
@@ -735,11 +1005,18 @@
                   text-blue-600
                   pointer-events-none
                   focus:ring-blue-500
-                  dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800
+                  dark:bg-gray-800
+                  dark:border-gray-700
+                  dark:checked:bg-blue-500
+                  dark:checked:border-blue-500
+                  dark:focus:ring-offset-gray-800
                 "
                 id="af-submit-application-privacy-check"
               />
-              <label for="af-submit-application-privacy-check" class="text-base text-gray-500 ml-2 dark:text-gray-400">
+              <label
+                for="af-submit-application-privacy-check"
+                class="text-base text-gray-500 ml-2 dark:text-gray-400"
+              >
                 개인정보의 수집 및 이용에 대해 동의합니다.
               </label>
             </div>
@@ -813,6 +1090,7 @@ export default {
         { key: "HIDDEN", name: "판매 종료" },
       ],
       status: "NORMAL",
+      ea: 0,
     };
   },
   watch: {
@@ -907,6 +1185,7 @@ export default {
           this.image2 = userdata.image2;
           this.image3 = userdata.image3;
           this.status = userdata.status;
+          this.ea = userdata.ea;
           this.updateSpinnerStatus(false);
         }
       });
@@ -933,11 +1212,12 @@ export default {
         main_image: this.image_url,
         category_id: this.category,
         status: this.status,
+        ea: this.ea,
       };
 
       if (this.id > 0) {
         // 수정
-        params["id"] = Number(this.id);
+        params["product_id"] = Number(this.id);
       }
       this.updateSpinnerStatus(true);
       await ProductService.submittemplate(params, this.mode).then((response) => {
@@ -945,7 +1225,8 @@ export default {
         if (response.data.code === "0001" || response.data.code === "0000") {
           this.$emit("openModal", {
             title: `${this.mode == "regist" ? "등록" : "수정"}되었습니다.`,
-            subtitle: "등록한 상품은 상품내역에서 확인할 수 있습니다. <br/> 등록한 상품으로 템플릿을 만들어 상품을 홍보해보세요!",
+            subtitle:
+              "등록한 상품은 상품내역에서 확인할 수 있습니다. <br/> 등록한 상품으로 템플릿을 만들어 상품을 홍보해보세요!",
             btn: {
               confirmText: "확인",
               cancelText: "취소",

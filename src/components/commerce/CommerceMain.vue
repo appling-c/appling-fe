@@ -114,7 +114,7 @@ export default {
           v-for="pIndex in 5"
           :key="pIndex"
           class="group rounded-xl overflow-hidden"
-          @click="gotodetail(products[pIndex]?.id)"
+          @click="gotodetail(products[pIndex]?.product_id)"
         >
           <div class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
             <img

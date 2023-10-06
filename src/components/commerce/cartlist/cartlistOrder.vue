@@ -247,17 +247,16 @@ export default {
           product_id: Number(this.inventory[i].productID),
         });
       }
-      // console.log(order_list);
-      // let order_id = 0;
-      // await OrderService.saveTempOrderList(order_list).then((response) => {
-      //   order_id = response.data.data.order_id;
-      //   console.log(order_id);
-      //   this.$emit("setOrderId", order_id);
-      //   this.$emit("updateStep", "2");
-      // });
+      let order_id = 0;
+      await OrderService.saveTempOrderList(order_list).then((response) => {
+        order_id = response.data.data.order_id;
+        console.log(order_id);
+        this.$emit("setOrderId", order_id);
+        this.$emit("updateStep", "2");
+      });
 
-      this.$emit("setOrderId", 10);
-      this.$emit("updateStep", "2");
+      // this.$emit("setOrderId", 19);
+      // this.$emit("updateStep", "2");
     },
     movetocartlist() {
       this.$router.push("/commerce/main");
