@@ -24,8 +24,7 @@ export default {
       const payload = {
         product_id: id,
       };
-      console.log(payload);
-      return;
+      
       await this.addProducetViewCount(payload).then(() => {
         this.$router.push(`/commerce/detail/${id}`);
       });
