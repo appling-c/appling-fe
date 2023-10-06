@@ -4,6 +4,9 @@
     <div class="max-w-xl text-center mx-auto">
       <div class="mb-5">
         <h2 class="text-2xl font-bold md:text-3xl md:leading-tight dark:text-white">
+          {{ order_number }}
+        </h2>
+        <h2 class="text-2xl font-bold md:text-3xl md:leading-tight dark:text-white">
           주문이 완료되었어요.
         </h2>
 
@@ -73,6 +76,9 @@
 
 <script>
 export default {
+  props: {
+    order_number: Number,
+  },
   methods: {
     moveto(path) {
       return (location.href = path);

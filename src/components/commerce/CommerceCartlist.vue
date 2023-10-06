@@ -77,7 +77,6 @@
   </div>
 
   <div class="mt-3">
-    
     <div
       id="horizontal-alignment-1"
       :class="currentStep == '1' ? '' : 'hidden'"
@@ -101,8 +100,9 @@
       <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         <the-cartlist-delivery
           :currentStep="currentStep"
-          @updateStep="updateStep"
           :order_id="order_id"
+          @updateOrderNumber="updateOrderNumber"
+          @updateStep="updateStep"
         />
       </div>
     </div>
@@ -112,7 +112,7 @@
       :class="currentStep == '3' ? '' : 'hidden'"
       aria-labelledby="horizontal-alignment-item-3"
     >
-      <the-cartlist-complete />
+      <the-cartlist-complete :order_number="order_number" />
     </div>
   </div>
   <!-- <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
@@ -137,6 +137,7 @@ export default {
     return {
       currentStep: "1",
       order_id: 0,
+      order_number: "",
     };
   },
   methods: {
@@ -145,6 +146,9 @@ export default {
     },
     setOrderId(id) {
       this.order_id = id;
+    },
+    updateOrderNumber(order_number) {
+      this.order_number = order_number;
     },
   },
 

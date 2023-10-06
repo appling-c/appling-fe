@@ -5,6 +5,7 @@ import { Token, MemberLogin } from "../types/auth";
 const ENDPOINT = {
   API_ORDER: "/api/order",
   API_ORDER_LIST: "/api/order/temp",
+  API_ORDER_COMPLETE: "/api/order/complete",
 };
 
 class OrderService {
@@ -26,6 +27,17 @@ class OrderService {
   public async getTempOrderList(orderID) {
     return await instance
       .get(`${ENDPOINT.API_ORDER_LIST}/${orderID}`)
+      .then((response: AxiosResponse) => {
+        return response;
+      });
+  }
+
+  /**
+   * 주문하기
+   */
+  public async setOrder(payload) {
+    return await instance
+      .patch(`${ENDPOINT.API_ORDER_COMPLETE}`, payload)
       .then((response: AxiosResponse) => {
         return response;
       });

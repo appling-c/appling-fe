@@ -253,9 +253,6 @@ export default {
                 :src="productDetailItem.main_image"
                 :alt="productDetailItem.main_image"
               />
-              <figcaption class="mt-3 text-sm text-center text-gray-500">
-                A woman sitting at a table.
-              </figcaption>
             </figure>
 
             <blockquote class="text-center p-4 sm:px-7">
@@ -270,7 +267,6 @@ export default {
                 "
                 v-html="productDetailItem?.product_main_explanation"
               ></p>
-              <p class="mt-5 text-gray-800 dark:text-gray-200">Nicole Grazioso</p>
             </blockquote>
 
             <div class="text-center">
@@ -303,8 +299,6 @@ export default {
                   />
                 </figure>
               </div>
-
-              <span class="mt-3 block text-sm text-center text-gray-500"> Working process </span>
             </div>
 
             <div class="space-y-3">
@@ -443,86 +437,6 @@ export default {
                 </div>
               </div>
             </div>
-
-            <!-- End Icon Blocks -->
-            <div class="grid lg:flex lg:justify-between lg:items-center gap-y-5 lg:gap-y-0">
-              <!-- Badges/Tags -->
-              <div>
-                <a
-                  class="
-                    m-0.5
-                    inline-flex
-                    items-center
-                    gap-1.5
-                    py-2
-                    px-3
-                    rounded-full
-                    text-sm
-                    bg-gray-100
-                    text-gray-800
-                    hover:bg-gray-200
-                    dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200
-                  "
-                >
-                  Plan
-                </a>
-                <a
-                  class="
-                    m-0.5
-                    inline-flex
-                    items-center
-                    gap-1.5
-                    py-2
-                    px-3
-                    rounded-full
-                    text-sm
-                    bg-gray-100
-                    text-gray-800
-                    hover:bg-gray-200
-                    dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200
-                  "
-                >
-                  Web development
-                </a>
-                <a
-                  class="
-                    m-0.5
-                    inline-flex
-                    items-center
-                    gap-1.5
-                    py-2
-                    px-3
-                    rounded-full
-                    text-sm
-                    bg-gray-100
-                    text-gray-800
-                    hover:bg-gray-200
-                    dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200
-                  "
-                >
-                  Free
-                </a>
-                <a
-                  class="
-                    m-0.5
-                    inline-flex
-                    items-center
-                    gap-1.5
-                    py-2
-                    px-3
-                    rounded-full
-                    text-sm
-                    bg-gray-100
-                    text-gray-800
-                    hover:bg-gray-200
-                    dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200
-                  "
-                >
-                  Team
-                </a>
-              </div>
-              <!-- End Badges/Tags -->
-            </div>
           </div>
         </div>
       </div>
@@ -622,7 +536,7 @@ export default {
             </p>
             <!-- Media -->
             <a
-              @click="movetodetail(product.id)"
+              @click="movetodetail(product.product_id)"
               v-for="(product, pIndex) in sellerProductList"
               :key="pIndex"
               class="group flex items-center gap-x-6"

@@ -24,11 +24,18 @@ export default {
       const payload = {
         product_id: id,
       };
+      console.log(payload);
+      return;
       await this.addProducetViewCount(payload).then(() => {
         this.$router.push(`/commerce/detail/${id}`);
       });
     },
-    ...mapActions("cart", ["gotoSearchResult", "getproductlist", "addProducetViewCount", "updateSpinnerStatus"]),
+    ...mapActions("cart", [
+      "gotoSearchResult",
+      "getproductlist",
+      "addProducetViewCount",
+      "updateSpinnerStatus",
+    ]),
 
     async gotoproduct(key: string, value: string | Number): Promise<void> {
       this.productSearchItem[`${key}`] = value;
@@ -78,7 +85,9 @@ export default {
     <!-- Title -->
     <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
       <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">상품 둘러보기</h2>
-      <p class="mb-10 mt-10 text-gray-600 dark:text-gray-400">농장에서 정성다해 키운<br />{{ totalProductCount }}개의 유기농 상품들이 준비되어있어요!</p>
+      <p class="mb-10 mt-10 text-gray-600 dark:text-gray-400">
+        농장에서 정성다해 키운<br />{{ totalProductCount }}개의 유기농 상품들이 준비되어있어요!
+      </p>
       <!-- Form -->
       <form>
         <div
@@ -96,7 +105,9 @@ export default {
           "
         >
           <div class="flex-[1_0_0%]">
-            <label for="hs-search-article-1" class="block text-base text-gray-700 font-medium dark:text-white"
+            <label
+              for="hs-search-article-1"
+              class="block text-base text-gray-700 font-medium dark:text-white"
               ><span class="sr-only">키워드 검색하기!</span></label
             >
             <input
@@ -104,7 +115,15 @@ export default {
               v-model="keyword"
               name="hs-search-article-1"
               id="hs-search-article-1"
-              class="p-3 block w-full border-transparent rounded-md focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-400"
+              class="
+                p-3
+                block
+                w-full
+                border-transparent
+                rounded-md
+                focus:border-blue-500 focus:ring-blue-500
+                dark:bg-gray-800 dark:text-gray-400
+              "
               placeholder="검색 키워드는 랜덤으로 누누가 만들어줄거예요!"
             />
           </div>
@@ -129,7 +148,13 @@ export default {
                 dark:focus:ring-offset-gray-800
               "
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
                 <path
                   d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
                 />
@@ -159,10 +184,19 @@ export default {
               shadow-sm
               align-middle
               hover:bg-gray-50
-              focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-offset-white
+              focus:ring-blue-600
               transition-all
               text-base
-              dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800
+              dark:bg-slate-900
+              dark:hover:bg-slate-800
+              dark:border-gray-700
+              dark:text-gray-400
+              dark:hover:text-white
+              dark:focus:ring-offset-gray-800
             "
           >
             {{ citem.name }}
@@ -176,7 +210,7 @@ export default {
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <!-- Card -->
       <a
-        @click="gotodetail(product.id)"
+        @click="gotodetail(product.product_id)"
         v-for="(product, index) in products"
         :key="index"
         class="group hover:bg-gray-100 rounded-xl p-5 transition-all dark:hover:bg-white/[.05]"
@@ -190,16 +224,49 @@ export default {
 
         <div class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
           <img
-            class="w-full h-full absolute top-0 left-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl"
+            class="
+              w-full
+              h-full
+              absolute
+              top-0
+              left-0
+              object-cover
+              group-hover:scale-105
+              transition-transform
+              duration-500
+              ease-in-out
+              rounded-xl
+            "
             :src="product.main_image"
             alt="Image Description"
           />
-          <span class="absolute top-0 right-0 rounded-tr-xl rounded-bl-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 dark:bg-gray-900">
+          <span
+            class="
+              absolute
+              top-0
+              right-0
+              rounded-tr-xl rounded-bl-xl
+              text-xs
+              font-medium
+              bg-gray-800
+              text-white
+              py-1.5
+              px-3
+              dark:bg-gray-900
+            "
+          >
             프리미엄
           </span>
         </div>
 
-        <h3 class="mt-5 text-xl text-gray-800 dark:text-gray-300 dark:group-hover:text-white font-semibold">
+        <h3
+          class="
+            mt-5
+            text-xl text-gray-800
+            dark:text-gray-300 dark:group-hover:text-white
+            font-semibold
+          "
+        >
           {{ product.main_title }}
         </h3>
         <p class="mb-6 text-base font-normal text-gray-500 dark:text-gray-400">
@@ -208,7 +275,17 @@ export default {
 
         <p>
           <!-- Icon -->
-          <span class="inline-flex justify-center items-center w-[46px] h-[46px] rounded-full text-gray-600">
+          <span
+            class="
+              inline-flex
+              justify-center
+              items-center
+              w-[46px]
+              h-[46px]
+              rounded-full
+              text-gray-600
+            "
+          >
             <svg
               style="display: inline-block"
               xmlns="http://www.w3.org/2000/svg"
@@ -244,11 +321,36 @@ export default {
           </svg>
 
           <span>
-            <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-red-600 text-white">할인가</span>
+            <span
+              class="
+                inline-flex
+                items-center
+                gap-1.5
+                py-1.5
+                px-3
+                rounded-full
+                text-xs
+                font-medium
+                bg-red-600
+                text-white
+              "
+              >할인가</span
+            >
             {{ product.price.toLocaleString() }}원</span
           >
         </p>
-        <p class="mt-3 inline-flex items-center gap-x-2 text-sm font-semibold text-gray-800 dark:text-gray-200">
+        <p
+          class="
+            mt-3
+            inline-flex
+            items-center
+            gap-x-2
+            text-sm
+            font-semibold
+            text-gray-800
+            dark:text-gray-200
+          "
+        >
           자세히 보기
           <svg
             class="w-2.5 h-2.5 transition ease-in-out group-hover:translate-x-1"
