@@ -8,6 +8,7 @@ export default {
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
     'node_modules/preline/dist/*.js',
+    "node_modules/flowbite/**/*.js"
   ],
   theme: {
     extend: {
@@ -20,6 +21,7 @@ export default {
   },
   plugins: [
     require('preline/plugin'),
+    require('flowbite/plugin')
   ],
 }
 

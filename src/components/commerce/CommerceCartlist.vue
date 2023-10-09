@@ -4,19 +4,7 @@
       <button
         type="button"
         disabled
-        class="
-          hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600
-          py-4
-          px-1
-          inline-flex
-          items-center
-          gap-2
-          border-b-[3px] border-transparent
-          text-sm
-          whitespace-nowrap
-          text-gray-500
-          hover:text-blue-600
-        "
+        class="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-2 border-b-[3px] border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600"
         :class="currentStep == 1 ? 'active' : ''"
         id="horizontal-alignment-item-1"
         data-hs-tab="#horizontal-alignment-1"
@@ -28,19 +16,7 @@
       <button
         type="button"
         disabled
-        class="
-          hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600
-          py-4
-          px-1
-          inline-flex
-          items-center
-          gap-2
-          border-b-[3px] border-transparent
-          text-sm
-          whitespace-nowrap
-          text-gray-500
-          hover:text-blue-600
-        "
+        class="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-2 border-b-[3px] border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600"
         :class="currentStep == 2 ? 'active' : ''"
         id="horizontal-alignment-item-2"
         data-hs-tab="#horizontal-alignment-2"
@@ -51,19 +27,7 @@
       </button>
       <button
         type="button"
-        class="
-          hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600
-          py-4
-          px-1
-          inline-flex
-          items-center
-          gap-2
-          border-b-[3px] border-transparent
-          text-sm
-          whitespace-nowrap
-          text-gray-500
-          hover:text-blue-600
-        "
+        class="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-2 border-b-[3px] border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600"
         disabled
         :class="currentStep == 3 ? 'active' : ''"
         id="horizontal-alignment-item-3"
