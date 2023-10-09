@@ -45,22 +45,7 @@
                         <li
                           v-for="(iItem, iIndex) in inventory"
                           :key="iIndex"
-                          class="
-                            inline-flex
-                            items-center
-                            gap-x-2
-                            py-3
-                            px-4
-                            text-sm
-                            font-medium
-                            bg-white
-                            border
-                            text-slate-800
-                            -mt-px
-                            first:rounded-t-lg first:mt-0
-                            last:rounded-b-lg
-                            dark:bg-gray-800 dark:border-gray-700 dark:text-white
-                          "
+                          class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border text-slate-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white"
                         >
                           <div class="flex justify-between w-full">
                             {{ iItem.main_title }} X {{ iItem.ea }}EA,
@@ -94,27 +79,7 @@
               <button
                 @click="updateNextStep"
                 type="button"
-                class="
-                  w-full
-                  py-3
-                  px-4
-                  inline-flex
-                  justify-center
-                  items-center
-                  gap-2
-                  rounded-md
-                  bg-indigo-100
-                  border border-transparent
-                  font-semibold
-                  text-indigo-500
-                  hover:text-white hover:bg-indigo-100
-                  focus:outline-none focus:ring-2
-                  ring-offset-white
-                  focus:ring-indigo-500 focus:ring-offset-2
-                  transition-all
-                  text-sm
-                  dark:focus:ring-offset-gray-800
-                "
+                class="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-indigo-100 border border-transparent font-semibold text-indigo-500 hover:text-white hover:bg-indigo-100 focus:outline-none focus:ring-2 ring-offset-white focus:ring-indigo-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
               >
                 주문하기
               </button>
@@ -132,99 +97,95 @@
 </template>
 
 <script lang="ts">
-import { mapActions, mapGetters } from "vuex";
+import { computed, ref, watch, onMounted } from "vue";
+import { useStore } from "vuex";
+
 import TheDeliveryAddressForm from "../cartlist/TheDeliveryAddressForm.vue";
 import OrderService from "@/services/OrderService";
 
 export default {
-  data() {
-    return {
-      totalPrice: 0,
-      inventory: [],
-      ownerInfo: {
-        name: "",
-        address: "",
-        tel: "",
-        zonecode: "",
-        address_detail: "",
-      },
-      recipientInfo: {
-        name: "",
-        address: "",
-        tel: "",
-        zonecode: "",
-        address_detail: "",
-      },
-    };
-  },
   components: {
     TheDeliveryAddressForm,
-  },
-  watch: {
-    order_id(value) {
-      this.getOrderList(value).then(() => {
-        this.setTotalPrice();
-      });
-    },
-  },
-  computed: {
-    ...mapGetters("auth", ["userInfoInterface"]),
   },
   props: {
     currentStep: String,
     order_id: Number,
   },
-  methods: {
-    setTotalPrice() {
-      this.totalPrice = 0;
-      if (this.inventory.length > 0) {
-        for (let i = 0; i < this.inventory.length; i++) {
-          this.totalPrice += this.inventory[i].price;
-        }
-      } else {
-        this.totalPrice = 0;
-      }
-    },
-    async updateNextStep() {
-      
-      const keysarr = Object.keys(this.ownerInfo);
-      let ownerInfoArr = {};
-      let recipientArr = {};
-      for (var i = 0; i < keysarr.length; i++) {
-        if (this.ownerInfo[keysarr[i]] == "") {
-          //return alert("구매자 정보를 입력해주세요.");
-        } else {
-          ownerInfoArr[`owner_${keysarr[i]}`] = this.ownerInfo[keysarr[i]];
-        }
-      }
+  setup(props) {
+    const store = useStore();
 
-      for (var j = 0; j < keysarr.length; j++) {
-        if (this.recipientInfo[keysarr[j]] == "") {
-          //return alert("배송지 정보를 입력해주세요.");
-        } else {
-          recipientArr[`recipient_${keysarr[j]}`] = this.recipientInfo[keysarr[j]];
-        }
-      }
+    const totalPrice = ref(0);
+    const inventory = ref([]);
+    const ownerInfo = initializeInfo();
+    const recipientInfo = initializeInfo();
+
+    const userInfoInterface = computed(() => store.getters["auth/userInfoInterface"]);
+
+    async function getOrderList(id: number) {
+      const { data } = await OrderService.getTempOrderList(id);
+      inventory.value = data.order_item_list;
+    }
+
+    function initializeInfo() {
+      return {
+        name: "",
+        address: "",
+        tel: "",
+        zonecode: "",
+        address_detail: "",
+      };
+    }
+
+    function setTotalPrice() {
+      totalPrice.value = inventory.value?.reduce((total, item) => total + item.price, 0);
+    }
+
+    async function updateNextStep() {
+      const ownerInfoArr = Object.keys(ownerInfo?.value)
+        .filter((key) => ownerInfo?.value[key] !== "")
+        .reduce((acc, key) => {
+          acc[`owner_${key}`] = ownerInfo?.value[key];
+          return acc;
+        }, {});
+
+      const recipientArr = Object.keys(recipientInfo?.value)
+        .filter((key) => recipientInfo?.value[key] !== "")
+        .reduce((acc, key) => {
+          acc[`recipient_${key}`] = recipientInfo?.value[key];
+          return acc;
+        }, {});
 
       const payload = {
         ...ownerInfoArr,
         ...recipientArr,
-        order_id: this.order_id,
+        order_id: props.order_id,
       };
-      await OrderService.setOrder(payload).then((response) => {
-        this.$emit("order_number", response.data.data.order_number);
-        this.$emit("updateStep", "3");
-      });
-    },
-    async getOrderList(id) {
-      await OrderService.getTempOrderList(id).then((response) => {
-        this.inventory = response.data.data.order_item_list;
-      });
-    },
-  },
-  async mounted() {
-    //this.getOrderList(this.order_id)
-    this.ownerInfo.name = this.userInfoInterface.name;
+
+      const response = await OrderService.setOrder(payload);
+      emit("updateOrderNumber", response.data.data.order_number);
+      emit("updateStep", "3");
+    }
+
+    watch(
+      () => props.order_id,
+      async (value) => {
+        await getOrderList(value);
+        setTotalPrice();
+      }
+    );
+
+    onMounted(async () => {
+      //await getOrderList(props.order_id);
+      ownerInfo.name = userInfoInterface.value.name;
+    });
+
+    return {
+      totalPrice,
+      inventory,
+      ownerInfo,
+      recipientInfo,
+      updateNextStep,
+    };
   },
 };
 </script>

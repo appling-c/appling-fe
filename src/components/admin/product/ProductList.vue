@@ -14,27 +14,7 @@
       <div class="mt-5 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
         <router-link
           to="/admin/product/detail/0"
-          class="
-            w-full
-            sm:w-auto
-            inline-flex
-            justify-center
-            items-center
-            gap-2
-            rounded-md
-            border border-transparent
-            font-semibold
-            text-blue-500
-            hover:text-blue-700
-            focus:outline-none focus:ring-2
-            ring-offset-gray-50
-            focus:ring-blue-500 focus:ring-offset-2
-            transition-all
-            text-base
-            py-3
-            px-4
-            dark:ring-offset-slate-900
-          "
+          class="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold text-blue-500 hover:text-blue-700 focus:outline-none focus:ring-2 ring-offset-gray-50 focus:ring-blue-500 focus:ring-offset-2 transition-all text-base py-3 px-4 dark:ring-offset-slate-900"
         >
           <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path
@@ -56,30 +36,14 @@
         <div class="-m-1.5 overflow-x-auto">
           <div class="p-1.5 min-w-full inline-block align-middle">
             <div
-              class="
-                bg-white
-                border border-gray-200
-                rounded-xl
-                shadow-sm
-                overflow-hidden
-                dark:bg-slate-900 dark:border-gray-700
-              "
+              class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-slate-900 dark:border-gray-700"
             >
               <!-- Body -->
               <div
                 class="max-w-sm w-full min-h-[400px] flex flex-col justify-center mx-auto px-6 py-4"
               >
                 <div
-                  class="
-                    flex
-                    justify-center
-                    items-center
-                    w-[46px]
-                    h-[46px]
-                    bg-gray-100
-                    rounded-md
-                    dark:bg-gray-800
-                  "
+                  class="flex justify-center items-center w-[46px] h-[46px] bg-gray-100 rounded-md dark:bg-gray-800"
                 >
                   <svg
                     class="w-6 h-6 text-gray-600 dark:text-gray-400"
@@ -109,24 +73,7 @@
                   <button
                     @click="movetporegist()"
                     type="button"
-                    class="
-                      py-2
-                      px-3
-                      inline-flex
-                      justify-center
-                      items-center
-                      gap-2
-                      rounded-md
-                      border border-transparent
-                      font-semibold
-                      bg-blue-500
-                      text-white
-                      hover:bg-blue-600
-                      focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
-                      transition-all
-                      text-sm
-                      dark:focus:ring-offset-gray-800
-                    "
+                    class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
                   >
                     <svg
                       class="w-3 h-3"
@@ -149,24 +96,7 @@
                   <button
                     @click="searchproductstatus('')"
                     type="button"
-                    class="
-                      py-2
-                      px-3
-                      inline-flex
-                      justify-center
-                      items-center
-                      gap-2
-                      rounded-md
-                      border border-transparent
-                      font-semibold
-                      bg-blue-500
-                      text-white
-                      hover:bg-blue-600
-                      focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
-                      transition-all
-                      text-sm
-                      dark:focus:ring-offset-gray-800
-                    "
+                    class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
                   >
                     <svg
                       class="w-3 h-3"
@@ -203,26 +133,11 @@
         <div class="-m-1.5 overflow-x-auto">
           <div class="p-1.5 min-w-full inline-block align-middle">
             <div
-              class="
-                bg-white
-                border border-gray-200
-                rounded-xl
-                shadow-sm
-                overflow-hidden
-                dark:bg-slate-900 dark:border-gray-700
-              "
+              class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-slate-900 dark:border-gray-700"
             >
               <!-- Header -->
               <div
-                class="
-                  px-6
-                  py-4
-                  grid
-                  gap-3
-                  md:flex md:justify-between md:items-center
-                  border-b border-gray-200
-                  dark:border-gray-700
-                "
+                class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700"
               >
                 <!-- Input -->
                 <div class="sm:col-span-1">
@@ -232,19 +147,7 @@
                       type="text"
                       id="hs-as-table-product-review-search"
                       name="hs-as-table-product-review-search"
-                      class="
-                        py-2
-                        px-3
-                        pl-11
-                        block
-                        w-full
-                        border-gray-200
-                        shadow-sm
-                        rounded-md
-                        text-sm
-                        focus:z-10 focus:border-blue-500 focus:ring-blue-500
-                        dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-                      "
+                      class="py-2 px-3 pl-11 block w-full border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                       placeholder="Search"
                     />
                     <div
@@ -268,28 +171,7 @@
                 <ul class="flex flex-col sm:flex-row">
                   <li
                     @click="searchproductstatus('')"
-                    class="
-                      inline-flex
-                      items-center
-                      gap-x-2.5
-                      py-3
-                      px-4
-                      text-sm
-                      font-medium
-                      bg-white
-                      border
-                      text-gray-800
-                      -mt-px
-                      first:rounded-t-lg first:mt-0
-                      last:rounded-b-lg
-                      sm:-ml-px
-                      sm:mt-0
-                      sm:first:rounded-tr-none
-                      sm:first:rounded-bl-lg
-                      sm:last:rounded-bl-none
-                      sm:last:rounded-tr-lg
-                      dark:bg-gray-800 dark:border-gray-700 dark:text-white
-                    "
+                    class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ml-px sm:mt-0 sm:first:rounded-tr-none sm:first:rounded-bl-lg sm:last:rounded-bl-none sm:last:rounded-tr-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white"
                   >
                     <div class="relative flex items-start w-full">
                       <div class="flex items-center h-5">
@@ -297,15 +179,7 @@
                           id="hs-horizontal-list-group-item-radio-1"
                           name="hs-horizontal-list-group-item-radio"
                           type="radio"
-                          class="
-                            border-gray-200
-                            rounded-full
-                            dark:bg-gray-800
-                            dark:border-gray-700
-                            dark:checked:bg-blue-500
-                            dark:checked:border-blue-500
-                            dark:focus:ring-offset-gray-800
-                          "
+                          class="border-gray-200 rounded-full dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
                           checked
                         />
                       </div>
@@ -320,28 +194,7 @@
 
                   <li
                     @click="searchproductstatus('NORMAL')"
-                    class="
-                      inline-flex
-                      items-center
-                      gap-x-2.5
-                      py-3
-                      px-4
-                      text-sm
-                      font-medium
-                      bg-white
-                      border
-                      text-gray-800
-                      -mt-px
-                      first:rounded-t-lg first:mt-0
-                      last:rounded-b-lg
-                      sm:-ml-px
-                      sm:mt-0
-                      sm:first:rounded-tr-none
-                      sm:first:rounded-bl-lg
-                      sm:last:rounded-bl-none
-                      sm:last:rounded-tr-lg
-                      dark:bg-gray-800 dark:border-gray-700 dark:text-white
-                    "
+                    class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ml-px sm:mt-0 sm:first:rounded-tr-none sm:first:rounded-bl-lg sm:last:rounded-bl-none sm:last:rounded-tr-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white"
                   >
                     <div class="relative flex items-start w-full">
                       <div class="flex items-center h-5">
@@ -349,15 +202,7 @@
                           id="hs-horizontal-list-group-item-radio-2"
                           name="hs-horizontal-list-group-item-radio"
                           type="radio"
-                          class="
-                            border-gray-200
-                            rounded-full
-                            dark:bg-gray-800
-                            dark:border-gray-700
-                            dark:checked:bg-blue-500
-                            dark:checked:border-blue-500
-                            dark:focus:ring-offset-gray-800
-                          "
+                          class="border-gray-200 rounded-full dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
                         />
                       </div>
                       <label
@@ -371,28 +216,7 @@
 
                   <li
                     @click="searchproductstatus('HIDDEN')"
-                    class="
-                      inline-flex
-                      items-center
-                      gap-x-2.5
-                      py-3
-                      px-4
-                      text-sm
-                      font-medium
-                      bg-white
-                      border
-                      text-gray-800
-                      -mt-px
-                      first:rounded-t-lg first:mt-0
-                      last:rounded-b-lg
-                      sm:-ml-px
-                      sm:mt-0
-                      sm:first:rounded-tr-none
-                      sm:first:rounded-bl-lg
-                      sm:last:rounded-bl-none
-                      sm:last:rounded-tr-lg
-                      dark:bg-gray-800 dark:border-gray-700 dark:text-white
-                    "
+                    class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ml-px sm:mt-0 sm:first:rounded-tr-none sm:first:rounded-bl-lg sm:last:rounded-bl-none sm:last:rounded-tr-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white"
                   >
                     <div class="relative flex items-start w-full">
                       <div class="flex items-center h-5">
@@ -400,15 +224,7 @@
                           id="hs-horizontal-list-group-item-radio-3"
                           name="hs-horizontal-list-group-item-radio"
                           type="radio"
-                          class="
-                            border-gray-200
-                            rounded-full
-                            dark:bg-gray-800
-                            dark:border-gray-700
-                            dark:checked:bg-blue-500
-                            dark:checked:border-blue-500
-                            dark:focus:ring-offset-gray-800
-                          "
+                          class="border-gray-200 rounded-full dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
                         />
                       </div>
                       <label
@@ -432,19 +248,7 @@
                       <label for="hs-at-with-checkboxes-main" class="flex">
                         <input
                           type="checkbox"
-                          class="
-                            shrink-0
-                            border-gray-200
-                            rounded
-                            text-blue-600
-                            pointer-events-none
-                            focus:ring-blue-500
-                            dark:bg-gray-800
-                            dark:border-gray-700
-                            dark:checked:bg-blue-500
-                            dark:checked:border-blue-500
-                            dark:focus:ring-offset-gray-800
-                          "
+                          class="shrink-0 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
                           id="hs-at-with-checkboxes-main"
                         />
                         <span class="sr-only">Checkbox</span>
@@ -454,14 +258,7 @@
                     <th scope="col" class="px-4 py-3 text-left">
                       <div class="flex items-center gap-x-2">
                         <span
-                          class="
-                            text-xs
-                            font-semibold
-                            uppercase
-                            tracking-wide
-                            text-gray-800
-                            dark:text-gray-200
-                          "
+                          class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"
                         >
                           구분
                         </span>
@@ -471,14 +268,7 @@
                     <th scope="col" class="px-4 py-3 text-left">
                       <div class="flex items-center gap-x-2">
                         <span
-                          class="
-                            text-xs
-                            font-semibold
-                            uppercase
-                            tracking-wide
-                            text-gray-800
-                            dark:text-gray-200
-                          "
+                          class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"
                         >
                           상품명
                         </span>
@@ -488,14 +278,7 @@
                     <th scope="col" class="px-4 py-3 text-left">
                       <div class="flex items-center gap-x-2">
                         <span
-                          class="
-                            text-xs
-                            font-semibold
-                            uppercase
-                            tracking-wide
-                            text-gray-800
-                            dark:text-gray-200
-                          "
+                          class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"
                         >
                           가격
                         </span>
@@ -505,14 +288,7 @@
                     <th scope="col" class="px-4 py-3 text-left">
                       <div class="flex items-center gap-x-2">
                         <span
-                          class="
-                            text-xs
-                            font-semibold
-                            uppercase
-                            tracking-wide
-                            text-gray-800
-                            dark:text-gray-200
-                          "
+                          class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"
                         >
                           등록일
                         </span>
@@ -522,14 +298,7 @@
                     <th scope="col" class="px-4 py-3 text-left">
                       <div class="flex items-center gap-x-2">
                         <span
-                          class="
-                            text-xs
-                            font-semibold
-                            uppercase
-                            tracking-wide
-                            text-gray-800
-                            dark:text-gray-200
-                          "
+                          class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"
                         >
                           조회수
                         </span>
@@ -539,14 +308,7 @@
                     <th scope="col" class="px-4 py-3 text-left">
                       <div class="flex items-center gap-x-2">
                         <span
-                          class="
-                            text-xs
-                            font-semibold
-                            uppercase
-                            tracking-wide
-                            text-gray-800
-                            dark:text-gray-200
-                          "
+                          class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"
                         >
                           상태
                         </span>
@@ -556,14 +318,7 @@
                     <th scope="col" class="px-4 py-3 text-left">
                       <div class="flex items-center gap-x-2">
                         <span
-                          class="
-                            text-xs
-                            font-semibold
-                            uppercase
-                            tracking-wide
-                            text-gray-800
-                            dark:text-gray-200
-                          "
+                          class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"
                         >
                           공유하기
                         </span>
@@ -573,14 +328,7 @@
                     <th scope="col" class="px-4 py-3 text-left">
                       <div class="flex items-center gap-x-2">
                         <span
-                          class="
-                            text-xs
-                            font-semibold
-                            uppercase
-                            tracking-wide
-                            text-gray-800
-                            dark:text-gray-200
-                          "
+                          class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"
                         >
                           팜플렛
                         </span>
@@ -600,19 +348,7 @@
                         <label for="hs-at-with-checkboxes-1" class="flex">
                           <input
                             type="checkbox"
-                            class="
-                              shrink-0
-                              border-gray-200
-                              rounded
-                              text-blue-600
-                              pointer-events-none
-                              focus:ring-blue-500
-                              dark:bg-gray-800
-                              dark:border-gray-700
-                              dark:checked:bg-blue-500
-                              dark:checked:border-blue-500
-                              dark:focus:ring-offset-gray-800
-                            "
+                            class="shrink-0 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
                             id="hs-at-with-checkboxes-1"
                           />
                           <span class="sr-only">Checkbox</span>
@@ -681,19 +417,7 @@
                       <a class="block h-full p-4">
                         <span
                           v-if="litem.status == 'NORMAL'"
-                          class="
-                            inline-flex
-                            items-center
-                            gap-1.5
-                            py-0.5
-                            px-2
-                            rounded-full
-                            text-xs
-                            font-medium
-                            bg-green-100
-                            text-green-800
-                            dark:bg-green-900 dark:text-green-200
-                          "
+                          class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
                         >
                           <svg
                             class="w-2.5 h-2.5"
@@ -712,19 +436,7 @@
 
                         <span
                           v-else
-                          class="
-                            inline-flex
-                            items-center
-                            gap-1.5
-                            py-0.5
-                            px-2
-                            rounded-full
-                            text-xs
-                            font-medium
-                            bg-red-100
-                            text-red-800
-                            dark:bg-red-900 dark:text-green-200
-                          "
+                          class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-green-200"
                         >
                           <svg
                             class="w-2.5 h-2.5"
@@ -755,18 +467,7 @@
                       class="h-px whitespace-nowrap"
                     >
                       <a
-                        class="
-                          flex
-                          items-center
-                          gap-x-3
-                          py-2
-                          px-3
-                          rounded-md
-                          text-sm text-gray-800
-                          hover:bg-gray-100
-                          focus:ring-2 focus:ring-blue-500
-                          dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300
-                        "
+                        class="flex items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -793,18 +494,7 @@
                     <td @click="showtemplate(litem)" class="h-px whitespace-nowrap">
                       <a
                         data-hs-overlay="#hs-scroll-inside-body-modal"
-                        class="
-                          flex
-                          items-center
-                          gap-x-3
-                          py-2
-                          px-3
-                          rounded-md
-                          text-sm text-gray-800
-                          hover:bg-gray-100
-                          focus:ring-2 focus:ring-blue-500
-                          dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300
-                        "
+                        class="flex items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -829,32 +519,13 @@
 
               <!-- Footer -->
               <div
-                class="
-                  px-6
-                  py-4
-                  grid
-                  gap-3
-                  md:flex md:justify-between md:items-center
-                  border-t border-gray-200
-                  dark:border-gray-700
-                "
+                class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-gray-700"
               >
                 <div class="max-w-sm space-y-3">
                   <select
                     @change="getproductlists"
                     v-model="size"
-                    class="
-                      py-2
-                      px-3
-                      pr-9
-                      block
-                      w-full
-                      border-gray-200
-                      rounded-md
-                      text-sm
-                      focus:border-blue-500 focus:ring-blue-500
-                      dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-                    "
+                    class="py-2 px-3 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                   >
                     <option>1</option>
                     <option>2</option>
@@ -870,35 +541,7 @@
                     <button
                       @click="prev"
                       type="button"
-                      class="
-                        py-2
-                        px-3
-                        inline-flex
-                        justify-center
-                        items-center
-                        gap-2
-                        rounded-md
-                        border
-                        font-medium
-                        bg-white
-                        text-gray-700
-                        shadow-sm
-                        align-middle
-                        hover:bg-gray-50
-                        focus:outline-none
-                        focus:ring-2
-                        focus:ring-offset-2
-                        focus:ring-offset-white
-                        focus:ring-blue-600
-                        transition-all
-                        text-sm
-                        dark:bg-slate-900
-                        dark:hover:bg-slate-800
-                        dark:border-gray-700
-                        dark:text-gray-400
-                        dark:hover:text-white
-                        dark:focus:ring-offset-gray-800
-                      "
+                      class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
                     >
                       <svg
                         class="w-3 h-3"
@@ -920,35 +563,7 @@
                       v-if="!islastpage"
                       @click="next"
                       type="button"
-                      class="
-                        py-2
-                        px-3
-                        inline-flex
-                        justify-center
-                        items-center
-                        gap-2
-                        rounded-md
-                        border
-                        font-medium
-                        bg-white
-                        text-gray-700
-                        shadow-sm
-                        align-middle
-                        hover:bg-gray-50
-                        focus:outline-none
-                        focus:ring-2
-                        focus:ring-offset-2
-                        focus:ring-offset-white
-                        focus:ring-blue-600
-                        transition-all
-                        text-sm
-                        dark:bg-slate-900
-                        dark:hover:bg-slate-800
-                        dark:border-gray-700
-                        dark:text-gray-400
-                        dark:hover:text-white
-                        dark:focus:ring-offset-gray-800
-                      "
+                      class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
                     >
                       Next
                       <svg
@@ -995,7 +610,10 @@ export default {
   },
   async created() {
     await this.getproductlists();
-    Kakao.init("bfdc56a39210639e056f66e470d11426");
+
+    if (!Kakao) {
+      Kakao.init("bfdc56a39210639e056f66e470d11426");
+    }
   },
   data() {
     return {

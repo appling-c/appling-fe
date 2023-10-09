@@ -5,7 +5,10 @@
         <div class="-m-1.5 overflow-x-auto">
           <div class="p-1.5 min-w-full inline-block align-middle">
             <div class="border rounded-lg overflow-hidden dark:border-gray-700">
-              <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+              <table
+                v-if="inventoryList.length > 0"
+                class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
+              >
                 <colgroup>
                   <col />
                   <col width="20%" />
@@ -66,18 +69,7 @@
                     </td>
                     <td class="px-6 py-4 text-base text-slate-800 dark:text-slate-200">
                       <select
-                        class="
-                          py-2
-                          px-3
-                          pr-9
-                          block
-                          w-full
-                          border-gray-200
-                          rounded-md
-                          text-sm
-                          focus:border-blue-500 focus:ring-blue-500
-                          dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-                        "
+                        class="py-2 px-3 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                         v-model="invent.count"
                         @change="updateCartList(invent)"
                       >
@@ -108,9 +100,16 @@
           <!-- Grid -->
           <div class="grid gap-12">
             <div>
-              <h2 class="text-3xl text-slate-800 font-bold lg:text-4xl dark:text-white">
+              <h5
+                v-if="inventoryList.length > 0"
+                class="text-2xl text-slate-600 font-bold lg:text-2xl dark:text-white"
+              >
                 최종 주문 금액 : {{ totalPrice.toLocaleString() }}원
-              </h2>
+              </h5>
+
+              <h5 v-else class="text-2xl text-slate-600 font-bold lg:text-2xl dark:text-white">
+                장바구니 내역이 없습니다.
+              </h5>
 
               <!-- <p class="mt-3 text-slate-800 dark:text-slate-400">
                   구매할 상품과 수량을 한 번 더 확인해주세요!<br />
@@ -118,63 +117,34 @@
                 </p> -->
             </div>
 
-            <div class="flex gap-2">
+            <div v-if="inventoryList.length > 0" class="flex gap-2">
               <!-- Icon Block -->
 
               <button
                 @click="movetocartlist()"
                 type="button"
-                class="
-                  w-full
-                  py-3
-                  px-4
-                  inline-flex
-                  justify-center
-                  items-center
-                  gap-2
-                  rounded-md
-                  border border-transparent
-                  text-indigo-500 text-base
-                  border-2 border-blue-200
-                  font-semibold
-                  text-blue-500
-                  hover:text-white hover:bg-blue-500 hover:border-blue-500
-                  focus:outline-none focus:ring-2 focus:ring-blue-200 focus:ring-offset-2
-                  transition-all
-                  text-sm
-                  dark:focus:ring-offset-gray-800
-                "
+                class="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent text-indigo-500 text-base border-2 border-blue-200 font-semibold text-blue-500 hover:text-white hover:bg-blue-500 hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
               >
                 계속 쇼핑하기
               </button>
               <button
                 @click="updateNextStep"
                 type="button"
-                class="
-                  w-full
-                  py-3
-                  px-4
-                  inline-flex
-                  justify-center
-                  items-center
-                  gap-2
-                  rounded-md
-                  bg-indigo-100
-                  border border-transparent
-                  font-semibold
-                  text-indigo-500
-                  hover:text-white hover:bg-indigo-100
-                  focus:outline-none focus:ring-2
-                  ring-offset-white
-                  focus:ring-indigo-500 focus:ring-offset-2
-                  transition-all
-                  text-base
-                  dark:focus:ring-offset-gray-800
-                "
+                class="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-indigo-100 border border-transparent font-semibold text-indigo-500 hover:text-white hover:bg-indigo-100 focus:outline-none focus:ring-2 ring-offset-white focus:ring-indigo-500 focus:ring-offset-2 transition-all text-base dark:focus:ring-offset-gray-800"
               >
                 배송정보 입력하기
               </button>
               <!-- End Icon Block -->
+            </div>
+
+            <div v-else>
+              <button
+                @click="movetocartlist()"
+                type="button"
+                class="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent text-indigo-500 text-base border-2 border-blue-200 font-semibold text-blue-500 hover:text-white hover:bg-blue-500 hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+              >
+                계속 쇼핑하기
+              </button>
             </div>
           </div>
           <!-- End Grid -->
@@ -211,6 +181,7 @@ export default {
     deleteItem(index) {
       this.deleteCartItem(index);
       this.setTotalPrice();
+      this.inventoryList = this.inventory;
     },
     updateCartList(invent) {
       const { count, productID, productName, originPrice } = invent;
@@ -250,7 +221,6 @@ export default {
       let order_id = 0;
       await OrderService.saveTempOrderList(order_list).then((response) => {
         order_id = response.data.data.order_id;
-        console.log(order_id);
         this.$emit("setOrderId", order_id);
         this.$emit("updateStep", "2");
       });
@@ -271,6 +241,8 @@ export default {
         value: i + 1,
       });
     }
+
+    console.log(this.inventory);
 
     this.setTotalPrice();
   },

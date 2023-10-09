@@ -1,140 +1,7 @@
-<script lang="ts">
-import { mapActions } from "vuex";
-import ProductService from "@/services/ProductService";
-import productDetailInterface from "../../types/auth";
-export default {
-  data() {
-    return {
-      productDetailItem: {} as productDetailInterface,
-      sellerProductList: [],
-      countOptionList: [],
-      count: "1",
-      countdirect: "",
-    };
-  },
-  created() {
-    Kakao.init("bfdc56a39210639e056f66e470d11426");
-  },
-  methods: {
-    ...mapActions("cart", ["updateSpinnerStatus"]),
-    ...mapActions("cart", ["addProductToCart"]),
-    // kakaoShare() {
-    //   // 카카오톡 공유하기
-
-    //   console.log("?", Kakao.isInitialized);
-    // },
-    saveCartList() {
-      if (this.count == "direct" && this.countdirect == "") {
-        return alert("수량을 입력해주세요.");
-      }
-      let count = this.count;
-      if (this.count == "direct") {
-        count = this.countdirect;
-      }
-
-      const addCartItem = {
-        originPrice: this.productDetailItem.price,
-        count,
-        productID: this.id,
-        productName: this.productDetailItem.main_title,
-        price: this.productDetailItem.price * count,
-      };
-
-      this.addProductToCart(addCartItem);
-
-      window.addEventListener("open.hs.overlay", ($overlayEl) => {
-        console.log($overlayEl);
-      });
-    },
-    back() {
-      this.$router.push("/commerce/search");
-    },
-
-    async getproductitemlist(id) {
-      // 상품 수정
-      this.updateSpinnerStatus(true);
-      await ProductService.getproductlistbyid(id).then((response) => {
-        if (response.data.code == "0000") {
-          const userdata = response.data.data;
-          this.productDetailItem = { ...userdata };
-          this.seller_id = userdata.seller.seller_id;
-
-          this.updateSpinnerStatus(false);
-        }
-      });
-    },
-    movetodetail(id: number) {
-      return (location.href = `/commerce/detail/${id}`);
-    },
-    movetoIntroduct(id) {
-      return this.$router.push(`/brandshop/preview/${id}`);
-    },
-    movetocartlist() {
-      //window.HSOverlay.close("#hs-task-created-alert");
-      return (location.href = `/commerce/cartlist`);
-    },
-  },
-  async mounted() {
-    for (var i = 0; i < 10; i++) {
-      this.countOptionList.push({
-        key: i + 1,
-        value: i + 1,
-      });
-    }
-
-    this.id = this.$route.params.id;
-    if (this.id > 0) {
-      await this.getproductitemlist(this.id);
-      // 판매자가 판매중인 상품 리스트 가져오기
-      ProductService.getproductlistbysellerid(this.seller_id).then((response) => {
-        this.sellerProductList = response.data.data.list;
-        if (this.sellerProductList.length > 0) {
-          this.sellerProductList = this.sellerProductList.slice(0, 5);
-        }
-      });
-    }
-
-    let item = this.productDetailItem;
-    const main_title = item.main_title;
-    const sub_title = item.main_explanation;
-    const regularPrice = item.origin_price;
-    const discountPrice = item.price;
-    const imageUrl = item.main_image;
-    const productID = item.id;
-
-    Kakao.Share.createDefaultButton({
-      container: "#kakao-article-share",
-      objectType: "commerce",
-      content: {
-        title: `🍎애플링 특가 ${discountPrice?.toLocaleString()}원에 구매해보세요!`,
-        imageUrl,
-        link: {
-          mobileWebUrl: `http://www.appling.me/commerce/detail/${productID}`,
-          webUrl: `http://www.appling.me/commerce/detail/${productID}`,
-        },
-      },
-      commerce: {
-        productName: main_title,
-        regularPrice,
-        discountRate: 10,
-        discountPrice,
-      },
-      buttons: [
-        {
-          title: "상품 구매하러 가기",
-          link: {
-            mobileWebUrl: `http://www.appling.me/commerce/detail/${productID}`,
-            webUrl: `http://www.appling.me/commerce/detail/${productID}`,
-          },
-        },
-      ],
-    });
-  },
-};
-</script>
 <template>
   <!-- Blog Article -->
   <!-- Blog Article -->
+
   <div class="max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto">
     <div class="grid lg:grid-cols-3 gap-y-8 lg:gap-y-0 lg:gap-x-6 lg:gap-x-12">
       <!-- Content -->
@@ -143,15 +10,7 @@ export default {
           <div class="space-y-5 lg:space-y-8">
             <a
               @click="back()"
-              class="
-                inline-flex
-                items-center
-                gap-x-1.5
-                text-sm text-gray-600
-                decoration-2
-                hover:underline
-                dark:text-blue-400
-              "
+              class="inline-flex items-center gap-x-1.5 text-sm text-gray-600 decoration-2 hover:underline dark:text-blue-400"
             >
               <svg
                 class="w-3 h-3"
@@ -170,77 +29,32 @@ export default {
             </a>
 
             <h2 class="text-3xl font-bold lg:text-4xl lg:text-5xl dark:text-white">
-              {{ productDetailItem.main_title }}
+              {{ productDetailItem?.main_title }}
             </h2>
 
             <ul class="text-xs text-gray-500">
               <li
-                class="
-                  inline-block
-                  relative
-                  pr-6
-                  last:pr-0
-                  last-of-type:before:hidden
-                  before:absolute
-                  before:top-1/2
-                  before:right-2
-                  before:-translate-y-1/2
-                  before:w-1
-                  before:h-1
-                  before:bg-gray-300
-                  before:rounded-full
-                  dark:text-gray-400 dark:before:bg-gray-600
-                "
+                class="inline-block relative pr-6 last:pr-0 last-of-type:before:hidden before:absolute before:top-1/2 before:right-2 before:-translate-y-1/2 before:w-1 before:h-1 before:bg-gray-300 before:rounded-full dark:text-gray-400 dark:before:bg-gray-600"
               >
-                {{ productDetailItem.created_at }}
+                {{ productDetailItem?.created_at }}
               </li>
               <li
-                class="
-                  inline-block
-                  relative
-                  pr-6
-                  last:pr-0
-                  last-of-type:before:hidden
-                  before:absolute
-                  before:top-1/2
-                  before:right-2
-                  before:-translate-y-1/2
-                  before:w-1
-                  before:h-1
-                  before:bg-gray-300
-                  before:rounded-full
-                  dark:text-gray-400 dark:before:bg-gray-600
-                "
+                class="inline-block relative pr-6 last:pr-0 last-of-type:before:hidden before:absolute before:top-1/2 before:right-2 before:-translate-y-1/2 before:w-1 before:h-1 before:bg-gray-300 before:rounded-full dark:text-gray-400 dark:before:bg-gray-600"
               >
-                {{ productDetailItem.modified_at }} (수정됨)
+                {{ productDetailItem?.modified_at }} (수정됨)
               </li>
             </ul>
             <div class="text-center p-4 sm:px-7">
               <h2
-                v-html="productDetailItem.main_explanation"
+                v-html="productDetailItem?.main_explanation"
                 class="text-2xl font-semibold dark:text-white"
               ></h2>
               <h5
-                class="
-                  py-10
-                  mx-4
-                  text-3xl
-                  font-extrabold
-                  leading-none
-                  tracking-tight
-                  text-gray-900
-                  md:text-3xl
-                  lg:text-3xl
-                  dark:text-white
-                "
+                class="py-10 mx-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-3xl dark:text-white"
               >
                 애플링 특가
                 <span
-                  class="
-                    underline underline-offset-3
-                    decoration-8 decoration-blue-400
-                    dark:decoration-blue-600
-                  "
+                  class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600"
                 >
                   {{ productDetailItem?.price?.toLocaleString() }}원</span
                 >에 구매해보세요!
@@ -250,57 +64,57 @@ export default {
             <figure>
               <img
                 class="w-full object-cover rounded-xl"
-                :src="productDetailItem.main_image"
-                :alt="productDetailItem.main_image"
+                :src="productDetailItem?.main_image"
+                :alt="productDetailItem?.main_image"
               />
             </figure>
 
             <blockquote class="text-center p-4 sm:px-7">
               <p
-                class="
-                  text-xl
-                  font-medium
-                  text-gray-800
-                  lg:text-2xl lg:leading-normal
-                  xl:text-2xl xl:leading-normal
-                  dark:text-gray-200
-                "
+                class="text-xl font-medium text-gray-800 lg:text-2xl lg:leading-normal xl:text-2xl xl:leading-normal dark:text-gray-200"
                 v-html="productDetailItem?.product_main_explanation"
               ></p>
             </blockquote>
+            <div class="space-y-3">
+              <div class="text-center">
+                <!-- Slider main container -->
+                <div class="grid gap-3">
+                  <div class="grid grid-cols-1 lg:grid-cols-1 gap-3">
+                    <div class="swiper">
+                      <!-- Additional required wrapper -->
+                      <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide">
+                          <img
+                            class="w-full h-full top-0 left-0 object-cover rounded-xl"
+                            :src="productDetailItem?.image1"
+                          />
+                        </div>
+                        <div class="swiper-slide">
+                          <img
+                            class="w-full h-full top-0 left-0 object-cover rounded-xl"
+                            :src="productDetailItem?.image2"
+                          />
+                        </div>
+                        <div class="swiper-slide">
+                          <img
+                            class="w-full h-full top-0 left-0 object-cover rounded-xl"
+                            :src="productDetailItem?.image3"
+                          />
+                        </div>
+                        ...
+                      </div>
+                      <!-- If we need pagination -->
+                      <div class="swiper-pagination"></div>
 
-            <div class="text-center">
-              <div class="grid lg:grid-cols-2 gap-3">
-                <div class="grid grid-cols-2 lg:grid-cols-1 gap-3">
-                  <figure v-if="productDetailItem?.image1 !== ''" class="relative w-full h-60">
-                    <img
-                      class="w-full h-full absolute top-0 left-0 object-cover rounded-xl"
-                      :src="productDetailItem?.image1"
-                      alt="Image Description"
-                    />
-                  </figure>
-                  <figure v-if="productDetailItem?.image2 !== ''" class="relative w-full h-60">
-                    <img
-                      class="w-full h-full absolute top-0 left-0 object-cover rounded-xl"
-                      :src="productDetailItem?.image2"
-                      alt="Image Description"
-                    />
-                  </figure>
+                      <!-- If we need navigation buttons -->
+                      <div class="swiper-button-prev"></div>
+                      <div class="swiper-button-next"></div>
+                    </div>
+                  </div>
                 </div>
-
-                <figure
-                  v-if="productDetailItem?.image3 !== ''"
-                  class="relative w-full h-72 sm:h-96 lg:h-full"
-                >
-                  <img
-                    class="w-full h-full absolute top-0 left-0 object-cover rounded-xl"
-                    :src="productDetailItem?.image3"
-                    alt="Image Description"
-                  />
-                </figure>
               </div>
             </div>
-
             <div class="space-y-3">
               <h3 class="text-2xl font-semibold dark:text-white">보관방법 및 취급방법</h3>
               <p
@@ -313,7 +127,7 @@ export default {
               <h3 class="text-2xl font-semibold dark:text-white">소비자 안전을 위한 주의사항</h3>
               <p
                 class="text-lg text-gray-800 dark:text-gray-200"
-                v-html="productDetailItem.purchase_inquiry"
+                v-html="productDetailItem?.purchase_inquiry"
               ></p>
             </div>
 
@@ -345,18 +159,12 @@ export default {
                         </svg>
                         <div class="ml-5 sm:ml-8">
                           <h3
-                            class="
-                              text-base
-                              sm:text-lg
-                              font-semibold
-                              text-gray-800
-                              dark:text-gray-200
-                            "
+                            class="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200"
                           >
                             원산지
                           </h3>
                           <p class="mt-1 text-gray-600 dark:text-gray-400">
-                            {{ productDetailItem.origin }}
+                            {{ productDetailItem?.origin }}
                           </p>
                         </div>
                       </div>
@@ -378,13 +186,7 @@ export default {
                         </svg>
                         <div class="ml-5 sm:ml-8">
                           <h3
-                            class="
-                              text-base
-                              sm:text-lg
-                              font-semibold
-                              text-gray-800
-                              dark:text-gray-200
-                            "
+                            class="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200"
                           >
                             상품 분류
                           </h3>
@@ -414,18 +216,12 @@ export default {
                         </svg>
                         <div class="ml-5 sm:ml-8">
                           <h3
-                            class="
-                              text-base
-                              sm:text-lg
-                              font-semibold
-                              text-gray-800
-                              dark:text-gray-200
-                            "
+                            class="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200"
                           >
                             생산자(수입자)
                           </h3>
                           <p class="mt-1 text-gray-600 dark:text-gray-400">
-                            {{ productDetailItem.producer }}
+                            {{ productDetailItem?.producer }}
                           </p>
                         </div>
                       </div>
@@ -442,132 +238,11 @@ export default {
       </div>
       <!-- End Content -->
 
-      <!-- Sidebar -->
-      <div
-        class="
-          lg:col-span-1
-          lg:w-full
-          lg:h-full
-          lg:bg-gradient-to-r
-          lg:from-gray-50
-          lg:via-transparent
-          lg:to-transparent
-          dark:from-slate-800
-        "
-      >
-        <div class="sticky top-0 left-0 py-8 lg:pl-4 lg:pl-8">
-          <!-- Avatar Media -->
-          <div
-            class="
-              group
-              flex
-              items-center
-              gap-x-3
-              border-b border-gray-200
-              pb-8
-              mb-8
-              dark:border-gray-700
-            "
-          >
-            <a class="group grow block">
-              <h5
-                class="
-                  group-hover:text-gray-600
-                  text-sm
-                  font-semibold
-                  text-gray-800
-                  dark:group-hover:text-gray-400 dark:text-gray-200
-                "
-              >
-                {{ productDetailItem.seller?.company }}
-              </h5>
-              <p class="text-sm text-gray-500">
-                {{ productDetailItem.seller?.address }}
-              </p>
-            </a>
-
-            <div class="grow">
-              <div class="flex justify-end">
-                <button
-                  @click="movetoIntroduct(productDetailItem.seller?.seller_id)"
-                  type="button"
-                  class="
-                    py-1.5
-                    px-2.5
-                    inline-flex
-                    justify-center
-                    items-center
-                    gap-x-1.5
-                    rounded-full
-                    border border-transparent
-                    font-semibold
-                    bg-blue-600
-                    text-white
-                    hover:bg-blue-700
-                    focus:outline-none
-                    focus:ring-2
-                    focus:ring-blue-500
-                    focus:ring-offset-2
-                    focus:ring-offset-gray-900
-                    text-xs
-                  "
-                >
-                  농장 구경가기
-                </button>
-              </div>
-            </div>
-          </div>
-          <!-- End Avatar Media -->
-
-          <div class="space-y-6" v-if="sellerProductList.length > 0">
-            <p
-              class="
-                text-xl
-                font-extrabold
-                leading-none
-                tracking-tight
-                text-gray-900
-                md:text-xl
-                lg:text-xl
-                dark:text-white
-              "
-            >
-              {{ productDetailItem.seller?.company }}에서 판매중인 상품 모음
-            </p>
-            <!-- Media -->
-            <a
-              @click="movetodetail(product.product_id)"
-              v-for="(product, pIndex) in sellerProductList"
-              :key="pIndex"
-              class="group flex items-center gap-x-6"
-            >
-              <div class="grow">
-                <span
-                  class="
-                    text-sm
-                    font-bold
-                    text-gray-800
-                    group-hover:text-blue-600
-                    dark:text-gray-200 dark:group-hover:text-blue-500
-                  "
-                >
-                  {{ product?.main_title }}
-                </span>
-              </div>
-
-              <div class="flex-shrink-0 relative rounded-lg overflow-hidden w-20 h-20">
-                <img
-                  class="w-full h-full absolute top-0 left-0 object-cover rounded-lg"
-                  :src="product.main_image"
-                  alt="Image Description"
-                />
-              </div>
-            </a>
-            <!-- End Media -->
-          </div>
-        </div>
-      </div>
-      <!-- End Sidebar -->
+      <the-product-detail-sidebar
+        :productDetailItem="productDetailItem"
+        :sellerProductList="sellerProductList"
+        @updateProductCount="updateProductCount"
+      />
     </div>
   </div>
 
@@ -580,14 +255,7 @@ export default {
           <button
             type="button"
             data-hs-overlay="#hs-modal-signin"
-            class="
-              flex
-              items-center
-              gap-x-2
-              text-sm text-gray-500
-              hover:text-gray-800
-              dark:text-gray-400 dark:hover:text-gray-200
-            "
+            class="flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
           >
             <svg
               class="w-4 h-4"
@@ -613,14 +281,7 @@ export default {
           <button
             type="button"
             id="kakao-article-share"
-            class="
-              flex
-              items-center
-              gap-x-2
-              text-sm text-gray-500
-              hover:text-gray-800
-              dark:text-gray-400 dark:hover:text-gray-200
-            "
+            class="flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
           >
             <svg
               class="w-4 h-4"
@@ -650,38 +311,13 @@ export default {
 
   <div
     id="hs-modal-signin"
-    class="
-      hs-overlay
-      hidden
-      w-full
-      h-full
-      fixed
-      top-0
-      left-0
-      z-[60]
-      overflow-x-hidden overflow-y-auto
-    "
+    class="hs-overlay hidden w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto"
   >
     <div
-      class="
-        hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500
-        mt-0
-        opacity-0
-        ease-out
-        transition-all
-        sm:max-w-lg sm:w-full
-        m-3
-        sm:mx-auto
-      "
+      class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto"
     >
       <div
-        class="
-          bg-white
-          border border-gray-200
-          rounded-xl
-          shadow-sm
-          dark:bg-gray-800 dark:border-gray-700
-        "
+        class="bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700"
       >
         <div class="p-4 sm:p-7">
           <div class="text-center">
@@ -692,25 +328,13 @@ export default {
           </div>
 
           <div class="mt-5">
-            <!-- Form -->
-
             <div class="grid gap-y-4">
-              <!-- Form Group -->
               <div>
-                <label for="email" class="block text-sm mb-2 dark:text-white">수량</label>
+                <label for="email" class="block text-sm mb-2 dark:text-white"
+                  >구매가능수량 : {{ productDetailItem?.ea }}</label
+                >
                 <select
-                  class="
-                    py-3
-                    px-4
-                    pr-9
-                    block
-                    w-full
-                    border-gray-200
-                    rounded-md
-                    text-sm
-                    focus:border-blue-500 focus:ring-blue-500
-                    dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-                  "
+                  class="py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                   v-model="count"
                 >
                   <option selected disabled>수량을 선택해주세요.</option>
@@ -724,32 +348,13 @@ export default {
                     type="email"
                     id="email"
                     name="email"
-                    class="
-                      py-3
-                      px-4
-                      block
-                      w-full
-                      border-gray-200
-                      rounded-md
-                      text-sm
-                      focus:border-blue-500 focus:ring-blue-500
-                      dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400
-                    "
+                    class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
                     required
                     aria-describedby="email-error"
                     v-model="countdirect"
                   />
                   <div
-                    class="
-                      hidden
-                      absolute
-                      inset-y-0
-                      right-0
-                      flex
-                      items-center
-                      pointer-events-none
-                      pr-3
-                    "
+                    class="hidden absolute inset-y-0 right-0 flex items-center pointer-events-none pr-3"
                   >
                     <svg
                       class="h-5 w-5 text-red-500"
@@ -769,27 +374,10 @@ export default {
                   Please include a valid email address so we can get back to you
                 </p>
               </div>
-              <!-- End Form Group -->
 
               <button
-                class="
-                  py-3
-                  px-4
-                  inline-flex
-                  justify-center
-                  items-center
-                  gap-2
-                  rounded-md
-                  border border-transparent
-                  font-semibold
-                  bg-blue-500
-                  text-white
-                  hover:bg-blue-600
-                  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
-                  transition-all
-                  text-sm
-                  dark:focus:ring-offset-gray-800
-                "
+                id="add-cart-item"
+                class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
                 data-hs-overlay="#hs-task-created-alert"
                 @click="saveCartList()"
               >
@@ -797,31 +385,12 @@ export default {
               </button>
               <button
                 type="button"
-                class="
-                  py-2.5
-                  px-4
-                  inline-flex
-                  justify-center
-                  items-center
-                  gap-2
-                  rounded-md
-                  border border-transparent
-                  font-semibold
-                  bg-blue-500
-                  text-white
-                  hover:bg-blue-600
-                  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
-                  transition-all
-                  text-sm
-                  dark:focus:ring-offset-gray-800
-                "
+                class="py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
                 data-hs-overlay="#hs-modal-signin"
               >
                 Cancel
               </button>
             </div>
-
-            <!-- End Form -->
           </div>
         </div>
       </div>
@@ -830,53 +399,16 @@ export default {
 
   <div
     id="hs-task-created-alert"
-    class="
-      hs-overlay
-      hidden
-      w-full
-      h-full
-      fixed
-      top-0
-      left-0
-      z-[60]
-      overflow-x-hidden overflow-y-auto
-    "
+    class="hs-overlay hidden w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto"
   >
     <div
-      class="
-        hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500
-        mt-0
-        opacity-0
-        ease-out
-        transition-all
-        sm:max-w-lg sm:w-full
-        m-3
-        sm:mx-auto
-      "
+      class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto"
     >
       <div class="relative flex flex-col bg-white shadow-lg rounded-xl dark:bg-gray-800">
         <div class="absolute top-2 right-2">
           <button
             type="button"
-            class="
-              inline-flex
-              flex-shrink-0
-              justify-center
-              items-center
-              h-8
-              w-8
-              rounded-md
-              text-gray-500
-              hover:text-gray-400
-              focus:outline-none
-              focus:ring-2
-              focus:ring-gray-400
-              focus:ring-offset-2
-              focus:ring-offset-white
-              transition-all
-              text-sm
-              dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800
-            "
+            class="inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-sm dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
             data-hs-overlay="#hs-task-created-alert"
           >
             <span class="sr-only">Close</span>
@@ -1080,30 +612,7 @@ export default {
         <div class="flex items-center">
           <button
             type="button"
-            class="
-              p-4
-              w-full
-              inline-flex
-              justify-center
-              items-center
-              gap-2
-              rounded-bl-xl
-              bg-gray-100
-              border border-transparent
-              font-semibold
-              text-gray-800
-              hover:text-blue-600
-              focus:outline-none focus:ring-2
-              ring-offset-white
-              focus:ring-gray-100 focus:ring-offset-2
-              transition-all
-              text-sm
-              dark:bg-gray-700
-              dark:hover:bg-gray-600
-              dark:focus:ring-gray-600
-              dark:text-white
-              dark:focus:ring-offset-gray-800
-            "
+            class="p-4 w-full inline-flex justify-center items-center gap-2 rounded-bl-xl bg-gray-100 border border-transparent font-semibold text-gray-800 hover:text-blue-600 focus:outline-none focus:ring-2 ring-offset-white focus:ring-gray-100 focus:ring-offset-2 transition-all text-sm dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-600 dark:text-white dark:focus:ring-offset-gray-800"
             data-hs-overlay="#hs-task-created-alert"
           >
             상품 더 둘러보기
@@ -1111,24 +620,7 @@ export default {
           <button
             type="button"
             @click="movetocartlist()"
-            class="
-              p-4
-              w-full
-              inline-flex
-              justify-center
-              items-center
-              gap-2
-              rounded-br-xl
-              border border-transparent
-              font-semibold
-              bg-blue-500
-              text-white
-              hover:bg-blue-600
-              focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
-              transition-all
-              text-sm
-              dark:focus:ring-offset-gray-800
-            "
+            class="p-4 w-full inline-flex justify-center items-center gap-2 rounded-br-xl border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
             data-hs-overlay="#hs-task-created-alert"
           >
             장바구니 페이지로 가기
@@ -1138,3 +630,185 @@ export default {
     </div>
   </div>
 </template>
+<script lang="ts">
+import { mapActions } from "vuex";
+import ProductService from "@/services/ProductService";
+import productDetailInterface from "../../types/auth";
+import TheProductDetailSidebar from "./productDetail/TheProductDetailSidebar.vue";
+import Swiper from "https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs";
+export default {
+  components: {
+    TheProductDetailSidebar,
+  },
+  data() {
+    return {
+      productDetailItem: {} as productDetailInterface,
+      sellerProductList: [],
+      countOptionList: [],
+      count: "1",
+      countdirect: "",
+    };
+  },
+  created() {
+    Kakao.init("bfdc56a39210639e056f66e470d11426");
+  },
+  methods: {
+    ...mapActions("cart", ["updateSpinnerStatus"]),
+    ...mapActions("cart", ["addProductToCart"]),
+
+    saveCartList() {
+      if (this.count == "direct" && this.countdirect == "") {
+        return alert("수량을 입력해주세요.");
+      }
+      let count = this.count;
+      if (this.count == "direct") {
+        count = this.countdirect;
+      }
+
+      const addCartItem = {
+        originPrice: this.productDetailItem.price,
+        count,
+        productID: this.productDetailItem.product_id,
+        productName: this.productDetailItem.main_title,
+        price: this.productDetailItem.price * count,
+      };
+
+      this.addProductToCart(addCartItem);
+    },
+    back() {
+      this.$router.push("/commerce/search");
+    },
+
+    async getproductitemlist(id) {
+      // 상품 수정
+      this.updateSpinnerStatus(true);
+      await ProductService.getproductlistbyid(id).then((response) => {
+        if (response.data.code == "0000") {
+          const userdata = response.data.data;
+          this.productDetailItem = { ...userdata };
+          this.seller_id = userdata.seller.seller_id;
+
+          this.updateSpinnerStatus(false);
+        }
+      });
+    },
+    updateProductCount(count) {
+      this.count = count;
+      console.log(this.count);
+
+      //this.saveCartList();
+      document.getElementById("add-cart-item").click();
+    },
+    movetodetail(id: number) {
+      return (location.href = `/commerce/detail/${id}`);
+    },
+    movetoIntroduct(id) {
+      return this.$router.push(`/brandshop/preview/${id}`);
+    },
+    movetocartlist() {
+      //window.HSOverlay.close("#hs-task-created-alert");
+      return (location.href = `/commerce/cartlist`);
+    },
+  },
+  async mounted() {
+    for (var i = 0; i < 10; i++) {
+      this.countOptionList.push({
+        key: i + 1,
+        value: i + 1,
+      });
+    }
+
+    this.id = this.$route.params.id;
+    if (this.id > 0) {
+      await this.getproductitemlist(this.id);
+      // 판매자가 판매중인 상품 리스트 가져오기
+      ProductService.getproductlistbysellerid(this.seller_id).then((response) => {
+        this.sellerProductList = response.data.data.list;
+        if (this.sellerProductList.length > 0) {
+          this.sellerProductList = this.sellerProductList.slice(0, 5);
+        }
+      });
+    }
+
+    let item = this.productDetailItem;
+    const main_title = item.main_title;
+    const sub_title = item.main_explanation;
+    const regularPrice = item.origin_price;
+    const discountPrice = item.price;
+    const imageUrl = item.main_image;
+    const productID = item.id;
+
+    Kakao.Share.createDefaultButton({
+      container: "#kakao-article-share",
+      objectType: "commerce",
+      content: {
+        title: `🍎애플링 특가 ${discountPrice?.toLocaleString()}원에 구매해보세요!`,
+        imageUrl,
+        link: {
+          mobileWebUrl: `http://www.appling.me/commerce/detail/${productID}`,
+          webUrl: `http://www.appling.me/commerce/detail/${productID}`,
+        },
+      },
+      commerce: {
+        productName: main_title,
+        regularPrice,
+        discountRate: 10,
+        discountPrice,
+      },
+      buttons: [
+        {
+          title: "상품 구매하러 가기",
+          link: {
+            mobileWebUrl: `http://www.appling.me/commerce/detail/${productID}`,
+            webUrl: `http://www.appling.me/commerce/detail/${productID}`,
+          },
+        },
+      ],
+    });
+
+    const swiper = new Swiper(".swiper", {
+      // Optional parameters
+      direction: "horizontal",
+      loop: true,
+
+      // If we need pagination
+      pagination: {
+        el: ".swiper-pagination",
+        dynamicBullets: "true",
+      },
+
+      // Navigation arrows
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+
+    console.log(swiper);
+  },
+};
+</script>
+
+<style>
+@import url(https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css);
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+}
+</style>

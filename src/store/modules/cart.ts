@@ -43,6 +43,11 @@ const actions = {
     commit("updateProductCart", inventory);
   },
 
+  // clear cart list
+  clearCartList({ state, commit }) {
+    commit("updateProductCart", []);
+  },
+
   deleteCartItem({ state, commit }, productIndex) {
     // 장바구니 상품 삭제
     let inventory = state.inventory;
@@ -54,7 +59,7 @@ const actions = {
   addProductToCart({ state, commit }, product) {
     // 장바구니 상품 담기
     let inventory = state.inventory;
-    let cartItem = inventory.findIndex((item) => item.productID === product.productID);
+    let cartItem = inventory.findIndex((item) => item?.productID === product.productID);
 
     if (cartItem > -1) {
       inventory[cartItem].count = inventory[cartItem].count * 1 + product.count * 1;
