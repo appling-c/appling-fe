@@ -15,7 +15,7 @@ export default ({ mode }) => {
 
     server: {
       proxy: {
-        "/api": { target: "http://3.34.124.71:8000", changeOrigin: true },
+        "/api": { target: "http://api.appling.me", changeOrigin: true },
       },
       //host: true,
       port: 5173,
