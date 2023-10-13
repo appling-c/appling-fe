@@ -203,7 +203,7 @@
                   border border-gray-200
                   shadow-sm
                   rounded-lg
-                  text-sm
+                  text-base
                   focus:z-10 focus:border-blue-500 focus:ring-blue-500
                   dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
                   file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-2 file:px-3
@@ -222,7 +222,7 @@
                     px-2
                     py-1
                     mr-2
-                    text-sm
+                    text-base
                     font-medium
                     text-blue-800
                     bg-blue-100
@@ -238,7 +238,7 @@
                       items-center
                       p-1
                       ml-2
-                      text-sm text-blue-400
+                      text-base text-blue-400
                       bg-transparent
                       rounded-sm
                       hover:bg-blue-200 hover:text-blue-900
@@ -292,7 +292,7 @@
                   border border-gray-200
                   shadow-sm
                   rounded-lg
-                  text-sm
+                  text-base
                   focus:z-10 focus:border-blue-500 focus:ring-blue-500
                   dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
                   file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-2 file:px-3
@@ -310,7 +310,7 @@
                     px-2
                     py-1
                     mr-2
-                    text-sm
+                    text-base
                     font-medium
                     text-blue-800
                     bg-blue-100
@@ -326,7 +326,7 @@
                       items-center
                       p-1
                       ml-2
-                      text-sm text-blue-400
+                      text-base text-blue-400
                       bg-transparent
                       rounded-sm
                       hover:bg-blue-200 hover:text-blue-900
@@ -375,7 +375,7 @@
                   border border-gray-200
                   shadow-sm
                   rounded-lg
-                  text-sm
+                  text-base
                   focus:z-10 focus:border-blue-500 focus:ring-blue-500
                   dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
                   file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-2 file:px-3
@@ -393,7 +393,7 @@
                     px-2
                     py-1
                     mr-2
-                    text-sm
+                    text-base
                     font-medium
                     text-blue-800
                     bg-blue-100
@@ -409,7 +409,7 @@
                       items-center
                       p-1
                       ml-2
-                      text-sm text-blue-400
+                      text-base text-blue-400
                       bg-transparent
                       rounded-sm
                       hover:bg-blue-200 hover:text-blue-900
@@ -458,7 +458,7 @@
                   border border-gray-200
                   shadow-sm
                   rounded-lg
-                  text-sm
+                  text-base
                   focus:z-10 focus:border-blue-500 focus:ring-blue-500
                   dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
                   file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-2 file:px-3
@@ -476,7 +476,7 @@
                     px-2
                     py-1
                     mr-2
-                    text-sm
+                    text-base
                     font-medium
                     text-blue-800
                     bg-blue-100
@@ -492,7 +492,7 @@
                       items-center
                       p-1
                       ml-2
-                      text-sm text-blue-400
+                      text-base text-blue-400
                       bg-transparent
                       rounded-sm
                       hover:bg-blue-200 hover:text-blue-900
@@ -555,30 +555,7 @@
             </div>
             <!-- End Col -->
 
-            <div class="sm:col-span-3">
-              <label class="inline-block text-base font-medium text-gray-500 mt-2.5"> 수량 </label>
-            </div>
-            <!-- End Col -->
-
-            <div class="sm:col-span-9">
-              <input
-                v-model="ea"
-                type="text"
-                class="
-                  py-2
-                  px-3
-                  pr-11
-                  block
-                  w-full
-                  border-gray-200
-                  shadow-sm
-                  text-base
-                  rounded-lg
-                  focus:border-blue-500 focus:ring-blue-500
-                  dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-                "
-              />
-            </div>
+           
 
             <div class="sm:col-span-3">
               <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
@@ -645,6 +622,7 @@
               </div>
             </div>
             <!-- End Col -->
+            
 
             <div class="sm:col-span-3">
               <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
@@ -711,6 +689,8 @@
               </div>
             </div>
             <!-- End Col -->
+
+            
           </div>
           <!-- End Section -->
 
@@ -730,24 +710,116 @@
               dark:border-gray-700
             "
           >
+
             <div class="sm:col-span-12">
               <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                원가와 판매가격을 입력해주세요.
+                상품 유형을 선택해주세요.
               </h2>
             </div>
             <!-- End Col -->
-
             <div class="sm:col-span-3">
-              <label
-                for="af-submit-application-resume-cv"
-                class="inline-block text-base font-medium text-gray-500 mt-2.5"
-              >
-                원가
+              <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                상품 유형
               </label>
             </div>
             <!-- End Col -->
 
             <div class="sm:col-span-9">
+              <div class="sm:flex">
+                <label
+                  @click="setProductType(pitem.key)"
+                  v-for="(pitem, pIndex) in productTypeList"
+                  :key="pIndex"
+                  for="af-account-gender-checkbox"
+                  class="
+                    flex
+                    py-2
+                    px-3
+                    block
+                    w-full
+                    border border-gray-200
+                    shadow-sm
+                    -mt-px
+                    -ml-px
+                    first:rounded-t-lg
+                    last:rounded-b-lg
+                    sm:first:rounded-l-lg
+                    sm:mt-0
+                    sm:first:ml-0
+                    sm:first:rounded-tr-none
+                    sm:last:rounded-bl-none
+                    sm:last:rounded-r-lg
+                    text-base
+                    relative
+                    focus:z-10 focus:border-blue-500 focus:ring-blue-500
+                    dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
+                  "
+                >
+                  <input
+                    :checked="pType == pitem.key"
+                    type="radio"
+                    name="af-account-gender-checkbox2"
+                    class="
+                      shrink-0
+                      mt-0.5
+                      border-gray-200
+                      rounded-full
+                      text-blue-600
+                      pointer-events-none
+                      focus:ring-blue-500
+                      dark:bg-gray-800
+                      dark:border-gray-700
+                      dark:checked:bg-blue-500
+                      dark:checked:border-blue-500
+                      dark:focus:ring-offset-gray-800
+                    "
+                    :id="`af-account-category-checkbox-${pitem.key}`"
+                  />
+                  <span class="text-base text-gray-500 ml-3 dark:text-gray-400">{{
+                    pitem.name
+                  }}</span>
+                </label>
+              </div>
+            </div>
+            <!-- End Col -->
+
+            <!--단일상품-->
+            <template v-if="pType == '0'">
+              <div class="sm:col-span-3">
+                <label class="inline-block text-base font-medium text-gray-500 mt-2.5"> 수량 </label>
+              </div>
+              <!-- End Col -->
+  
+              <div class="sm:col-span-9">
+                <input
+                  v-model="ea"
+                  type="text"
+                  class="
+                    py-2
+                    px-3
+                    pr-11
+                    block
+                    w-full
+                    border-gray-200
+                    shadow-sm
+                    text-base
+                    rounded-lg
+                    focus:border-blue-500 focus:ring-blue-500
+                    dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
+                  "
+                />
+              </div>
+  
+              <div class="sm:col-span-3">
+                <label
+                  for="af-submit-application-resume-cv"
+                  class="inline-block text-base font-medium text-gray-500 mt-2.5"
+                >
+                  원가
+                </label>
+              </div>
+              <!-- End Col -->
+              <div class="sm:col-span-9">
               <div
                 class="
                   py-6
@@ -832,6 +904,26 @@
               </div>
             </div>
             <!-- End Col -->
+            </template>
+            
+            <template v-else>
+              <div class="sm:col-span-3">
+                <label
+                  for="af-submit-application-resume-cv"
+                  class="inline-block text-base font-medium text-gray-500 mt-2.5"
+                >
+                  옵션
+                </label>
+              </div>
+              <div class="sm:col-span-9 pt-6 pb-5">
+                <the-product-option-table/>
+              </div>
+
+
+            </template>
+
+
+            
           </div>
           <!-- End Section -->
 
@@ -1060,8 +1152,12 @@
 import { mapActions } from "vuex";
 import ProductService from "@/services/ProductService";
 import CommonService from "@/services/CommonService";
+import TheProductOptionTable from "@/components/admin/product/ProductOptionTable.vue";
 
 export default {
+  components:{
+    TheProductOptionTable
+  },
   props: {
     confirm: Boolean,
   },
@@ -1091,6 +1187,11 @@ export default {
       ],
       status: "NORMAL",
       ea: 0,
+      pType : "0", 
+      productTypeList : [
+        { key: "0", name: "옵션이 없는 단일 상품이예요." },
+        { key: "1", name: "옵션이 있는 상품이예요." },
+      ]
     };
   },
   watch: {
@@ -1101,6 +1202,9 @@ export default {
   },
 
   methods: {
+    setProductType(key){
+      this.pType = key;
+    },
     ...mapActions("cart", ["updateSpinnerStatus"]),
     setproductstatus(status) {
       this.status = status;
