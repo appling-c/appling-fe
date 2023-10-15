@@ -30,7 +30,10 @@
     </header>
     <!-- Card Section -->
     <!-- Table Section -->
-    <div v-if="lists.length == 0" class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+    <div
+      v-if="lists.length == 0"
+      class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto"
+    >
       <!-- Card -->
       <div class="flex flex-col">
         <div class="-m-1.5 overflow-x-auto">
@@ -141,7 +144,9 @@
               >
                 <!-- Input -->
                 <div class="sm:col-span-1">
-                  <label for="hs-as-table-product-review-search" class="sr-only">Search</label>
+                  <label for="hs-as-table-product-review-search" class="sr-only"
+                    >Search</label
+                  >
                   <div class="relative">
                     <input
                       type="text"
@@ -280,7 +285,7 @@
                         <span
                           class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"
                         >
-                          가격
+                          판매가
                         </span>
                       </div>
                     </th>
@@ -375,20 +380,12 @@
                           class="block text-sm font-semibold text-gray-800 dark:text-gray-200"
                           >{{ litem.main_title }}</span
                         >
-                        <span class="block text-sm text-gray-500">{{
-                          litem.main_explanation
-                        }}</span>
                       </a>
                     </td>
                     <td @click="moveto(litem.product_id)" class="h-px whitespace-nowrap">
                       <a class="block h-full p-4">
                         <div class="flex items-center gap-x-3">
                           <div class="grow">
-                            <span
-                              style="text-decoration: line-through"
-                              class="block text-xs text-gray-500"
-                              >{{ litem.origin_price.toLocaleString() }}원</span
-                            >
                             <span
                               class="block text-sm font-semibold text-gray-800 dark:text-gray-200"
                               >{{ litem.price.toLocaleString() }}원</span
@@ -715,7 +712,7 @@ export default {
       });
     },
     date_format(date) {
-      return moment(date).format("YYYY-MM-DD, hh:mm:ss");
+      return moment(date).format("YYYY/MM/DD");
     },
     prev() {
       if (this.page == 0) {

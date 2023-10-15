@@ -6,8 +6,8 @@
       </h1>
       <template v-if="mode == 'regist'">
         <p class="mt-2 text-lg text-gray-800 dark:text-gray-600">
-          상품 정보를 등록한 후 한장짜리 <span class="text-blue-600">팜플렛</span>을 만들어
-          홍보해보세요!
+          상품 정보를 등록한 후 한장짜리 <span class="text-blue-600">팜플렛</span>을
+          만들어 홍보해보세요!
         </p>
         <p class="mt-2 text-base text-gray-800 dark:text-gray-400">
           등록 이후에도 수정이 가능합니다.
@@ -15,33 +15,15 @@
       </template>
 
       <template v-else>
-        <p class="mt-2 text-lg text-gray-800 dark:text-gray-600">등록한 상품을 수정해보세요!</p>
+        <p class="mt-2 text-lg text-gray-800 dark:text-gray-600">
+          등록한 상품을 수정해보세요!
+        </p>
       </template>
 
       <div class="mt-5 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
         <router-link
           to="/admin/product/list"
-          class="
-            w-full
-            sm:w-auto
-            inline-flex
-            justify-center
-            items-center
-            gap-2
-            rounded-md
-            border border-transparent
-            font-semibold
-            text-blue-500
-            hover:text-blue-700
-            focus:outline-none focus:ring-2
-            ring-offset-gray-50
-            focus:ring-blue-500 focus:ring-offset-2
-            transition-all
-            text-base
-            py-3
-            px-4
-            dark:ring-offset-slate-900
-          "
+          class="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold text-blue-500 hover:text-blue-700 focus:outline-none focus:ring-2 ring-offset-gray-50 focus:ring-blue-500 focus:ring-offset-2 transition-all text-base py-3 px-4 dark:ring-offset-slate-900"
         >
           <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path
@@ -56,30 +38,7 @@
         <a
           v-if="mode == 'regist'"
           @click="submit"
-          class="
-            w-full
-            sm:w-auto
-            inline-flex
-            justify-center
-            items-center
-            gap-x-3
-            text-center
-            bg-blue-600
-            hover:bg-blue-700
-            border border-transparent
-            text-white text-base
-            font-medium
-            rounded-md
-            focus:outline-none
-            focus:ring-2
-            focus:ring-blue-600
-            focus:ring-offset-2
-            focus:ring-offset-white
-            transition
-            py-3
-            px-4
-            dark:focus:ring-offset-gray-800
-          "
+          class="w-full sm:w-auto inline-flex justify-center items-center gap-x-3 text-center bg-blue-600 hover:bg-blue-700 border border-transparent text-white text-base font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:focus:ring-offset-gray-800"
         >
           <svg
             class="w-4 h-4"
@@ -104,55 +63,8 @@
         <form>
           <!-- Section -->
           <div
-            class="
-              grid
-              sm:grid-cols-12
-              gap-2
-              sm:gap-4
-              py-8
-              first:pt-0
-              last:pb-0
-              border-t
-              first:border-transparent
-              border-gray-200
-              dark:border-gray-700
-            "
+            class="grid sm:grid-cols-12 gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700"
           >
-            <div class="sm:col-span-12">
-              <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                상품 정보를 입력해주세요.
-              </h2>
-            </div>
-            <!-- End Col -->
-
-            <div class="sm:col-span-3">
-              <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
-                상품 큰 제목
-              </label>
-            </div>
-            <!-- End Col -->
-
-            <div class="sm:col-span-9">
-              <div class="sm:flex">
-                <input
-                  v-model="title"
-                  type="text"
-                  class="
-                    py-2
-                    px-3
-                    pr-11
-                    block
-                    w-full
-                    border-gray-200
-                    shadow-sm
-                    text-base
-                    rounded-lg
-                    focus:border-blue-500 focus:ring-blue-500
-                    dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-                  "
-                />
-              </div>
-            </div>
             <!-- End Col -->
 
             <div class="sm:col-span-3">
@@ -166,26 +78,15 @@
               <input
                 v-model="subtitle"
                 type="text"
-                class="
-                  py-2
-                  px-3
-                  pr-11
-                  block
-                  w-full
-                  border-gray-200
-                  shadow-sm
-                  text-base
-                  rounded-lg
-                  focus:border-blue-500 focus:ring-blue-500
-                  dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-                "
+                class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
               />
             </div>
             <!-- End Col -->
 
             <div class="sm:col-span-3">
               <div class="inline-block">
-                <label class="inline-block text-base font-medium text-gray-500 mt-2.5"> </label>
+                <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                </label>
               </div>
             </div>
             <!-- End Col -->
@@ -197,18 +98,7 @@
                 type="file"
                 name="af-submit-application-resume-cv"
                 id="af-submit-application-resume-cv"
-                class="
-                  block
-                  w-full
-                  border border-gray-200
-                  shadow-sm
-                  rounded-lg
-                  text-sm
-                  focus:z-10 focus:border-blue-500 focus:ring-blue-500
-                  dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-                  file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-2 file:px-3
-                  dark:file:bg-gray-700 dark:file:text-gray-400
-                "
+                class="block w-full border border-gray-200 shadow-sm rounded-lg text-base focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-2 file:px-3 dark:file:bg-gray-700 dark:file:text-gray-400"
               />
             </div>
 
@@ -216,34 +106,12 @@
               <p @click="removemainimage('image_url')">
                 <span
                   id="badge-dismiss-default"
-                  class="
-                    inline-flex
-                    items-center
-                    px-2
-                    py-1
-                    mr-2
-                    text-sm
-                    font-medium
-                    text-blue-800
-                    bg-blue-100
-                    rounded
-                    dark:bg-blue-900 dark:text-blue-300
-                  "
+                  class="inline-flex items-center px-2 py-1 mr-2 text-base font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300"
                 >
                   {{ image_url }}
                   <button
                     type="button"
-                    class="
-                      inline-flex
-                      items-center
-                      p-1
-                      ml-2
-                      text-sm text-blue-400
-                      bg-transparent
-                      rounded-sm
-                      hover:bg-blue-200 hover:text-blue-900
-                      dark:hover:bg-blue-800 dark:hover:text-blue-300
-                    "
+                    class="inline-flex items-center p-1 ml-2 text-base text-blue-400 bg-transparent rounded-sm hover:bg-blue-200 hover:text-blue-900 dark:hover:bg-blue-800 dark:hover:text-blue-300"
                     data-dismiss-target="#badge-dismiss-default"
                     aria-label="Remove"
                   >
@@ -273,7 +141,7 @@
             <div class="sm:col-span-3">
               <div class="inline-block">
                 <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
-                  서브 상품 이미지
+                  상품 이미지
                 </label>
               </div>
             </div>
@@ -286,52 +154,19 @@
                 type="file"
                 name="af-submit-application-resume-cv"
                 id="af-submit-application-resume-cv"
-                class="
-                  block
-                  w-full
-                  border border-gray-200
-                  shadow-sm
-                  rounded-lg
-                  text-sm
-                  focus:z-10 focus:border-blue-500 focus:ring-blue-500
-                  dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-                  file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-2 file:px-3
-                  dark:file:bg-gray-700 dark:file:text-gray-400
-                "
+                class="block w-full border border-gray-200 shadow-sm rounded-lg text-base focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-2 file:px-3 dark:file:bg-gray-700 dark:file:text-gray-400"
               />
             </div>
             <div v-else class="sm:col-span-9">
               <p @click="removemainimage('image1')">
                 <span
                   id="badge-dismiss-default"
-                  class="
-                    inline-flex
-                    items-center
-                    px-2
-                    py-1
-                    mr-2
-                    text-sm
-                    font-medium
-                    text-blue-800
-                    bg-blue-100
-                    rounded
-                    dark:bg-blue-900 dark:text-blue-300
-                  "
+                  class="inline-flex items-center px-2 py-1 mr-2 text-base font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300"
                 >
                   {{ image1 }}
                   <button
                     type="button"
-                    class="
-                      inline-flex
-                      items-center
-                      p-1
-                      ml-2
-                      text-sm text-blue-400
-                      bg-transparent
-                      rounded-sm
-                      hover:bg-blue-200 hover:text-blue-900
-                      dark:hover:bg-blue-800 dark:hover:text-blue-300
-                    "
+                    class="inline-flex items-center p-1 ml-2 text-base text-blue-400 bg-transparent rounded-sm hover:bg-blue-200 hover:text-blue-900 dark:hover:bg-blue-800 dark:hover:text-blue-300"
                     data-dismiss-target="#badge-dismiss-default"
                     aria-label="Remove"
                   >
@@ -358,7 +193,8 @@
 
             <div class="sm:col-span-3">
               <div class="inline-block">
-                <label class="inline-block text-base font-medium text-gray-500 mt-2.5"> </label>
+                <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                </label>
               </div>
             </div>
 
@@ -369,52 +205,19 @@
                 type="file"
                 name="af-submit-application-resume-cv"
                 id="af-submit-application-resume-cv"
-                class="
-                  block
-                  w-full
-                  border border-gray-200
-                  shadow-sm
-                  rounded-lg
-                  text-sm
-                  focus:z-10 focus:border-blue-500 focus:ring-blue-500
-                  dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-                  file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-2 file:px-3
-                  dark:file:bg-gray-700 dark:file:text-gray-400
-                "
+                class="block w-full border border-gray-200 shadow-sm rounded-lg text-base focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-2 file:px-3 dark:file:bg-gray-700 dark:file:text-gray-400"
               />
             </div>
             <div v-else class="sm:col-span-9">
               <p @click="removemainimage('image2')">
                 <span
                   id="badge-dismiss-default"
-                  class="
-                    inline-flex
-                    items-center
-                    px-2
-                    py-1
-                    mr-2
-                    text-sm
-                    font-medium
-                    text-blue-800
-                    bg-blue-100
-                    rounded
-                    dark:bg-blue-900 dark:text-blue-300
-                  "
+                  class="inline-flex items-center px-2 py-1 mr-2 text-base font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300"
                 >
                   {{ image2 }}
                   <button
                     type="button"
-                    class="
-                      inline-flex
-                      items-center
-                      p-1
-                      ml-2
-                      text-sm text-blue-400
-                      bg-transparent
-                      rounded-sm
-                      hover:bg-blue-200 hover:text-blue-900
-                      dark:hover:bg-blue-800 dark:hover:text-blue-300
-                    "
+                    class="inline-flex items-center p-1 ml-2 text-base text-blue-400 bg-transparent rounded-sm hover:bg-blue-200 hover:text-blue-900 dark:hover:bg-blue-800 dark:hover:text-blue-300"
                     data-dismiss-target="#badge-dismiss-default"
                     aria-label="Remove"
                   >
@@ -441,7 +244,8 @@
 
             <div class="sm:col-span-3">
               <div class="inline-block">
-                <label class="inline-block text-base font-medium text-gray-500 mt-2.5"> </label>
+                <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                </label>
               </div>
             </div>
 
@@ -452,52 +256,19 @@
                 type="file"
                 name="af-submit-application-resume-cv"
                 id="af-submit-application-resume-cv"
-                class="
-                  block
-                  w-full
-                  border border-gray-200
-                  shadow-sm
-                  rounded-lg
-                  text-sm
-                  focus:z-10 focus:border-blue-500 focus:ring-blue-500
-                  dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-                  file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-2 file:px-3
-                  dark:file:bg-gray-700 dark:file:text-gray-400
-                "
+                class="block w-full border border-gray-200 shadow-sm rounded-lg text-base focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-2 file:px-3 dark:file:bg-gray-700 dark:file:text-gray-400"
               />
             </div>
             <div v-else class="sm:col-span-9">
               <p @click="removemainimage('image3')">
                 <span
                   id="badge-dismiss-default"
-                  class="
-                    inline-flex
-                    items-center
-                    px-2
-                    py-1
-                    mr-2
-                    text-sm
-                    font-medium
-                    text-blue-800
-                    bg-blue-100
-                    rounded
-                    dark:bg-blue-900 dark:text-blue-300
-                  "
+                  class="inline-flex items-center px-2 py-1 mr-2 text-base font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300"
                 >
                   {{ image3 }}
                   <button
                     type="button"
-                    class="
-                      inline-flex
-                      items-center
-                      p-1
-                      ml-2
-                      text-sm text-blue-400
-                      bg-transparent
-                      rounded-sm
-                      hover:bg-blue-200 hover:text-blue-900
-                      dark:hover:bg-blue-800 dark:hover:text-blue-300
-                    "
+                    class="inline-flex items-center p-1 ml-2 text-base text-blue-400 bg-transparent rounded-sm hover:bg-blue-200 hover:text-blue-900 dark:hover:bg-blue-800 dark:hover:text-blue-300"
                     data-dismiss-target="#badge-dismiss-default"
                     aria-label="Remove"
                   >
@@ -535,50 +306,14 @@
 
             <div class="sm:col-span-9">
               <div class="sm:col-span-9">
-                <textarea
-                  v-model="description"
+                <div
                   id="product_main_explanation"
-                  class="
-                    py-2
-                    px-3
-                    block
-                    w-full
-                    border-gray-200
-                    rounded-lg
-                    text-base
-                    focus:border-blue-500 focus:ring-blue-500
-                    dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-                  "
+                  class="py-2 px-3 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                   rows="6"
-                ></textarea>
+                ></div>
               </div>
             </div>
             <!-- End Col -->
-
-            <div class="sm:col-span-3">
-              <label class="inline-block text-base font-medium text-gray-500 mt-2.5"> 수량 </label>
-            </div>
-            <!-- End Col -->
-
-            <div class="sm:col-span-9">
-              <input
-                v-model="ea"
-                type="text"
-                class="
-                  py-2
-                  px-3
-                  pr-11
-                  block
-                  w-full
-                  border-gray-200
-                  shadow-sm
-                  text-base
-                  rounded-lg
-                  focus:border-blue-500 focus:ring-blue-500
-                  dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-                "
-              />
-            </div>
 
             <div class="sm:col-span-3">
               <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
@@ -587,68 +322,70 @@
             </div>
             <!-- End Col -->
 
-            <div class="sm:col-span-9">
+            <div class="sm:col-span-3">
               <div class="sm:flex">
-                <label
-                  @click="setCategory(item.category_id)"
-                  v-for="(item, index) in categorys"
-                  :key="index"
-                  for="af-account-gender-checkbox"
-                  class="
-                    flex
-                    py-2
-                    px-3
-                    block
-                    w-full
-                    border border-gray-200
-                    shadow-sm
-                    -mt-px
-                    -ml-px
-                    first:rounded-t-lg
-                    last:rounded-b-lg
-                    sm:first:rounded-l-lg
-                    sm:mt-0
-                    sm:first:ml-0
-                    sm:first:rounded-tr-none
-                    sm:last:rounded-bl-none
-                    sm:last:rounded-r-lg
-                    text-base
-                    relative
-                    focus:z-10 focus:border-blue-500 focus:ring-blue-500
-                    dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-                  "
-                >
-                  <input
-                    :checked="category == item.category_id"
-                    type="radio"
-                    name="af-account-gender-checkbox"
-                    class="
-                      shrink-0
-                      mt-0.5
-                      border-gray-200
-                      rounded-full
-                      text-blue-600
-                      pointer-events-none
-                      focus:ring-blue-500
-                      dark:bg-gray-800
-                      dark:border-gray-700
-                      dark:checked:bg-blue-500
-                      dark:checked:border-blue-500
-                      dark:focus:ring-offset-gray-800
+                <div class="inline-flex rounded-md shadow-sm">
+                  <button
+                    v-for="(item, index) in categorys"
+                    :key="index"
+                    type="button"
+                    @click="setTargetOptionStatus(item.category_id)"
+                    :class="
+                      category == item.category_id
+                        ? 'bg-blue-400 text-white hover:bg-blue-700'
+                        : 'bg-white text-gray-700 hover:bg-gray-50'
                     "
-                    :id="`af-account-category-checkbox-${item.value}`"
-                  />
-                  <span class="text-base text-gray-500 ml-3 dark:text-gray-400">{{
-                    item.name
-                  }}</span>
-                </label>
+                    class="py-3 px-4 inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-lg first:ml-0 last:rounded-r-lg border font-medium align-middle focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all"
+                  >
+                    {{ item.name }}
+                  </button>
+                </div>
               </div>
             </div>
-            <!-- End Col -->
 
             <div class="sm:col-span-3">
               <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
-                노출 상태
+                상품 노출 상태
+              </label>
+            </div>
+            <!-- End Col -->
+
+            <div class="sm:col-span-3">
+              <div class="sm:flex">
+                <div class="inline-flex rounded-md shadow-sm">
+                  <button
+                    v-for="(sitem, sindex) in statusList"
+                    :key="sindex"
+                    type="button"
+                    @click="setProductStatus(item.key)"
+                    :class="
+                      status == sitem.key
+                        ? 'bg-blue-400 text-white hover:bg-blue-700'
+                        : 'bg-white text-gray-700 hover:bg-gray-50'
+                    "
+                    class="py-3 px-4 inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-lg first:ml-0 last:rounded-r-lg border font-medium align-middle focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all"
+                  >
+                    {{ sitem.name }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Section -->
+
+          <!-- Section -->
+          <div
+            class="grid sm:grid-cols-12 gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700"
+          >
+            <div class="sm:col-span-12">
+              <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                상품 유형을 선택해주세요.
+              </h2>
+            </div>
+            <!-- End Col -->
+            <div class="sm:col-span-3">
+              <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                상품 유형
               </label>
             </div>
             <!-- End Col -->
@@ -656,200 +393,144 @@
             <div class="sm:col-span-9">
               <div class="sm:flex">
                 <label
-                  @click="setproductstatus(sitem.key)"
-                  v-for="(sitem, index) in statusList"
-                  :key="index"
+                  @click="setProductType(pitem.key)"
+                  v-for="(pitem, pIndex) in productTypeList"
+                  :key="pIndex"
                   for="af-account-gender-checkbox"
-                  class="
-                    flex
-                    py-2
-                    px-3
-                    block
-                    w-full
-                    border border-gray-200
-                    shadow-sm
-                    -mt-px
-                    -ml-px
-                    first:rounded-t-lg
-                    last:rounded-b-lg
-                    sm:first:rounded-l-lg
-                    sm:mt-0
-                    sm:first:ml-0
-                    sm:first:rounded-tr-none
-                    sm:last:rounded-bl-none
-                    sm:last:rounded-r-lg
-                    text-base
-                    relative
-                    focus:z-10 focus:border-blue-500 focus:ring-blue-500
-                    dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-                  "
+                  class="flex py-2 px-3 block w-full border border-gray-200 shadow-sm -mt-px -ml-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-l-lg sm:mt-0 sm:first:ml-0 sm:first:rounded-tr-none sm:last:rounded-bl-none sm:last:rounded-r-lg text-base relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                 >
                   <input
-                    :checked="status == sitem.key"
+                    :checked="pType == pitem.key"
                     type="radio"
                     name="af-account-gender-checkbox2"
-                    class="
-                      shrink-0
-                      mt-0.5
-                      border-gray-200
-                      rounded-full
-                      text-blue-600
-                      pointer-events-none
-                      focus:ring-blue-500
-                      dark:bg-gray-800
-                      dark:border-gray-700
-                      dark:checked:bg-blue-500
-                      dark:checked:border-blue-500
-                      dark:focus:ring-offset-gray-800
-                    "
-                    :id="`af-account-category-checkbox-${sitem.key}`"
+                    class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                    :id="`af-account-category-checkbox-${pitem.key}`"
                   />
                   <span class="text-base text-gray-500 ml-3 dark:text-gray-400">{{
-                    sitem.name
+                    pitem.name
                   }}</span>
                 </label>
               </div>
             </div>
             <!-- End Col -->
-          </div>
-          <!-- End Section -->
 
-          <!-- Section -->
-          <div
-            class="
-              grid
-              sm:grid-cols-12
-              gap-2
-              sm:gap-4
-              py-8
-              first:pt-0
-              last:pb-0
-              border-t
-              first:border-transparent
-              border-gray-200
-              dark:border-gray-700
-            "
-          >
-            <div class="sm:col-span-12">
-              <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                원가와 판매가격을 입력해주세요.
-              </h2>
-            </div>
-            <!-- End Col -->
+            <!--단일상품-->
+            <template v-if="pType == '0'">
+              <div class="sm:col-span-2">
+                <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                  수량
+                </label>
+              </div>
+              <!-- End Col -->
 
-            <div class="sm:col-span-3">
-              <label
-                for="af-submit-application-resume-cv"
-                class="inline-block text-base font-medium text-gray-500 mt-2.5"
-              >
-                원가
-              </label>
-            </div>
-            <!-- End Col -->
+              <div class="sm:col-span-2">
+                <input
+                  v-model="ea"
+                  type="text"
+                  class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
+                />
+              </div>
 
-            <div class="sm:col-span-9">
-              <div
-                class="
-                  py-6
-                  first:pt-0
-                  last:pb-0
-                  border-t
-                  first:border-transparent
-                  border-gray-200
-                  dark:border-gray-700
-                "
-              >
-                <div class="mt-2 space-y-3">
-                  <div class="sm:flex gap-3">
+              <div class="sm:col-span-2">
+                <label
+                  for="af-submit-application-resume-cv"
+                  class="inline-block text-base font-medium text-gray-500 mt-2.5"
+                >
+                  원가
+                </label>
+              </div>
+              <!-- End Col -->
+              <div class="sm:col-span-2">
+                <div
+                  class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700"
+                >
+                  <div class="relative">
                     <input
                       v-model="origin_price"
                       type="text"
-                      class="
-                        py-2
-                        px-3
-                        pr-11
-                        block
-                        w-full
-                        border-gray-200
-                        shadow-sm
-                        text-base
-                        rounded-lg
-                        focus:border-blue-500 focus:ring-blue-500
-                        dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-                      "
-                      placeholder="원가"
+                      id="hs-input-with-leading-and-trailing-icon"
+                      name="hs-input-with-leading-and-trailing-icon"
+                      class="py-3 px-4 pl-9 pr-16 block w-full border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
+                      placeholder="0.00"
                     />
+                    <div
+                      class="absolute inset-y-0 left-0 flex items-center pointer-events-none z-20 pl-4"
+                    >
+                      <span class="text-gray-500">₩</span>
+                    </div>
+                    <div
+                      class="absolute inset-y-0 right-0 flex items-center pointer-events-none z-20 pr-4"
+                    >
+                      <span class="text-gray-500">원</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <!-- End Col -->
+              <!-- End Col -->
 
-            <div class="sm:col-span-3">
-              <label
-                for="af-submit-application-resume-cv"
-                class="inline-block text-base font-medium text-gray-500 mt-2.5"
-              >
-                판매가
-              </label>
-            </div>
-            <!-- End Col -->
+              <div class="sm:col-span-2">
+                <label
+                  for="af-submit-application-resume-cv"
+                  class="inline-block text-base font-medium text-gray-500 mt-2.5"
+                >
+                  판매가
+                </label>
+              </div>
+              <!-- End Col -->
 
-            <div class="sm:col-span-9">
-              <div
-                class="
-                  py-6
-                  first:pt-0
-                  last:pb-0
-                  border-t
-                  first:border-transparent
-                  border-gray-200
-                  dark:border-gray-700
-                "
-              >
-                <div class="mt-2 space-y-3">
-                  <div class="sm:flex gap-3">
-                    <input
-                      v-model="price"
-                      type="text"
-                      class="
-                        py-2
-                        px-3
-                        pr-11
-                        block
-                        w-full
-                        border-gray-200
-                        shadow-sm
-                        text-base
-                        rounded-lg
-                        focus:border-blue-500 focus:ring-blue-500
-                        dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-                      "
-                      placeholder="판매가"
-                    />
+              <div class="sm:col-span-2">
+                <div
+                  class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700"
+                >
+                  <div>
+                    <div class="relative">
+                      <input
+                        v-model="price"
+                        type="text"
+                        id="hs-input-with-leading-and-trailing-icon"
+                        name="hs-input-with-leading-and-trailing-icon"
+                        class="py-3 px-4 pl-9 pr-16 block w-full border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
+                        placeholder="0.00"
+                      />
+                      <div
+                        class="absolute inset-y-0 left-0 flex items-center pointer-events-none z-20 pl-4"
+                      >
+                        <span class="text-gray-500">₩</span>
+                      </div>
+                      <div
+                        class="absolute inset-y-0 right-0 flex items-center pointer-events-none z-20 pr-4"
+                      >
+                        <span class="text-gray-500">원</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <!-- End Col -->
+              <!-- End Col -->
+            </template>
+
+            <template v-else>
+              <div class="sm:col-span-3">
+                <label
+                  for="af-submit-application-resume-cv"
+                  class="inline-block text-base font-medium text-gray-500 mt-2.5"
+                >
+                  옵션
+                </label>
+              </div>
+              <div class="sm:col-span-9 pt-6 pb-5">
+                <the-product-option-table
+                  @updateOptionList="updateOptionList"
+                  :optionList="optionList"
+                />
+              </div>
+            </template>
           </div>
           <!-- End Section -->
 
           <!-- Section -->
           <div
-            class="
-              grid
-              sm:grid-cols-12
-              gap-2
-              sm:gap-4
-              py-8
-              first:pt-0
-              last:pb-0
-              border-t
-              first:border-transparent
-              border-gray-200
-              dark:border-gray-700
-            "
+            class="grid sm:grid-cols-12 gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700"
           >
             <div class="sm:col-span-12">
               <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">
@@ -866,23 +547,11 @@
             <!-- End Col -->
 
             <div class="sm:col-span-9">
-              <textarea
-                v-model="notice1"
+              <div
                 id="product_sub_explanation"
-                class="
-                  py-2
-                  px-3
-                  block
-                  w-full
-                  border-gray-200
-                  rounded-lg
-                  text-base
-                  focus:border-blue-500 focus:ring-blue-500
-                  dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-                "
+                class="py-2 px-3 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                 rows="6"
-                placeholder="Add a cover letter or anything else you want to share."
-              ></textarea>
+              ></div>
             </div>
             <!-- End Col -->
 
@@ -894,23 +563,11 @@
             <!-- End Col -->
 
             <div class="sm:col-span-9">
-              <textarea
-                v-model="notice2"
+              <div
                 id="purchase_inquiry"
-                class="
-                  py-2
-                  px-3
-                  block
-                  w-full
-                  border-gray-200
-                  rounded-lg
-                  text-base
-                  focus:border-blue-500 focus:ring-blue-500
-                  dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-                "
+                class="py-2 px-3 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                 rows="6"
-                placeholder="Add a cover letter or anything else you want to share."
-              ></textarea>
+              ></div>
             </div>
             <!-- End Col -->
 
@@ -921,23 +578,11 @@
             </div>
             <!-- End Col -->
 
-            <div class="sm:col-span-9">
+            <div class="sm:col-span-3">
               <input
                 v-model="origin"
                 type="text"
-                class="
-                  py-2
-                  px-3
-                  pr-11
-                  block
-                  w-full
-                  border-gray-200
-                  shadow-sm
-                  text-base
-                  rounded-lg
-                  focus:border-blue-500 focus:ring-blue-500
-                  dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-                "
+                class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
               />
             </div>
             <!-- End Col -->
@@ -949,23 +594,11 @@
             </div>
             <!-- End Col -->
 
-            <div class="sm:col-span-9">
+            <div class="sm:col-span-3">
               <input
                 v-model="producer"
                 type="text"
-                class="
-                  py-2
-                  px-3
-                  pr-11
-                  block
-                  w-full
-                  border-gray-200
-                  shadow-sm
-                  text-base
-                  rounded-lg
-                  focus:border-blue-500 focus:ring-blue-500
-                  dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-                "
+                class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
               />
             </div>
             <!-- End Col -->
@@ -974,43 +607,23 @@
 
           <!-- Section -->
           <div
-            class="
-              py-8
-              first:pt-0
-              last:pb-0
-              border-t
-              first:border-transparent
-              border-gray-200
-              dark:border-gray-700
-            "
+            class="py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700"
           >
             <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">
               개인정보의 수집 및 이용에 대한 동의 (필수)
             </h2>
             <p class="mt-3 text-base text-gray-600 dark:text-gray-400">
-              이용자 참여와 이용통계 분석 등의 서비스를 위해 회원 가입시 아래의 개인정보를 수집하고
-              있습니다. 가. 필수정보: 아이디, 이름, 성별, 출생년도, 비밀번호, 이메일 나. 서비스 이용
-              과정에서 아래와 같은 정보들이 자동으로 생성되어 수집될 수 있습니다. (접속로그,
-              접속IP정보, 쿠키, 방문 일시, 서비스 이용기록, 불량 이용 기록)
+              이용자 참여와 이용통계 분석 등의 서비스를 위해 회원 가입시 아래의 개인정보를
+              수집하고 있습니다. 가. 필수정보: 아이디, 이름, 성별, 출생년도, 비밀번호,
+              이메일 나. 서비스 이용 과정에서 아래와 같은 정보들이 자동으로 생성되어
+              수집될 수 있습니다. (접속로그, 접속IP정보, 쿠키, 방문 일시, 서비스 이용기록,
+              불량 이용 기록)
             </p>
 
             <div class="mt-5 flex">
               <input
                 type="checkbox"
-                class="
-                  shrink-0
-                  mt-0.5
-                  border-gray-200
-                  rounded
-                  text-blue-600
-                  pointer-events-none
-                  focus:ring-blue-500
-                  dark:bg-gray-800
-                  dark:border-gray-700
-                  dark:checked:bg-blue-500
-                  dark:checked:border-blue-500
-                  dark:focus:ring-offset-gray-800
-                "
+                class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
                 id="af-submit-application-privacy-check"
               />
               <label
@@ -1026,25 +639,7 @@
           <button
             @click="submit()"
             type="button"
-            class="
-              py-3
-              px-4
-              w-full
-              inline-flex
-              justify-center
-              items-center
-              gap-2
-              rounded-md
-              border border-transparent
-              font-semibold
-              bg-blue-500
-              text-white
-              hover:bg-blue-600
-              focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
-              transition-all
-              text-base
-              dark:focus:ring-offset-gray-800
-            "
+            class="py-3 px-4 w-full inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-base dark:focus:ring-offset-gray-800"
           >
             {{ mode == "modify" ? "수정하기" : "등록하기" }}
           </button>
@@ -1060,8 +655,12 @@
 import { mapActions } from "vuex";
 import ProductService from "@/services/ProductService";
 import CommonService from "@/services/CommonService";
-
+import TheProductOptionTable from "@/components/admin/product/ProductOptionTable.vue";
+import Editor from "@toast-ui/editor";
 export default {
+  components: {
+    TheProductOptionTable,
+  },
   props: {
     confirm: Boolean,
   },
@@ -1091,6 +690,12 @@ export default {
       ],
       status: "NORMAL",
       ea: 0,
+      pType: "NORMAL",
+      productTypeList: [
+        { key: "NORMAL", name: "옵션이 없는 단일 상품이예요." },
+        { key: "OPTION", name: "옵션이 있는 상품이예요." },
+      ],
+      optionList: [],
     };
   },
   watch: {
@@ -1101,10 +706,39 @@ export default {
   },
 
   methods: {
+    setTargetOptionStatus(key) {
+      this.category = key;
+    },
+    /**
+     * Update the option list with a new set of options.
+     *
+     * @param {Array} optionList - The new list of options.
+     */
+    updateOptionList(optionList) {
+      this.optionList = optionList;
+    },
+    /**
+     * Sets the product type.
+     *
+     * @param {string} key - The key of the product type.
+     */
+    setProductType(key) {
+      this.pType = key;
+    },
     ...mapActions("cart", ["updateSpinnerStatus"]),
-    setproductstatus(status) {
+    /**
+     * Set the product status.
+     *
+     * @param {type} status - The new status of the product.
+     */
+    setProductStatus(status) {
       this.status = status;
     },
+    /**
+     * Removes the main image for the given file name.
+     *
+     * @param {string} fname - The file name of the main image to be removed.
+     */
     removemainimage(fname) {
       this[`${fname}`] = "";
     },
@@ -1186,15 +820,20 @@ export default {
           this.image3 = userdata.image3;
           this.status = userdata.status;
           this.ea = userdata.ea;
+          this.pType = userdata.type;
+          this.optionList = userdata?.option_list;
+          this.editor.setHTML(userdata.product_main_explanation); //this.editor.setHTML',`${userdata.product_main_explanation}`); //initialValue = userdata.product_main_explanation;
+          this.editor2.setHTML(userdata.product_sub_explanation);
+          this.editor3.setHTML(userdata.purchase_inquiry);
           this.updateSpinnerStatus(false);
         }
       });
     },
     async submit() {
       // 상품 등록 submit
-      this.description = document.getElementById("product_main_explanation").value;
-      this.notice1 = document.getElementById("product_sub_explanation").value;
-      this.notice2 = document.getElementById("purchase_inquiry").value;
+      this.description = this.editor.getHTML();
+      this.notice1 = this.editor2.getHTML();
+      this.notice2 = this.editor3.getHTML();
 
       const params = {
         price: Number(this.price),
@@ -1213,7 +852,12 @@ export default {
         category_id: this.category,
         status: this.status,
         ea: this.ea,
+        type: this.pType,
       };
+
+      if (this.pType == "OPTION") {
+        params["option_list"] = this.optionList;
+      }
 
       if (this.id > 0) {
         // 수정
@@ -1255,8 +899,32 @@ export default {
     } else {
       this.mode = "regist";
     }
+
+    var self = this;
+    this.editor = new Editor({
+      el: document.querySelector("#product_main_explanation"),
+      height: "300px",
+      initialEditType: "wysiwyg",
+      previewStyle: "vertical",
+    });
+
+    this.editor2 = new Editor({
+      el: document.querySelector("#product_sub_explanation"),
+      height: "300px",
+      initialEditType: "wysiwyg",
+      previewStyle: "vertical",
+    });
+
+    this.editor3 = new Editor({
+      el: document.querySelector("#purchase_inquiry"),
+      height: "300px",
+      initialEditType: "wysiwyg",
+      previewStyle: "vertical",
+    });
   },
 };
 </script>
 
-<style></style>
+<style>
+@import url("@toast-ui/editor/dist/toastui-editor.css");
+</style>

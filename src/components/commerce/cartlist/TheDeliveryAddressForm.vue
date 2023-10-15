@@ -6,49 +6,20 @@
           <div>
             <div class="flex rounded-md shadow-sm">
               <span
-                class="
-                  px-4
-                  inline-flex
-                  items-center
-                  min-w-fit
-                  rounded-l-md
-                  border border-r-0 border-gray-200
-                  bg-gray-50
-                  text-sm text-gray-500
-                "
+                class="px-4 inline-flex items-center min-w-fit rounded-l-md border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500"
                 >이름</span
               >
               <input
                 v-model="newUserForm.name"
                 type="text"
-                class="
-                  py-2
-                  px-3
-                  pr-11
-                  block
-                  w-full
-                  border-gray-200
-                  shadow-sm
-                  rounded-r-md
-                  text-sm
-                  focus:z-10 focus:border-blue-500 focus:ring-blue-500
-                "
+                class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-r-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
           </div>
           <div>
             <div class="flex rounded-md shadow-sm">
               <span
-                class="
-                  px-4
-                  inline-flex
-                  items-center
-                  min-w-fit
-                  rounded-l-md
-                  border border-r-0 border-gray-200
-                  bg-gray-50
-                  text-sm text-gray-500
-                "
+                class="px-4 inline-flex items-center min-w-fit rounded-l-md border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500"
                 >주소</span
               >
               <input
@@ -56,40 +27,13 @@
                 v-model="newUserForm.address"
                 readonly
                 type="text"
-                class="
-                  py-2
-                  px-3
-                  pr-11
-                  block
-                  w-full
-                  border-gray-200
-                  shadow-sm
-                  rounded-r-md
-                  text-sm
-                  focus:z-10 focus:border-blue-500 focus:ring-blue-500
-                "
+                class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-r-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500"
               />
               <button
                 @click="showAddresspopup"
                 readonly
                 type="button"
-                class="
-                  inline-flex
-                  flex-shrink-0
-                  justify-center
-                  items-center
-                  h-[2.875rem]
-                  w-[2.875rem]
-                  rounded-r-md
-                  border border-transparent
-                  font-semibold
-                  bg-blue-500
-                  text-white
-                  hover:bg-blue-600
-                  focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-500
-                  transition-all
-                  text-sm
-                "
+                class="inline-flex flex-shrink-0 justify-center items-center h-[2.875rem] w-[2.875rem] rounded-r-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm"
               >
                 <svg
                   class="h-4 w-4"
@@ -109,100 +53,40 @@
           <div>
             <div class="flex rounded-md shadow-sm">
               <span
-                class="
-                  px-4
-                  inline-flex
-                  items-center
-                  min-w-fit
-                  rounded-l-md
-                  border border-r-0 border-gray-200
-                  bg-gray-50
-                  text-sm text-gray-500
-                "
+                class="px-4 inline-flex items-center min-w-fit rounded-l-md border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500"
                 >상세주소</span
               >
               <input
                 v-model="newUserForm.address_detail"
                 type="text"
-                class="
-                  py-2
-                  px-3
-                  pr-11
-                  block
-                  w-full
-                  border-gray-200
-                  shadow-sm
-                  rounded-r-md
-                  text-sm
-                  focus:z-10 focus:border-blue-500 focus:ring-blue-500
-                "
+                class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-r-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
           </div>
           <div>
             <div class="flex rounded-md shadow-sm">
               <span
-                class="
-                  px-4
-                  inline-flex
-                  items-center
-                  min-w-fit
-                  rounded-l-md
-                  border border-r-0 border-gray-200
-                  bg-gray-50
-                  text-sm text-gray-500
-                "
+                class="px-4 inline-flex items-center min-w-fit rounded-l-md border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500"
                 >우편번호</span
               >
               <input
                 v-model="newUserForm.zonecode"
                 readonly
                 type="text"
-                class="
-                  py-2
-                  px-3
-                  pr-11
-                  block
-                  w-full
-                  border-gray-200
-                  shadow-sm
-                  rounded-r-md
-                  text-sm
-                  focus:z-10 focus:border-blue-500 focus:ring-blue-500
-                "
+                class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-r-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
           </div>
           <div>
             <div class="flex rounded-md shadow-sm">
               <span
-                class="
-                  px-4
-                  inline-flex
-                  items-center
-                  min-w-fit
-                  rounded-l-md
-                  border border-r-0 border-gray-200
-                  bg-gray-50
-                  text-sm text-gray-500
-                "
+                class="px-4 inline-flex items-center min-w-fit rounded-l-md border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500"
                 >연락처</span
               >
               <input
                 v-model="newUserForm.tel"
                 type="text"
-                class="
-                  py-2
-                  px-3
-                  pr-11
-                  block
-                  w-full
-                  border-gray-200
-                  shadow-sm
-                  rounded-r-md
-                  text-sm
-                  focus:z-10 focus:border-blue-500 focus:ring-blue-500
-                "
+                class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-r-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                 @change.prevent="updateUserAddressForm()"
               />
             </div>
