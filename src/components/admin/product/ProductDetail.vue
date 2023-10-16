@@ -65,6 +65,21 @@
           <div
             class="grid sm:grid-cols-12 gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700 xs:inline"
           >
+          <div class="sm:col-span-3">
+              <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                상품명
+              </label>
+            </div>
+            <!-- End Col -->
+
+            <div class="sm:col-span-9">
+              <input
+                v-model="title"
+                type="text"
+                class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
+              />
+            </div>
+            <!-- End Col -->
             <!-- End Col -->
 
             <div class="sm:col-span-3">
