@@ -20,6 +20,11 @@ export default {
       this.password = "123123";
       this.setUser(this.email, this.password);
     },
+    temp2(){
+      this.email = 'juno@mail.com';
+      this.password='password';
+      this.setUser(this.email, this.password);
+    },
     kakaologin() {
       const returnurl = import.meta.env.DEV ? "http://localhost:5173" : "http://www.appling.me";
       return (location.href = `
@@ -51,6 +56,10 @@ export default {
               <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">로그인</h1>
               <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
                 <a @click="temp" class="text-blue-600 decoration-2 hover:underline font-medium"> 어둠의 경로로 로그인하기 </a>
+              </p>
+
+              <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                <a @click="temp2" class="text-blue-600 decoration-2 hover:underline font-medium"> juno의 경로로 로그인하기 </a>
               </p>
             </div>
 
