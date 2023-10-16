@@ -63,7 +63,7 @@
         <form>
           <!-- Section -->
           <div
-            class="grid sm:grid-cols-12 gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700"
+            class="grid sm:grid-cols-12 gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700 xs:inline"
           >
             <!-- End Col -->
 
@@ -106,7 +106,7 @@
               <p @click="removemainimage('image_url')">
                 <span
                   id="badge-dismiss-default"
-                  class="inline-flex items-center px-2 py-1 mr-2 text-base font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300"
+                  class="break-all inline-flex items-center px-2 py-1 mr-2 text-base font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300"
                 >
                   {{ image_url }}
                   <button
@@ -161,7 +161,7 @@
               <p @click="removemainimage('image1')">
                 <span
                   id="badge-dismiss-default"
-                  class="inline-flex items-center px-2 py-1 mr-2 text-base font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300"
+                  class="break-all inline-flex items-center px-2 py-1 mr-2 text-base font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300"
                 >
                   {{ image1 }}
                   <button
@@ -212,7 +212,7 @@
               <p @click="removemainimage('image2')">
                 <span
                   id="badge-dismiss-default"
-                  class="inline-flex items-center px-2 py-1 mr-2 text-base font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300"
+                  class="break-all inline-flex items-center px-2 py-1 mr-2 text-base font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300"
                 >
                   {{ image2 }}
                   <button
@@ -263,7 +263,7 @@
               <p @click="removemainimage('image3')">
                 <span
                   id="badge-dismiss-default"
-                  class="inline-flex items-center px-2 py-1 mr-2 text-base font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300"
+                  class="break-all inline-flex items-center px-2 py-1 mr-2 text-base font-medium text-blue-800 bg-blue-100 rounded dark:bg-blue-900 dark:text-blue-300"
                 >
                   {{ image3 }}
                   <button
@@ -375,7 +375,7 @@
 
           <!-- Section -->
           <div
-            class="grid sm:grid-cols-12 gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700"
+            class="grid sm:grid-cols-12 gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700 xs:inline"
           >
             <div class="sm:col-span-12">
               <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">
@@ -530,7 +530,7 @@
 
           <!-- Section -->
           <div
-            class="grid sm:grid-cols-12 gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700"
+            class="grid sm:grid-cols-12 gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700 xs:inline"
           >
             <div class="sm:col-span-12">
               <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">
@@ -927,4 +927,13 @@ export default {
 
 <style>
 @import url("@toast-ui/editor/dist/toastui-editor.css");
+.inherit {
+  display: inherit;
+}
+
+@media (max-width: 767px) {
+  .xs\:inline {
+    display: inline !important;
+  }
+}
 </style>
