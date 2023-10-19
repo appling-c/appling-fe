@@ -102,88 +102,113 @@
 					<div>
 						<div class="flex rounded-md shadow-sm"></div>
 						<div>
-							<ul class="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
-								<li class="pb-3 sm:pb-4 flex items-center">
-									<template v-if="productType == 'NORMAL'">
-										<div class="flex items-center space-x-4">
-											<div class="flex-1 min-w-0">
-												<p
-													class="text-sm font-medium text-gray-900 truncate dark:text-white"
-												>
-													단일상품
-												</p>
-											</div>
-										</div>
-										<div
-											class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white"
-											style="justify-content: flex-end"
+							<template v-if="productType == 'NORMAL'">
+								<div class="flex items-center space-x-4">
+									<div class="flex-1 min-w-0">
+										<p
+											class="text-sm font-medium text-gray-900 truncate dark:text-white"
 										>
-											<button
-												@click="minusProductCount()"
-												type="button"
-												class="inline-flex flex-shrink-0 justify-center items-center h-[2.875rem] w-[2.875rem] rounded-l-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm"
-											>
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													fill="none"
-													viewBox="0 0 24 24"
-													stroke-width="1.5"
-													stroke="currentColor"
-													class="w-6 h-6"
+											옵션이 없는 단일상품입니다.
+										</p>
+										<div class="mt-5 pb-3 sm:pb-4">
+											<div class="flex items-center space-x-4">
+												<div class="flex-1 min-w-0">
+													<p
+														class="text-sm font-medium text-gray-900 truncate dark:text-white"
+													>
+														수량
+													</p>
+												</div>
+												<div
+													class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white"
 												>
-													<path
-														stroke-linecap="round"
-														stroke-linejoin="round"
-														d="M19.5 12h-15"
+													<the-counter
+														@updateProductPrice="updateProductPrice"
+														:ea="productCountDP"
+														:productType="productType"
+														:selectCount="productCount"
 													/>
-												</svg>
-											</button>
-											<input
-												type="text"
-												:value="productCount"
-												readonly
-												style="width: 13%"
-												class="w-full py-3 block border-gray-200 shadow-sm rounded-0 text-sm focus:z-10"
-											/>
-											<button
-												@click="plusProductCount()"
-												type="button"
-												class="inline-flex flex-shrink-0 justify-center items-center h-[2.875rem] w-[2.875rem] rounded-r-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm"
-											>
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													fill="none"
-													viewBox="0 0 24 24"
-													stroke-width="1.5"
-													stroke="currentColor"
-													class="w-6 h-6"
-												>
-													<path
-														stroke-linecap="round"
-														stroke-linejoin="round"
-														d="M12 4.5v15m7.5-7.5h-15"
-													/>
-												</svg>
-											</button>
-										</div>
-									</template>
-									<template v-else>
-										<div class="flex items-center space-x-4">
-											<div class="flex-1 min-w-0">
-												<select
-													class="mt-3 py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
-												>
-													<option selected>옵션을 선택해주세요.</option>
-													<option>1</option>
-													<option>2</option>
-													<option>3</option>
-												</select>
+												</div>
 											</div>
 										</div>
-									</template>
-								</li>
-							</ul>
+									</div>
+									<!-- -->
+								</div>
+							</template>
+							<template v-else>
+								<div class="items-center space-x-4">
+									<div class="min-w-0">
+										<select
+											v-model="productOption"
+											@change="changeProductOption()"
+											class="mt-3 py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
+										>
+											<option selected>옵션을 선택해주세요.</option>
+											<option
+												v-for="(option, index) in productOptionList"
+												:key="index"
+												:value="option"
+											>
+												{{ option.name }}
+											</option>
+										</select>
+									</div>
+								</div>
+								<div class="my-5">
+									<ul
+										class="max-w-md divide-y divide-gray-200 dark:divide-gray-700"
+									>
+										<li
+											class="pb-3 sm:pb-4"
+											v-for="(product, pIndex) in selectOptionList"
+											:key="pIndex"
+										>
+											<div class="flex items-center space-x-4">
+												<div class="flex-1 min-w-0">
+													<p
+														class="text-sm font-medium text-gray-900 truncate dark:text-white"
+													>
+														{{ product.name }}
+													</p>
+													<p
+														class="text-sm text-gray-500 truncate dark:text-gray-400"
+													>
+														<the-counter
+															@updateProductPrice="updateProductPrice"
+															:ea="product.ea"
+															:productIndex="pIndex"
+															:selectCount="product.selectCount"
+															:productType="productType"
+														/>
+													</p>
+												</div>
+												<div
+													class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white"
+												>
+													{{ product?.selectPrice?.toLocaleString() }}
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</template>
 
+							<div class="mt-5 pb-3 sm:pb-4">
+								<div class="flex items-center space-x-4">
+									<div class="flex-1 min-w-0">
+										<p
+											class="text-sm font-medium text-gray-900 truncate dark:text-white"
+										>
+											총 상품금액
+										</p>
+									</div>
+									<div
+										class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white"
+									>
+										{{ productPrice?.toLocaleString() }} 원
+									</div>
+								</div>
+							</div>
 							<button
 								type="button"
 								@click="buyProduct()"
@@ -205,22 +230,6 @@
 								</svg>
 								장바구니 담기
 							</button>
-							<div class="pb-3 sm:pb-4">
-								<div class="flex items-center space-x-4">
-									<div class="flex-1 min-w-0">
-										<p
-											class="text-sm font-medium text-gray-900 truncate dark:text-white"
-										>
-											총 상품금액
-										</p>
-									</div>
-									<div
-										class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white"
-									>
-										{{ productPrice?.toLocaleString() }} 원
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
 				</a>
@@ -338,13 +347,20 @@
 
 <script lang="ts">
 	import { mapActions } from "vuex";
+	import TheCounter from "../common/TheCounter.vue";
+	import productDetailInterface from "../../../types/auth";
 
 	export default {
+		components: {
+			TheCounter,
+		},
 		data() {
 			return {
 				productListAll: [], // 상품 모음
 				productCount: 0, // 판매개수
 				productPrice: 0, // 판매가
+				selectOptionList: [],
+				productOption: {},
 			};
 		},
 		props: {
@@ -353,7 +369,7 @@
 			sellerProductList: {},
 		},
 		computed: {
-      // product info
+			// product info
 			productType() {
 				// 상품타입
 				return this.productDetailItem?.type;
@@ -367,21 +383,48 @@
 				return this.productDetailItem?.origin_price?.toLocaleString();
 			},
 			productPriceDP() {
-        // 판매가 DP
+				// 판매가 DP
 				return this.productDetailItem?.price?.toLocaleString();
 			},
-      productCountDP() {
-        // 구매 가능 수량 DP
-        return this.productDetailItem?.ea?.toLocaleString();
-      },
+			productCountDP() {
+				// 구매 가능 수량 DP
+				return this.productDetailItem?.ea?.toLocaleString();
+			},
 
-      // seller info
-      sellerInfo() {
-        return this.productDetailItem?.seller;
-      }
+			// seller info
+			sellerInfo() {
+				return this.productDetailItem?.seller;
+			},
 		},
 
 		methods: {
+			changeProductOption() {
+				const { option_id, name, extra_price, ea } = this.productOption;
+				const find_index = this.selectOptionList.findIndex(
+					(item) => item.option_id === option_id
+				);
+				// "option_id": 5,
+				// "name": "520mg x 60캡슐",
+				//         "extra_price": 49000,
+				//         "ea": 200,
+
+				if (find_index > -1) {
+					this.selectOptionList[find_index].selectCount++;
+					this.selectOptionList[find_index].selectPrice =
+						extra_price * this.selectOptionList[find_index].selectCount;
+				} else {
+					this.selectOptionList.push({
+						option_id,
+						name,
+						option_origin_price: extra_price,
+						selectPrice: extra_price,
+						selectCount: 1,
+						ea,
+					});
+				}
+
+				this.updateTotalPrice();
+			},
 			buyProduct() {
 				if (this.productCount > 0) {
 					this.$emit("updateProductCount", this.productCount);
@@ -393,40 +436,28 @@
 			...mapActions("cart", ["addProductToCart", "getproductlist"]),
 
 			/**
-			 * Increments the product count and updates the product price.
-			 *
-			 * @param {type} paramName - description of parameter
-			 * @return {type} description of return value
-			 */
-			plusProductCount() {
-				if (this.productCount >= this.productDetailItem?.ea) {
-					this.productCount = this.productDetailItem.ea;
-				} else {
-					this.productCount++;
-				}
-				this.updateProductPrice();
-			},
-
-			/**
-			 * Decreases the product count by one and updates the product price.
-			 *
-			 * @param {type} none - This function does not take any parameters.
-			 * @return {type} undefined - This function does not return a value.
-			 */
-			minusProductCount() {
-				if (this.productCount <= 1) {
-					this.productCount = 1;
-				} else {
-					this.productCount--;
-				}
-				this.updateProductPrice();
-			},
-
-			/**
 			 * Updates the product price based on the product count and price of the product detail item.
 			 */
-			updateProductPrice() {
-				this.productPrice = this.productCount * this.productDetailItem.price;
+			updateProductPrice(obj) {
+				const { count, productIndex, productType } = obj;
+				if (productType == "NORMAL") {
+					this.productCount = count;
+					this.productPrice = count * this.productDetailItem?.price;
+				} else {
+					this.productCount = count;
+					this.selectOptionList[productIndex].selectCount = count;
+					this.selectOptionList[productIndex].selectPrice =
+						count * this.selectOptionList[productIndex].option_origin_price;
+					this.updateTotalPrice();
+				}
+			},
+			updateTotalPrice() {
+				const totalPrice = this.selectOptionList.reduce(
+					(total, item) => total + item.selectPrice,
+					0
+				);
+
+				this.productPrice = totalPrice;
 			},
 
 			movetodetail(id: number) {
