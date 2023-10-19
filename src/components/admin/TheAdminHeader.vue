@@ -593,7 +593,7 @@
                       hover:bg-gray-100
                     "
                   >
-                    주문 내역
+                    주문관리
 
                     <svg
                       class="
@@ -669,8 +669,9 @@
                             rounded-md
                             hover:bg-gray-100
                           "
+                          @click="moveto('/admin/order/history', '판매', '주문관리 > 주문내역')"
                         >
-                          Link 1
+                          주문 내역
                         </a>
                       </li>
                       <li>
@@ -685,8 +686,9 @@
                             rounded-md
                             hover:bg-gray-100
                           "
+                          @click="moveto('/admin/order/calendar', '판매', '주문관리 > 상품달력')"
                         >
-                          Link 2
+                          상품달력
                         </a>
                       </li>
                     </ul>
