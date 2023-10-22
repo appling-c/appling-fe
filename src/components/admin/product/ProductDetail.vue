@@ -63,8 +63,39 @@
         <form>
           <!-- Section -->
           <div
+            id="product-info-section"
             class="grid sm:grid-cols-12 gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700 xs:inline"
           >
+          <div class="sm:col-span-12">
+              <div class="inline-block">
+                <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
+                  <span class="w-2 h-2 inline-block bg-blue-500 rounded-full mt-2.5 ml-2"></span> 표시된 항목은 필수 입력 항목입니다.
+                </label>
+              </div>
+            </div>
+            <div class="sm:col-span-12">
+              <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                01. 상품 정보
+              </h2>
+            </div>
+          <div class="sm:col-span-3">
+              <div class="inline-flex items-center">
+                <span class="inline-block text-base font-medium text-gray-500 mt-2.5">상품명</span>
+                <span class="w-2 h-2 inline-block bg-blue-500 rounded-full mt-2.5 ml-2"></span>
+              </div>
+            </div>
+            <!-- End Col -->
+
+            <div class="sm:col-span-9">
+              <input
+                v-model="title"
+                type="text"
+                class=" border-gray-200 focus:border-blue-500 focus:ring-blue-500 py-2 px-3 pr-11 block w-full  shadow-sm text-base rounded-lg "
+              />
+              <p v-if="!invalidCheck.title" class="text-sm text-red-600 mt-2">상품명을 입력해주세요.</p>
+            </div>
+
+            <!-- End Col -->
             <!-- End Col -->
 
             <div class="sm:col-span-3">
@@ -78,16 +109,17 @@
               <input
                 v-model="subtitle"
                 type="text"
-                class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
+                class="border-gray-200 focus:border-blue-500 focus:ring-blue-500 py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
             <!-- End Col -->
 
             <div class="sm:col-span-3">
-              <div class="inline-block">
-                <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
-                </label>
+              <div class="inline-flex items-center">
+                <span class="inline-block text-base font-medium text-gray-500 mt-2.5">상품 메인 이미지</span>
+                <span class="w-2 h-2 inline-block bg-blue-500 rounded-full mt-2.5 ml-2"></span>
               </div>
+              
             </div>
             <!-- End Col -->
 
@@ -100,6 +132,8 @@
                 id="af-submit-application-resume-cv"
                 class="block w-full border border-gray-200 shadow-sm rounded-lg text-base focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-2 file:px-3 dark:file:bg-gray-700 dark:file:text-gray-400"
               />
+              <p v-if="!invalidCheck.image_url" class="text-sm text-red-600 mt-2" id="hs-validation-name-error-helper">상품 이미지를 등록해주세요.</p>
+
             </div>
 
             <div v-else class="sm:col-span-9">
@@ -156,6 +190,7 @@
                 id="af-submit-application-resume-cv"
                 class="block w-full border border-gray-200 shadow-sm rounded-lg text-base focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 file:bg-transparent file:border-0 file:bg-gray-100 file:mr-4 file:py-2 file:px-3 dark:file:bg-gray-700 dark:file:text-gray-400"
               />
+
             </div>
             <div v-else class="sm:col-span-9">
               <p @click="removemainimage('image1')">
@@ -296,22 +331,20 @@
             <!-- End Col -->
 
             <div class="sm:col-span-3">
-              <div class="inline-block">
-                <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
-                  상품 설명
-                </label>
+              <div class="inline-flex items-center">
+                <span class="inline-block text-base font-medium text-gray-500 mt-2.5">상품 설명</span>
+                <span class="w-2 h-2 inline-block bg-blue-500 rounded-full mt-2.5 ml-2"></span>
               </div>
             </div>
             <!-- End Col -->
 
             <div class="sm:col-span-9">
-              <div class="sm:col-span-9">
                 <div
                   id="product_main_explanation"
                   class="py-2 px-3 block w-full border-gray-200 rounded-lg text-base focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                   rows="6"
                 ></div>
-              </div>
+                <p v-if="!invalidCheck.main_explanation" class="text-sm text-red-600 mt-2">상품 설명을 입력해주세요.</p>
             </div>
             <!-- End Col -->
 
@@ -379,7 +412,7 @@
           >
             <div class="sm:col-span-12">
               <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                상품 유형을 선택해주세요.
+                02. 상품 유형
               </h2>
             </div>
             <!-- End Col -->
@@ -415,7 +448,7 @@
             <!-- End Col -->
 
             <!--단일상품-->
-            <template v-if="pType == '0'">
+            <template v-if="pType == 'NORMAL'">
               <div class="sm:col-span-2">
                 <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
                   수량
@@ -534,7 +567,7 @@
           >
             <div class="sm:col-span-12">
               <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                구매, 취급 관련 정보를 입력해주세요.
+                03. 구매 관련 정보, 상품 취급 정보
               </h2>
             </div>
             <!-- End Col -->
@@ -572,9 +605,11 @@
             <!-- End Col -->
 
             <div class="sm:col-span-3">
-              <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
-                원산지
-              </label>
+              <div class="inline-flex items-center">
+                <span class="inline-block text-base font-medium text-gray-500 mt-2.5">원산지</span>
+                <span class="w-2 h-2 inline-block bg-blue-500 rounded-full mt-2.5 ml-2"></span>
+              </div>
+             
             </div>
             <!-- End Col -->
 
@@ -584,13 +619,16 @@
                 type="text"
                 class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
               />
+              <p v-if="!invalidCheck.origin" class="text-sm text-red-600 mt-2">원산지 정보를 입력해주세요.</p>
             </div>
             <!-- End Col -->
 
             <div class="sm:col-span-3">
-              <label class="inline-block text-base font-medium text-gray-500 mt-2.5">
-                생산자(수입자)
-              </label>
+              <div class="inline-flex items-center">
+                <span class="inline-block text-base font-medium text-gray-500 mt-2.5">생산자(수입자)</span>
+                <span class="w-2 h-2 inline-block bg-blue-500 rounded-full mt-2.5 ml-2"></span>
+              </div>
+             
             </div>
             <!-- End Col -->
 
@@ -600,6 +638,7 @@
                 type="text"
                 class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
               />
+              <p v-if="!invalidCheck.producer" class="text-sm text-red-600 mt-2">생산자(수입자) 정보를 입력해주세요.</p>
             </div>
             <!-- End Col -->
           </div>
@@ -696,6 +735,15 @@ export default {
         { key: "OPTION", name: "옵션이 있는 상품이예요." },
       ],
       optionList: [],
+      invalidCheck : {
+        title : true,  // 상품명
+        description : true,  // 상품설명
+        producer : true, // 생산자 
+        origin : true, // 원산지
+        image_url : true, // 메인 상품 이미지
+        main_explanation : true // 메인 상품 설명
+
+      }
     };
   },
   watch: {
@@ -797,7 +845,31 @@ export default {
         });
       }
     },
+    dataInvalidCheck(){
+      // invalid check parameter string
+      const checkStr = ['title', 'description', 'producer', 'origin', 'image_url', 'main_explanation'];
+      let isInvalid = true
+      let self = this;
+      // search checkStr in this.invalidCheck is empty
+      for(let i = 0; i < checkStr.length; i++){
+        this.invalidCheck[`${checkStr[i]}`] = self[checkStr[i]] == "" ? false : true;
+      }
+
+      // invalid check
+      if(this.invalidCheck.title 
+      && this.invalidCheck.description 
+      && this.invalidCheck.producer 
+      && this.invalidCheck.origin 
+      && this.invalidCheck.image_url 
+      && this.invalidCheck.main_explanation){
+        return true;
+      }else{
+        return false;
+      }
+      
+    },
     async getproductitemlist(id) {
+      
       // 상품 수정
       this.updateSpinnerStatus(true);
 
@@ -831,9 +903,15 @@ export default {
     },
     async submit() {
       // 상품 등록 submit
+      
       this.description = this.editor.getHTML();
       this.notice1 = this.editor2.getHTML();
       this.notice2 = this.editor3.getHTML();
+
+      // data invalidation check
+      if(!this.dataInvalidCheck()){
+        return location.href=`#product-info-section`;
+      }
 
       const params = {
         price: Number(this.price),

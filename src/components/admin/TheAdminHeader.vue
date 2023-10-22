@@ -688,8 +688,9 @@
                             rounded-md
                             hover:bg-gray-100
                           "
+                          @click="moveto('/admin/order/calendar', '판매', '주문관리 > 상품달력')"
                         >
-                          Link 2
+                          상품달력
                         </a>
                       </li>
                     </ul>
