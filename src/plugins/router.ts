@@ -1,6 +1,5 @@
 import Admin from "../views/admin.vue";
 import admin_dashboard from "../components/admin/Dashboard.vue";
-import admin_calendar from "../components/admin/Calendar.vue";
 
 import admin_product_detail from "../components/admin/product/ProductDetail.vue";
 import admin_product_list from "../components/admin/product/ProductList.vue";
@@ -8,6 +7,7 @@ import admin_product_list from "../components/admin/product/ProductList.vue";
 import admin_waybill from "../components/admin/Waybill.vue";
 import admin_brandshop_regist from "../components/admin/brandshop/BrandshopRegist.vue";
 import admin_brandshop_view from "../components/admin/brandshop/BrandshopView.vue";
+import admin_order_calendar from "../components/admin/order/OrderCalendar.vue";
 
 import Commerce from "../views/commerce.vue";
 import commerce_main from "../components/commerce/CommerceMain.vue";
@@ -56,8 +56,8 @@ const routes: Array<RouteRecordRaw> = [
       { path: "product/detail/:id", component: admin_product_detail }, // 상품등록/수정
       { path: "product/list", component: admin_product_list }, // 상품 관리하기
       { path: "product/waybill", component: admin_waybill }, // 운송장 등록하기
-      { path: "calendar", component: admin_calendar }, // 상품달력
       { path: "brandshop", component: admin_brandshop_regist }, // 농장 소개하기
+      { path: "order/calendar", component: admin_order_calendar }, // 농장 소개하기
       //{ path : "brandshop/preview",component: admin_preview_brandshop }, // 농장 소개하기 view
     ],
   },

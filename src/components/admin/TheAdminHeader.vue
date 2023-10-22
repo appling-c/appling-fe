@@ -593,7 +593,7 @@
                       hover:bg-gray-100
                     "
                   >
-                    주문 내역
+                    주문 관리
 
                     <svg
                       class="
@@ -669,8 +669,11 @@
                             rounded-md
                             hover:bg-gray-100
                           "
+                          @click="
+                            moveto('/admin/order/calendar', '판매', '주문 관리 > 상품 달력')
+                          "
                         >
-                          Link 1
+                          상품달력
                         </a>
                       </li>
                       <li>
