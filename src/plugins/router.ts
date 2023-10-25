@@ -8,6 +8,7 @@ import admin_waybill from "../components/admin/Waybill.vue";
 import admin_brandshop_regist from "../components/admin/brandshop/BrandshopRegist.vue";
 import admin_brandshop_view from "../components/admin/brandshop/BrandshopView.vue";
 import admin_order_calendar from "../components/admin/order/OrderCalendar.vue";
+import admin_order_history from "../components/admin/order/OrderHistory.vue";
 
 import Commerce from "../views/commerce.vue";
 import commerce_main from "../components/commerce/CommerceMain.vue";
@@ -57,7 +58,8 @@ const routes: Array<RouteRecordRaw> = [
       { path: "product/list", component: admin_product_list }, // 상품 관리하기
       { path: "product/waybill", component: admin_waybill }, // 운송장 등록하기
       { path: "brandshop", component: admin_brandshop_regist }, // 농장 소개하기
-      { path: "order/calendar", component: admin_order_calendar }, // 농장 소개하기
+      { path: "order/calendar", component: admin_order_calendar }, // 상품달력
+      { path: "order/history", component: admin_order_history }, // 주문내역
       //{ path : "brandshop/preview",component: admin_preview_brandshop }, // 농장 소개하기 view
     ],
   },

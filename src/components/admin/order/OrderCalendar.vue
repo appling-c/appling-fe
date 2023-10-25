@@ -130,10 +130,8 @@
 
 					this.productList = response.data.data.list;
 
-					console.log(this.productList, this.calendar);
 					let calenarTaskArr = [];
 					this.productList.map((x) => {
-						console.log(x);
 						calenarTaskArr.push({
 							id: x.product_id,
 							calendarId: `cal1`,
@@ -204,6 +202,7 @@
 			this.calendar.setOptions({
 				useFormPopup: true,
 				useDetailPopup: true,
+				
 			});
 
 			this.getproductlists();

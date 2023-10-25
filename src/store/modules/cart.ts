@@ -1,11 +1,9 @@
-// import shop from '../../api/shop'
-// import nested from './nested'
+
 import api from "@/plugins/api";
 import ProductService from "../../services/ProductService";
 import productSearchInterface from "../../types/auth";
 import productInventory from "../../types/auth";
-// initial state
-// shape: [{ id, quantity }]
+
 const state = () => ({
   isShowSpinner: false,
   items: [],
