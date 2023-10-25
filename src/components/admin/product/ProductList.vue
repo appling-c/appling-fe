@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<header class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+		<header class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-7 mx-auto">
 			<h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">
 				📦 상품 관리하기
 			</h1>
@@ -32,7 +32,7 @@
 		<!-- Table Section -->
 		<div
 			v-if="lists.length == 0"
-			class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto"
+			class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-7 mx-auto"
 		>
 			<!-- Card -->
 			<div class="flex flex-col">
@@ -128,7 +128,7 @@
 			<!-- End Card -->
 		</div>
 		<!-- End Table Section -->
-		<div v-else class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+		<div v-else class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-7 mx-auto">
 			<!-- Table Section -->
 
 			<!-- Card -->

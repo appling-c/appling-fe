@@ -139,7 +139,7 @@
 						<div class="space-y-3">
 							<h3 class="text-2xl font-semibold dark:text-white">상품정보</h3>
 
-							<div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+							<div class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-7 mx-auto">
 								<div class="max-w-4xl mx-auto">
 									<!-- Grid -->
 									<div class="grid md:grid-cols-2 gap-6 lg:gap-12">
@@ -676,8 +676,8 @@
 			}
 		},
 		methods: {
-      ...mapActions("cart", ["updateSpinnerStatus"]),
-      ...mapActions("cart", ["addProductToCart"]),
+			...mapActions("cart", ["updateSpinnerStatus"]),
+			...mapActions("cart", ["addProductToCart"]),
 			getSellerProductList(id) {
 				ProductService.getproductlistbysellerid(id).then((response) => {
 					this.sellerProductList = response.data.data.list;
