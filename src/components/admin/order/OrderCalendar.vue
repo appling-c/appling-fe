@@ -84,131 +84,99 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 	import Calendar from "@toast-ui/calendar";
 	import moment from "moment";
 	import ProductService from "@/services/ProductService";
-	import { mapActions } from "vuex";
+	import { mapActions, useStore } from "vuex";
+	import { ref, computed, onMounted } from "vue";
 
-	export default {
-		data() {
-			return {
-				currentDate: "",
-				calendar: null,
-				productList: [],
-			};
-		},
-		methods: {
-			...mapActions("cart", ["updateSpinnerStatus"]),
+	const store = useStore();
 
-			prev() {
-				this.calendar.prev();
+	let currentDate = ref("111");
+	
+	let calendar: Calendar = null;
+	let productList: Array<Object> = [];
 
-				this.setCurrentDate();
-			},
-			next() {
-				this.calendar.next();
+	const updateSpinnerStatus = () => store.getters["cart/updateSpinnerStatus"];
 
-				this.setCurrentDate();
-			},
-			today() {
-				this.calendar.today();
-
-				this.setCurrentDate();
-			},
-			setCurrentDate() {
-				this.currentDate = moment(new Date(this.calendar.getDate()?.d)).format("YYYY.MM");
-			},
-			async getproductlists() {
-				const payload = {};
-
-				this.updateSpinnerStatus(true);
-				await ProductService.getproductlist(payload).then((response) => {
-					if (response.data.code !== "0000") {
-						return (this.productList = []);
-					}
-
-					this.productList = response.data.data.list;
-
-					let calenarTaskArr = [];
-					this.productList.map((x) => {
-						calenarTaskArr.push({
-							id: x.product_id,
-							calendarId: `cal1`,
-							title: x.main_title,
-							start: x.created_at,
-							end: x.modified_at,
-						});
-					});
-					this.calendar.createEvents(calenarTaskArr);
-
-					this.updateSpinnerStatus(false);
-				});
-			},
-		},
-		mounted() {
-			const container = document.getElementById("calendar");
-			const options = {
-				defaultView: "month",
-				timezone: {
-					zones: [
-						{
-							timezoneName: "Asia/Seoul",
-							displayLabel: "Seoul",
-						},
-					],
-				},
-				calendars: [
-					{
-						id: "cal1",
-						name: "개인",
-						backgroundColor: "#03bd9e",
-					},
-					{
-						id: "cal2",
-						name: "직장",
-						backgroundColor: "#00a9ff",
-					},
-				],
-			};
-
-			this.calendar = new Calendar(container, options);
-			// this.calendar.createEvents([
-			// 	{
-			// 		id: "event1",
-			// 		calendarId: "cal2",
-			// 		title: "주간 회의",
-			// 		start: "2023-10-07T09:00:00",
-			// 		end: "2023-10-07T10:00:00",
-			// 	},
-			// 	{
-			// 		id: "event2",
-			// 		calendarId: "cal1",
-			// 		title: "점심 약속",
-			// 		start: "2023-10-08T12:00:00",
-			// 		end: "2023-10-08T13:00:00",
-			// 	},
-			// 	{
-			// 		id: "event3",
-			// 		calendarId: "cal2",
-			// 		title: "휴가",
-			// 		start: "2023-10-08",
-			// 		end: "2023-10-10",
-			// 		isAllday: true,
-			// 		category: "allday",
-			// 	},
-			// ]);
-
-			this.calendar.setOptions({
-				useFormPopup: true,
-				useDetailPopup: true,
-			});
-
-			this.getproductlists();
-
-			this.setCurrentDate();
-		},
+	const prev = () => {
+		calendar!.prev();
+		setCurrentDate();
 	};
+
+	const next = () => {
+		calendar!.next();
+		setCurrentDate();
+	};
+
+	const setCurrentDate = () => {
+		currentDate = moment(new Date(calendar.getDate()?.d)).format("YYYY.MM");
+		console.log(currentDate);
+	};
+
+	const today = () => {
+		calendar!.today();
+		setCurrentDate();
+	};
+
+	const getproductlists = async () => {
+		const payload = {};
+		updateSpinnerStatus(false);
+
+		const response = await ProductService.getproductlist(payload);
+
+		if (response.data.code == "0000") {
+			productList = response.data.data.list;
+		}
+
+		if (productList) {
+			const calendarTaskArr = productList.map((x: any) => {
+				return {
+					id: x.product_id,
+					title: x.product_name,
+					calendarId: "cal1",
+					start: x.created_at,
+					end: x.modified_at,
+				};
+			});
+			await Promise.all([
+				calendar!.createEvents(calendarTaskArr),
+				updateSpinnerStatus(false),
+			]);
+		}
+
+		setCurrentDate();
+	};
+
+	onMounted(() => {
+		const container: HTMLElement | null = document.getElementById("calendar");
+		const options: Calendar.Options = {
+			defaultView: "month",
+			timezone: {
+				timezonName: "Asis/Seoul",
+				displayLabel: "Seoul",
+			},
+			calendars: [
+				{
+					id: "cal1",
+					name: "개인",
+					backgroundColor: "#03bd9e",
+				},
+				{
+					id: "cal2",
+					name: "직장",
+					backgroundColor: "#00a9ff",
+				},
+			],
+		};
+
+		calendar = new Calendar(container!, options);
+
+		getproductlists();
+
+		setCurrentDate();
+	});
 </script>
 
 <style>
