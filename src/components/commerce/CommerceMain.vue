@@ -72,7 +72,7 @@ export default {
 <template>
   <div>
     <div class="border-b-2 border-gray-200 dark:border-gray-700">
-      <nav class="-mb-0.5 flex justify-center space-x-6">
+      <!-- <nav class="-mb-0.5 flex justify-center space-x-6">
         <a
           v-for="tab in tabList"
           :key="tab"
@@ -94,7 +94,7 @@ export default {
           </div>
           <div class="py-1 text-center items-center">{{ tab.name }}</div>
         </a>
-      </nav>
+      </nav> -->
     </div>
     <!-- <div class="max-w-2xl mx-auto text-center pt-20 pb-6 lg:pb-32"> -->
     <!-- <h2 class="text-2xl font-bold sm:text-3xl md:text-4xl">
