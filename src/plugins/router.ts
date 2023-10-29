@@ -17,6 +17,7 @@ import commerce_detail from "../components/commerce/CommerceProductDetail.vue";
 import commerce_cartlist from "../components/commerce/CommerceCartlist.vue";
 import commerce_regist from "../components/commerce/CommerceSellerRequest.vue";
 //import commerce_pricing from '../components/commerce/CommerceMembership.vue'
+import commerce_seller_brandshop from "../components/commerce/productDetail/SellerBrandshop.vue";
 
 import kakaoLogin from "../views/kakaoLogin.vue";
 import Login from "../views/login.vue";
@@ -28,25 +29,26 @@ import { RouteRecordRaw } from "vue-router";
 import store from "../store";
 
 const routes: Array<RouteRecordRaw> = [
-	{ path: "/login", component: Login },
-	{ path: "/signup", component: Signup },
-	{ path: "/", component: Commerce },
-	{ path: "/account", component: myAccount },
-	{ path: "/oauth/kakao/login", component: kakaoLogin },
+  { path: "/login", component: Login },
+  { path: "/signup", component: Signup },
+  { path: "/", component: Commerce },
+  { path: "/account", component: myAccount },
+  { path: "/oauth/kakao/login", component: kakaoLogin },
 
-	{
-		path: "/commerce", // 구매자
-		component: Commerce,
-		children: [
-			{ path: "", component: commerce_main }, // 메인
-			{ path: "main", component: commerce_main }, // 메인
-			{ path: "search", component: commerce_search }, // 상품 검색 결과
-			{ path: "detail/:id", component: commerce_detail }, // 상품 상세
-			{ path: "cartlist", component: commerce_cartlist }, // 장바구니
-			{ path: "regist", component: commerce_regist }, // 구매자 -> 판매자 등록 페이지
-			//{ path: 'pricing', component : commerce_pricing }, // 멤버십 안내 페이지
-		],
-	},
+  {
+    path: "/commerce", // 구매자
+    component: Commerce,
+    children: [
+      { path: "", component: commerce_main }, // 메인
+      { path: "main", component: commerce_main }, // 메인
+      { path: "search", component: commerce_search }, // 상품 검색 결과
+      { path: "detail/:id", component: commerce_detail }, // 상품 상세
+      { path: "cartlist", component: commerce_cartlist }, // 장바구니
+      { path: "regist", component: commerce_regist }, // 구매자 -> 판매자 등록 페이지
+      { path: "brandshop/:id", component: commerce_seller_brandshop }, // 구매자 -> 판매자 등록 페이지
+      //{ path: 'pricing', component : commerce_pricing }, // 멤버십 안내 페이지
+    ],
+  },
 
   {
     path: "/admin",
@@ -67,34 +69,34 @@ const routes: Array<RouteRecordRaw> = [
 ];
 
 const router = createRouter({
-	history: createWebHistory(),
-	routes,
+  history: createWebHistory(),
+  routes,
 });
 
 router.beforeEach((to, from, next) => {
-	// 유저정보
-	const { userInfoInterface } = store.state?.auth;
+  // 유저정보
+  const { userInfoInterface } = store.state?.auth;
 
-	// 타겟 url
-	const { fullPath: targetPath } = to;
+  // 타겟 url
+  const { fullPath: targetPath } = to;
 
-	// 셀러 페이지 접근 권한 체크
-	if (targetPath.indexOf("/admin/") !== -1) {
-		// 로그인 X
-		if (Object.keys(userInfoInterface).length == 0) {
-			alert("로그인 후 이용 가능합니다.");
-			return (location.href = "/login");
-		}
+  // 셀러 페이지 접근 권한 체크
+  if (targetPath.indexOf("/admin/") !== -1) {
+    // 로그인 X
+    if (Object.keys(userInfoInterface).length == 0) {
+      alert("로그인 후 이용 가능합니다.");
+      return (location.href = "/login");
+    }
 
-		// 권한이 없을 경우
-		const { role } = userInfoInterface;
-		if (role !== "SELLER") {
-			alert("접근 권한이 없습니다.");
-			return (location.href = "/commerce/main");
-		}
-	}
+    // 권한이 없을 경우
+    const { role } = userInfoInterface;
+    if (role !== "SELLER") {
+      alert("접근 권한이 없습니다.");
+      return (location.href = "/commerce/main");
+    }
+  }
 
-	next();
+  next();
 });
 
 export default router;

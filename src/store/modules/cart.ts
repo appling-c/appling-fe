@@ -1,4 +1,3 @@
-
 import api from "@/plugins/api";
 import ProductService from "../../services/ProductService";
 import productSearchInterface from "../../types/auth";
@@ -56,17 +55,35 @@ const actions = {
 
   addProductToCart({ state, commit }, product) {
     // 장바구니 상품 담기
-    let inventory = state.inventory;
-    let cartItem = inventory.findIndex((item) => item?.productID === product.productID);
+    console.log(state.inventory, state.item, product);
+    let inventory = state.inventory ? state.inventory : [];
+    console.log(state, inventory, inventory.length);
+    const productType = product.productType;
+    let cartItem;
+    // if (Object.keys(inventory).length == 0) {
+    //   inventory.push(product);
+    //   return commit("updateProductCart", inventory);
+    // }
+    // if (productType === "NORMAL") {
+    //   cartItem = inventory?.findIndex((item) => item?.productID === product.productID);
 
-    if (cartItem > -1) {
-      inventory[cartItem].count = inventory[cartItem].count * 1 + product.count * 1;
-      inventory[cartItem].price += product.price;
-    } else {
-      inventory.push(product);
-    }
+    //   if (cartItem > -1) {
+    //     inventory[cartItem].count = inventory[cartItem].count * 1 + product.count * 1;
+    //     inventory[cartItem].price += product.price;
+    //   } else {
+    //     inventory.push(product);
+    //   }
+    // } else {
+    //   cartItem = inventory?.findIndex((item) => item?.option_id === product.option_id);
+    //   if (cartItem > -1) {
+    //     inventory[cartItem].count = inventory[cartItem].count * 1 + product.count * 1;
+    //     inventory[cartItem].price += product.price;
+    //   } else {
+    //     inventory.push(product);
+    //   }
+    // }
 
-    commit("updateProductCart", inventory);
+    // commit("updateProductCart", inventory);
   },
 
   gotoSearchResult({ state, commit }, productSearchItem) {
