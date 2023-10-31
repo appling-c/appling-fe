@@ -502,7 +502,7 @@
 				}
 
 				await this.addProductToCart(addCartItem).then(() => {
-					console.log(addCartItem);
+					//console.log(addCartItem);
 					//this.movetocartlist();
 				});
 			},

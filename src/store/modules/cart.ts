@@ -3,6 +3,7 @@ import ProductService from "../../services/ProductService";
 import productSearchInterface from "../../types/auth";
 import productInventory from "../../types/auth";
 import { isProxy, toRaw } from "vue";
+
 const state = () => ({
 	isShowSpinner: false,
 	items: [],
@@ -33,6 +34,8 @@ const actions = {
 			(item) => Number(item.productID) === Number(product.productID)
 		);
 
+		console.log(inventory, product, cartItem);
+
 		if (cartItem > -1) {
 			inventory[cartItem].count = product.count;
 			inventory[cartItem].price = product.price;
@@ -55,32 +58,25 @@ const actions = {
 
 	addProductToCart({ state, commit }, product) {
 		// 장바구니 상품 담기
-
 		let inventory = toRaw(state.inventory);
+		//inventory.push({ ...product });
 
 		const productType = product.productType;
 		let cartItem;
-		if (Object.keys(inventory).length == 0) {
+		if (inventory.length == 0) {
 			inventory.push(product);
 			return commit("updateProductCart", inventory);
 		}
 		if (productType === "NORMAL") {
 			cartItem = inventory?.findIndex((item) => item?.productID === product.productID);
-
-			if (cartItem > -1) {
-				inventory[cartItem].count = inventory[cartItem].count * 1 + product.count * 1;
-				inventory[cartItem].price += product.price;
-			} else {
-				inventory.push(product);
-			}
 		} else {
 			cartItem = inventory?.findIndex((item) => item?.option_id === product.option_id);
-			if (cartItem > -1) {
-				inventory[cartItem].count = inventory[cartItem].count * 1 + product.count * 1;
-				inventory[cartItem].price += product.price;
-			} else {
-				inventory.push(product);
-			}
+		}
+		if (cartItem > -1) {
+			inventory[cartItem].count = inventory[cartItem].count * 1 + product.count * 1;
+			inventory[cartItem].price += product.price;
+		} else {
+			inventory.push({ ...product });
 		}
 
 		commit("updateProductCart", inventory);
@@ -114,9 +110,19 @@ const mutations = {
 	updateSpinnerStatus(state, payload) {
 		state.isShowSpinner = payload;
 	},
-	updateProductCart(state, payload) {
-		state.inventory = payload;
+	updateProductCart({ state }, payload) {
+		console.log(state);
+		state.inventory = [...payload];
+		console.log(state.inventory, rootState);
 	},
+	// for objects
+	// const addObjectProperty = (state, property) => {
+	//   state.object = {...state.object, property)
+	// }
+	// // for arrays
+	// const addArrayItem = (state, item) => {
+	//   state.array = [...state.array, item]
+	// }
 };
 
 export default {

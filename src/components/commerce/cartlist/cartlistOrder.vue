@@ -71,7 +71,7 @@
 												>{{ invent.productName }}<br />
 												<span v-if="invent?.productType == 'OPTION'">
 													<span class="text-slate-400">옵션</span> :
-													{{ invent.optionName }}
+													{{ invent.targetOption?.name }}
 												</span>
 											</span>
 										</td>
@@ -179,7 +179,7 @@
 
 <script setup lang="ts">
 	import { ref, computed, onMounted, defineProps, defineEmits, toRaw } from "vue";
-	import { useStore } from "vuex";
+	import { useStore, mapActions } from "vuex";
 	import OrderService from "@/services/OrderService";
 
 	import router from "../../../plugins/router";
@@ -207,7 +207,14 @@
 	const optionList = Array.from({ length: 10 }, (_, i) => ({ value: i + 1 }));
 	const totalPrice = ref(0);
 
-	const { updateCartItem, deleteCartItem } = computed(() => store.dispatch("cart"));
+	const updateCartItem = (addCartItem) => {
+		store.dispatch("cart/updateCartItem", addCartItem);
+	};
+
+	const deleteCartItem = (deleteIndex) => {
+		store.dispatch("cart/deleteCartItem", deleteIndex);
+	};
+
 	const { saveTempOrderList } = OrderService;
 
 	function deleteItem(index) {
@@ -253,31 +260,31 @@
 
 	onMounted(() => {
 		inventoryList.value = inventory.value;
-		inventoryList.value.push({
-			count: 2,
-			originPrice: 10000,
-			price: 20000,
-			productID: 70,
-			productName: "메인타이틀_수정",
-			productType: "NORMAL",
-		});
-		inventoryList.value.push({
-			count: 1,
-			originPrice: 0,
-			price: 75000,
-			productID: 75,
-			productName: "감홍",
-			productType: "OPTION",
-			targetOption: {
-				created_at: "2023-10-26T10:51:13.235168",
-				ea: 100,
-				extra_price: 75000,
-				modified_at: "2023-10-29T14:32:52.471349",
-				name: "11~12과",
-				option_id: 10,
-			},
-		});
-		console.log(toRaw(inventoryList.value));
+		// inventoryList.value.push({
+		// 	count: 2,
+		// 	originPrice: 10000,
+		// 	price: 20000,
+		// 	productID: 70,
+		// 	productName: "메인타이틀_수정",
+		// 	productType: "NORMAL",
+		// });
+		// inventoryList.value.push({
+		// 	count: 1,
+		// 	originPrice: 0,
+		// 	price: 75000,
+		// 	productID: 75,
+		// 	productName: "감홍",
+		// 	productType: "OPTION",
+		// 	targetOption: {
+		// 		created_at: "2023-10-26T10:51:13.235168",
+		// 		ea: 100,
+		// 		extra_price: 75000,
+		// 		modified_at: "2023-10-29T14:32:52.471349",
+		// 		name: "11~12과",
+		// 		option_id: 10,
+		// 	},
+		// });
+		// console.log(toRaw(inventoryList.value));
 		isLogin.value = userInfoInterface.value.islogin;
 		setTotalPrice();
 	});

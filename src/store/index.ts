@@ -8,12 +8,22 @@ import Cookies from "js-cookie";
 // const debug = process.env.NODE_ENV !== 'production'
 
 export default createStore({
-  modules: {
-    cart,
-    auth,
-    //products
-  },
-  plugins: [createPersistedState({})],
-  //   strict: debug,
-  //   plugins: debug ? [createLogger()] : []
+	modules: {
+		cart,
+		auth,
+		//products
+	},
+	plugins: [
+		createPersistedState({
+			//storage: window.sessionStorage,
+
+			storage: {
+				getItem: (key) => Cookies.get(key),
+				setItem: (key, value) => Cookies.set(key, value, { expires: 7 }),
+				removeItem: (key) => Cookies.remove(key),
+			},
+		}),
+	],
+	//   strict: debug,
+	//   plugins: debug ? [createLogger()] : []
 });
