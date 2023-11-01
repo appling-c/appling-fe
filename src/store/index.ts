@@ -14,15 +14,16 @@ export default createStore({
 		//products
 	},
 	plugins: [
-		createPersistedState({
-			//storage: window.sessionStorage,
+		createPersistedState(),
+		// createPersistedState({
+		// 	//storage: window.sessionStorage,
 
-			storage: {
-				getItem: (key) => Cookies.get(key),
-				setItem: (key, value) => Cookies.set(key, value, { expires: 7 }),
-				removeItem: (key) => Cookies.remove(key),
-			},
-		}),
+		// 	storage: {
+		// 		getItem: (key) => Cookies.get(key),
+		// 		setItem: (key, value) => Cookies.set(key, value, { expires: 7 }),
+		// 		removeItem: (key) => Cookies.remove(key),
+		// 	},
+		// }),
 	],
 	//   strict: debug,
 	//   plugins: debug ? [createLogger()] : []

@@ -501,9 +501,9 @@
 					addCartItem["targetOption"] = this.targetOption;
 				}
 
+				// 장바구니 페이지로 이동
 				await this.addProductToCart(addCartItem).then(() => {
-					//console.log(addCartItem);
-					//this.movetocartlist();
+					this.movetocartlist();
 				});
 			},
 			back() {
@@ -536,7 +536,6 @@
 				return this.$router.push(`/brandshop/preview/${id}`);
 			},
 			movetocartlist() {
-				//window.HSOverlay.close("#hs-task-created-alert");
 				return this.$router.push(`/commerce/cartlist`);
 			},
 			setKakaoShareCustomButton() {

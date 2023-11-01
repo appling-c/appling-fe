@@ -60,17 +60,23 @@ const actions = {
 		// 장바구니 상품 담기
 		let inventory = toRaw(state.inventory);
 		//inventory.push({ ...product });
+		console.log(inventory.length);
 
 		const productType = product.productType;
 		let cartItem;
+
 		if (inventory.length == 0) {
-			inventory.push(product);
+			inventory.push({ ...product });
 			return commit("updateProductCart", inventory);
 		}
 		if (productType === "NORMAL") {
 			cartItem = inventory?.findIndex((item) => item?.productID === product.productID);
 		} else {
-			cartItem = inventory?.findIndex((item) => item?.option_id === product.option_id);
+			cartItem = inventory?.findIndex(
+				(item) =>
+					item?.productID === product.productID &&
+					item.targetOption.option_id === product.targetOption.option_id
+			);
 		}
 		if (cartItem > -1) {
 			inventory[cartItem].count = inventory[cartItem].count * 1 + product.count * 1;
@@ -110,10 +116,8 @@ const mutations = {
 	updateSpinnerStatus(state, payload) {
 		state.isShowSpinner = payload;
 	},
-	updateProductCart({ state }, payload) {
-		console.log(state);
+	updateProductCart(state, payload) {
 		state.inventory = [...payload];
-		console.log(state.inventory, rootState);
 	},
 	// for objects
 	// const addObjectProperty = (state, property) => {
