@@ -331,7 +331,12 @@
 								<span v-if="targetOption.length == 0"
 									>상품 옵션을 선택해주세요.</span
 								>
-								<span v-else>{{ targetOption?.name }}</span>
+								<span v-else
+									>{{ targetOption?.name }}<br />
+									<span class="text-base"
+										>잔여 수량 : {{ targetOption?.ea }}</span
+									>
+								</span>
 							</div>
 						</div>
 						<div>
@@ -439,6 +444,7 @@
 		methods: {
 			setTargetOption(targetOption) {
 				this.targetOption = targetOption;
+
 				this.productCount = 1;
 				this.updateTotalPrice();
 			},

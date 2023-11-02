@@ -34,8 +34,6 @@ const actions = {
 			(item) => Number(item.productID) === Number(product.productID)
 		);
 
-		console.log(inventory, product, cartItem);
-
 		if (cartItem > -1) {
 			inventory[cartItem].count = product.count;
 			inventory[cartItem].price = product.price;

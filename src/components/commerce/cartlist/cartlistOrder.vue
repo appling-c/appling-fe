@@ -242,21 +242,27 @@
 	}
 
 	async function updateNextStep() {
-		console.log(userInfoInterface.value);
-		const isLogin = userInfoInterface?.value?.isLogin;
-		if (!userInfoInterface.value || !isLogin) {
-			router.push("/login?resultUrl=/cartlist/order");
-			return;
+		const islogin = userInfoInterface?.value?.islogin;
+		if (!userInfoInterface.value || !islogin) {
+			return router.push("/login?resultUrl=/commerce/cartlist");
 		}
-		return;
-		const order_list = inventory.value.map((item) => ({
-			ea: Number(item.count),
-			product_id: Number(item.productID),
-		}));
 
-		let order_id = 0;
+		let order_list = [];
+		inventory.value.map((item) => {
+			let orderItem = {
+				ea: Number(item.count),
+				product_id: Number(item.productID),
+			};
+			if (item.productType == "OPTION") {
+				orderItem["option_id"] = item.targetOption?.option_id;
+			}
+			order_list.push(orderItem);
+		});
+
+		console.log(order_list);
+
 		const response = await saveTempOrderList(order_list);
-		order_id = response.data.data.order_id;
+		let order_id = response.data.data.order_id;
 		emit("setOrderId", order_id);
 		emit("updateStep", "2");
 	}

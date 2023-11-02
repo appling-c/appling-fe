@@ -3,10 +3,12 @@
 	import type MemberLogin from "@/types/auth";
 	import UserAthendicateService from "@/services/UserAthendicateService";
 	import { mapActions } from "vuex";
+	import router from "../plugins/router";
 	export default {
 		data() {
 			return {
 				user: {} as MemberLogin,
+				resultUrl: "",
 			};
 		},
 		methods: {
@@ -39,14 +41,21 @@
 				try {
 					await UserAthendicateService.memberlogin(user).then((result) => {
 						this.updateSpinnerStatus(false);
-						//this.$router.push(`/${result}`);
+						if (this.resultUrl) {
+							this.$router.push(`${this.resultUrl}`);
+						} else {
+							this.$router.push(`/${result}`);
+						}
 					});
 				} catch (err) {
 					console.log(err);
 				}
 			},
 		},
-		
+
+		mounted() {
+			this.resultUrl = this.$route?.query?.resultUrl;
+		},
 	};
 </script>
 <template>
