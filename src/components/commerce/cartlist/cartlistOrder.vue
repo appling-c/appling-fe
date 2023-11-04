@@ -337,25 +337,10 @@ function deleteItem(index) {
 }
 
 function updateCartList(inventoryItem) {
-  const {
-    price,
-    count,
-    productID,
-    productName,
-    originPrice,
-    productType,
-    sellingPriceDP,
-  } = inventoryItem;
+  const { count, productID, productName, sellingPriceDP } = inventoryItem;
 
   let productTotalPrice = count * sellingPriceDP;
-  console.log(count, sellingPriceDP, productTotalPrice);
 
-  // if (productType == "NORMAL") {
-  //   productPrice = price * count;
-  // } else {
-  //   const { extra_price } = inventoryItem.targetOption;
-  //   productPrice = price + extra_price * count;
-  // }
   const addCartItem = {
     count,
     productID,

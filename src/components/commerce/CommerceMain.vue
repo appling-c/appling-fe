@@ -108,7 +108,7 @@ export default {
         <figure>
           <img
             class="w-full object-cover rounded-xl"
-            src="/src/assets/apples.jpeg"
+            :src="product.main_image"
             alt="Image Description"
           />
         </figure>
@@ -141,41 +141,6 @@ export default {
                       stroke-linecap="round"
                     />
                   </svg>
-                </button>
-                <button
-                  class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold text-gray-800 hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 transition-all text-sm dark:text-white dark:hover:bg-gray-800 dark:hover:border-gray-900 dark:focus:ring-gray-900 dark:focus:ring-offset-gray-800"
-                  href="#"
-                >
-                  <svg
-                    class="w-4 h-4"
-                    width="19"
-                    height="18"
-                    viewBox="0 0 19 18"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M6.875 18C8.531 18 9.875 16.656 9.875 15V12H6.875C5.219 12 3.875 13.344 3.875 15C3.875 16.656 5.219 18 6.875 18Z"
-                      fill="#0ACF83"
-                    ></path>
-                    <path
-                      d="M3.875 9C3.875 7.344 5.219 6 6.875 6H9.875V12H6.875C5.219 12 3.875 10.656 3.875 9Z"
-                      fill="#A259FF"
-                    ></path>
-                    <path
-                      d="M3.875 3C3.875 1.344 5.219 0 6.875 0H9.875V6H6.875C5.219 6 3.875 4.656 3.875 3Z"
-                      fill="#F24E1E"
-                    ></path>
-                    <path
-                      d="M9.87501 0H12.875C14.531 0 15.875 1.344 15.875 3C15.875 4.656 14.531 6 12.875 6H9.87501V0Z"
-                      fill="#FF7262"
-                    ></path>
-                    <path
-                      d="M15.875 9C15.875 10.656 14.531 12 12.875 12C11.219 12 9.87501 10.656 9.87501 9C9.87501 7.344 11.219 6 12.875 6C14.531 6 15.875 7.344 15.875 9Z"
-                      fill="#1ABCFE"
-                    ></path>
-                  </svg>
-                  자세히 알아보기
                 </button>
 
                 <div

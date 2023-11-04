@@ -477,30 +477,16 @@ export default {
 
     // 장바구니 담기
     async saveCartList() {
-      // const addCartItem = {
-      // 	originPrice: this.productDetailItem.price,
-      // 	count: this.productCount,
-      // 	productID: this.productDetailItem.product_id,
-      // 	productName: this.productDetailItem.main_title,
-      // 	price: this.productPrice,
-      // 	productType: this.productDetailItem?.type,
-      // 	optionName: this.targetOption?.name,
-      // 	optionID: this.targetOption?.option_id,
-      // 	optionExtraPrice: this.targetOption?.extra_price,
-      // };
       let addCartItem = {
         originPrice: this.productDetailItem.origin_price, // 정상가
         price: this.productDetailItem.price, // 판매가
         count: this.productCount, // 수량
         productID: this.productDetailItem.product_id, // PRODUCT_ID
         productName: this.productDetailItem.main_title, // 상품명
-        // productTotalPrice : this.productPrice,
-        // price: this.productPrice, // 상품가격(수량 * 가격)
         productType: this.productDetailItem?.type, // 상품타입
       };
 
       // sellingPriceDP : 개당 가격
-
       if (this.productType !== "NORMAL") {
         addCartItem["targetOption"] = this.targetOption;
         addCartItem["sellingPriceDP"] =

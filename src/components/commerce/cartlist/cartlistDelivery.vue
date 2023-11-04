@@ -220,45 +220,6 @@
         </div>
       </div>
       <!-- End Section -->
-
-      <!-- Section -->
-      <div
-        class="py-6 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-gray-700"
-      >
-        <label
-          for="af-payment-payment-method"
-          class="inline-block text-base font-medium dark:text-white"
-        >
-          Payment method
-        </label>
-
-        <div class="mt-2 space-y-3">
-          <input
-            id="af-payment-payment-method"
-            type="text"
-            class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
-            placeholder="Name on Card"
-          />
-          <input
-            type="text"
-            class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
-            placeholder="Card Number"
-          />
-          <div class="sm:flex gap-3">
-            <input
-              type="text"
-              class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
-              placeholder="Expiration Date"
-            />
-            <input
-              type="text"
-              class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
-              placeholder="CVV Code"
-            />
-          </div>
-        </div>
-      </div>
-      <!-- End Section -->
     </form>
 
     <div class="mt-5 flex justify-end gap-x-2">
@@ -347,7 +308,8 @@ async function showAddresspopup(userInfoObj) {
   var self = this;
   new daum.Postcode({
     oncomplete: function (data) {
-      const { address, zonecode, address_detail } = data;
+      const { address, zonecode } = data;
+      console.log(data, self[`${userInfoObj}`], userInfoObj);
       self[`${userInfoObj}`].address = address;
       self[`${userInfoObj}`].zonecode = zonecode;
       //self[`${userInfoObj}`].address_detail = address_detail;
