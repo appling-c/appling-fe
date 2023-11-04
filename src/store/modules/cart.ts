@@ -36,7 +36,7 @@ const actions = {
 
     if (cartItem > -1) {
       inventory[cartItem].count = product.count;
-      inventory[cartItem].price = product.price;
+      inventory[cartItem].productTotalPrice = product.productTotalPrice;
     }
     commit("updateProductCart", inventory);
   },
@@ -57,15 +57,16 @@ const actions = {
   addProductToCart({ state, commit }, product) {
     // 장바구니 상품 담기
     let inventory = toRaw(state.inventory);
-    //inventory.push({ ...product });
 
     const productType = product.productType;
     let cartItem;
 
     if (inventory.length == 0) {
+      product["productTotalPrice"] = product.sellingPriceDP * product.count;
       inventory.push({ ...product });
       return commit("updateProductCart", inventory);
     }
+
     if (productType === "NORMAL") {
       cartItem = inventory?.findIndex((item) => item?.productID === product.productID);
     } else {
@@ -75,18 +76,13 @@ const actions = {
           item.targetOption.option_id === product.targetOption.option_id
       );
     }
+
     if (cartItem > -1) {
       inventory[cartItem].count = inventory[cartItem].count * 1 + product.count * 1;
-      if (productType === "NORMAL") {
-        inventory[cartItem].productTotalPrice =
-          inventory[cartItem].price * inventory[cartItem].count;
-      } else {
-        inventory[cartItem].productTotalPrice =
-          inventory[cartItem].price +
-          inventory[cartItem].targetOption.extra_price * inventory[cartItem].count;
-      }
-      //inventory[cartItem].price += product.price;
+      inventory[cartItem]["productTotalPrice"] =
+        inventory[cartItem]["sellingPriceDP"] * inventory[cartItem]["count"];
     } else {
+      product["productTotalPrice"] = product["sellingPriceDP"] * product["count"];
       inventory.push({ ...product });
     }
 

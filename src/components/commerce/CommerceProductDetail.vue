@@ -499,8 +499,14 @@ export default {
         productType: this.productDetailItem?.type, // 상품타입
       };
 
+      // sellingPriceDP : 개당 가격
+
       if (this.productType !== "NORMAL") {
         addCartItem["targetOption"] = this.targetOption;
+        addCartItem["sellingPriceDP"] =
+          addCartItem["price"] + this.targetOption?.extra_price * this.productCount;
+      } else {
+        addCartItem["sellingPriceDP"] = addCartItem["price"];
       }
 
       // 장바구니 페이지로 이동

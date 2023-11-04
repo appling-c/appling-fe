@@ -4,11 +4,9 @@
   <div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
     <div class="text-center mb-8">
       <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-200">
-        Payment
+        배송 정보 입력하기
       </h2>
-      <p class="text-base text-gray-600 dark:text-gray-400">
-        Manage your payment methods.
-      </p>
+      <p class="text-base text-gray-600 dark:text-gray-400">배송 정보를 입력해주세요.</p>
     </div>
 
     <form>

@@ -377,7 +377,9 @@
                           <div class="grow">
                             <span
                               class="block text-sm font-semibold text-gray-800 dark:text-gray-200"
-                              >{{ litem.price.toLocaleString() }}원</span
+                            >
+                              {{ litem.type == "OPTION" ? "(기본가)" : "" }}
+                              {{ litem.price.toLocaleString() }}원</span
                             >
                           </div>
                         </div>
