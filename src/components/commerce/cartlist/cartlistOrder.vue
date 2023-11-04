@@ -41,15 +41,12 @@
                       수량
                     </th>
                     <th
+                      colspan="2"
                       scope="col"
                       class="px-6 py-3 text-left text-base font-medium text-slate-500 uppercase"
                     >
                       가격
                     </th>
-                    <th
-                      scope="col"
-                      class="px-6 py-3 text-right text-xs font-medium text-slate-500 uppercase"
-                    ></th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
@@ -71,7 +68,11 @@
                         >{{ invent.productName }}<br />
                         <span v-if="invent?.productType == 'OPTION'">
                           <span class="text-slate-400">옵션</span> :
-                          {{ invent.targetOption?.name }}
+                          {{ invent.targetOption?.name }} <br
+                        /></span>
+                        <span class="text-sm"
+                          >1EA :(정상가) {{ originPriceDP(invent) }} > (할인가)
+                          {{ sellingPriceDP(invent) }}
                         </span>
                       </span>
                     </td>
@@ -91,7 +92,7 @@
                       </select>
                     </td>
                     <td class="px-6 py-4 text-base text-slate-800 dark:text-slate-200">
-                      {{ invent?.price?.toLocaleString() }}
+                      {{ invent?.productTotalPrice?.toLocaleString() }}
                     </td>
                     <td class="px-6 py-4 text-right text-base font-medium">
                       <a
@@ -99,6 +100,27 @@
                         class="text-blue-500 hover:text-blue-700"
                         >삭제</a
                       >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="px-6 py-4 text-base font-medium text-slate-800 dark:text-slate-200"
+                    >
+                      <span
+                        >선택 상품 금액<br /><!--v-if--><span class="text-sm"
+                          >{{ totalPrice.toLocaleString() }}원</span
+                        ></span
+                      >
+                    </td>
+                    <td class="px-6 py-4 text-base text-slate-800 dark:text-slate-200">
+                      <span>배송비<br /><span class="text-sm">0원</span></span>
+                    </td>
+                    <td
+                      colspan="2"
+                      class="px-6 py-4 text-base text-slate-800 dark:text-slate-200"
+                    >
+                      총 주문 금액<br />
+                      <a class="text-blue-500">{{ totalPrice.toLocaleString() }}원</a>
                     </td>
                   </tr>
                 </tbody>
@@ -213,6 +235,34 @@ const deleteCartItem = (deleteIndex) => {
 
 const { saveTempOrderList } = OrderService;
 
+// origin prcice per ea
+function originPriceDP(inventoryItem) {
+  const { count, originPrice, productType } = inventoryItem;
+  if (productType == "NORMAL") {
+    // no option
+    return originPrice;
+  } else {
+    // with option
+    const { targetOption } = inventoryItem;
+    const { extra_price } = targetOption;
+    return originPrice + extra_price;
+  }
+}
+
+// celling price per ea
+function sellingPriceDP(inventoryItem) {
+  const { count, originPrice, price, productType } = inventoryItem;
+  if (productType == "NORMAL") {
+    // no option
+    return price;
+  } else {
+    // with option
+    const { targetOption } = inventoryItem;
+    const { extra_price } = targetOption;
+    return price + extra_price;
+  }
+}
+
 function deleteItem(index) {
   deleteCartItem(index);
   setTotalPrice();
@@ -220,13 +270,22 @@ function deleteItem(index) {
 }
 
 function updateCartList(inventoryItem) {
-  const { count, productID, productName, originPrice } = inventoryItem;
+  console.log(inventoryItem);
+  let productPrice;
+  const { price, count, productID, productName, originPrice, productType } =
+    inventoryItem;
 
+  if (productType == "NORMAL") {
+    productPrice = price * count;
+  } else {
+    const { extra_price } = targetOption;
+    productPrice = price + extra_price * count;
+  }
   const addCartItem = {
     count,
     productID,
     productName,
-    price: originPrice * count,
+    price: productPrice,
   };
 
   updateCartItem(addCartItem);
@@ -255,7 +314,7 @@ async function updateNextStep() {
     order_list.push(orderItem);
   });
 
-  const response = await saveTempOrderList(order_list);
+  //const response = await saveTempOrderList(order_list);
   //let order_id = response.data.data.order_id;
 
   let order_id = 37;
