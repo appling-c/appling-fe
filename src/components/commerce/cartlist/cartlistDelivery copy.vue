@@ -128,17 +128,6 @@ export default {
     const ownerInfo = initializeInfo();
     const recipientInfo = initializeInfo();
 
-    const senderInfoTypeList = ref([
-      {
-        key : "1", value : "농장 주소로 발송"
-      }, 
-      {
-        key : "2", value : "새로운 주소로 발송"
-      }
-    ])
-
-    const senderInfoType = ref("1");
-
     const userInfoInterface = computed(() => store.getters["auth/userInfoInterface"]);
 
     async function getOrderList(id: number) {

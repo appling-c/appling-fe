@@ -30,14 +30,19 @@ const actions = {
 	updateCartItem({ state, commit }, product) {
 		// 주문내역 > 상품 업데이트
 		let inventory = toRaw(state.inventory);
+		
+		// find existing product
 		let cartItem = inventory.findIndex(
 			(item) => Number(item.productID) === Number(product.productID)
 		);
-
+		
+		// replace product info about existing product
 		if (cartItem > -1) {
 			inventory[cartItem].count = product.count;
 			inventory[cartItem].price = product.price;
 		}
+
+		// update cart ivnentory
 		commit("updateProductCart", inventory);
 	},
 
@@ -63,26 +68,39 @@ const actions = {
 		const productType = product.productType;
 		let cartItem;
 
+		// inventory is empty
 		if (inventory.length == 0) {
 			inventory.push({ ...product });
 			return commit("updateProductCart", inventory);
 		}
+
+		// product type is normal(no option)
 		if (productType === "NORMAL") {
 			cartItem = inventory?.findIndex((item) => item?.productID === product.productID);
 		} else {
+			// product type is option
+			// check correspond productID, optionID
 			cartItem = inventory?.findIndex(
 				(item) =>
 					item?.productID === product.productID &&
 					item.targetOption.option_id === product.targetOption.option_id
 			);
 		}
+
+		
 		if (cartItem > -1) {
+			// same product, same option 
+			// sampe product, with no option
+
+			// update product count, price for optionItem
 			inventory[cartItem].count = inventory[cartItem].count * 1 + product.count * 1;
 			inventory[cartItem].price += product.price;
 		} else {
+			// if not exist (same prduct, other option)
 			inventory.push({ ...product });
 		}
 
+		// update product inventory status
 		commit("updateProductCart", inventory);
 	},
 
