@@ -269,7 +269,7 @@ const sellerAddressTypeList = ref([
 ]);
 
 const sellerAddressType = ref("1");
-
+var self = this;
 const store = useStore();
 
 const totalPrice = ref(0);
@@ -317,7 +317,7 @@ function initializeInfo() {
 }
 
 async function showAddresspopup(userInfoObj) {
-  var self = this;
+  
   new daum.Postcode({
     oncomplete: function (data) {
       const { address, zonecode } = data;
