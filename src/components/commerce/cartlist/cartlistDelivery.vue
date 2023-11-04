@@ -317,13 +317,13 @@ function initializeInfo() {
 }
 
 async function showAddresspopup(userInfoObj) {
-  
+
   new daum.Postcode({
     oncomplete: function (data) {
       const { address, zonecode } = data;
-      console.log(data, self[`${userInfoObj}`], userInfoObj);
-      self[`${userInfoObj}`].address = address;
-      self[`${userInfoObj}`].zonecode = zonecode;
+      console.log(data, `${userInfoObj}`, userInfoObj);
+      this.[`${userInfoObj}`].address = address;
+      `${userInfoObj}`.zonecode = zonecode;
       //self[`${userInfoObj}`].address_detail = address_detail;
     },
   }).open();
