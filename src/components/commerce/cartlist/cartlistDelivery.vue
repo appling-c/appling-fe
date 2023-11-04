@@ -274,8 +274,20 @@ const store = useStore();
 
 const totalPrice = ref(0);
 const inventory = ref([]);
-const ownerInfo = ref(initializeInfo());
-const recipientInfo = ref(initializeInfo());
+const ownerInfo = {
+  name: "",
+  address: "",
+  tel: "",
+  zonecode: "",
+  address_detail: "",
+};
+const recipientInfo = {
+  name: "",
+  address: "",
+  tel: "",
+  zonecode: "",
+  address_detail: "",
+};
 
 const ownerAddressInfoFixed = ref({
   name: "자연햇살농원",
