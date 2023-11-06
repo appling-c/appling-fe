@@ -45,7 +45,7 @@ export default {
 
   data() {
     return {
-      currentStep: "1",
+      currentStep: "3",
       order_id: 0,
       order_number: "",
     };

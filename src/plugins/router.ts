@@ -16,9 +16,9 @@ import commerce_search from "../components/commerce/CommerceProductSearch.vue";
 import commerce_detail from "../components/commerce/CommerceProductDetail.vue";
 import commerce_cartlist from "../components/commerce/CommerceCartlist.vue";
 import commerce_regist from "../components/commerce/CommerceSellerRequest.vue";
+import commerce_history from "../components/commerce/CommerceHistory.vue";
 //import commerce_pricing from '../components/commerce/CommerceMembership.vue'
 import commerce_seller_brandshop from "../components/commerce/productDetail/SellerBrandshop.vue";
-
 import kakaoLogin from "../views/kakaoLogin.vue";
 import Login from "../views/login.vue";
 import Signup from "../views/signup.vue";
@@ -46,6 +46,7 @@ const routes: Array<RouteRecordRaw> = [
 			{ path: "cartlist", component: commerce_cartlist }, // 장바구니
 			{ path: "regist", component: commerce_regist }, // 구매자 -> 판매자 등록 페이지
 			{ path: "brandshop/:id", component: commerce_seller_brandshop }, // 구매자 -> 판매자 등록 페이지
+			{ path: "history", component: commerce_history }, // 구매자 -> 판매자 등록 페이지
 			//{ path: 'pricing', component : commerce_pricing }, // 멤버십 안내 페이지
 		],
 	},
