@@ -6,6 +6,7 @@ const ENDPOINT = {
 	API_ORDER: "/api/order",
 	API_ORDER_LIST: "/api/order/temp",
 	API_ORDER_COMPLETE: "/api/order/complete",
+	API_ORDER_COMPLETE_LIST: "/api/order/seller",
 };
 
 class OrderService {
@@ -38,6 +39,17 @@ class OrderService {
 	public async setOrder(payload) {
 		return await instance
 			.patch(`${ENDPOINT.API_ORDER_COMPLETE}`, payload)
+			.then((response: AxiosResponse) => {
+				return response;
+			});
+	}
+
+	/**
+	 * (seller) 주문내역 불러오기
+	 */
+	public async getRecentOrderList(payload) {
+		return await instance
+			.get(`${ENDPOINT.API_ORDER_COMPLETE_LIST}${payload}`)
 			.then((response: AxiosResponse) => {
 				return response;
 			});

@@ -239,11 +239,14 @@
 										</tr>
 									</thead>
 									<tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-										<tr>
+										<tr
+											v-for="orderItem in recentOrderList"
+											:key="orderItem.id"
+										>
 											<td
 												class="px-6 py-4 whitespace-nowrap text-base font-medium text-gray-800 dark:text-gray-200"
 											>
-												김루나
+												{{ orderItem?.member?.name }}
 											</td>
 											<td
 												class="px-6 py-4 whitespace-nowrap text-base text-gray-800 dark:text-gray-200"
@@ -253,63 +256,27 @@
 											<td
 												class="px-6 py-4 whitespace-nowrap text-base text-gray-800 dark:text-gray-200"
 											>
-												[2023-03-03 13:30] 사과 10개, 약과 20개
-											</td>
-											<td
-												class="px-6 py-4 whitespace-nowrap text-right text-base font-medium"
-											>
-												<a class="text-blue-500 hover:text-blue-700"
-													>연락하기</a
-												>
-											</td>
-										</tr>
+												[{{
+													moment(orderItem.created_at).format(
+														"YYYY.MM.DD HH:mm"
+													)
+												}}]
+												{{ orderItem.order_item_list[0]?.main_title }}
+												{{ orderItem.order_item_list[0]?.option?.name }}
 
-										<tr>
-											<td
-												class="px-6 py-4 whitespace-nowrap text-base font-medium text-gray-800 dark:text-gray-200"
-											>
-												주누군
-											</td>
-											<td
-												class="px-6 py-4 whitespace-nowrap text-base text-gray-800 dark:text-gray-200"
-											>
-												경기 가평
-											</td>
-											<td
-												class="px-6 py-4 whitespace-nowrap text-base text-gray-800 dark:text-gray-200"
-											>
-												[2023-03-03 13:50] 사과 10개, 약과 20개
+												{{
+													orderItem.order_item_list.length - 1 > 0
+														? ` 외 ${
+																orderItem.order_item_list.length - 1
+														  } 건`
+														: ""
+												}}
 											</td>
 											<td
 												class="px-6 py-4 whitespace-nowrap text-right text-base font-medium"
 											>
 												<a class="text-blue-500 hover:text-blue-700"
-													>연락하기</a
-												>
-											</td>
-										</tr>
-
-										<tr>
-											<td
-												class="px-6 py-4 whitespace-nowrap text-base font-medium text-gray-800 dark:text-gray-200"
-											>
-												김시얼
-											</td>
-											<td
-												class="px-6 py-4 whitespace-nowrap text-base text-gray-800 dark:text-gray-200"
-											>
-												경기 성남
-											</td>
-											<td
-												class="px-6 py-4 whitespace-nowrap text-base text-gray-800 dark:text-gray-200"
-											>
-												[2023-03-23 13:30] 사과 10개, 약과 20개
-											</td>
-											<td
-												class="px-6 py-4 whitespace-nowrap text-right text-base font-medium"
-											>
-												<a class="text-blue-500 hover:text-blue-700"
-													>연락하기</a
+													>자세히보기</a
 												>
 											</td>
 										</tr>
@@ -326,3 +293,25 @@
 	<!-- End Tab Nav -->
 	<!-- End Page Heading -->
 </template>
+
+<script setup lang="ts">
+	import { ref, onMounted } from "vue";
+	import OrderService from "@/services/OrderService";
+	import moment from "moment";
+
+	const recentOrderList = ref([]);
+
+	// 최근 주문 내역 불러오기
+	async function getRecentOrderList() {
+		const reqestStr = `?size=5`;
+		await OrderService.getRecentOrderList(reqestStr).then((response) => {
+			recentOrderList.value = response.data.data?.list;
+		});
+	}
+
+	onMounted(() => {
+		getRecentOrderList();
+	});
+
+	console.log(recentOrderList.value);
+</script>
