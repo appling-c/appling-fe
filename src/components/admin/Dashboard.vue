@@ -298,6 +298,7 @@
 	import { ref, onMounted } from "vue";
 	import OrderService from "@/services/OrderService";
 	import moment from "moment";
+	import PublicApiService from "@/services/PublicApiService";
 
 	const recentOrderList = ref([]);
 
@@ -309,9 +310,10 @@
 		});
 	}
 
-	onMounted(() => {
-		getRecentOrderList();
+	PublicApiService.getPublicApi().then((response) => {
+		console.log(response);
 	});
+	getRecentOrderList();
 
 	console.log(recentOrderList.value);
 </script>
