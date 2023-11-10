@@ -205,6 +205,7 @@
 					<div class="flex flex-col">
 						<div class="-m-1.5 overflow-x-auto">
 							<div class="p-1.5 min-w-full inline-block align-middle">
+								
 								<div class="overflow-hidden">
 									<table
 										class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
@@ -256,50 +257,115 @@
 											</tr>
 										</thead>
 										<tbody
-											class="divide-y divide-gray-200 dark:divide-gray-700"
+											class="hs-accordion-group divide-y divide-gray-200 dark:divide-gray-700"
 										>
-											<tr v-for="order in orders" :key="order.productID">
-												<td
-													class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200"
-												>
-													{{ order.name }}
-												</td>
-												<td
-													class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
-												>
-													{{ order.title }}
-												</td>
-												<td
-													class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
-												>
-													{{ order.email }}
-												</td>
-												<td
-													class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
-												>
-													{{ order.age }}
-												</td>
-												<td
-													class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
-												>
-													{{ order.action }}
-												</td>
-
-												<td
-													class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
-												>
-													{{ order.action2 }}
-												</td>
-												<td
-													class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
-												>
-													<a
-														class="text-blue-500 hover:text-blue-700"
-														href="#"
-														>Delete</a
+											<div
+												v-for="order in orders"
+												:key="order.productID"
+												class="hs-accordion"
+												:id="`hs-basic-with-arrow-heading-${order.productID}`"
+											>
+												<tr>
+													<td
+														class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200"
 													>
-												</td>
-											</tr>
+														<button
+															class="hs-accordion-toggle hs-accordion-active:text-blue-600 py-3 inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-800 hover:text-gray-500 rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:text-gray-400"
+															:aria-controls="`hs-basic-with-arrow-collapse-${order.productID}`"
+														>
+															<svg
+																class="hs-accordion-active:hidden block w-4 h-4"
+																xmlns="http://www.w3.org/2000/svg"
+																width="24"
+																height="24"
+																viewBox="0 0 24 24"
+																fill="none"
+																stroke="currentColor"
+																stroke-width="2"
+																stroke-linecap="round"
+																stroke-linejoin="round"
+															>
+																<path d="m6 9 6 6 6-6" />
+															</svg>
+															<svg
+																class="hs-accordion-active:block hidden w-4 h-4"
+																xmlns="http://www.w3.org/2000/svg"
+																width="24"
+																height="24"
+																viewBox="0 0 24 24"
+																fill="none"
+																stroke="currentColor"
+																stroke-width="2"
+																stroke-linecap="round"
+																stroke-linejoin="round"
+															>
+																<path d="m18 15-6-6-6 6" />
+															</svg>
+																Order #{{ order.name }}
+														</button>
+													</td>
+													<td
+														class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
+													>
+														{{ order.title }}
+													</td>
+													<td
+														class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
+													>
+														{{ order.email }}
+													</td>
+													<td
+														class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
+													>
+														{{ order.age }}
+													</td>
+													<td
+														class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
+													>
+														{{ order.action }}
+													</td>
+
+													<td
+														class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
+													>
+														{{ order.action2 }}
+													</td>
+													<td
+														class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+													>
+														<a
+															class="text-blue-500 hover:text-blue-700"
+															href="#"
+															>Delete</a
+														>
+													</td>
+												</tr>
+												<tr>
+													<td colspan="7">
+														<div
+															:id="`hs-basic-with-arrow-collapse-${order.productID}`"
+															class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
+															:aria-labelledby="`hs-basic-with-arrow-heading-${order.productID}`"
+														>
+															<p
+																class="text-gray-800 dark:text-gray-200"
+															>
+																<em
+																	>This is the third item's
+																	accordion body.</em
+																>
+																It is hidden by default, until the
+																collapse plugin adds the appropriate
+																classes that we use to style each
+																element. These classes control the
+																overall appearance, as well as the
+																showing and hiding via CSS
+																transitions.
+															</p>
+														</div>
+													</td>
+												</tr>
+											</div>
 										</tbody>
 									</table>
 								</div>
