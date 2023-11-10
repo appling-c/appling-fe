@@ -515,6 +515,14 @@ export default {
           this.optionList = userdata.option_list;
           this.updateSpinnerStatus(false);
 
+          const option_id = this.$route.query?.option_id;
+          if (option_id) {
+            const targetOption = this.optionList.find((option) => {
+              return option.option_id == option_id;
+            });
+            this.setTargetOption(targetOption);
+          }
+
           if (userdata.type == "NORMAL") {
             this.productCount = 1;
             this.updateTotalPrice();
