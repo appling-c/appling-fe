@@ -172,15 +172,15 @@
             <div class="col-span-2">
               <div class="flex">
                 <input
-                  @click="showAddresspopup('recipientInfo')"
+                  @click="showAddresspopup(recipientInfo)"
                   placeholder="주소검색"
-                  v-model="recipientInfo.address"
+                  :value="recipientInfo.address"
                   readonly
                   type="text"
                   class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                 />
                 <button
-                  @click="showAddresspopup('recipientInfo')"
+                  @click="showAddresspopup(recipientInfo)"
                   readonly
                   type="button"
                   class="inline-flex flex-shrink-0 justify-center items-center h-[2.875rem] w-[2.875rem] rounded-r-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm"
@@ -202,7 +202,7 @@
             </div>
             <div>
               <input
-                v-model="recipientInfo.zonecode"
+                :value="recipientInfo.zonecode"
                 type="text"
                 readonly
                 disabled
@@ -242,7 +242,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch, onMounted, defineProps, defineEmits } from "vue";
+import { computed, ref, watch, onMounted, defineProps, defineEmits, reactive } from "vue";
 import { useStore } from "vuex";
 
 import TheDeliveryAddressForm from "../cartlist/TheDeliveryAddressForm.vue";
@@ -274,20 +274,20 @@ const store = useStore();
 
 const totalPrice = ref(0);
 const inventory = ref([]);
-const ownerInfo = {
+let ownerInfo = reactive({
   name: "",
   address: "",
   tel: "",
   zonecode: "",
   address_detail: "",
-};
-const recipientInfo = {
+});
+let recipientInfo = reactive({
   name: "",
   address: "",
   tel: "",
   zonecode: "",
   address_detail: "",
-};
+});
 
 const ownerAddressInfoFixed = ref({
   name: "자연햇살농원",
@@ -320,16 +320,10 @@ async function showAddresspopup(userInfoObj) {
   new daum.Postcode({
     oncomplete: function (data) {
       const { address, zonecode } = data;
-      console.log(data, `${userInfoObj}`, userInfoObj);
-      this[`${userInfoObj}`].address = address;
-      this[`${userInfoObj}`].zonecode = zonecode;
-      //self[`${userInfoObj}`].address_detail = address_detail;
+      userInfoObj.address = address;
+      userInfoObj.zonecode = zonecode;
     },
   }).open();
-}
-
-function setTotalPrice() {
-  totalPrice.value = inventory.value?.reduce((total, item) => total + item.price, 0);
 }
 
 function addressFormInvalidCheck() {
@@ -337,13 +331,13 @@ function addressFormInvalidCheck() {
 
   const targetCheckList = ["name", "address", "tel", "zonecode", "address_detail"];
 
-  if (!this.recipientInfo.name) {
+  if (!recipientInfo.name) {
     alert("배송지 정보를 입력해주세요.");
     return false;
   }
 
   if (this.sellerAddressType == "1") {
-    this.ownerInfo = this.ownerAddressInfoFixed;
+    ownerInfo = Object.assign({}, ownerAddressInfoFixed.value); // ownerAddressInfoFixed;
   }
 
   for (let i = 0; i < targetObjectList.length; i++) {
@@ -363,20 +357,21 @@ async function updateNextStep() {
   if (!this.addressFormInvalidCheck()) {
     return;
   }
-  const ownerInfoArr = Object.keys(ownerInfo?.value)
-    .filter((key) => ownerInfo?.value[key] !== "")
+
+  const ownerInfoArr = Object.keys(ownerInfo)
+    .filter((key) => ownerInfo[key] !== "")
     .reduce((acc, key) => {
-      acc[`owner_${key}`] = ownerInfo?.value[key];
+      acc[`owner_${key}`] = ownerInfo[key];
       return acc;
     }, {});
 
-  const recipientArr = Object.keys(recipientInfo?.value)
-    .filter((key) => recipientInfo?.value[key] !== "")
+  const recipientArr = Object.keys(recipientInfo)
+    .filter((key) => recipientInfo[key] !== "")
     .reduce((acc, key) => {
-      acc[`recipient_${key}`] = recipientInfo?.value[key];
+      acc[`recipient_${key}`] = recipientInfo[key];
       return acc;
     }, {});
-
+  
   const payload = {
     ...ownerInfoArr,
     ...recipientArr,
@@ -387,15 +382,6 @@ async function updateNextStep() {
   emit("updateOrderNumber", response.data.data.order_number);
   emit("updateStep", "3");
 }
-
-watch(
-  () => props.order_id,
-  async (value) => {
-    console.log(value);
-    await getOrderList(value);
-    setTotalPrice();
-  }
-);
 
 onMounted(async () => {
   //await getOrderList(props.order_id);

@@ -44,7 +44,7 @@
 
 		data() {
 			return {
-				currentStep: "3",
+				currentStep: "1",
 				order_id: 0,
 				order_number: "",
 			};

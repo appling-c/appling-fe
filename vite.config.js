@@ -4,7 +4,7 @@ import path from "path";
 
 export default ({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
-  
+
   return defineConfig({
     publicDir: "assets",
     root: "./",
@@ -16,6 +16,10 @@ export default ({ mode }) => {
     server: {
       proxy: {
         "/api": { target: "http://api.appling.me", changeOrigin: true },
+        "/service": {
+          target: "http://www.kamis.co.kr",
+          changeOrigin: true,
+        },
       },
       //host: true,
       port: 5173,
