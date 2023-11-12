@@ -378,10 +378,10 @@ async function updateNextStep() {
     order_list.push(orderItem);
   });
 
-  //const response = await saveTempOrderList(order_list);
-  //let order_id = response.data.data.order_id;
+  const response = await saveTempOrderList(order_list);
+  let order_id = response.data.data.order_id;
 
-  let order_id = 37;
+  //let order_id = 37;
   emit("setOrderId", order_id);
 
   emit("updateStep", "2");

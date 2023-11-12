@@ -1,398 +1,382 @@
 <template>
-	<div>
-		<header
-			class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-7 mx-auto flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm"
-		>
-			<nav
-				class="mt-6 relative max-w-7xl w-full bg-white border border-gray-200 rounded-[36px] mx-2 py-3 px-4 md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-gray-800 dark:border-gray-700"
-				aria-label="Global"
-			>
-				<div class="flex items-center justify-between">
-					<select
-						class="py-3 px-4 pr-9 block w-full border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
-					>
-						<option selected>Open this select menu</option>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-					</select>
-					<div class="md:hidden">
-						<button
-							type="button"
-							class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-2 rounded-full border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-							data-hs-collapse="#navbar-collapse-with-animation"
-							aria-controls="navbar-collapse-with-animation"
-							aria-label="Toggle navigation"
-						>
-							<svg
-								class="hs-collapse-open:hidden w-4 h-4"
-								width="16"
-								height="16"
-								fill="currentColor"
-								viewBox="0 0 16 16"
-							>
-								<path
-									fill-rule="evenodd"
-									d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
-								/>
-							</svg>
-							<svg
-								class="hs-collapse-open:block hidden w-4 h-4"
-								width="16"
-								height="16"
-								fill="currentColor"
-								viewBox="0 0 16 16"
-							>
-								<path
-									d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
-								/>
-							</svg>
-						</button>
-					</div>
-				</div>
-				<div
-					id="navbar-collapse-with-animation"
-					class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block"
-				>
-					<div
-						class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7 md:mt-0 md:pl-7"
-					>
-						<a
-							class="font-medium text-blue-600 md:py-6 dark:text-blue-500"
-							href="#"
-							aria-current="page"
-							>Landing</a
-						>
-						<a
-							class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
-							href="#"
-							>Account</a
-						>
-						<a
-							class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
-							href="#"
-							>Work</a
-						>
-						<a
-							class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
-							href="#"
-							>Blog</a
-						>
+  <div>
+    <header
+      class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-7 mx-auto flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm"
+    >
+      <nav
+        class="mt-6 relative max-w-7xl w-full bg-white border border-gray-200 rounded-[36px] mx-2 py-3 px-4 md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-gray-800 dark:border-gray-700"
+        aria-label="Global"
+      >
+        <div class="flex items-center justify-between">
+          <select
+            class="py-3 px-4 pr-9 block w-full border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
+          >
+            <option selected>Open this select menu</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+          <div class="md:hidden">
+            <button
+              type="button"
+              class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-2 rounded-full border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+              data-hs-collapse="#navbar-collapse-with-animation"
+              aria-controls="navbar-collapse-with-animation"
+              aria-label="Toggle navigation"
+            >
+              <svg
+                class="hs-collapse-open:hidden w-4 h-4"
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+                />
+              </svg>
+              <svg
+                class="hs-collapse-open:block hidden w-4 h-4"
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div
+          id="navbar-collapse-with-animation"
+          class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block"
+        >
+          <div
+            class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7 md:mt-0 md:pl-7"
+          >
+            <a
+              class="font-medium text-blue-600 md:py-6 dark:text-blue-500"
+              href="#"
+              aria-current="page"
+              >Landing</a
+            >
+            <a
+              class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
+              href="#"
+              >Account</a
+            >
+            <a
+              class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
+              href="#"
+              >Work</a
+            >
+            <a
+              class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
+              href="#"
+              >Blog</a
+            >
 
-						<div
-							class="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:[--trigger:hover] md:py-4"
-						>
-							<button
-								type="button"
-								class="flex items-center w-full text-gray-500 hover:text-gray-400 font-medium dark:text-gray-400 dark:hover:text-gray-500"
-							>
-								Dropdown
-								<svg
-									class="ml-2 w-2.5 h-2.5 text-gray-600"
-									width="16"
-									height="16"
-									viewBox="0 0 16 16"
-									fill="none"
-									xmlns="http://www.w3.org/2000/svg"
-								>
-									<path
-										d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5"
-										stroke="currentColor"
-										stroke-width="2"
-										stroke-linecap="round"
-									></path>
-								</svg>
-							</button>
+            <div
+              class="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:[--trigger:hover] md:py-4"
+            >
+              <button
+                type="button"
+                class="flex items-center w-full text-gray-500 hover:text-gray-400 font-medium dark:text-gray-400 dark:hover:text-gray-500"
+              >
+                Dropdown
+                <svg
+                  class="ml-2 w-2.5 h-2.5 text-gray-600"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  ></path>
+                </svg>
+              </button>
 
-							<div
-								class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 bg-white md:shadow-md rounded-lg p-2 dark:bg-gray-800 md:dark:border dark:border-gray-700 dark:divide-gray-700 before:absolute top-full md:border before:-top-5 before:left-0 before:w-full before:h-5"
-							>
-								<a
-									class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-									href="#"
-								>
-									About
-								</a>
-								<div
-									class="hs-dropdown relative [--strategy:static] md:[--strategy:absolute] [--adaptive:none] md:[--trigger:hover]"
-								>
-									<button
-										type="button"
-										class="w-full flex justify-between w-full items-center text-sm text-gray-800 rounded-md py-2 px-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-									>
-										Sub Menu
-										<svg
-											class="md:-rotate-90 ml-2 w-2.5 h-2.5 text-gray-600"
-											width="16"
-											height="16"
-											viewBox="0 0 16 16"
-											fill="none"
-											xmlns="http://www.w3.org/2000/svg"
-										>
-											<path
-												d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5"
-												stroke="currentColor"
-												stroke-width="2"
-												stroke-linecap="round"
-											></path>
-										</svg>
-									</button>
+              <div
+                class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 bg-white md:shadow-md rounded-lg p-2 dark:bg-gray-800 md:dark:border dark:border-gray-700 dark:divide-gray-700 before:absolute top-full md:border before:-top-5 before:left-0 before:w-full before:h-5"
+              >
+                <a
+                  class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                  href="#"
+                >
+                  About
+                </a>
+                <div
+                  class="hs-dropdown relative [--strategy:static] md:[--strategy:absolute] [--adaptive:none] md:[--trigger:hover]"
+                >
+                  <button
+                    type="button"
+                    class="w-full flex justify-between w-full items-center text-sm text-gray-800 rounded-md py-2 px-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                  >
+                    Sub Menu
+                    <svg
+                      class="md:-rotate-90 ml-2 w-2.5 h-2.5 text-gray-600"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      ></path>
+                    </svg>
+                  </button>
 
-									<div
-										class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 md:mt-2 bg-white md:shadow-md rounded-lg p-2 dark:bg-gray-800 md:dark:border dark:border-gray-700 dark:divide-gray-700 before:absolute md:border before:-right-5 before:top-0 before:h-full before:w-5 top-0 right-full !mx-[10px]"
-									>
-										<a
-											class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-											href="#"
-										>
-											About
-										</a>
-										<a
-											class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-											href="#"
-										>
-											Downloads
-										</a>
-										<a
-											class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-											href="#"
-										>
-											Team Account
-										</a>
-									</div>
-								</div>
+                  <div
+                    class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 md:mt-2 bg-white md:shadow-md rounded-lg p-2 dark:bg-gray-800 md:dark:border dark:border-gray-700 dark:divide-gray-700 before:absolute md:border before:-right-5 before:top-0 before:h-full before:w-5 top-0 right-full !mx-[10px]"
+                  >
+                    <a
+                      class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                      href="#"
+                    >
+                      About
+                    </a>
+                    <a
+                      class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                      href="#"
+                    >
+                      Downloads
+                    </a>
+                    <a
+                      class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                      href="#"
+                    >
+                      Team Account
+                    </a>
+                  </div>
+                </div>
 
-								<a
-									class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-									href="#"
-								>
-									Downloads
-								</a>
-								<a
-									class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-									href="#"
-								>
-									Team Account
-								</a>
-							</div>
-						</div>
+                <a
+                  class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                  href="#"
+                >
+                  Downloads
+                </a>
+                <a
+                  class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                  href="#"
+                >
+                  Team Account
+                </a>
+              </div>
+            </div>
 
-						<a
-							class="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 md:border-l md:border-gray-300 md:my-6 md:pl-6 dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500"
-							href="#"
-						>
-							<svg
-								class="w-4 h-4"
-								xmlns="http://www.w3.org/2000/svg"
-								width="16"
-								height="16"
-								fill="currentColor"
-								viewBox="0 0 16 16"
-							>
-								<path
-									d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"
-								/>
-							</svg>
-							상품등록
-						</a>
-					</div>
-				</div>
-			</nav>
-		</header>
-		<div class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-7 mx-auto">
-			<div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
-				<div class="container mx-auto">
-					<div class="flex flex-col">
-						<div class="-m-1.5 overflow-x-auto">
-							<div class="p-1.5 min-w-full inline-block align-middle">
-								
-								<div class="overflow-hidden">
-									<table
-										class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
-									>
-										<thead>
-											<tr>
-												<th
-													scope="col"
-													class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
-												>
-													Name
-												</th>
-												<th
-													scope="col"
-													class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
-												>
-													Title
-												</th>
-												<th
-													scope="col"
-													class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
-												>
-													Age
-												</th>
-												<th
-													scope="col"
-													class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
-												>
-													Email
-												</th>
-												<th
-													scope="col"
-													class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
-												>
-													Address
-												</th>
-												<th
-													scope="col"
-													class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
-												>
-													Address2
-												</th>
-												<th
-													scope="col"
-													class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase"
-												>
-													Action
-												</th>
-											</tr>
-										</thead>
-										<tbody
-											class="hs-accordion-group divide-y divide-gray-200 dark:divide-gray-700"
-										>
-											<div
-												v-for="order in orders"
-												:key="order.productID"
-												class="hs-accordion"
-												:id="`hs-basic-with-arrow-heading-${order.productID}`"
-											>
-												<tr>
-													<td
-														class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200"
-													>
-														<button
-															class="hs-accordion-toggle hs-accordion-active:text-blue-600 py-3 inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-800 hover:text-gray-500 rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:text-gray-400"
-															:aria-controls="`hs-basic-with-arrow-collapse-${order.productID}`"
-														>
-															<svg
-																class="hs-accordion-active:hidden block w-4 h-4"
-																xmlns="http://www.w3.org/2000/svg"
-																width="24"
-																height="24"
-																viewBox="0 0 24 24"
-																fill="none"
-																stroke="currentColor"
-																stroke-width="2"
-																stroke-linecap="round"
-																stroke-linejoin="round"
-															>
-																<path d="m6 9 6 6 6-6" />
-															</svg>
-															<svg
-																class="hs-accordion-active:block hidden w-4 h-4"
-																xmlns="http://www.w3.org/2000/svg"
-																width="24"
-																height="24"
-																viewBox="0 0 24 24"
-																fill="none"
-																stroke="currentColor"
-																stroke-width="2"
-																stroke-linecap="round"
-																stroke-linejoin="round"
-															>
-																<path d="m18 15-6-6-6 6" />
-															</svg>
-																Order #{{ order.name }}
-														</button>
-													</td>
-													<td
-														class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
-													>
-														{{ order.title }}
-													</td>
-													<td
-														class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
-													>
-														{{ order.email }}
-													</td>
-													<td
-														class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
-													>
-														{{ order.age }}
-													</td>
-													<td
-														class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
-													>
-														{{ order.action }}
-													</td>
+            <a
+              class="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 md:border-l md:border-gray-300 md:my-6 md:pl-6 dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500"
+              href="#"
+            >
+              <svg
+                class="w-4 h-4"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"
+                />
+              </svg>
+              상품등록
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-7 mx-auto">
+      <div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
+        <div class="container mx-auto">
+          <div class="flex flex-col">
+            <div class="-m-1.5 overflow-x-auto">
+              <div class="p-1.5 min-w-full inline-block align-middle">
+                <div class="overflow-hidden">
+                  <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                    <thead>
+                      <tr>
+                        <th
+                          scope="col"
+                          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                        >
+                          Name
+                        </th>
+                        <th
+                          scope="col"
+                          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                        >
+                          Title
+                        </th>
+                        <th
+                          scope="col"
+                          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                        >
+                          Age
+                        </th>
+                        <th
+                          scope="col"
+                          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                        >
+                          Email
+                        </th>
+                        <th
+                          scope="col"
+                          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                        >
+                          Address
+                        </th>
+                        <th
+                          scope="col"
+                          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                        >
+                          Address2
+                        </th>
+                        <th
+                          scope="col"
+                          class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase"
+                        >
+                          Action
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody
+                      class="hs-accordion-group divide-y divide-gray-200 dark:divide-gray-700"
+                    >
+                      <div
+                        v-for="order in orders.value"
+                        :key="order.order_id"
+                        class="hs-accordion"
+                        :id="`hs-basic-with-arrow-heading-${order.order_id}`"
+                      >
+                        <tr>
+                          <td
+                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200"
+                          >
+                            <button
+                              class="hs-accordion-toggle hs-accordion-active:text-blue-600 py-3 inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-800 hover:text-gray-500 rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:text-gray-400"
+                              :aria-controls="`hs-basic-with-arrow-collapse-${order.order_id}`"
+                            >
+                              <svg
+                                class="hs-accordion-active:hidden block w-4 h-4"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              >
+                                <path d="m6 9 6 6 6-6" />
+                              </svg>
+                              <svg
+                                class="hs-accordion-active:block hidden w-4 h-4"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              >
+                                <path d="m18 15-6-6-6 6" />
+                              </svg>
+                              #{{ order.order_number }}
+                            </button>
+                          </td>
+                          <td
+                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
+                          >
+                            {{ moment(order.created_at).format("YYYY.MM.DD HH:mm") }}
+                          </td>
+                          <td
+                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
+                          >
+                            {{ order.order_item_list.length }} 건
+                          </td>
+                          <td
+                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
+                          >
+                            {{ order.member?.name }}
+                          </td>
+                          <td
+                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
+                          >
+                            {{ order.action }}
+                          </td>
 
-													<td
-														class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
-													>
-														{{ order.action2 }}
-													</td>
-													<td
-														class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
-													>
-														<a
-															class="text-blue-500 hover:text-blue-700"
-															href="#"
-															>Delete</a
-														>
-													</td>
-												</tr>
-												<tr>
-													<td colspan="7">
-														<div
-															:id="`hs-basic-with-arrow-collapse-${order.productID}`"
-															class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
-															:aria-labelledby="`hs-basic-with-arrow-heading-${order.productID}`"
-														>
-															<p
-																class="text-gray-800 dark:text-gray-200"
-															>
-																<em
-																	>This is the third item's
-																	accordion body.</em
-																>
-																It is hidden by default, until the
-																collapse plugin adds the appropriate
-																classes that we use to style each
-																element. These classes control the
-																overall appearance, as well as the
-																showing and hiding via CSS
-																transitions.
-															</p>
-														</div>
-													</td>
-												</tr>
-											</div>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                          <td
+                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
+                          >
+                            {{ order.action2 }}
+                          </td>
+                          <td
+                            class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+                          >
+                            <a class="text-blue-500 hover:text-blue-700" href="#"
+                              >Delete</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="7">
+                            <div
+                              :id="`hs-basic-with-arrow-collapse-${order.productID}`"
+                              class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
+                              :aria-labelledby="`hs-basic-with-arrow-heading-${order.productID}`"
+                            >
+                              <p class="text-gray-800 dark:text-gray-200">
+                                <em>{{ order?.delivery }}</em>
+                              </p>
+                            </div>
+                          </td>
+                        </tr>
+                      </div>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-	const orderTotalCount = 20;
+import OrderService from "@/services/OrderService";
+import moment from "moment";
+import { reactive } from "vue";
 
-	let orders = [];
+const orderTotalCount = 20;
 
-	for (let i = 0; i < orderTotalCount; i++) {
-		orders.push({
-			ea: 1,
-			productID: i,
-			name: "John Brown",
-			title: "Regional Paradigm Technician",
-			email: "john@site.com",
-			age: "45",
-			action: "New York No. 1 Lake Park",
-			action2: "Forward Response Developer",
-		});
-	}
+let orders = reactive([]);
+
+async function getRecentOrderList() {
+  const reqestStr = `?size=5`;
+  await OrderService.getRecentOrderList(reqestStr).then((response) => {
+    orders.value = response.data.data?.list;
+    console.log(orders);
+  });
+}
+
+getRecentOrderList();
 </script>

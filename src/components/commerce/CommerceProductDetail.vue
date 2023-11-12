@@ -356,6 +356,7 @@
         <div class="mt-3">
           <div class="inline-flex rounded-md shadow-sm">
             <button
+              id="kakao-article-share"
               type="button"
               class="py-3 px-4 inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-lg first:ml-0 last:rounded-r-lg border font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400"
             >
@@ -527,6 +528,9 @@ export default {
             this.productCount = 1;
             this.updateTotalPrice();
           }
+
+          // 카카오톡 공유하기 버튼 세팅
+          this.setKakaoShareCustomButton();
         }
       });
     },
@@ -576,25 +580,6 @@ export default {
         ],
       });
     },
-    setSwiper() {
-      new Swiper(".swiper", {
-        // Optional parameters
-        direction: "horizontal",
-        loop: true,
-
-        // If we need pagination
-        pagination: {
-          el: ".swiper-pagination",
-          dynamicBullets: "true",
-        },
-
-        // Navigation arrows
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
-    },
   },
   async mounted() {
     for (var i = 0; i < 10; i++) {
@@ -603,36 +588,6 @@ export default {
         value: i + 1,
       });
     }
-
-    // 카카오톡 공유하기 버튼 세팅
-    this.setKakaoShareCustomButton();
-
-    // 이미지 스와이퍼 세팅
-    this.setSwiper();
   },
 };
 </script>
-
-<style>
-@import url(https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css);
-.swiper {
-  width: 100%;
-  height: 100%;
-}
-
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  /* object-fit: cover; */
-}
-</style>
