@@ -5,9 +5,7 @@
         <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-200">
           장바구니
         </h2>
-        <p class="text-base text-gray-600 dark:text-gray-400">
-          주문 수량을 수정, 삭제할 수 있어요.
-        </p>
+        
       </div>
       <div class="flex flex-col">
         <div class="-m-1.5 overflow-x-auto">
