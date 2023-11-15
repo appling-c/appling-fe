@@ -302,21 +302,6 @@
                             style="height: 0px"
                             class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
                           > 
-                        owner_address
-: 
-"자혜로 17번길 16"
-owner_address_detail
-: 
-"101 1404"
-owner_name
-: 
-"최준호"
-owner_tel
-: 
-"01093008039"
-owner_zonecode
-: 
-"1232"
                         -->
                           <div
                             class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"

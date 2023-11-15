@@ -298,7 +298,7 @@
 	import { ref, onMounted } from "vue";
 	import OrderService from "@/services/OrderService";
 	import moment from "moment";
-	import PublicApiService from "@/services/PublicApiService";
+	import PublicApiService from "@/services/PublicAPIService";
 
 	const recentOrderList = ref([]);
 
