@@ -100,15 +100,8 @@
 
 				formData.append("html", blob, "test1.html");
 
-				await CommonService.savebrandshophtml(formData).then((response) => {
-					this.$emit("openModal", {
-						title: "등록 성공",
-						subtitle: `우리 농장 소개하기 페이지가 성공적으로 등록되었어요.`,
-						btn: {
-							confirmText: "확인",
-							cancelText: "취소",
-						},
-					});
+				await CommonService.savebrandshophtml(formData).then(() => {
+					alert("농장 소개페이지가 성공적으로 등록되었어요.");
 					this.$router.push("/admin/product/list");
 				});
 
@@ -121,14 +114,7 @@
 				const size = blob.size;
 
 				if (size >= this.limit_size) {
-					this.$emit("openModal", {
-						title: "이미지 등록 오류",
-						subtitle: `등록한 이미지 크기가 너무 커요.`,
-						btn: {
-							confirmText: "확인",
-							cancelText: "취소",
-						},
-					});
+					alert("이미지 사이즈를 확인해주세요.");
 					return false;
 				}
 

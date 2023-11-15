@@ -16,7 +16,7 @@
 				상품 관리하기
 			</router-link>
 			<router-link
-				to="/admin/brandshop"
+				to="/admin/order/history"
 				class="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold text-blue-500 hover:text-blue-700 focus:outline-none focus:ring-2 ring-offset-gray-50 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm py-3 px-4 dark:ring-offset-slate-900"
 			>
 				<svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -27,13 +27,41 @@
 						stroke-linecap="round"
 					></path>
 				</svg>
-				우리 농장 소개하기
+				주문 관리
 			</router-link>
 		</div>
 	</header>
 
 	<div class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-7 mx-auto">
 		<!-- Grid -->
+
+		<div
+			class="border shadow-sm rounded-xl p-5 mb-4 bg-white rounded-lg md:p-8 dark:bg-gray-800"
+			id="stats"
+			aria-labelledby="stats-tab"
+		>
+			<h3 class="text-xl text-center font-bold leading-none text-gray-900 dark:text-white">
+				{{ averagePriceList[0]?.yyyy }} 년 {{ averagePriceList[0]?.regday }}
+			</h3>
+			<dl
+				class="grid max-w-screen-xl grid-cols-2 gap-8 p-4 mx-auto text-gray-900 sm:grid-cols-3 xl:grid-cols-6 dark:text-white sm:p-8"
+			>
+				<div class="flex flex-col items-center justify-center">
+					<dt class="mb-2 text-3xl font-extrabold">{{ averagePriceList[0]?.price }}원</dt>
+					<dd class="text-gray-500 dark:text-gray-400">평균</dd>
+				</div>
+				<div class="flex flex-col items-center justify-center">
+					<dt class="mb-2 text-3xl font-extrabold">{{ averagePriceList[1]?.price }}원</dt>
+					<dd class="text-gray-500 dark:text-gray-400">평년</dd>
+				</div>
+				<div class="flex flex-col items-center justify-center">
+					<dt class="mb-2 text-3xl font-extrabold">{{ averagePriceList[2]?.price }}원</dt>
+					<dd class="text-gray-500 dark:text-gray-400">
+						{{ averagePriceList[2]?.kindname }}/{{ averagePriceList[2]?.marketname }}
+					</dd>
+				</div>
+			</dl>
+		</div>
 		<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
 			<!-- Card -->
 			<div
@@ -42,7 +70,7 @@
 				<div class="inline-flex justify-center items-center">
 					<span class="w-2 h-2 inline-block bg-gray-500 rounded-full mr-2"></span>
 					<span class="text-base font-semibold uppercase text-gray-600 dark:text-gray-400"
-						>내가 올린 상품</span
+						>판매중인 상품</span
 					>
 				</div>
 
@@ -93,7 +121,7 @@
 				<div class="inline-flex justify-center items-center">
 					<span class="w-2 h-2 inline-block bg-green-500 rounded-full mr-2"></span>
 					<span class="text-base font-semibold uppercase text-gray-600 dark:text-gray-400"
-						>판매 완료</span
+						>누적 주문</span
 					>
 				</div>
 
@@ -143,7 +171,7 @@
 				<div class="inline-flex justify-center items-center">
 					<span class="w-2 h-2 inline-block bg-red-500 rounded-full mr-2"></span>
 					<span class="text-base font-semibold uppercase text-gray-600 dark:text-gray-400"
-						>판매 완료 금액</span
+						>월별 누적 수익금</span
 					>
 				</div>
 
@@ -193,101 +221,6 @@
 			<!-- End Card -->
 		</div>
 		<!-- End Grid -->
-
-		<div
-			style="margin-top: 2rem"
-			class="px-4 flex flex-col bg-white border shadow-sm rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]"
-		>
-			<div class="h-80 overflow-y-auto p-4 md:p-5">
-				<h3 class="text-lg font-bold text-gray-800 dark:text-white">최근 주문 내역</h3>
-				<div class="flex flex-col">
-					<div class="-m-1.5 overflow-x-auto">
-						<div class="p-1.5 min-w-full inline-block align-middle">
-							<div class="overflow-hidden">
-								<table
-									class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
-								>
-									<caption
-										class="py-2 text-left text-base text-gray-600 dark:text-gray-500"
-									></caption>
-									<thead>
-										<tr>
-											<th
-												scope="col"
-												class="px-6 py-3 text-left text-base font-medium text-gray-500 uppercase"
-											>
-												이름
-											</th>
-											<th
-												scope="col"
-												class="px-6 py-3 text-left text-base font-medium text-gray-500 uppercase"
-											>
-												지역
-											</th>
-											<th
-												scope="col"
-												class="px-6 py-3 text-left text-base font-medium text-gray-500 uppercase"
-											>
-												주문내역
-											</th>
-											<th
-												scope="col"
-												class="px-6 py-3 text-right text-base font-medium text-gray-500 uppercase"
-											>
-												Action
-											</th>
-										</tr>
-									</thead>
-									<tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-										<tr
-											v-for="orderItem in recentOrderList"
-											:key="orderItem.id"
-										>
-											<td
-												class="px-6 py-4 whitespace-nowrap text-base font-medium text-gray-800 dark:text-gray-200"
-											>
-												{{ orderItem?.member?.name }}
-											</td>
-											<td
-												class="px-6 py-4 whitespace-nowrap text-base text-gray-800 dark:text-gray-200"
-											>
-												경기 안성
-											</td>
-											<td
-												class="px-6 py-4 whitespace-nowrap text-base text-gray-800 dark:text-gray-200"
-											>
-												[{{
-													moment(orderItem.created_at).format(
-														"YYYY.MM.DD HH:mm"
-													)
-												}}]
-												{{ orderItem.order_item_list[0]?.main_title }}
-												{{ orderItem.order_item_list[0]?.option?.name }}
-
-												{{
-													orderItem.order_item_list.length - 1 > 0
-														? ` 외 ${
-																orderItem.order_item_list.length - 1
-														  } 건`
-														: ""
-												}}
-											</td>
-											<td
-												class="px-6 py-4 whitespace-nowrap text-right text-base font-medium"
-											>
-												<a class="text-blue-500 hover:text-blue-700"
-													>자세히보기</a
-												>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div>
 
 	<!-- End Tab Nav -->
@@ -295,25 +228,19 @@
 </template>
 
 <script setup lang="ts">
-	import { ref, onMounted } from "vue";
+	import { ref, onMounted, reactive } from "vue";
 	import OrderService from "@/services/OrderService";
 	import moment from "moment";
 	import PublicApiService from "@/services/PublicAPIService";
 
-	const recentOrderList = ref([]);
+	let averagePriceList = ref([]);
 
-	// 최근 주문 내역 불러오기
-	async function getRecentOrderList() {
-		const reqestStr = `?size=5`;
-		await OrderService.getRecentOrderList(reqestStr).then((response) => {
-			recentOrderList.value = response.data.data?.list;
+	// 사과 평균 판매가 가져오기(kamis)
+	async function getAveragePriceList() {
+		await PublicApiService.getPublicApi().then((response) => {
+			averagePriceList = response?.data.data?.item;
 		});
 	}
 
-	PublicApiService.getPublicApi().then((response) => {
-		console.log(response);
-	});
-	getRecentOrderList();
-
-	console.log(recentOrderList.value);
+	getAveragePriceList();
 </script>

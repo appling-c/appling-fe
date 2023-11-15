@@ -51,7 +51,7 @@ instance.interceptors.response.use(
 			if (!refresh_token) {
 				alert("사용자 정보가 만료되었습니다. 다시 로그인해주세요.");
 				UserAthendicateService.logout().then(() => {
-					return (location.href = `/commerce/main`);
+					return (location.href = `/login`);
 				});
 			}
 

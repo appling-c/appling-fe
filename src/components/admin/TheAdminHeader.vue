@@ -653,18 +653,12 @@
 	</div>
 </template>
 <script lang="ts">
-	import { defineComponent, defineProps, onMounted, ref, computed } from "vue";
-	import { userInfoInterface } from "@/types/auth";
+	import { defineComponent, onMounted, ref, computed } from "vue";
 	import UserAthendicateService from "@/services/UserAthendicateService";
 	import { useStore } from "vuex";
 
-	interface Props {
-		userInfoInterface: userInfoInterface;
-	}
-
 	export default defineComponent({
-		props: defineProps<Props>(),
-		setup(props) {
+		setup() {
 			const store = useStore();
 
 			let depth1 = ref("");
@@ -712,63 +706,8 @@
 				depth1,
 				depth2,
 				currentPath,
+				userInfoInterface,
 			};
 		},
 	});
 </script>
-
-<!-- 
-<script>
-	import router from "../../plugins/router";
-	import UserAthendicateService from "@/services/UserAthendicateService";
-	import { mapGetters } from "vuex";
-import userInfoInterface from '../../types/auth';
-import productSearchInterface from '../../types/auth';
-
-	export default {
-		computed: {
-			...mapGetters("auth", ["userInfoInterface"]),
-		},
-		data() {
-			return {
-				depth1: "",
-				depth2: "",
-				currentPath: "",
-			};
-		},
-		methods: {
-			async logout() {
-				UserAthendicateService.logout();
-				location.href = "/commerce/main";
-			},
-
-			moveto(path, depth1, depth2, cp1) {
-				location.href = path;
-				this.setItem(depth1, depth2, cp1);
-			},
-
-			setItem(d1, d2, cp1) {
-				localStorage.setItem("depth1", d1);
-				localStorage.setItem("depth2", d2);
-				localStorage.setItem("currentPath", cp1);
-			},
-
-			account() {
-				this.setItem("계정관리", "");
-				location.href = "/account";
-			},
-
-			movetoCommerce() {
-				this.setItem("", "");
-				location.href = "/commerce";
-				//router.push("/commerce");
-			},
-		},
-		mounted() {
-			console.log(this.userInfoInterface);
-			this.depth1 = localStorage.getItem("depth1");
-			this.depth2 = localStorage.getItem("depth2");
-			this.currentPath = localStorage.getItem("currentPath");
-		},
-	};
-</script> -->
