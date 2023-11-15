@@ -4,65 +4,66 @@ import store from "../store";
 import Cookies from "js-cookie";
 
 let instance: AxiosInstance = axios.create({
-  //baseURL: import.meta.env.VITE_APP_BASE_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
+	//baseURL: import.meta.env.VITE_APP_BASE_URL,
+	headers: {
+		"Content-Type": "application/json",
+	},
 });
 
 if (import.meta.env.PROD) {
-  instance.defaults.baseURL = import.meta.env.VITE_APP_BASE_URL;
+	instance.defaults.baseURL = import.meta.env.VITE_APP_BASE_URL;
 }
 
 instance.interceptors.request.use(
-  (config) => {
-    // 세션스토리지에 저장된 토큰을 헤더에 저장
+	(config) => {
+		// 세션스토리지에 저장된 토큰을 헤더에 저장
 
-    const access_token = Cookies.get("access_token");
+		const access_token = Cookies.get("access_token");
 
-    if (access_token) {
-      config.headers["Authorization"] = `Bearer ${access_token}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
+		if (access_token) {
+			config.headers["Authorization"] = `Bearer ${access_token}`;
+		}
+		return config;
+	},
+	(error) => {
+		return Promise.reject(error);
+	}
 );
 
 instance.interceptors.response.use(
-  (response) => {
-    console.log("axios.js response : ", response);
-    return response;
-  },
-  (error) => {
-    const {
-      config,
-      response: { status },
-    } = error;
+	(response) => {
+		console.log("axios.js response : ", response);
+		return response;
+	},
+	(error) => {
+		const {
+			config,
+			response: { status },
+		} = error;
 
-    const refresh_token = Cookies.get("refresh_token");
+		const refresh_token = Cookies.get("refresh_token");
 
-    if (status == 403 || status == 401) {
-      // 토큰없음, 토큰만료
-      const originconfig = config;
+		if (status == 403 || status == 401) {
+			// 토큰없음, 토큰만료
+			const originconfig = config;
 
-      // 토큰이 없고, 리프레시 토큰도 없는 경우 > 로그인 만료
-      if (!refresh_token) {
-        alert("사용자 정보가 만료되었습니다. 메인으로 이동합니다.");
-        location.href = `/commerce/main`;
-        return;
-      }
+			// 토큰이 없고, 리프레시 토큰도 없는 경우 > 로그인 만료
+			if (!refresh_token) {
+				alert("사용자 정보가 만료되었습니다. 다시 로그인해주세요.");
+				UserAthendicateService.logout().then(() => {
+					return (location.href = `/commerce/main`);
+				});
+			}
 
-      // 토큰 재발급 요청
-      return UserAthendicateService.memberaccesstoken().then((response) => {
-        console.log("토큰 재발급 요청");
-        const retry = instance(originconfig);
-        return retry;
-      });
-    } else {
-      return Promise.reject(error);
-    }
-  }
+			// 토큰 재발급 요청
+			return UserAthendicateService.memberaccesstoken().then((response) => {
+				console.log("토큰 재발급 요청");
+				const retry = instance(originconfig);
+				return retry;
+			});
+		} else {
+			return Promise.reject(error);
+		}
+	}
 );
 export default instance;
