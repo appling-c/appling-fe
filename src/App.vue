@@ -1,8 +1,12 @@
 <script>
 import { mapGetters } from "vuex";
+import { initFlowbite } from "flowbite";
 export default {
   computed: {
     ...mapGetters("cart", ["spinnerStatus"]),
+  },
+  mounted() {
+    initFlowbite();
   },
 };
 </script>
@@ -16,15 +20,7 @@ export default {
       ></div>
       <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <div
-          class="
-            animate-spin
-            inline-block
-            w-6
-            h-6
-            border-[3px] border-current border-t-transparent
-            text-blue-600
-            rounded-full
-          "
+          class="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-blue-600 rounded-full"
           role="status"
           aria-label="loading"
         >
@@ -36,7 +32,9 @@ export default {
       <!-- Grid -->
       <div class="text-center">
         <div>
-          <a class="flex-none text-base font-semibold text-black dark:text-white" aria-label="Brand"
+          <a
+            class="flex-none text-base font-semibold text-black dark:text-white"
+            aria-label="Brand"
             >🍎Appling</a
           >
         </div>
