@@ -27,7 +27,6 @@
               >에 문의해보세요.
             </p>
           </blockquote>
-
         </div>
 
         <div
@@ -380,12 +379,10 @@ import ProductService from "@/services/ProductService";
 import TheCounter from "@/components/commerce/common/TheCounter.vue";
 
 import productDetailInterface from "../../types/auth";
-import TheProductDetailSidebar from "./productDetail/TheProductDetailSidebar.vue";
 import Swiper from "https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs";
 
 export default {
   components: {
-    TheProductDetailSidebar,
     TheCounter,
   },
   data() {

@@ -1,9 +1,7 @@
 <script>
-import TheSearchBar from "./common/TheSearchBar.vue";
 import { mapActions, mapGetters } from "vuex";
 import ProductService from "@/services/ProductService";
 export default {
-  components: { TheSearchBar },
 
   data() {
     return {
