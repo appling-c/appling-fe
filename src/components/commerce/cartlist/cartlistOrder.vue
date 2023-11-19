@@ -5,7 +5,6 @@
         <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-200">
           장바구니
         </h2>
-        
       </div>
       <div class="flex flex-col">
         <div class="-m-1.5 overflow-x-auto">
@@ -73,14 +72,17 @@
                       <span
                         >{{ invent.productName }}
                         <span v-if="invent?.productType == 'OPTION'">
-                          / {{ invent.targetOption?.name }} (+{{
+                          / {{ invent.targetOption?.name }}
+                          <!-- (+{{
                             invent.targetOption?.extra_price.toLocaleString()
-                          }}원)
+                          }}원) -->
                         </span>
-                        <span class="text-xs"
-                          ><br />1EA : (할인가) ₩{{
-                            invent.sellingPriceDP.toLocaleString()
-                          }}
+                        <span class="text-base"
+                          ><br /><span
+                            class="bg-pink-100 text-pink-800 text-base font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300"
+                            >할인가</span
+                          >
+                          ₩{{ invent.sellingPriceDP.toLocaleString() }}
                         </span>
                       </span>
                     </td>
@@ -335,17 +337,9 @@ function deleteItem(index) {
 }
 
 function updateCartList(inventoryItem) {
-  const { count, productID, productName, sellingPriceDP } = inventoryItem;
-
+  const { count, sellingPriceDP } = inventoryItem;
   let productTotalPrice = count * sellingPriceDP;
-
-  const addCartItem = {
-    count,
-    productID,
-    productName,
-    productTotalPrice,
-    //price: productPrice,
-  };
+  const addCartItem = { ...inventoryItem, productTotalPrice };
 
   updateCartItem(addCartItem);
   setTotalPrice();
@@ -375,7 +369,7 @@ async function updateNextStep() {
     }
     order_list.push(orderItem);
   });
-
+  console.log(order_list);
   const response = await saveTempOrderList(order_list);
   let order_id = response.data.data.order_id;
 

@@ -42,6 +42,18 @@ export default {
           (response) => {
             if (response.data.code == "0000") {
               const userdata = response.data.data;
+
+              if (userdata.option_list.length > 0) {
+                const minValue = Object.entries(userdata.option_list).reduce(
+                  (min, [key, value]) => {
+                    return value["extra_price"] < min ? value["extra_price"] : min;
+                  },
+                  Infinity
+                );
+                userdata["lowPrice"] = minValue;
+              } else {
+                userdata["lowPrice"] = userdata.price;
+              }
               this.products.push(userdata);
             }
           }
@@ -49,6 +61,7 @@ export default {
       }
     },
   },
+
   async mounted() {
     // this.getproductlist().then((response) => {
     // 	this.updateSpinnerStatus(false);
@@ -115,7 +128,7 @@ export default {
 
         <footer class="mt-6">
           <div class="font-semibold text-gray-800 dark:text-gray-200">
-            ₩{{ product.price.toLocaleString() }} 원부터
+            ₩ {{ (product.price + product.lowPrice).toLocaleString() }} 원부터
           </div>
           <!-- Buttons -->
           <div class="mt-8 grid gap-3 w-full sm:inline-flex sm:justify-center">
@@ -183,7 +196,7 @@ export default {
                             class="mt-7 font-bold text-3xl text-gray-800 dark:text-gray-200"
                           >
                             <span class="font-bold text-xl -mr-2">₩</span>
-                            {{ option.extra_price.toLocaleString() }}
+                            {{ (product.price + option.extra_price).toLocaleString() }}
                           </span>
                         </div>
 

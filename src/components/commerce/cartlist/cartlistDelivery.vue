@@ -371,7 +371,7 @@ async function updateNextStep() {
       acc[`recipient_${key}`] = recipientInfo[key];
       return acc;
     }, {});
-  
+
   const payload = {
     ...ownerInfoArr,
     ...recipientArr,
@@ -379,6 +379,7 @@ async function updateNextStep() {
   };
 
   const response = await OrderService.setOrder(payload);
+  console.log(response);
   emit("updateOrderNumber", response.data.data.order_number);
   emit("updateStep", "3");
 }

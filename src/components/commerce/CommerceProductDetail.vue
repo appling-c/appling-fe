@@ -28,18 +28,6 @@
             </p>
           </blockquote>
 
-          <!-- <div class="inline-flex items-center mt-10 text-center p-4 sm:px-7">
-            <ul class="flex flex-col sm:flex-row">
-              <li
-                v-for="option in optionList"
-                :key="option.id"
-                class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ml-px sm:mt-0 sm:first:rounded-tr-none sm:first:rounded-bl-lg sm:last:rounded-bl-none sm:last:rounded-tr-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white"
-              >
-                {{ option.name }} <br />
-                ₩ {{ option.extra_price.toLocaleString() }}
-              </li>
-            </ul>
-          </div> -->
         </div>
 
         <div
@@ -63,7 +51,9 @@
               <div class="h-full bg-white lg:mt-px lg:py-5 px-8 dark:bg-slate-900">
                 <span class="mt-7 font-bold text-3xl text-gray-800 dark:text-gray-200">
                   <span class="font-bold text-xl -mr-2">₩</span>
-                  {{ option.extra_price.toLocaleString() }}
+                  {{
+                    Number(productDetailItem?.price + option.extra_price).toLocaleString()
+                  }}
                 </span>
               </div>
 
@@ -469,8 +459,8 @@ export default {
         totalPrice = this.productDetailItem?.price * this.productCount;
       } else {
         totalPrice =
-          this.productDetailItem?.price +
-          this.targetOption?.extra_price * this.productCount;
+          (this.productDetailItem?.price + this.targetOption?.extra_price) *
+          this.productCount;
       }
 
       this.productPrice = totalPrice;

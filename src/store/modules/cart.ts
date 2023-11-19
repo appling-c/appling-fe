@@ -30,14 +30,21 @@ const actions = {
   updateCartItem({ state, commit }, product) {
     // 주문내역 > 상품 업데이트
     let inventory = toRaw(state.inventory);
-    let cartItem = inventory.findIndex(
-      (item) => Number(item.productID) === Number(product.productID)
-    );
-
-    if (cartItem > -1) {
-      inventory[cartItem].count = product.count;
-      inventory[cartItem].productTotalPrice = product.productTotalPrice;
+    const productType = product.type;
+    let cartItem;
+    if (productType === "NORMAL") {
+      cartItem = inventory?.findIndex((item) => item?.productID === product.productID);
+    } else {
+      cartItem = inventory?.findIndex(
+        (item) =>
+          item?.productID === product.productID &&
+          item.targetOption.option_id === product.targetOption.option_id
+      );
     }
+
+    inventory[cartItem].count = inventory[cartItem].count * 1;
+    inventory[cartItem]["productTotalPrice"] = product.productTotalPrice;
+
     commit("updateProductCart", inventory);
   },
 

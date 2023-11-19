@@ -62,6 +62,11 @@ export default {
       return this.ea;
     },
   },
+  watch: {
+    selectCount(value) {
+      this.count = value;
+    },
+  },
   methods: {
     /**
      * Increments the product count and updates the product price.
