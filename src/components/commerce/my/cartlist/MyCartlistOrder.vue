@@ -295,7 +295,7 @@ import { ref, computed, onMounted, defineProps, defineEmits, toRaw } from "vue";
 import { useStore, mapActions } from "vuex";
 import OrderService from "@/services/OrderService";
 
-import router from "../../../plugins/router";
+import router from "@/plugins/router";
 
 const emit = defineEmits(["updateStep", "setOrderId"]);
 

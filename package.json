@@ -17,6 +17,7 @@
     "flowbite": "^1.8.1",
     "html2canvas": "^1.4.1",
     "js-cookie": "^3.0.5",
+    "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "preline": "^1.8.0",
     "tui-date-picker": "^4.3.3",
@@ -35,5 +36,4 @@
     "vite": "^4.3.2"
   },
   "NODE_ENV": "development"
- 
 }

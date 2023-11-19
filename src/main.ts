@@ -4,7 +4,7 @@ import App from "./App.vue";
 import "preline";
 import axios from "./plugins/axios";
 import router from "./plugins/router";
-import 'flowbite';
+
 import store from "./store";
 
 const app = createApp(App);

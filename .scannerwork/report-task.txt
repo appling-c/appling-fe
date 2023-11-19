@@ -1,6 +1,0 @@
-projectKey=appling-fe
-serverUrl=http://39.118.30.247:9000
-serverVersion=10.0.0.68432
-dashboardUrl=http://39.118.30.247:9000/dashboard?id=appling-fe
-ceTaskId=AYj34UEfhap4Wdz17XTH
-ceTaskUrl=http://39.118.30.247:9000/api/ce/task?id=AYj34UEfhap4Wdz17XTH
