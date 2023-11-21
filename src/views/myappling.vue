@@ -14,9 +14,7 @@
       <div
         class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 mb-4"
       >
-        <div class="py-7 mx-auto max-w-2xl">
-          <router-view></router-view>
-        </div>
+        <router-view></router-view>
       </div>
     </main>
   </div>
