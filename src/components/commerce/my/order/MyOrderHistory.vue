@@ -106,3 +106,26 @@
     </div>
   </div>
 </template>
+
+
+<script setup lang="ts">
+import OrderService from "@/services/OrderService";
+import moment from "moment";
+import { reactive } from "vue";
+
+const orderTotalCount = 20;
+
+let orders = reactive([]);
+
+async function getRecentOrderListMember() {
+  const reqestStr = `?search=&page=0&size=5&status=complete`;
+  await OrderService.getRecentOrderListMember(reqestStr).then((response) => {
+    orders.value = response.data.data?.list;
+    console.log(orders);
+  });
+}
+
+getRecentOrderListMember();
+</script>
+
+<style></style>
