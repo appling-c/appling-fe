@@ -1,5 +1,4 @@
 <template>
-  
   <div>
     <button
       data-drawer-target="sidebar-user"

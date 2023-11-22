@@ -2,7 +2,7 @@
   <TheCommerceHeader />
   <div class="antialiased bg-white">
     <TheMyApplingHeader />
-    <main class="p-4 pb-4 md:ml-64 h-auto pt-20">
+    <main class="p-4 pb-4 md:ml-64 h-auto sm:pt-20 pt-10">
       <header>
         <p class="mb-2 text-sm font-semibold text-blue-600">마이애플링</p>
         <h1
@@ -21,6 +21,6 @@
 </template>
 
 <script setup lang="ts">
-	import TheCommerceHeader from "../components/commerce/common/TheCommerceHeader.vue";
-	import TheMyApplingHeader from "../components/commerce/my/TheMyApplingHeader.vue";
+import TheCommerceHeader from "../components/commerce/common/TheCommerceHeader.vue";
+import TheMyApplingHeader from "../components/commerce/my/TheMyApplingHeader.vue";
 </script>
