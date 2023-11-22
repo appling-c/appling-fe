@@ -26,7 +26,7 @@
       </div>
       <div class="text-end">
         <a
-          href="#"
+          href="/my/order/history/detail/1"
           class="inline-flex items-center font-medium text-primary-600 hover:text-primary-800 dark:text-primary-500 dark:hover:text-primary-700"
         >
           <span class="sm:block hidden"> 주문상세</span>
@@ -109,6 +109,7 @@
       </div>
     </div>
   </div>
+  
 </template>
 
 
