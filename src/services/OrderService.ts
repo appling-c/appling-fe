@@ -12,6 +12,17 @@ const ENDPOINT = {
 
 class OrderService {
   /**
+   * member 주문 상세
+   */
+  public async getRecentOrderListMemberDetail(payload: String) {
+    return await instance
+      .get(`${ENDPOINT.API_ORDER_COMPLETE_LIST_MEMBER}/${payload}`)
+      .then((response: AxiosResponse) => {
+        console.log(response);
+        return response;
+      });
+  }
+  /**
    * 임시 주문서 등록하기
    */
   public async saveTempOrderList(payload: Object) {

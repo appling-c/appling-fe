@@ -529,7 +529,7 @@ export default {
       return this.$router.push(`/brandshop/preview/${id}`);
     },
     movetocartlist() {
-      return this.$router.push(`/commerce/cartlist`);
+      return this.$router.push(`/my/cartlist`);
     },
     setKakaoShareCustomButton() {
       let item = this.productDetailItem;

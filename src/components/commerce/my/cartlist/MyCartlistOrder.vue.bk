@@ -337,7 +337,7 @@
 	async function updateNextStep() {
 		const islogin = userInfoInterface?.value?.islogin;
 		if (!userInfoInterface.value || !islogin) {
-			return router.push("/login?resultUrl=/commerce/cartlist");
+			return router.push("/login?resultUrl=/my/cartlist");
 		}
 
 		let order_list = [];
