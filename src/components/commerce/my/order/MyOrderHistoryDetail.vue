@@ -14,10 +14,7 @@
 			<div class="col-span-3">2023.11.19</div>
 			<div class="col-span-1">주문 상태</div>
 			<div class="col-span-3">
-				<span
-					class="bg-blue-100 text-blue-800 text-base font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300"
-					>배송 준비중</span
-				>
+				<the-order-status-chip color="blue" />
 			</div>
 		</div>
 
@@ -29,83 +26,10 @@
 					<span>상품정보</span>
 				</h2>
 			</div>
+
 			<div class="col-span-4">
-				<div class="p-2 mx-4 grid grid-cols-4 gap-4">
-                    <div class="col-span-1">
-						<img
-							class="h-full w-1/2 rounded-lg"
-							src="https://appling-s3-bucket.s3.ap-northeast-2.amazonaws.com/image/2/20231026/105017_0.png"
-							alt="image description"
-						/>
-					</div>
-
-					<div class="col-span-3">
-						<p
-							class="mb-4 text-xl font-extrabold leading-none text-gray-900 md:text-2xl dark:text-white"
-						>
-							티피링크 미니 스마트 Wi-Fi 플러그 P100
-						</p>
-
-						<dl class="flex items-center space-x-6">
-							<div>
-								<dt
-									class="mb-2 font-semibold leading-none text-gray-900 dark:text-white"
-								>
-									수량
-								</dt>
-								<dd
-									class="mb-4 font-light text-slate-900 sm:mb-5 dark:text-gray-400"
-								>
-									4
-								</dd>
-							</div>
-							<div>
-								<dt
-									class="mb-2 font-semibold leading-none text-gray-900 dark:text-white"
-								>
-									선택 옵션
-								</dt>
-								<dd
-									class="mb-4 font-light text-slate-900 sm:mb-5 dark:text-gray-400"
-								>
-									12kg
-								</dd>
-							</div>
-							<div>
-								<dt
-									class="mb-2 font-semibold leading-none text-gray-900 dark:text-white"
-								>
-									가격
-								</dt>
-								<dd
-									class="mb-4 font-light text-slate-900 sm:mb-5 dark:text-gray-400"
-								>
-									183,000원
-								</dd>
-							</div>
-						</dl>
-						<div class="flex items-center space-x-4">
-							<button
-								type="button"
-								class="text-gray-900 bg-white inline-flex items-center border border-gray-200 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
-							>
-								배송조회
-							</button>
-							<button
-								type="button"
-								class="text-gray-900 bg-white inline-flex items-center border border-gray-200 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
-							>
-								장바구니 담기
-							</button>
-							<button
-								type="button"
-								class="inline-flex items-center text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900"
-							>
-								주문취소
-							</button>
-						</div>
-					</div>
-				</div>
+				<the-order-product-card />
+				<the-order-product-card />
 			</div>
 		</div>
 
@@ -243,8 +167,10 @@
 
 <script setup lang="ts">
 	import OrderService from "@/services/OrderService";
+	import TheOrderStatusChip from "./TheOrderStatusChip.vue";
 	import moment from "moment";
 	import { reactive } from "vue";
+	import TheOrderProductCard from "./TheOrderProductCard.vue";
 
 	const orderTotalCount = 20;
 
