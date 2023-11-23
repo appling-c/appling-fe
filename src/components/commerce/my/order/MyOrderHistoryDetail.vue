@@ -210,7 +210,6 @@ export default {
   },
   async created() {
     this.order_id = this.$route.params.id;
-    console.log(this.order_id);
     await this.getRecentOrderMemberDetail();
   },
 };

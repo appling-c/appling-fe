@@ -374,14 +374,16 @@
   <!-- End Sticky Share Group -->
 </template>
 <script lang="ts">
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import ProductService from "@/services/ProductService";
 import TheCounter from "@/components/commerce/common/TheCounter.vue";
 
 import productDetailInterface from "../../types/auth";
-import Swiper from "https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs";
 
 export default {
+  computed: {
+    ...mapGetters("auth", ["userInfoInterface"]),
+  },
   components: {
     TheCounter,
   },
@@ -465,6 +467,13 @@ export default {
 
     // 장바구니 담기
     async saveCartList() {
+      const islogin = this.userInfoInterface?.value?.islogin;
+      if (!this.userInfoInterface?.value || !islogin) {
+        return this.$router.push(
+          `/login?resultUrl=/commerce/detail/${this.productDetailItem?.product_id}`
+        );
+      }
+
       let addCartItem = {
         originPrice: this.productDetailItem.origin_price, // 정상가
         price: this.productDetailItem.price, // 판매가

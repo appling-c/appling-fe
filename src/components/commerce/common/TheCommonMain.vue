@@ -2,7 +2,6 @@
 import { mapActions, mapGetters } from "vuex";
 import ProductService from "@/services/ProductService";
 export default {
-
   data() {
     return {
       categorys: [],
@@ -125,7 +124,7 @@ export default {
         </figure>
 
         <footer class="mt-6">
-          <div class="font-semibold text-gray-800 dark:text-gray-200">
+          <div class="font-bold text-2xl text-gray-800 dark:text-gray-200">
             ₩ {{ (product.price + product.lowPrice).toLocaleString() }} 원부터
           </div>
           <!-- Buttons -->

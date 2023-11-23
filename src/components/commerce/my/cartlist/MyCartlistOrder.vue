@@ -153,34 +153,36 @@
             </div>
           </div>
         </div>
-        <div class="font-light text-gray-500 dark:text-gray-400">최종 주문 금액</div>
-        <div class="mb-4 text-5xl font-extrabold text-gray-900">
-          {{ totalPrice?.toLocaleString() }}원
-        </div>
-        <a
-          @click="updateNextStep()"
-          class="pb-4 flex justify-center text-white w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent text-indigo-500 text-base border-2 border-blue-200 font-semibold text-blue-500 hover:text-white hover:bg-blue-500 hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-          >구매하기</a
-        >
-
-        <a
-          @click="movetocartlist()"
-          class="mt-4 flex items-center mb-4 font-medium text-primary-600 hover:text-primary-700 dark:text-primary-500"
-        >
-          계속 쇼핑하기
-          <svg
-            class="ml-2 w-5 h-5"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
+        <div class="p-6 lg:p-8">
+          <div class="font-light text-gray-500 dark:text-gray-400">최종 주문 금액</div>
+          <div class="mb-4 text-3xl font-extrabold text-gray-900">
+            {{ totalPrice?.toLocaleString() }}원
+          </div>
+          <a
+            @click="updateNextStep()"
+            class="pb-4 flex justify-center text-white w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent text-indigo-500 text-base border-2 border-blue-200 font-semibold text-blue-500 hover:text-white hover:bg-blue-500 hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+            >구매하기</a
           >
-            <path
-              fill-rule="evenodd"
-              d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
-        </a>
+
+          <a
+            @click="movetocartlist()"
+            class="mt-4 flex items-center mb-4 font-medium text-primary-600 hover:text-primary-700 dark:text-primary-500"
+          >
+            계속 쇼핑하기
+            <svg
+              class="ml-2 w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
