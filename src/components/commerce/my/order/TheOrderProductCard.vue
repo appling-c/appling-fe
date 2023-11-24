@@ -9,49 +9,43 @@
     </div>
     <div class="col-span-4">
       <div>
-        <p
-          class="mb-4 text-base font-extrabold leading-none text-gray-900 md:text-2xl dark:text-white"
-        >
+        <p class="mb-4 text-base font-extrabold leading-none text-gray-900 md:text-2xl">
           {{ productItem?.order_product?.main_title }}
         </p>
 
-        <div class="block sm:hidden mx-4 grid grid-cols-3 gap-4">
+        <div class="sm:hidden sm:mx-4 grid grid-cols-3 gap-4">
           <div
             v-if="productItem?.order_product?.type == 'OPTION'"
-            class="col-span-1 border-r-2 pr-2 w-max"
+            class="col-span-3 sm:col-span-1 sm:border-r-2 pr-2 w-max"
           >
             {{ productItem?.order_product?.option?.name }}
           </div>
 
-          <div class="col-span-1 border-r-2 pr-2 w-max">{{ productItem.ea }}개</div>
+          <div class="col-span-3 sm:col-span-1 sm:border-r-2 pr-2 w-max">
+            {{ productItem.ea }}개
+          </div>
 
-          <div class="col-span-1 w-max">
+          <div class="col-span-3 sm:col-span-1 w-max">
             {{ productItem.product_total_price?.toLocaleString() }}원
           </div>
         </div>
 
         <dl class="sm:flex hidden flex items-center space-x-6">
           <div>
-            <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">
-              수량
-            </dt>
-            <dd class="mb-4 font-light text-slate-900 sm:mb-5 dark:text-gray-400">
+            <dt class="mb-2 font-semibold leading-none text-gray-900">수량</dt>
+            <dd class="mb-4 font-light text-slate-900 sm:mb-5">
               {{ productItem.ea }}
             </dd>
           </div>
-          <div v-if="productItem?.order_product?.type == 'OPTION'">
-            <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">
-              선택 옵션
-            </dt>
-            <dd class="mb-4 font-light text-slate-900 sm:mb-5 dark:text-gray-400">
+          <div v-show="productItem?.order_product?.type == 'OPTION'">
+            <dt class="mb-2 font-semibold leading-none text-gray-900">선택 옵션</dt>
+            <dd class="mb-4 font-light text-slate-900 sm:mb-5">
               {{ productItem?.order_product?.option?.name }}
             </dd>
           </div>
           <div>
-            <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">
-              가격
-            </dt>
-            <dd class="mb-4 font-light text-slate-900 sm:mb-5 dark:text-gray-400">
+            <dt class="mb-2 font-semibold leading-none text-gray-900">가격</dt>
+            <dd class="mb-4 font-light text-slate-900 sm:mb-5">
               {{ productItem?.product_total_price?.toLocaleString() }}원
             </dd>
           </div>

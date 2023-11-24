@@ -1,6 +1,24 @@
 <template>
-  <div class="p-10 mx-auto w-full">
+  <div class="p-8 sm:p-10 mx-auto w-full">
     <div class="pb-10 mx-4 grid grid-cols-4 gap-4 mb-7 border-b border-gray-200">
+      <a
+        @click="movetoOrderList()"
+        class="col-span-4 mt-4 flex items-center mb-4 font-medium text-primary-600 hover:text-primary-700 dark:text-primary-500"
+      >
+        주문 내역으로 돌아가기
+        <svg
+          class="ml-2 w-5 h-5"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+      </a>
       <div class="col-span-4">
         <h2
           class="mb-2 text-xl font-semibold leading-none text-gray-900 md:text-2xl dark:text-white"
@@ -8,14 +26,14 @@
           <span>주문정보</span>
         </h2>
       </div>
-      <div class="col-span-1">주문번호</div>
-      <div class="col-span-3">32100019973292</div>
-      <div class="col-span-1">주문일</div>
-      <div class="col-span-3">2023.11.19</div>
-      <div class="col-span-1">주문 상태</div>
-      <!-- <div class="col-span-3">
+      <div class="hidden sm:block col-span-1">주문번호</div>
+      <div class="col-span-4 sm:col-span-3">{{ orderNumber }}</div>
+      <div class="hidden sm:block col-span-1">주문일</div>
+      <div class="col-span-4 sm:col-span-3">{{ orders.created_at }}</div>
+      <div class="hidden sm:block col-span-1">주문 상태</div>
+      <div class="col-span-4 sm:col-span-3">
         <the-order-status-chip color="blue" />
-      </div> -->
+      </div>
     </div>
 
     <div class="pb-10 mx-4 grid grid-cols-4 gap-4 mb-7 border-b border-gray-200">
@@ -29,22 +47,33 @@
 
       <div
         class="col-span-4"
-        v-for="product in orders.order_item_list"
+        v-for="product in orderItemList"
         :key="product.order_item_id"
       >
-        {{ product.order_item_id }}
         <the-order-product-card showButtonArea :productItem="product" />
       </div>
+    </div>
 
-      <!-- <div
-        class="col-span-4"
-        v-for="(product, index) in orders.value.order_item_list"
-        :key="index"
-      >
-        {{ order }}
-         <the-order-product-card :productItem="order.order_product" />
-        <the-order-product-card /> 
-      </div> -->
+    <div class="pb-10 p-2 mx-4 grid grid-cols-4 gap-4 mb-7 border-b border-gray-200">
+      <div class="col-span-4">
+        <h2
+          class="mb-2 text-xl font-semibold leading-none text-gray-900 md:text-2xl dark:text-white"
+        >
+          <span>발송 정보</span>
+        </h2>
+      </div>
+      <div class="hidden sm:block col-span-1">이름</div>
+      <div class="col-span-4 sm:col-span-3">{{ orderDeliveryInfo?.owner_name }}</div>
+
+      <div class="hidden sm:block col-span-1">연락처</div>
+      <div class="col-span-4 sm:col-span-3">{{ orderDeliveryInfo?.owner_tel }}</div>
+
+      <div class="hidden sm:block col-span-1">주소</div>
+      <div class="col-span-4 sm:col-span-3">
+        ({{ orderDeliveryInfo?.owner_zonecode }})
+        {{ orderDeliveryInfo?.owner_address }}
+        {{ orderDeliveryInfo?.owner_address_detail }}
+      </div>
     </div>
 
     <div class="pb-10 p-2 mx-4 grid grid-cols-4 gap-4 mb-7 border-b border-gray-200">
@@ -55,15 +84,17 @@
           <span>배송지 정보</span>
         </h2>
       </div>
-      <div class="col-span-1">받는사람</div>
-      <div class="col-span-3">한솔주공505</div>
+      <div class="hidden sm:block col-span-1">받는사람</div>
+      <div class="col-span-4 sm:col-span-3">{{ orderDeliveryInfo?.recipient_name }}</div>
 
-      <div class="col-span-1">연락처</div>
-      <div class="col-span-3">010-1231-1231</div>
+      <div class="hidden sm:block col-span-1">연락처</div>
+      <div class="col-span-4 sm:col-span-3">{{ orderDeliveryInfo?.recipient_tel }}</div>
 
-      <div class="col-span-1">받는주소</div>
-      <div class="col-span-3">
-        (12384) 경기도 성남시 분당구 정자동 177 드람맘맘마 에스파
+      <div class="hidden sm:block col-span-1">받는주소</div>
+      <div class="col-span-4 sm:col-span-3">
+        ({{ orderDeliveryInfo?.recipient_zonecode }})
+        {{ orderDeliveryInfo?.recipient_address }}
+        {{ orderDeliveryInfo?.recipient_address_detail }}
       </div>
     </div>
 
@@ -76,16 +107,13 @@
         </h2>
       </div>
       <div class="col-span-1">상품금액</div>
-      <div class="col-span-3">18,6000원</div>
-
-      <div class="col-span-1">할인금액</div>
-      <div class="col-span-3">4,000원</div>
+      <div class="col-span-3">{{ orderTotalPrice }}원</div>
 
       <div class="col-span-1">배송비</div>
       <div class="col-span-3">0원</div>
 
       <div class="col-span-1">총 결제금액</div>
-      <div class="col-span-3">14,600원</div>
+      <div class="col-span-3">{{ orderTotalPrice }}원</div>
     </div>
 
     <div class="pb-10 mx-4 grid grid-cols-4 gap-4 mb-7 border-b border-gray-200">
@@ -96,17 +124,11 @@
           <span>상품처</span>
         </h2>
       </div>
-      <div class="col-span-1">자연햇살농원</div>
-      <div class="col-span-3">강원도 평창군 내맘은 덤더러덤더러덤덤덤</div>
-
-      <div class="col-span-1">연락처</div>
-      <div class="col-span-3">010-2332-1234</div>
-
-      <div class="col-span-1">계좌번호</div>
-      <div class="col-span-3">카카오뱅크 101-1234-333333</div>
-
-      <div class="col-span-1"></div>
-      <div class="col-span-3">* 판매자에게 직접 연락하시면 빠른 확인이 가능합니다.</div>
+      <div class="col-span-4 font-bold">자연햇살농원</div>
+      <div class="col-span-4">강원도 평창군 내맘은 덤더러덤더러덤덤덤</div>
+      <div class="col-span-4">010-2332-1234</div>
+      <div class="col-span-4">카카오뱅크 101-1234-333333</div>
+      <div class="col-span-4">* 판매자에게 직접 연락하시면 빠른 확인이 가능합니다.</div>
     </div>
 
     <div class="pb-10 mx-4 grid grid-cols-4 gap-4">
@@ -181,38 +203,38 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+import { ref, onMounted, getCurrentInstance, computed, defineEmits } from "vue";
 import OrderService from "@/services/OrderService";
-import TheOrderStatusChip from "./TheOrderStatusChip.vue";
-import moment from "moment";
-import { reactive, onMounted } from "vue";
+import TheOrderStatusChip from "@/components/commerce/my/order/TheOrderStatusChip.vue";
 import TheOrderProductCard from "./TheOrderProductCard.vue";
-import { useRoute } from "vue-router";
 
-export default {
-  components: {
-    TheOrderProductCard,
-  },
-  data() {
-    return {
-      order_id: 0,
-      orders: [],
-    };
-  },
-  methods: {
-    async getRecentOrderMemberDetail() {
-      await OrderService.getRecentOrderListMemberDetail(this.order_id).then(
-        (response) => {
-          this.orders = response.data.data;
-        }
-      );
-    },
-  },
-  async created() {
-    this.order_id = this.$route.params.id;
-    await this.getRecentOrderMemberDetail();
-  },
+const emit = defineEmits(["renderTabTitle"]);
+
+const order_id = ref(0);
+const orders = ref([]);
+const { proxy }: any = getCurrentInstance();
+
+const orderNumber = computed(() => orders.value?.order_number);
+
+const orderUser = computed(() => orders.value?.member);
+
+const orderDeliveryInfo = computed(() => orders.value?.delivery);
+
+const orderTotalPrice = 0;
+
+const orderItemList = computed(() => orders.value?.order_item_list);
+const getRecentOrderListMemberDetail = async () => {
+  await OrderService.getRecentOrderListMemberDetail(order_id.value).then((response) => {
+    orders.value = response.data.data;
+  });
 };
+function movetoOrderList() {
+  proxy.$router.push("/my/order/history");
+}
+onMounted(async () => {
+  order_id.value = proxy.$route.params.id;
+  await getRecentOrderListMemberDetail();
+  emit("renderTabTitle", "주문확인/배송조회 > 주문상세");
+});
 </script>
-
-<style></style>

@@ -10,10 +10,11 @@
           class="mb-2 text-base font-semibold leading-none text-gray-900 md:text-2xl dark:text-white"
         >
           {{ moment(order?.created_at).format("YYYY.MM.DD HH:mm") }}
+          <span class="block sm:hidden"><br /></span>
           <the-order-status-chip color="blue" />
         </h2>
       </div>
-      <div class="text-end">
+      <div class="col-span-1 text-end">
         <a
           :href="`/my/order/history/detail/${order.order_id}`"
           class="inline-flex items-center font-medium text-primary-600 hover:text-primary-800 dark:text-primary-500 dark:hover:text-primary-700"
@@ -43,11 +44,13 @@
 <script setup lang="ts">
 import OrderService from "@/services/OrderService";
 import moment from "moment";
-import { reactive } from "vue";
+import { reactive, defineEmits } from "vue";
 import TheOrderProductCard from "./TheOrderProductCard.vue";
 import TheOrderStatusChip from "./TheOrderStatusChip.vue";
 const orderTotalCount = 20;
 
+const emit = defineEmits(["renderTabTitle"]);
+emit("renderTabTitle", "주문확인/배송조회");
 let orders = reactive([]);
 
 async function getRecentOrderListMember() {

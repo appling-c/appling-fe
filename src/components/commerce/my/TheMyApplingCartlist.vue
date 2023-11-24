@@ -61,6 +61,8 @@ export default {
     },
   },
 
-  mounted() {},
+  mounted() {
+    this.$emit("renderTabTitle", "장바구니");
+  },
 };
 </script>
