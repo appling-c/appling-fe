@@ -10,6 +10,8 @@ import admin_brandshop_view from "../components/admin/brandshop/BrandshopView.vu
 import admin_order_calendar from "../components/admin/order/OrderCalendar.vue";
 import admin_order_history from "../components/admin/order/OrderHistory.vue";
 
+import admin_order_history_detail from "../components/admin/order/OrderHistoryDetail.vue";
+
 import Commerce from "../views/commerce.vue";
 import commerce_main from "../components/commerce/common/TheCommonMain.vue";
 import commerce_detail from "../components/commerce/common/TheCommonProductDetail.vue";
@@ -62,7 +64,7 @@ const routes: Array<RouteRecordRaw> = [
 			{ path: "brandshop", component: admin_brandshop_regist }, // 농장 소개하기
 			{ path: "order/calendar", component: admin_order_calendar }, // 상품달력
 			{ path: "order/history", component: admin_order_history }, // 주문내역
-			//{ path : "brandshop/preview",component: admin_preview_brandshop }, // 농장 소개하기 view
+			{ path: "order/history/detail/:id", component: admin_order_history_detail },
 		],
 	},
 	{

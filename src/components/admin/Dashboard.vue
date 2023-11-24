@@ -1,5 +1,5 @@
 <template>
-	<header class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-7 mx-auto">
+	<header class=" ">
 		<h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">
 			나의 수입 한 눈에 보기👀
 		</h1>
@@ -32,7 +32,7 @@
 		</div>
 	</header>
 
-	<div class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-7 mx-auto">
+	<div class=" ">
 		<!-- Grid -->
 
 		<div
@@ -232,14 +232,20 @@
 	import OrderService from "@/services/OrderService";
 	import moment from "moment";
 	import PublicApiService from "@/services/PublicAPIService";
+	import { mapActions, useStore } from "vuex";
 
 	let averagePriceList = ref([]);
+
+	const store = useStore();
+
+	const updateSpinnerStatus = () => store.getters["cart/updateSpinnerStatus"];
 
 	// 사과 평균 판매가 가져오기(kamis)
 	async function getAveragePriceList() {
 		await PublicApiService.getPublicApi().then((response) => {
 			averagePriceList = response?.data.data?.item;
 		});
+		updateSpinnerStatus(false);
 	}
 
 	getAveragePriceList();

@@ -2,7 +2,7 @@
 	<!-- ========== HEADER ========== -->
 	<TheAdminHeader />
 	<div class="w-full pt-10 px-4 sm:px-6 md:px-8">
-		<header class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-7 mx-auto">
+		<header class=" ">
 			<h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">
 				안녕하세요, 우리 농장을 소개합니다.🍃
 			</h1>

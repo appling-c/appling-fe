@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<header class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-7 mx-auto">
+		<header class=" ">
 			<h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">
 				📦 상품 {{ mode == "modify" ? "수정하기" : "등록하기" }}
 			</h1>
@@ -57,7 +57,7 @@
 			</div>
 		</header>
 		<!-- Card Section -->
-		<div class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-7 mx-auto">
+		<div class=" ">
 			<!-- Card -->
 			<div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
 				<form>

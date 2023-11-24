@@ -1,419 +1,351 @@
 <template>
-  <div>
-    <header
-      class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-7 mx-auto flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm"
-    >
-      <nav
-        class="mt-6 relative max-w-7xl w-full bg-white border border-gray-200 rounded-[36px] mx-2 py-3 px-4 md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-gray-800 dark:border-gray-700"
-        aria-label="Global"
-      >
-        <div class="flex items-center justify-between">
-          <select
-            class="py-3 px-4 pr-9 block w-full border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
-          >
-            <option selected>주문상태</option>
-            <option>주문완료</option>
-            <option>배송완료</option>
-            <option>주문취소</option>
-          </select>
-          <div class="md:hidden">
-            <button
-              type="button"
-              class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-2 rounded-full border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-              data-hs-collapse="#navbar-collapse-with-animation"
-              aria-controls="navbar-collapse-with-animation"
-              aria-label="Toggle navigation"
-            >
-              <svg
-                class="hs-collapse-open:hidden w-4 h-4"
-                width="16"
-                height="16"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
-                />
-              </svg>
-              <svg
-                class="hs-collapse-open:block hidden w-4 h-4"
-                width="16"
-                height="16"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <div
-          id="navbar-collapse-with-animation"
-          class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block"
-        >
-          <div
-            class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7 md:mt-0 md:pl-7"
-          >
-            <a
-              class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
-              href="#"
-              >기능1</a
-            >
-            <a
-              class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
-              href="#"
-              >기능2</a
-            >
+	<div>
+		<div>
+			<header class=" ">
+				<h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">
+					📦 주문 내역
+				</h1>
+				<p class="mt-2 text-lg text-gray-800 dark:text-gray-600">
+					상품 정보를 등록한 후 한장짜리 <span class="text-blue-600">팜플렛</span>을
+					만들어 홍보해보세요!
+				</p>
 
-            <a
-              class="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 md:border-l md:border-gray-300 md:my-6 md:pl-6 dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500"
-              href="#"
-            >
-              <svg
-                class="w-4 h-4"
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"
-                />
-              </svg>
-              상품등록
-            </a>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <div class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-7 mx-auto">
-      <div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
-        <div class="container mx-auto">
-          <div class="flex flex-col">
-            <div class="-m-1.5 overflow-x-auto">
-              <div class="p-1.5 min-w-full inline-block align-middle">
-                <div class="overflow-hidden">
-                  <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                    <thead>
-                      <tr>
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
-                        >
-                          주문번호
-                        </th>
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
-                        >
-                          주문일자
-                        </th>
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
-                        >
-                          주문상품
-                        </th>
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
-                        >
-                          주문인
-                        </th>
+				<div class="mt-5 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
+					<router-link
+						to="/admin/product/detail/0"
+						class="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold text-blue-500 hover:text-blue-700 focus:outline-none focus:ring-2 ring-offset-gray-50 focus:ring-blue-500 focus:ring-offset-2 transition-all text-base py-3 px-4 dark:ring-offset-slate-900"
+					>
+						<svg
+							class="w-2.5 h-2.5"
+							width="16"
+							height="16"
+							viewBox="0 0 16 16"
+							fill="none"
+						>
+							<path
+								d="M11.2792 1.64001L5.63273 7.28646C5.43747 7.48172 5.43747 7.79831 5.63273 7.99357L11.2792 13.64"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+							></path>
+						</svg>
+						새로운 상품 등록하기👀
+					</router-link>
+				</div>
+			</header>
+		</div>
+		<div class="relative bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
+			<div
+				class="flex flex-col items-start justify-between p-4 space-y-3 dark:bg-gray-800 md:flex-row md:items-center md:space-y-0 md:space-x-4"
+			>
+				<div class="flex items-center">
+					<h5 class="mr-3 font-semibold dark:text-white">Compare Products</h5>
+					<div data-tooltip-target="info-tooltip">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="w-4 h-4 text-gray-400"
+							viewbox="0 0 20 20"
+							fill="currentColor"
+							aria-hidden="true"
+						>
+							<path
+								fill-rule="evenodd"
+								clip-rule="evenodd"
+								d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+							/>
+						</svg>
+						<span class="sr-only">More info</span>
+					</div>
+					<div
+						id="info-tooltip"
+						role="tooltip"
+						class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+					>
+						Selected Xbox Series S, PlayStation 5, and Xbox Series X
+						<div class="tooltip-arrow" data-popper-arrow=""></div>
+					</div>
+				</div>
+				<div class="flex flex-row items-center justify-end flex-shrink-0 w-auto space-x-3">
+					<button
+						type="button"
+						class="flex items-center justify-center flex-shrink-0 px-4 py-2 text-sm font-medium text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+					>
+						<svg
+							class="h-3.5 w-3.5 mr-2"
+							fill="currentColor"
+							viewBox="0 0 20 20"
+							xmlns="http://www.w3.org/2000/svg"
+							aria-hidden="true"
+						>
+							<path
+								clip-rule="evenodd"
+								fill-rule="evenodd"
+								d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+							></path>
+						</svg>
+						Add new product
+					</button>
+					<button
+						type="button"
+						class="flex items-center justify-center flex-shrink-0 px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="w-4 h-4 mr-2 text-gray-400"
+							viewBox="0 0 20 20"
+							fill="currentColor"
+							aria-hidden="true"
+						>
+							<path
+								fill-rule="evenodd"
+								clip-rule="evenodd"
+								d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+							/>
+						</svg>
+						Reset all
+					</button>
+				</div>
+			</div>
+			<div class="mx-4 border-t dark:mx-0 dark:border-gray-700 dark:bg-gray-800"></div>
+			<div
+				class="flex flex-col items-center justify-between px-4 pb-4 space-y-3 md:pb-0 md:mt-4 dark:bg-gray-800 md:flex-row md:space-y-0 md:space-x-4"
+			>
+				<ul
+					class="flex-wrap hidden text-sm font-medium text-center text-gray-500 md:flex dark:text-gray-400"
+				>
+					<li class="mb-4 mr-2 lg:mr-4">
+						<a
+							href="#"
+							class="inline-block px-4 py-2 border rounded-full dark:bg-gray-700 dark:border-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
+						>
+							주문완료
+						</a>
+					</li>
+					<li class="mb-4 mr-2 lg:mr-4">
+						<a
+							href="#"
+							class="inline-block px-4 py-2 border rounded-full dark:bg-gray-700 dark:border-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
+							aria-current="page"
+						>
+							배송준비중
+						</a>
+					</li>
+					<li class="mb-4 mr-2 lg:mr-4">
+						<a
+							href="#"
+							class="inline-block px-4 py-2 text-white rounded-full bg-primary-600 active"
+						>
+							배송완료
+						</a>
+					</li>
+					<li class="mb-4 mr-2 lg:mr-4">
+						<a
+							href="#"
+							class="inline-block px-4 py-2 border rounded-full dark:bg-gray-700 dark:border-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
+						>
+							주문취소
+						</a>
+					</li>
+				</ul>
 
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
-                        >
-                          주문금액
-                        </th>
-                        <th
-                          scope="col"
-                          class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase"
-                        >
-                          배송지정보
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody
-                      class="hs-accordion-group hs-accordion divide-y divide-gray-200 dark:divide-gray-700"
-                      v-for="order in orders.value"
-                      :key="order.order_id"
-                    >
-                      <tr :id="`hs-basic-with-arrow-heading-${order.order_id}`">
-                        <td
-                          class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200"
-                        >
-                          <button
-                            class="hs-accordion-toggle hs-accordion-active:text-blue-600 py-3 inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-800 hover:text-gray-500 rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-gray-200 dark:hover:text-gray-400 dark:focus:outline-none dark:focus:text-gray-400"
-                            :aria-controls="`hs-basic-with-arrow-collapse-${order.order_id}`"
-                          >
-                            #{{ order.order_number }}
-                          </button>
-                        </td>
-                        <td
-                          class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
-                        >
-                          {{ moment(order.created_at).format("YYYY.MM.DD HH:mm") }}
-                        </td>
-                        <td
-                          class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
-                        >
-                          {{ order.order_item_list[0]?.main_title }}
-                          <span v-if="order.order_item_list.length - 1 > 1">
-                            외 {{ order.order_item_list.length - 1 }} 건
-                          </span>
-                        </td>
-                        <td
-                          class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
-                        >
-                          {{ order.member?.name }}
-                        </td>
-                        <td
-                          class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
-                        >
-                          199,900원
-                        </td>
-                        <td
-                          class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
-                        >
-                          <a class="text-blue-500 hover:text-blue-700"> 상세보기</a>
-                        </td>
-                      </tr>
-                      <tr
-                        :id="`hs-basic-with-arrow-collapse-${order.order_id}`"
-                        :aria-labelledby="`hs-basic-with-arrow-heading-${order.order_id}`"
-                      >
-                        <td colspan="6">
-                          <!-- <div
-                            style="height: 0px"
-                            class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
-                          > 
-                        -->
-                          <div
-                            class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
-                          >
-                            <div class="p-4 sm:p-7 overflow-y-auto">
-                              <div class="text-center">
-                                <h3
-                                  class="text-lg font-semibold text-gray-800 dark:text-gray-200"
-                                >
-                                  Invoice from Preline
-                                </h3>
-                                <p class="text-sm text-gray-500">Invoice #3682303</p>
-                              </div>
+				<div class="flex items-center w-full space-x-4 md:w-auto">
+					<select
+						id="list-navigation"
+						class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg md:hidden bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+					>
+						<option selected>주문완료</option>
+						<option value="general">배송준비중</option>
+						<option value="technical">배송완료</option>
+						<option value="delivery">주문취소</option>
+					</select>
 
-                              <!-- Grid -->
-                              <div
-                                class="mt-5 sm:mt-10 grid grid-cols-2 sm:grid-cols-3 gap-5"
-                              >
-                                <div>
-                                  <span class="block text-xs uppercase text-gray-500"
-                                    >Amount paid:</span
-                                  >
-                                  <span
-                                    class="block text-sm font-medium text-gray-800 dark:text-gray-200"
-                                    >$316.8</span
-                                  >
-                                </div>
-                                <!-- End Col -->
+					<div>
+						<button
+							id="actionsDropdownButton"
+							data-dropdown-toggle="actionsDropdown"
+							class="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg md:mb-4 md:w-auto focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+							type="button"
+						>
+							Actions
+							<svg
+								class="-mr-1 ml-1.5 w-5 h-5"
+								fill="currentColor"
+								viewbox="0 0 20 20"
+								xmlns="http://www.w3.org/2000/svg"
+								aria-hidden="true"
+							>
+								<path
+									clip-rule="evenodd"
+									fill-rule="evenodd"
+									d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+								/>
+							</svg>
+						</button>
+						<div
+							id="actionsDropdown"
+							class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+						>
+							<ul
+								class="py-1 text-sm text-gray-700 dark:text-gray-200"
+								aria-labelledby="actionsDropdownButton"
+							>
+								<li>
+									<a
+										href="#"
+										class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+										>Mass Edit</a
+									>
+								</li>
+							</ul>
+							<div class="py-1">
+								<a
+									href="#"
+									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+									>Delete all</a
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
+			<div class="container">
+				<div class="flex flex-col">
+					<div class="-m-1.5 overflow-x-auto">
+						<div class="p-1.5 min-w-full inline-block align-middle">
+							<div class="overflow-hidden">
+								<table
+									class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
+								>
+									<thead>
+										<tr>
+											<th
+												scope="col"
+												class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+											>
+												주문번호
+											</th>
+											<th
+												scope="col"
+												class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+											>
+												주문일자
+											</th>
+											<th
+												scope="col"
+												class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+											>
+												주문상품
+											</th>
+											<th
+												scope="col"
+												class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+											>
+												주문인
+											</th>
 
-                                <div>
-                                  <span class="block text-xs uppercase text-gray-500"
-                                    >Date paid:</span
-                                  >
-                                  <span
-                                    class="block text-sm font-medium text-gray-800 dark:text-gray-200"
-                                    >April 22, 2020</span
-                                  >
-                                </div>
-                                <!-- End Col -->
-
-                                <div>
-                                  <span class="block text-xs uppercase text-gray-500"
-                                    >Payment method:</span
-                                  >
-                                  <div class="flex items-center gap-x-2">
-                                    <svg
-                                      class="w-5 h-5"
-                                      width="400"
-                                      height="248"
-                                      viewBox="0 0 400 248"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                      <g clip-path="url(#clip0)">
-                                        <path
-                                          d="M254 220.8H146V26.4H254V220.8Z"
-                                          fill="#FF5F00"
-                                        />
-                                        <path
-                                          d="M152.8 123.6C152.8 84.2 171.2 49 200 26.4C178.2 9.2 151.4 0 123.6 0C55.4 0 0 55.4 0 123.6C0 191.8 55.4 247.2 123.6 247.2C151.4 247.2 178.2 238 200 220.8C171.2 198.2 152.8 163 152.8 123.6Z"
-                                          fill="#EB001B"
-                                        />
-                                        <path
-                                          d="M400 123.6C400 191.8 344.6 247.2 276.4 247.2C248.6 247.2 221.8 238 200 220.8C228.8 198.2 247.2 163 247.2 123.6C247.2 84.2 228.8 49 200 26.4C221.8 9.2 248.6 0 276.4 0C344.6 0 400 55.4 400 123.6Z"
-                                          fill="#F79E1B"
-                                        />
-                                      </g>
-                                      <defs>
-                                        <clipPath id="clip0">
-                                          <rect width="400" height="247.2" fill="white" />
-                                        </clipPath>
-                                      </defs>
-                                    </svg>
-                                    <span
-                                      class="block text-sm font-medium text-gray-800 dark:text-gray-200"
-                                      >•••• 4242</span
-                                    >
-                                  </div>
-                                </div>
-                                <!-- End Col -->
-                              </div>
-                              <!-- End Grid -->
-
-                              <div class="mt-5 sm:mt-10">
-                                <h4
-                                  class="text-xs font-semibold uppercase text-gray-800 dark:text-gray-200"
-                                >
-                                  Summary
-                                </h4>
-
-                                <ul class="mt-3 flex flex-col">
-                                  <li
-                                    class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:border-gray-700 dark:text-gray-200"
-                                  >
-                                    <div class="flex items-center justify-between w-full">
-                                      <span>Payment to Front</span>
-                                      <span>$264.00</span>
-                                    </div>
-                                  </li>
-                                  <li
-                                    class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:border-gray-700 dark:text-gray-200"
-                                  >
-                                    <div class="flex items-center justify-between w-full">
-                                      <span>Tax fee</span>
-                                      <span>$52.8</span>
-                                    </div>
-                                  </li>
-                                  <li
-                                    class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-semibold bg-gray-50 border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-slate-800 dark:border-gray-700 dark:text-gray-200"
-                                  >
-                                    <div class="flex items-center justify-between w-full">
-                                      <span>Amount paid</span>
-                                      <span>$316.8</span>
-                                    </div>
-                                  </li>
-                                </ul>
-                              </div>
-
-                              <!-- Button -->
-                              <div class="mt-5 flex justify-end gap-x-2">
-                                <a
-                                  class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-lg border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-                                  href="#"
-                                >
-                                  <svg
-                                    class="flex-shrink-0 w-4 h-4"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                  >
-                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                    <polyline points="7 10 12 15 17 10" />
-                                    <line x1="12" x2="12" y1="15" y2="3" />
-                                  </svg>
-                                  Invoice PDF
-                                </a>
-                                <a
-                                  class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                                  href="#"
-                                >
-                                  <svg
-                                    class="flex-shrink-0 w-4 h-4"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                  >
-                                    <polyline points="6 9 6 2 18 2 18 9" />
-                                    <path
-                                      d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"
-                                    />
-                                    <rect width="12" height="8" x="6" y="14" />
-                                  </svg>
-                                  Print
-                                </a>
-                              </div>
-                              <!-- End Buttons -->
-
-                              <div class="mt-5 sm:mt-10">
-                                <p class="text-sm text-gray-500">
-                                  If you have any questions, please contact us at
-                                  <a
-                                    class="inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:underline font-medium"
-                                    href="#"
-                                    >example@site.com</a
-                                  >
-                                  or call at
-                                  <a
-                                    class="inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:underline font-medium"
-                                    href="tel:+1898345492"
-                                    >+1 898-34-5492</a
-                                  >
-                                </p>
-                              </div>
-                            </div>
-                            <!-- End Body -->
-                            <p class="text-gray-800 dark:text-gray-200">
-                              <em>{{ order?.delivery }}</em>
-                            </p>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+											<th
+												scope="col"
+												class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+											>
+												주문금액
+											</th>
+											<th
+												scope="col"
+												class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase"
+											>
+												배송지정보
+											</th>
+										</tr>
+									</thead>
+									<tbody
+										class="hs-accordion-group hs-accordion divide-y divide-gray-200 dark:divide-gray-700"
+										v-for="order in orders.value"
+										:key="order.order_id"
+									>
+										<tr :id="`hs-basic-with-arrow-heading-${order.order_id}`">
+											<td
+												class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200"
+											>
+												#{{ order.order_number }}
+											</td>
+											<td
+												class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
+											>
+												{{
+													moment(order.created_at).format(
+														"YYYY.MM.DD HH:mm"
+													)
+												}}
+											</td>
+											<td
+												class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
+											>
+												{{ order.order_item_list[0]?.main_title }}
+												<span v-if="order.order_item_list.length - 1 > 1">
+													외 {{ order.order_item_list.length - 1 }} 건
+												</span>
+											</td>
+											<td
+												class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
+											>
+												{{ order.member?.name }}
+											</td>
+											<td
+												class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"
+											>
+												199,900원
+											</td>
+											<td
+												class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+											>
+												<a
+													@click="orderDetail(order.order_id)"
+													class="text-blue-500 hover:text-blue-700"
+												>
+													상세보기</a
+												>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script setup lang="ts">
-import OrderService from "@/services/OrderService";
-import moment from "moment";
-import { reactive } from "vue";
+	import OrderService from "@/services/OrderService";
+	import moment from "moment";
+	import { reactive } from "vue";
+	import { mapActions, useStore } from "vuex";
 
-const orderTotalCount = 20;
+  import router from "../../../plugins/router";
 
-let orders = reactive([]);
+	const orderTotalCount = 20;
 
-async function getRecentOrderList() {
-  const reqestStr = `?search=&page=0&size=5&status=complete`;
-  await OrderService.getRecentOrderList(reqestStr).then((response) => {
-    orders.value = response.data.data?.list;
-    console.log(orders);
-  });
-}
+	let orders = reactive([]);
+	const store = useStore();
 
-getRecentOrderList();
+	const updateSpinnerStatus = () => store.getters["cart/updateSpinnerStatus"];
+
+	async function getRecentOrderList() {
+		const reqestStr = `?search=&page=0&size=5&status=complete`;
+		await OrderService.getRecentOrderList(reqestStr).then((response) => {
+			orders.value = response.data.data?.list;
+			console.log(orders);
+			updateSpinnerStatus(false);
+		});
+	}
+
+	function orderDetail(orderID) {
+		router.push("/admin/order/history/detail/" + orderID);
+	}
+
+	getRecentOrderList();
 </script>

@@ -1,5 +1,5 @@
 <template>
-	<header class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-7 mx-auto">
+	<header class=" ">
 		<h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">
 			📦 상품 달력
 		</h1>
@@ -24,7 +24,7 @@
 			</router-link>
 		</div>
 	</header>
-	<div class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-7 mx-auto">
+	<div class=" ">
 		<!-- Card -->
 		<div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
 			<div class="container mx-auto mt-10">
@@ -94,7 +94,7 @@
 	const store = useStore();
 
 	let currentDate = ref("111");
-	
+
 	let calendar: Calendar = null;
 	let productList: Array<Object> = [];
 

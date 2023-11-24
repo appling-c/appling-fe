@@ -36,7 +36,7 @@
 		</div>
 	</header>
 
-	<div class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-7 mx-auto">
+	<div class=" ">
 		<div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
 			<!-- Section -->
 			<div
