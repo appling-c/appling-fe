@@ -381,9 +381,6 @@ import TheCounter from "@/components/commerce/common/TheCounter.vue";
 import productDetailInterface from "../../types/auth";
 
 export default {
-  computed: {
-    ...mapGetters("auth", ["userInfoInterface"]),
-  },
   components: {
     TheCounter,
   },
@@ -415,6 +412,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters("auth", ["userInfoInterface"]),
     // product info
     productType() {
       // 상품타입
@@ -467,8 +465,11 @@ export default {
 
     // 장바구니 담기
     async saveCartList() {
-      const islogin = this.userInfoInterface?.value?.islogin;
-      if (!this.userInfoInterface?.value || !islogin) {
+      const islogin = this.userInfoInterface?.islogin;
+
+      console.log(this.userInfoInterface, islogin);
+
+      if (!islogin || islogin == undefined) {
         return this.$router.push(
           `/login?resultUrl=/commerce/detail/${this.productDetailItem?.product_id}`
         );

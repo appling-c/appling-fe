@@ -1,12 +1,12 @@
 <template>
 	<div class=" ">
 		<!-- Grid -->
-		<div class="grid md:grid-cols-2 items-center gap-12">
+		<div class="p-10 grid md:grid-cols-2 items-center gap-12">
 			<div>
 				<h1
 					class="text-3xl font-bold text-gray-800 sm:text-4xl lg:text-5xl lg:leading-tight dark:text-white"
 				>
-					🍎 애플링 가족이 되기
+					🍎 애플링 가족 되기
 				</h1>
 				<p class="mt-1 md:text-lg text-gray-800 dark:text-gray-200">
 					🍎 애플링 서비스 가입을 위해 정보를 입력해주세요.

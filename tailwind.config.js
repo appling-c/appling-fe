@@ -13,6 +13,7 @@ export default {
     extend: {
       fontFamily: {
         gmarket: ["gmarket"],
+        Pretendard : ["Pretendard"],
         sans: ["'Noto Sans'", ...defaultTheme.fontFamily.sans],
       },
     },
