@@ -34,9 +34,9 @@ export default {
       return (location.href = `
         https://kauth.kakao.com/oauth/authorize?client_id=04376f3d0a7618a3622f9c541d90d272&redirect_uri=${returnurl}/oauth/kakao/login&response_type=code`);
     },
-	gotosingup(){
-		this.$router.push('/signup')
-	},
+    gotosingup() {
+      this.$router.push("/signup");
+    },
     async submit() {
       // 사용자 로그인 처리
       const user = this.user;
@@ -52,8 +52,8 @@ export default {
         });
       } catch (err) {
         console.log(err);
-		alert(err);
-		this.updateSpinnerStatus(false);
+        alert(err);
+        this.updateSpinnerStatus(false);
       }
     },
   },
@@ -95,25 +95,26 @@ export default {
               class="text-blue-600 decoration-2 hover:underline font-medium"
               >회원가입</a
             >
-			<p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                <a
-                  @click="temp"
-                  class="text-blue-600 decoration-2 hover:underline font-medium"
-                >
-                  어둠의 경로로 로그인하기
-                </a>
-              </p>
-
-              <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                <a
-                  @click="temp2"
-                  class="text-blue-600 decoration-2 hover:underline font-medium"
-                >
-                  juno의 경로로 로그인하기
-                </a>
-              </p>
           </p>
-          <form class="mt-4 space-y-6 sm:mt-6" action="#">
+
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            <a
+              @click="temp"
+              class="text-blue-600 decoration-2 hover:underline font-medium"
+            >
+              어둠의 경로로 로그인하기
+            </a>
+          </p>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            <a
+              @click="temp2"
+              class="text-blue-600 decoration-2 hover:underline font-medium"
+            >
+              juno의 경로로 로그인하기
+            </a>
+          </p>
+
+          <div class="mt-4 space-y-6 sm:mt-6">
             <div class="grid gap-6 sm:grid-cols-2">
               <div>
                 <label
@@ -128,7 +129,7 @@ export default {
                   class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="name@company.com"
                   required
-				  v-model="user.email"
+                  v-model="user.email"
                 />
               </div>
               <div>
@@ -144,7 +145,7 @@ export default {
                   placeholder="••••••••"
                   class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
-				  v-model="user.password"
+                  v-model="user.password"
                 />
               </div>
             </div>
@@ -155,7 +156,7 @@ export default {
             </div>
             <div class="space-y-3">
               <a
-			  @click="kakaologin"
+                @click="kakaologin"
                 class="w-full inline-flex items-center justify-center py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
               >
                 <svg
@@ -192,7 +193,6 @@ export default {
                     aria-describedby="remember"
                     type="checkbox"
                     class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                    
                   />
                 </div>
                 <div class="ml-3 text-sm">
@@ -208,13 +208,13 @@ export default {
               >
             </div>
             <button
-			@click="submit"
+              @click="submit"
               type="submit"
               class="w-full text-white bg-blue-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
             >
               로그인
             </button>
-          </form>
+          </div>
         </div>
       </div>
       <div class="mr-auto place-self-center lg:col-span-6">
@@ -226,5 +226,4 @@ export default {
       </div>
     </div>
   </section>
-  
 </template>

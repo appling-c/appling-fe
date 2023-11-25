@@ -26,12 +26,13 @@
           <span>주문정보</span>
         </h2>
       </div>
-      <div class="hidden sm:block col-span-1">주문번호</div>
-      <div class="col-span-4 sm:col-span-3">{{ orderNumber }}</div>
-      <div class="hidden sm:block col-span-1">주문일</div>
-      <div class="col-span-4 sm:col-span-3">{{ orders.created_at }}</div>
-      <div class="hidden sm:block col-span-1">주문 상태</div>
-      <div class="col-span-4 sm:col-span-3">
+     
+      <div class="hidden md:block col-span-1">주문번호</div>
+      <div class="col-span-4 md:col-span-3">{{ orderNumber }}</div>
+      <div class="hidden md:block col-span-1">주문일</div>
+      <div class="col-span-4 md:col-span-3">{{ orders.created_at }}</div>
+      <div class="hidden md:block col-span-1">주문 상태</div>
+      <div class="col-span-4 md:col-span-3">
         <the-order-status-chip color="blue" />
       </div>
     </div>
@@ -62,14 +63,14 @@
           <span>발송 정보</span>
         </h2>
       </div>
-      <div class="hidden sm:block col-span-1">이름</div>
-      <div class="col-span-4 sm:col-span-3">{{ orderDeliveryInfo?.owner_name }}</div>
+      <div class="hidden md:block col-span-1">이름</div>
+      <div class="col-span-4 md:col-span-3">{{ orderDeliveryInfo?.owner_name }}</div>
 
-      <div class="hidden sm:block col-span-1">연락처</div>
-      <div class="col-span-4 sm:col-span-3">{{ orderDeliveryInfo?.owner_tel }}</div>
+      <div class="hidden md:block col-span-1">연락처</div>
+      <div class="col-span-4 md:col-span-3">{{ orderDeliveryInfo?.owner_tel }}</div>
 
-      <div class="hidden sm:block col-span-1">주소</div>
-      <div class="col-span-4 sm:col-span-3">
+      <div class="hidden md:block col-span-1">주소</div>
+      <div class="col-span-4 md:col-span-3">
         ({{ orderDeliveryInfo?.owner_zonecode }})
         {{ orderDeliveryInfo?.owner_address }}
         {{ orderDeliveryInfo?.owner_address_detail }}
@@ -84,14 +85,14 @@
           <span>배송지 정보</span>
         </h2>
       </div>
-      <div class="hidden sm:block col-span-1">받는사람</div>
-      <div class="col-span-4 sm:col-span-3">{{ orderDeliveryInfo?.recipient_name }}</div>
+      <div class="hidden md:block col-span-1">받는사람</div>
+      <div class="col-span-4 md:col-span-3">{{ orderDeliveryInfo?.recipient_name }}</div>
 
-      <div class="hidden sm:block col-span-1">연락처</div>
-      <div class="col-span-4 sm:col-span-3">{{ orderDeliveryInfo?.recipient_tel }}</div>
+      <div class="hidden md:block col-span-1">연락처</div>
+      <div class="col-span-4 md:col-span-3">{{ orderDeliveryInfo?.recipient_tel }}</div>
 
-      <div class="hidden sm:block col-span-1">받는주소</div>
-      <div class="col-span-4 sm:col-span-3">
+      <div class="hidden md:block col-span-1">받는주소</div>
+      <div class="col-span-4 md:col-span-3">
         ({{ orderDeliveryInfo?.recipient_zonecode }})
         {{ orderDeliveryInfo?.recipient_address }}
         {{ orderDeliveryInfo?.recipient_address_detail }}
