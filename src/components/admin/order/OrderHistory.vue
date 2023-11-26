@@ -95,49 +95,28 @@
         >
           <li class="mb-4 mr-2 lg:mr-4">
             <a
-              href="#"
+              @click="setSearchStatus('')"
               class="active bg-primary-600 inline-block px-4 py-2 border rounded-full dark:bg-gray-700 dark:border-gray-600 hover:text-slate-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
             >
               전체
             </a>
           </li>
-          <li class="mb-4 mr-2 lg:mr-4">
+          <li
+            class="mb-4 mr-2 lg:mr-4"
+            v-for="status in orderSellerStatusList"
+            :key="status"
+          >
             <a
-              href="#"
+              @click="
+                setSearchStatus(
+                  Object.keys(orderSellerStatusList).find(
+                    (key) => orderSellerStatusList[key] === status
+                  )
+                )
+              "
               class="inline-block px-4 py-2 border rounded-full dark:bg-gray-700 dark:border-gray-600 hover:text-slate-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
             >
-              주문완료
-            </a>
-          </li>
-          <li class="mb-4 mr-2 lg:mr-4">
-            <a
-              href="#"
-              class="inline-block px-4 py-2 border rounded-full dark:bg-gray-700 dark:border-gray-600 hover:text-slate-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
-              aria-current="page"
-            >
-              배송준비중
-            </a>
-          </li>
-          <li class="mb-4 mr-2 lg:mr-4">
-            <a
-              href="#"
-              class="inline-block px-4 py-2 border rounded-full dark:bg-gray-700 dark:border-gray-600 hover:text-slate-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
-              aria-current="page"
-            >
-              배송완료
-            </a>
-          </li>
-          <!-- <li class="mb-4 mr-2 lg:mr-4">
-            <a href="#" class="inline-block px-4 py-2 rounded-full bg-primary-600 active">
-              배송완료
-            </a>
-          </li> -->
-          <li class="mb-4 mr-2 lg:mr-4">
-            <a
-              href="#"
-              class="inline-block px-4 py-2 border rounded-full dark:bg-gray-700 dark:border-gray-600 hover:text-slate-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
-            >
-              주문취소
+              {{ status }}
             </a>
           </li>
         </ul>
@@ -283,7 +262,7 @@
                       <td
                         class="px-6 py-4 whitespace-nowrap text-base text-slate-800 dark:text-slate-200"
                       >
-                        <the-order-status-chip color="blue" />
+                        <TheOrderStatusChip :status="orders?.status" type="seller" />
                       </td>
                       <td
                         class="px-6 py-4 whitespace-nowrap text-right text-base font-medium"
@@ -313,10 +292,14 @@ import moment from "moment";
 import { computed, reactive, defineEmits } from "vue";
 import { mapActions, useStore } from "vuex";
 import TheOrderStatusChip from "../../commerce/my/order/TheOrderStatusChip.vue";
-
-
-
 import router from "../../../plugins/router";
+
+const orderSellerStatusList = {
+  ORDERED: "주문완료",
+  PROCESSING: "주문확인",
+  CONFIRM: "배송완료",
+  CANCEL: "주문취소",
+};
 
 let orderTotalCount = 0;
 
@@ -324,16 +307,23 @@ const orders = reactive([]);
 
 const store = useStore();
 
+let status = "";
+
 const updateSpinnerStatus = () => store.getters["cart/updateSpinnerStatus"];
 
 async function getRecentOrderList() {
-  const reqestStr = `?search=&page=0&size=10&status=complete`;
+  const reqestStr = `?search=&page=0&size=10&status=${status}`;
   await OrderService.getRecentOrderList(reqestStr).then((response) => {
     orders.value = response.data.data?.list;
     console.log(orders);
     orderTotalCount = response.data.total_elements;
     updateSpinnerStatus(false);
   });
+}
+
+function setSearchStatus(key) {
+  status = key;
+  getRecentOrderList();
 }
 
 function setOrderTotalPrice(orderItemList) {

@@ -26,14 +26,14 @@
           <span>주문정보</span>
         </h2>
       </div>
-     
+
       <div class="hidden md:block col-span-1">주문번호</div>
       <div class="col-span-4 md:col-span-3">{{ orderNumber }}</div>
       <div class="hidden md:block col-span-1">주문일</div>
       <div class="col-span-4 md:col-span-3">{{ orders.created_at }}</div>
       <div class="hidden md:block col-span-1">주문 상태</div>
       <div class="col-span-4 md:col-span-3">
-        <the-order-status-chip color="blue" />
+        <TheOrderStatusChip :status="orders?.status" type="member" />
       </div>
     </div>
 

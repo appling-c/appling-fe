@@ -158,13 +158,13 @@
                           주문상태:
                         </dt>
                         <dd class="font-medium text-gray-800 dark:text-gray-200">
-                          <the-order-status-chip color="blue" />
+                          <TheOrderStatusChip :status="orderStatus" type="seller" />
                         </dd>
                       </dl>
                       <dl class="grid sm:flex gap-x-3 text-sm">
                         <dt class="min-w-[150px] max-w-[200px] text-gray-500">주문일:</dt>
                         <dd class="font-medium text-gray-800 dark:text-gray-200">
-                          {{ order?.created_at }}
+                          {{ order?.created_at }} {{ order }}
                         </dd>
                       </dl>
 
@@ -271,7 +271,7 @@
                           10,000원
                         </dd>
                       </dl>
-
+                      <!-- 
                       <dl class="grid sm:grid-cols-5 gap-x-3 text-sm">
                         <dt class="col-span-3 text-gray-500">세부항목:</dt>
                         <dd
@@ -306,7 +306,7 @@
                         >
                           $0.00
                         </dd>
-                      </dl>
+                      </dl> -->
                     </div>
                     <!-- End Grid -->
                   </div>
@@ -473,8 +473,6 @@ import { ref, onMounted, getCurrentInstance, computed, defineEmits } from "vue";
 import OrderService from "@/services/OrderService";
 import TheOrderStatusChip from "@/components/commerce/my/order/TheOrderStatusChip.vue";
 
-
-
 const order_id = ref(0);
 const orders = ref([]);
 const { proxy }: any = getCurrentInstance();
@@ -484,6 +482,8 @@ const orderNumber = computed(() => orders.value?.order_number);
 const orderUser = computed(() => orders.value?.member);
 
 const orderDeliveryInfo = computed(() => orders.value?.delivery);
+
+const orderStatus = computed(() => orders.value?.status);
 
 const orderItemList = computed(() => orders.value?.order_item_list);
 const getRecentOrderSellerDetail = async () => {

@@ -11,7 +11,7 @@
         >
           {{ moment(order?.created_at).format("YYYY.MM.DD HH:mm") }}
           <span class="block sm:hidden"><br /></span>
-          <the-order-status-chip color="blue" />
+          <TheOrderStatusChip :status="order?.status" type="member" />
         </h2>
       </div>
       <div class="col-span-1 text-end">
