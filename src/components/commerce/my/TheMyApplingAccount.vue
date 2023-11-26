@@ -1,15 +1,8 @@
 <template>
-  <TheAdminHeader />
-
-  <!-- Card Section -->
-
   <div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
     <!-- Card -->
-    <div class="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
+    <div class="">
       <div class="mb-8">
-        <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">
-          내 정보 수정하기
-        </h2>
         <div class="border-b border-gray-200 dark:border-gray-700">
           <nav class="flex space-x-2" aria-label="Tabs" role="tablist">
             <button
@@ -544,122 +537,119 @@
       </div>
     </div>
   </div>
-  <!-- End Card Section -->
 </template>
 
-<script>
-import TheAdminHeader from "../components/admin/TheAdminHeader.vue";
-import { mapActions, mapGetters } from "vuex";
+<script setup lang="ts">
+import { onMounted, defineEmits, computed, getCurrentInstance } from "vue";
+import { mapActions, mapGetters, useStore } from "vuex";
 import MemberService from "@/services/MemberService";
 import UserAthendicateService from "@/services/UserAthendicateService";
-export default {
-  components: {
-    TheAdminHeader,
-  },
-  computed: {
-    ...mapGetters("auth", ["userInfoInterface"]),
-  },
-  data() {
-    return {
-      currentpassword: "",
-      password: "",
-      password2: "",
 
-      email: "",
-      name: "",
-      nickname: "",
-      role: "",
-      sns_type: "",
-
-      seller: {
-        tel: "",
-        company: "",
-        address: "",
-        email: "",
-        zonecode: "",
-        address_detail: "",
-      },
-      currentTab: "1",
-    };
-  },
-  methods: {
-    ...mapActions("cart", ["updateSpinnerStatus"]),
-    setCurrentTab(tab) {
-      this.currentTab = tab;
-    },
-
-    getmemeberinfo() {
-      const userobj = this.userInfoInterface;
-      const { email, name, nickname, role, sns_type } = userobj;
-      this.email = email;
-      this.name = name;
-      this.nickname = nickname;
-      this.sns_type = sns_type;
-      this.role = role;
-
-      if (role == "SELLER") {
-        this.getsellerinfo();
-      }
-    },
-    async getsellerinfo() {
-      // 판매자 정보 가져오기
-      await MemberService.getsellerinfo().then((response) => {
-        const memberinfo = response.data.data;
-        this.seller.company = memberinfo.company;
-        if (this.seller.company) {
-          this.ismodify = true;
-        }
-        this.seller.tel = memberinfo.tel;
-        this.seller.address = memberinfo.address;
-        this.seller.email = memberinfo.email;
-        this.seller.zonecode = memberinfo?.zonecode;
-        this.seller.address_detail = memberinfo?.address_detail;
-      });
-    },
-
-    async submit() {
-      // 저장하기 이벤트 핸들러
-      this.updateSpinnerStatus(true);
-
-      let payload = {
-        name: this.name,
-        nickname: this.nickname,
-      };
-
-      if (this.currentTab == "2") {
-        if (this.currentpassword == "") {
-          this.updateSpinnerStatus(false);
-          return alert("비밀번호를 입력해주세요.");
-        }
-
-        if (this.password !== this.password2) {
-          this.updateSpinnerStatus(false);
-          return alert("새로운 비밀번호와 일치하지 않습니다.");
-        }
-        let targetPassword =
-          this.currentTab == "2" ? this.password2 : this.currentpassword;
-        payload["password"] = targetPassword;
-      }
-
-      await UserAthendicateService.updatememberinfo(payload).then((response) => {
-        this.updateSpinnerStatus(false);
-        alert(response?.data.data.message);
-      });
-
-      return this.$router.push("/commerce");
-    },
-
-    cancel() {
-      this.$router.go(-1);
-    },
-    movetosellerregist() {
-      this.$router.push("/commerce/regist");
-    },
-  },
-  mounted() {
-    // 회원정보
-    this.getmemeberinfo();
-    this.updateSpinnerStatus(false);
-  },
+let currentpassword = "";
+let password = "";
+let password2 = "";
+let email = "";
+let name = "";
+let nickname = "";
+let role = "";
+let sns_type = "";
+let seller = {
+  tel: "",
+  company: "",
+  address: "",
+  email: "",
+  zonecode: "",
+  address_detail: "",
 };
+let currentTab = "1";
+
+const userInfoInterface = computed(() => mapGetters("auth", ["userInfo"]));
+const store = useStore();
+
+const updateSpinnerStatus = () => store.getters["cart/updateSpinnerStatus"];
+
+const emit = defineEmits(["renderTabTitle"]);
+const proxy = getCurrentInstance();
+
+function setCurrentTab(tab) {
+  currentTab = tab;
+}
+
+function getmemeberinfo() {
+  const userobj = userInfoInterface;
+  const { email, name, nickname, role, sns_type } = userobj;
+  proxy.email = email;
+  proxy.name = name;
+  proxy.nickname = nickname;
+  proxy.sns_type = sns_type;
+  proxy.role = role;
+
+  if (role == "SELLER") {
+    this.getsellerinfo();
+  }
+}
+
+// create async function
+async function getsellerinfo() {
+  // 판매자 정보 가져오기
+  await MemberService.getsellerinfo().then((response) => {
+    const memberinfo = response.data.data;
+    proxy.seller.company = memberinfo.company;
+    if (this.seller.company) {
+      this.ismodify = true;
+    }
+    proxy.seller.tel = memberinfo.tel;
+    proxy.seller.address = memberinfo.address;
+    proxy.seller.email = memberinfo.email;
+    proxy.seller.zonecode = memberinfo?.zonecode;
+    proxy.seller.address_detail = memberinfo?.address_detail;
+  });
+}
+
+async function submit() {
+  // 저장하기 이벤트 핸들러
+  updateSpinnerStatus(true);
+
+  let payload = {
+    name: this.name,
+    nickname: this.nickname,
+  };
+
+  if (this.currentTab == "2") {
+    if (this.currentpassword == "") {
+      updateSpinnerStatus(true);
+      return alert("비밀번호를 입력해주세요.");
+    }
+
+    if (this.password !== this.password2) {
+      updateSpinnerStatus(true);
+      return alert("새로운 비밀번호와 일치하지 않습니다.");
+    }
+    let targetPassword = this.currentTab == "2" ? this.password2 : this.currentpassword;
+    payload["password"] = targetPassword;
+  }
+
+  await UserAthendicateService.updatememberinfo(payload).then((response) => {
+    updateSpinnerStatus(true);
+    alert(response?.data.data.message);
+  });
+
+  return proxy.$router.push("/commerce");
+}
+
+function cancel() {
+  proxy.$router.go(-1);
+}
+
+function movetosellerregist() {
+  proxy.$router.push("/commerce/regist");
+}
+
+onMounted(() => {
+  emit("renderTabTitle", "내 정보");
+
+  // 회원정보
+  getmemeberinfo();
+  updateSpinnerStatus(false);
+});
 </script>

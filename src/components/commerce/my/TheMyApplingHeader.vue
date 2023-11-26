@@ -1,6 +1,5 @@
 <template>
   <div>
-    
     <aside
       id="sidebar-user"
       class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
@@ -143,7 +142,7 @@ export default {
       this.$router.push("/commerce/main");
     },
     account() {
-      this.$router.push("/account");
+      this.$router.push("/my/account");
     },
 
     cartlist() {
