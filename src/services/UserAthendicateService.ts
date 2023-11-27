@@ -59,17 +59,13 @@ class UserAthendicateService {
 					this._save_token(data);
 				}
 				return new Promise((resolve) => {
-					setTimeout(() => {
-						resolve("success");
-					}, 500);
+					resolve("success");
 				});
 			});
 		} catch (err) {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve("fail");
-        }, 500);
-      })
+			return new Promise((resolve) => {
+				resolve("fail");
+			});
 		}
 	}
 
