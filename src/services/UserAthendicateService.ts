@@ -57,10 +57,10 @@ class UserAthendicateService {
 				if (code == "0000") {
 					// 토큰저장
 					this._save_token(data);
+					return new Promise((resolve) => {
+						resolve("success");
+					});
 				}
-				return new Promise((resolve) => {
-					resolve("success");
-				});
 			});
 		} catch (err) {
 			return new Promise((resolve) => {

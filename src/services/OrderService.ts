@@ -8,9 +8,19 @@ const ENDPOINT = {
 	API_ORDER_COMPLETE: "/api/order/complete",
 	API_ORDER_COMPLETE_LIST: "/api/order/seller",
 	API_ORDER_COMPLETE_LIST_MEMBER: "/api/order/member",
+	API_ORDER_CANCEL_MEMBER: "/api/order/member/cancel",
 };
 
 class OrderService {
+	// member 주문 취소
+	public async cancelMellerOrder(payload) {
+		return await instance
+			.patch(`${ENDPOINT.API_ORDER_CANCEL_MEMBER}`, payload)
+			.then((response: AxiosResponse) => {
+				return response;
+			});
+	}
+
 	/**
 	 * seller 주문 상세
 	 */
