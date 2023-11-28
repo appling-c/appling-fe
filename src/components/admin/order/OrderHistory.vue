@@ -11,7 +11,7 @@
 
         <div class="mt-5 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
           <router-link
-            to="/admin/product/detail/0"
+            to="/admin/order/calendar"
             class="w-full sm:w-auto inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold text-blue-500 hover:text-blue-700 focus:outline-none focus:ring-2 ring-offset-gray-50 focus:ring-blue-500 focus:ring-offset-2 transition-all text-base py-3 px-4 dark:ring-offset-slate-900"
           >
             <svg
@@ -38,9 +38,7 @@
         class="flex flex-col items-start justify-between p-4 space-y-3 dark:bg-gray-800 md:flex-row md:items-center md:space-y-0 md:space-x-4"
       >
         <div class="flex items-center">
-          <h5 class="mr-3 font-semibold dark:text-white">
-            총 {{ orderTotalCount }} 건
-          </h5>
+          <h5 class="mr-3 font-semibold dark:text-white">총 {{ orderTotalCount }} 건</h5>
         </div>
         <div
           class="flex flex-row items-center justify-end flex-shrink-0 w-auto space-x-3"
