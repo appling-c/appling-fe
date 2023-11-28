@@ -3,7 +3,7 @@
     <div>
       <header class=" ">
         <h1 class="block text-2xl font-bold text-slate-800 sm:text-3xl dark:text-white">
-          📦 주문 내역
+          📦 주문 관리
         </h1>
         <p class="mt-2 text-lg text-slate-800 dark:text-slate-600">
           주문 내역 주문 내역 주문 내역 주문 내역 주문 내역 주문 내역 주문 내역
@@ -28,7 +28,7 @@
                 stroke-linecap="round"
               ></path>
             </svg>
-            새로운 상품 등록하기👀
+            달력으로 보기🗓️
           </router-link>
         </div>
       </header>
@@ -39,7 +39,7 @@
       >
         <div class="flex items-center">
           <h5 class="mr-3 font-semibold dark:text-white">
-            총 {{ orderTotalCount }} 주문
+            총 {{ orderTotalCount }} 건
           </h5>
         </div>
         <div
