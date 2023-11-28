@@ -3,7 +3,7 @@
     class="bg-white rounded-lg divide-y divide-gray-200 shadow dark:divide-gray-700 lg:divide-y-0 lg:divide-x lg:grid lg:grid-cols-3 dark:bg-gray-800"
   >
     <div class="col-span-2 p-6 lg:p-8">
-      <div class="flex flex-center">
+      <div class="grid sm:flex flex-center">
         <div class="flex-1 rounded-xl p-4 sm:p-7 border-r border-gray-200">
           <!-- Section -->
           <div
@@ -329,7 +329,11 @@ const cartList = computed(() => {
   return store.getters["cart/inventory"];
 });
 
-const totalPrice = ref(0);
+const totalPrice = computed(() => {
+  return cartList.value.reduce((total, item) => total + item.productTotalPrice, 0);
+});
+
+//const totalPrice = ref(0);
 const inventory = ref([]);
 let ownerInfo = reactive({
   name: "",
@@ -436,7 +440,6 @@ async function updateNextStep() {
   };
 
   const response = await OrderService.setOrder(payload);
-  console.log(response);
   emit("updateOrderNumber", response.data.data.order_number);
   emit("updateStep", "3");
 }
