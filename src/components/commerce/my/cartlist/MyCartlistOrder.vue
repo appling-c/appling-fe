@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="orderTotalCount > 0"
     class="bg-white rounded-lg divide-y divide-gray-200 shadow dark:divide-gray-700 lg:divide-y-0 lg:divide-x lg:grid lg:grid-cols-3 dark:bg-gray-800"
   >
     <div class="col-span-2 p-6 lg:p-8">
@@ -186,13 +187,14 @@
       </div>
     </div>
   </div>
+  <div v-else><TheNodataTemplate message="장바구니에 담긴 내역이 " /></div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed, onMounted, defineProps, defineEmits, toRaw } from "vue";
 import { useStore, mapActions } from "vuex";
 import OrderService from "@/services/OrderService";
-
+import TheNodataTemplate from "../../../TheNodataTemplate.vue";
 import router from "@/plugins/router";
 
 const emit = defineEmits(["updateStep", "setOrderId"]);
@@ -217,6 +219,9 @@ const inventoryList = ref([]);
 const isLogin = ref(false);
 const optionList = Array.from({ length: 10 }, (_, i) => ({ value: i + 1 }));
 const totalPrice = ref(0);
+let cartlistTotalCount = computed(
+  () => (cartlistTotalCount = toRaw(inventoryList.value).length)
+);
 
 const updateCartItem = (addCartItem) => {
   store.dispatch("cart/updateCartItem", addCartItem);
@@ -283,6 +288,8 @@ function movetocartlist() {
 
 onMounted(() => {
   inventoryList.value = inventory.value;
+  console.log(inventoryList, toRaw(inventoryList.value));
+
   isLogin.value = userInfoInterface.value.islogin;
   setTotalPrice();
 });

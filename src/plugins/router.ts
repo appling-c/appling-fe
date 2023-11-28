@@ -95,7 +95,7 @@ router.beforeEach((to, from, next) => {
   const { fullPath: targetPath } = to;
 
   // 셀러 페이지 접근 권한 체크
-  if (targetPath.indexOf("/admin/") !== -1) {
+  if (targetPath.indexOf("/admin/") !== -1 || targetPath.indexOf("/my/") !== -1) {
     // 로그인 X
     if (Object.keys(userInfoInterface).length == 0) {
       alert("로그인 후 이용 가능합니다.");

@@ -412,7 +412,6 @@
 			orders.value = response.data.data?.list;
 
 			orderTotalCount = response.data.data.total_elements;
-			console.log(orderTotalCount);
 			updateSpinnerStatus(false);
 		});
 	}
