@@ -26,7 +26,6 @@ import commerce_seller_brandshop from "../components/commerce/common/TheCommonSe
 import kakaoLogin from "../views/kakaoLogin.vue";
 import Login from "../views/login.vue";
 import Signup from "../views/signup.vue";
-import myAccount from "../views/myaccount.vue";
 
 import myAppling from "../views/myappling.vue";
 
@@ -39,7 +38,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: "/login", component: Login },
   { path: "/signup", component: Signup },
   { path: "/", component: Commerce },
-  { path: "/account", component: myAccount },
+
   { path: "/oauth/kakao/login", component: kakaoLogin },
 
   {

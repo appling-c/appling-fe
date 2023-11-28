@@ -6,8 +6,7 @@
           📦 주문 내역
         </h1>
         <p class="mt-2 text-lg text-slate-800 dark:text-slate-600">
-          상품 정보를 등록한 후 한장짜리 <span class="text-blue-600">팜플렛</span>을
-          만들어 홍보해보세요!
+          주문 내역 주문 내역 주문 내역 주문 내역 주문 내역 주문 내역 주문 내역
         </p>
 
         <div class="mt-5 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
@@ -66,6 +65,7 @@
             Add new product
           </button>
           <button
+            @click="getRecentOrderList()"
             type="button"
             class="flex items-center justify-center flex-shrink-0 px-4 py-2 text-base font-medium text-slate-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-slate-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
           >
@@ -82,7 +82,7 @@
                 d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
               />
             </svg>
-            Reset all
+            새로고침
           </button>
         </div>
       </div>
@@ -96,27 +96,38 @@
           <li class="mb-4 mr-2 lg:mr-4">
             <a
               @click="setSearchStatus('')"
-              class="active bg-primary-600 inline-block px-4 py-2 border rounded-full dark:bg-gray-700 dark:border-gray-600 hover:text-slate-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
+              :class="
+                status === '' ? 'bg-blue-600 text-white' : 'bg-primary-600 text-slate'
+              "
+              class="inline-block px-4 py-2 border rounded-full hover:text-slate-900 hover:bg-gray-100"
             >
               전체
             </a>
           </li>
           <li
             class="mb-4 mr-2 lg:mr-4"
-            v-for="status in orderSellerStatusList"
-            :key="status"
+            v-for="statusDP in orderSellerStatusList"
+            :key="statusDP"
           >
             <a
               @click="
                 setSearchStatus(
                   Object.keys(orderSellerStatusList).find(
-                    (key) => orderSellerStatusList[key] === status
+                    (key) => orderSellerStatusList[key] === statusDP
                   )
                 )
               "
-              class="inline-block px-4 py-2 border rounded-full dark:bg-gray-700 dark:border-gray-600 hover:text-slate-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
+              :class="
+                status ==
+                Object.keys(orderSellerStatusList).find(
+                  (key) => orderSellerStatusList[key] === statusDP
+                )
+                  ? 'bg-blue-600 text-white hover:bg-blue-600'
+                  : 'bg-primary-600 text-slate'
+              "
+              class="inline-block px-4 py-2 border rounded-full hover:text-slate-900 hover:bg-gray-100"
             >
-              {{ status }}
+              {{ statusDP }}
             </a>
           </li>
         </ul>
@@ -131,54 +142,6 @@
             <option value="technical">배송완료</option>
             <option value="delivery">주문취소</option>
           </select>
-
-          <div>
-            <button
-              id="actionsDropdownButton"
-              data-dropdown-toggle="actionsDropdown"
-              class="flex items-center justify-center w-full px-4 py-2 text-base font-medium text-slate-900 bg-white border border-gray-200 rounded-lg md:mb-4 md:w-auto focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-slate-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-              type="button"
-            >
-              Actions
-              <svg
-                class="-mr-1 ml-1.5 w-5 h-5"
-                fill="currentColor"
-                viewbox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <path
-                  clip-rule="evenodd"
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                />
-              </svg>
-            </button>
-            <div
-              id="actionsDropdown"
-              class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
-            >
-              <ul
-                class="py-1 text-base text-slate-700 dark:text-slate-200"
-                aria-labelledby="actionsDropdownButton"
-              >
-                <li>
-                  <a
-                    href="#"
-                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >Mass Edit</a
-                  >
-                </li>
-              </ul>
-              <div class="py-1">
-                <a
-                  href="#"
-                  class="block px-4 py-2 text-base text-slate-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-slate-200 dark:hover:text-white"
-                  >Delete all</a
-                >
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -263,7 +226,7 @@
                       <td
                         class="px-6 py-4 whitespace-nowrap text-base text-slate-800 dark:text-slate-200"
                       >
-                        <TheOrderStatusChip :status="orders?.status" type="seller" />
+                        <TheOrderStatusChip :status="order?.status" type="seller" />
                       </td>
                       <td
                         class="px-6 py-4 whitespace-nowrap text-right text-base font-medium"

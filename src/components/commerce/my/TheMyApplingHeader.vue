@@ -15,9 +15,9 @@
             alt="Micheal Avatar"
           />
           <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-            <a href="#">최고은님</a>
+            <a href="#">{{ name }}님</a>
           </h3>
-          <p class="font-light text-gray-500 dark:text-gray-400">luna@luna.com</p>
+          <p class="font-light text-gray-500 dark:text-gray-400">{{ email }}</p>
           <a
             @click="logout"
             class="inline-flex items-center justify-center w-full py-2.5 px-5 my-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
@@ -101,26 +101,6 @@
               <span class="ml-3">내 정보</span>
             </a>
           </li>
-
-          <li>
-            <a
-              href="#"
-              class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-            >
-              <svg
-                aria-hidden="true"
-                class="w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
-                ></path>
-              </svg>
-              <span class="ml-3">문의하기</span>
-            </a>
-          </li>
         </ul>
       </div>
     </aside>
@@ -134,6 +114,17 @@ import { mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters("auth", ["userInfoInterface"]),
+
+    name() {
+      if (this.userInfoInterface) {
+        return this.userInfoInterface.name;
+      }
+    },
+    email() {
+      if (this.userInfoInterface) {
+        return this.userInfoInterface.email;
+      }
+    },
   },
 
   methods: {
