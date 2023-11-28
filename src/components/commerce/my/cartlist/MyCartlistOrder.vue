@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="orderTotalCount > 0"
+    v-if="cartlistTotalCount > 0"
     class="bg-white rounded-lg divide-y divide-gray-200 shadow dark:divide-gray-700 lg:divide-y-0 lg:divide-x lg:grid lg:grid-cols-3 dark:bg-gray-800"
   >
     <div class="col-span-2 p-6 lg:p-8">
@@ -219,9 +219,7 @@ const inventoryList = ref([]);
 const isLogin = ref(false);
 const optionList = Array.from({ length: 10 }, (_, i) => ({ value: i + 1 }));
 const totalPrice = ref(0);
-let cartlistTotalCount = computed(
-  () => (cartlistTotalCount = toRaw(inventoryList.value).length)
-);
+let cartlistTotalCount = computed(() => toRaw(inventoryList.value).length);
 
 const updateCartItem = (addCartItem) => {
   store.dispatch("cart/updateCartItem", addCartItem);
