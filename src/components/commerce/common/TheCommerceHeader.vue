@@ -1,7 +1,7 @@
 <template>
 	<header
-		:class="isShowHeader ? 'hidden' : ''"
-		class="sticky top-0 inset-x-0 z-40 flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-white border-b text-sm py-2.5 sm:py-0 lg:pl-64"
+		:class="isShowHeader ? 'flex' : 'hidden md:flex'"
+		class="sticky top-0 inset-x-0 z-40 flex-wrap sm:justify-start sm:flex-nowrap w-full bg-white border-b text-sm py-2.5 sm:py-0 lg:pl-64"
 	>
 		<div class="flex items-center justify-between px-4 sm:px-0 md:px-2">
 			<div class="sm:hidden">
@@ -322,7 +322,7 @@
 			...mapGetters("auth", ["userInfoInterface"]),
 			isShowHeader() {
 				console.log(this.$route.fullPath.indexOf("/admin"));
-				if (this.$route.fullPath.indexOf("/admin") == -1) {
+				if (this.$route.fullPath.indexOf("/admin") !== -1) {
 					return false;
 				} else {
 					return true;
