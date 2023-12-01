@@ -67,8 +67,8 @@
 		props: {
 			ea: [Number, String],
 			selectCount: [Number, String],
-			productIndex: Number,
 			productType: String,
+			product: [Object, Array],
 		},
 		data() {
 			return {
@@ -100,8 +100,8 @@
 				}
 				this.$emit("updateProductPrice", {
 					count: this.count,
-					productIndex: this.productIndex,
 					productType: this.productType,
+					product : this.product
 				});
 			},
 
@@ -119,13 +119,15 @@
 				}
 				this.$emit("updateProductPrice", {
 					count: this.count,
-					productIndex: this.productIndex,
 					productType: this.productType,
+					product : this.product
 				});
 			},
 		},
 		mounted() {
 			this.count = this.selectCount;
+
+			console.log(this.selectCount);
 		},
 	};
 </script>
