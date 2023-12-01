@@ -321,7 +321,6 @@
 		computed: {
 			...mapGetters("auth", ["userInfoInterface"]),
 			isShowHeader() {
-				console.log(this.$route.fullPath.indexOf("/admin"));
 				if (this.$route.fullPath.indexOf("/admin") !== -1) {
 					return false;
 				} else {

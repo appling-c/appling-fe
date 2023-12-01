@@ -9,9 +9,33 @@ const ENDPOINT = {
 	API_ORDER_COMPLETE_LIST: "/api/order/seller",
 	API_ORDER_COMPLETE_LIST_MEMBER: "/api/order/member",
 	API_ORDER_CANCEL_MEMBER: "/api/order/member/cancel",
+	API_ORDER_UPDTE_SELLER: "/api/order/seller",
 };
 
 class OrderService {
+	/**
+	 * seller 주문 상태 업데이트
+	 * @param payload
+	 * oreder : 주문확인
+	 * onprocessing : 배송준비중
+	 * confirm : 배송완료
+	 * cancel : 취소
+	 * @returns
+	 */
+
+	public async updateOrderStatusSeller(payload) {
+		const { status, order_id } = payload;
+		const request = { order_id: order_id };
+		try {
+			await instance
+				.patch(`${ENDPOINT.API_ORDER_UPDTE_SELLER}/${status}`, request)
+				.then((response: AxiosResponse) => {
+					return response;
+				});
+		} catch (err) {
+			return err;
+		}
+	}
 	// member 주문 취소
 	public async cancelMellerOrder(payload) {
 		return await instance
