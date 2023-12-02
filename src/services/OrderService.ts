@@ -50,7 +50,7 @@ class OrderService {
 	 */
 	public async getRecentOrderSellerDetail(payload: String) {
 		return await instance
-			.get(`${ENDPOINT.API_ORDER_COMPLETE_LIST_MEMBER}/${payload}`)
+			.get(`${ENDPOINT.API_ORDER_COMPLETE_LIST}/${payload}`)
 			.then((response: AxiosResponse) => {
 				console.log(response);
 				return response;
