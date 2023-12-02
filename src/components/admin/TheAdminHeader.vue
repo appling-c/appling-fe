@@ -279,7 +279,7 @@
 						</div>
 					</li>
 
-					<li>
+					<!-- <li>
 						<a
 							@click="account()"
 							class="flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-md hover:bg-gray-100"
@@ -300,7 +300,7 @@
 							</svg>
 							계정관리
 						</a>
-					</li>
+					</li> -->
 					<li>
 						<a
 							class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100"
@@ -321,7 +321,7 @@
 									d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"
 								/>
 							</svg>
-							판매하러 가기
+						  메인으로 이동
 						</a>
 					</li>
 				</ul>
