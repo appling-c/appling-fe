@@ -115,11 +115,20 @@
           <select
             id="list-navigation"
             class="block w-full p-2 text-base text-slate-900 border border-gray-300 rounded-lg md:hidden bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            @change="setSearchStatus($event.target.value)"
           >
-            <option selected>주문완료</option>
-            <option value="general">배송준비중</option>
-            <option value="technical">배송완료</option>
-            <option value="delivery">주문취소</option>
+            <option value="">전체</option>
+            <option
+              v-for="statusDP in orderSellerStatus"
+              :key="statusDP"
+              :value="
+                Object.keys(orderSellerStatus).find(
+                  (key) => orderSellerStatus[key] === statusDP
+                )
+              "
+            >
+              {{ statusDP }}
+            </option>
           </select>
         </div>
       </div>
@@ -275,6 +284,7 @@ const updateSpinnerStatus = () => store.getters["cart/updateSpinnerStatus"];
 async function getRecentOrderList() {
   let reqestStr = `?search=&page=0&size=10`;
   if (status !== "") {
+    status = status.toLowerCase();
     reqestStr += `&status=${status}`;
   }
   await OrderService.getRecentOrderList(reqestStr).then((response) => {
