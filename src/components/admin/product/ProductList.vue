@@ -5,7 +5,7 @@
         📦 상품 관리하기
       </h1>
       <p class="mt-2 text-lg text-gray-800 dark:text-gray-600">
-        상품 정보를 등록한 후 한장짜리 <span class="text-blue-600">팜플렛</span>을 만들어
+        상품 정보를 등록한 후 한장짜리 <span class="text-blue-600">카카오톡 공유하기</span>을 만들어
         홍보해보세요!
       </p>
       <p class="mt-2 text-base text-gray-800 dark:text-gray-400">
@@ -30,102 +30,9 @@
     </header>
     <!-- Card Section -->
     <!-- Table Section -->
-    <div v-if="lists.length == 0" class=" ">
-      <!-- Card -->
-      <div class="flex flex-col">
-        <div class="-m-1.5 overflow-x-auto">
-          <div class="p-1.5 min-w-full inline-block align-middle">
-            <div
-              class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-slate-900 dark:border-gray-700"
-            >
-              <!-- Body -->
-              <div
-                class="max-w-sm w-full min-h-[400px] flex flex-col justify-center mx-auto px-6 py-4"
-              >
-                <div
-                  class="flex justify-center items-center w-[46px] h-[46px] bg-gray-100 rounded-md dark:bg-gray-800"
-                >
-                  <svg
-                    class="w-6 h-6 text-gray-600 dark:text-gray-400"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"
-                    />
-                    <path
-                      d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"
-                    />
-                  </svg>
-                </div>
 
-                <h2 class="mt-5 font-semibold text-gray-800 dark:text-white">
-                  등록된 상품이 없습니다.
-                </h2>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                  상품을 등록하고 관리해보세요.
-                </p>
-
-                <div class="mt-5 grid sm:flex gap-2">
-                  <button
-                    @click="movetporegist()"
-                    type="button"
-                    class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                  >
-                    <svg
-                      class="w-3 h-3"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                    >
-                      <path
-                        d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                      />
-                    </svg>
-                    새로운 상품 등록하기👀
-                  </button>
-
-                  <button
-                    @click="searchproductstatus('')"
-                    type="button"
-                    class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                  >
-                    <svg
-                      class="w-3 h-3"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                    >
-                      <path
-                        d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                      />
-                    </svg>
-                    상품 구경하기
-                  </button>
-                </div>
-              </div>
-              <!-- End Body -->
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- End Card -->
-    </div>
     <!-- End Table Section -->
-    <div v-else class=" ">
+    <div>
       <!-- Table Section -->
 
       <!-- Card -->
@@ -140,23 +47,40 @@
                 class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700"
               >
                 <!-- Input -->
-                <div class="sm:col-span-1">
-                  <label for="hs-as-table-product-review-search" class="sr-only"
-                    >Search</label
+                <ul
+                  class="flex-wrap hidden text-base font-medium text-center text-slate-500 md:flex dark:text-slate-400"
+                >
+                  <li
+                    class="mb-4 mr-2 lg:mr-4"
+                    v-for="statusDP in statusList"
+                    :key="statusDP.key"
                   >
-                  <div class="relative">
-                    <input
-                      type="text"
-                      id="hs-as-table-product-review-search"
-                      name="hs-as-table-product-review-search"
-                      class="py-2 px-3 pl-11 block w-full border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
-                      placeholder="Search"
-                    />
-                    <div
-                      class="absolute inset-y-0 left-0 flex items-center pointer-events-none pl-4"
+                    <a
+                      @click="searchproductstatus(statusDP.key)"
+                      :class="
+                        status == statusDP.key
+                          ? 'bg-blue-600 text-white hover:bg-blue-600'
+                          : 'bg-primary-600 text-slate'
+                      "
+                      class="inline-block px-4 py-2 border rounded-full hover:text-slate-900 hover:bg-gray-100"
+                    >
+                      {{ statusDP.value }}
+                    </a>
+                  </li>
+                </ul>
+
+                <div
+                  v-if="lists.length > 0"
+                  class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center"
+                >
+                  <div class="inline-flex gap-x-2">
+                    <button
+                      @click="prev"
+                      type="button"
+                      class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700"
                     >
                       <svg
-                        class="h-4 w-4 text-gray-400"
+                        class="w-3 h-3"
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
                         height="16"
@@ -164,109 +88,48 @@
                         viewBox="0 0 16 16"
                       >
                         <path
-                          d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                          fill-rule="evenodd"
+                          d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
                         />
                       </svg>
-                    </div>
+                      이전
+                    </button>
+
+                    <button
+                      v-if="!islastpage"
+                      @click="next"
+                      type="button"
+                      class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                    >
+                      다음
+                      <svg
+                        class="w-3 h-3"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                        />
+                      </svg>
+                    </button>
                   </div>
                 </div>
-                <ul class="flex flex-col sm:flex-row">
-                  <li
-                    @click="searchproductstatus('')"
-                    class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ml-px sm:mt-0 sm:first:rounded-tr-none sm:first:rounded-bl-lg sm:last:rounded-bl-none sm:last:rounded-tr-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white"
-                  >
-                    <div class="relative flex items-start w-full">
-                      <div class="flex items-center h-5">
-                        <input
-                          id="hs-horizontal-list-group-item-radio-1"
-                          name="hs-horizontal-list-group-item-radio"
-                          type="radio"
-                          class="border-gray-200 rounded-full dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                          checked
-                        />
-                      </div>
-                      <label
-                        for="hs-horizontal-list-group-item-radio-1"
-                        class="ml-3 block w-full text-sm text-gray-600 dark:text-gray-500"
-                      >
-                        전체
-                      </label>
-                    </div>
-                  </li>
 
-                  <li
-                    @click="searchproductstatus('NORMAL')"
-                    class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ml-px sm:mt-0 sm:first:rounded-tr-none sm:first:rounded-bl-lg sm:last:rounded-bl-none sm:last:rounded-tr-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white"
-                  >
-                    <div class="relative flex items-start w-full">
-                      <div class="flex items-center h-5">
-                        <input
-                          id="hs-horizontal-list-group-item-radio-2"
-                          name="hs-horizontal-list-group-item-radio"
-                          type="radio"
-                          class="border-gray-200 rounded-full dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                        />
-                      </div>
-                      <label
-                        for="hs-horizontal-list-group-item-radio-2"
-                        class="ml-3 block w-full text-sm text-gray-600 dark:text-gray-500"
-                      >
-                        판매중
-                      </label>
-                    </div>
-                  </li>
-
-                  <li
-                    @click="searchproductstatus('HIDDEN')"
-                    class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ml-px sm:mt-0 sm:first:rounded-tr-none sm:first:rounded-bl-lg sm:last:rounded-bl-none sm:last:rounded-tr-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white"
-                  >
-                    <div class="relative flex items-start w-full">
-                      <div class="flex items-center h-5">
-                        <input
-                          id="hs-horizontal-list-group-item-radio-3"
-                          name="hs-horizontal-list-group-item-radio"
-                          type="radio"
-                          class="border-gray-200 rounded-full dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                        />
-                      </div>
-                      <label
-                        for="hs-horizontal-list-group-item-radio-3"
-                        class="ml-3 block w-full text-sm text-gray-600 dark:text-gray-500"
-                      >
-                        판매 종료
-                      </label>
-                    </div>
-                  </li>
-                </ul>
                 <!-- End Input -->
               </div>
               <!-- End Header -->
 
               <!-- Table -->
-              <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+              <table
+                v-if="lists.length > 0"
+                class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
+              >
                 <thead class="bg-gray-50 dark:bg-slate-800">
                   <tr>
-                    <th scope="col" class="px-4 py-3 text-left">
-                      <label for="hs-at-with-checkboxes-main" class="flex">
-                        <input
-                          type="checkbox"
-                          class="shrink-0 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                          id="hs-at-with-checkboxes-main"
-                        />
-                        <span class="sr-only">Checkbox</span>
-                      </label>
-                    </th>
-
-                    <th scope="col" class="px-4 py-3 text-left">
-                      <div class="flex items-center gap-x-2">
-                        <span
-                          class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"
-                        >
-                          구분
-                        </span>
-                      </div>
-                    </th>
-
                     <th scope="col" class="px-4 py-3 text-left">
                       <div class="flex items-center gap-x-2">
                         <span
@@ -292,16 +155,6 @@
                         <span
                           class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"
                         >
-                          등록일
-                        </span>
-                      </div>
-                    </th>
-
-                    <th scope="col" class="px-4 py-3 text-left">
-                      <div class="flex items-center gap-x-2">
-                        <span
-                          class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"
-                        >
                           조회수
                         </span>
                       </div>
@@ -312,7 +165,7 @@
                         <span
                           class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200"
                         >
-                          상태
+                          상품유형
                         </span>
                       </div>
                     </th>
@@ -334,33 +187,7 @@
                     :key="index"
                     class="bg-white hover:bg-gray-50 dark:bg-slate-900 dark:hover:bg-slate-800"
                   >
-                    <td class="h-px whitespace-nowrap">
-                      <div class="pl-6 py-3">
-                        <label for="hs-at-with-checkboxes-1" class="flex">
-                          <input
-                            type="checkbox"
-                            class="shrink-0 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                            id="hs-at-with-checkboxes-1"
-                          />
-                          <span class="sr-only">Checkbox</span>
-                        </label>
-                      </div>
-                    </td>
-
-                    <td @click="moveto(litem.product_id)" class="h-px whitespace-nowrap">
-                      <a class="block h-full p-4">
-                        <div class="flex items-center gap-x-3">
-                          <div class="grow">
-                            <span
-                              class="block text-sm font-semibold text-gray-800 dark:text-gray-200"
-                              >{{ litem?.category?.name }}</span
-                            >
-                          </div>
-                        </div>
-                      </a>
-                    </td>
-
-                    <td @click="moveto(litem.product_id)" class="h-px w-72 min-w-[18rem]">
+                    <td class="h-px w-72 min-w-[18rem]">
                       <a class="block h-full p-4">
                         <span
                           class="block text-sm font-semibold text-gray-800 dark:text-gray-200"
@@ -368,7 +195,7 @@
                         >
                       </a>
                     </td>
-                    <td @click="moveto(litem.product_id)" class="h-px whitespace-nowrap">
+                    <td class="h-px whitespace-nowrap">
                       <a class="block h-full p-4">
                         <div class="flex items-center gap-x-3">
                           <div class="grow">
@@ -382,15 +209,8 @@
                         </div>
                       </a>
                     </td>
-                    <td @click="moveto(litem.product_id)" class="h-px whitespace-nowrap">
-                      <a class="block h-full p-4">
-                        <span class="text-sm text-gray-600 dark:text-gray-400">{{
-                          date_format(litem.created_at)
-                        }}</span>
-                      </a>
-                    </td>
 
-                    <td @click="moveto(litem.product_id)" class="h-px whitespace-nowrap">
+                    <td class="h-px whitespace-nowrap">
                       <a class="block h-full p-4">
                         <span class="text-sm text-gray-600 dark:text-gray-400">{{
                           litem.view_cnt
@@ -398,187 +218,108 @@
                       </a>
                     </td>
 
-                    <td @click="moveto(litem.product_id)" class="h-px whitespace-nowrap">
+                    <td class="h-px whitespace-nowrap">
                       <a class="block h-full p-4">
                         <span
-                          v-if="litem.status == 'NORMAL'"
-                          class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+                          v-if="litem.type == 'NORMAL'"
+                          class="bg-gray-100 text-gray-800 text-sm font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300"
+                          >일반상품</span
                         >
-                          <svg
-                            class="w-2.5 h-2.5"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            viewBox="0 0 16 16"
-                          >
-                            <path
-                              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
-                            />
-                          </svg>
-                          판매중
-                        </span>
-
                         <span
                           v-else
-                          class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-green-200"
+                          class="bg-green-100 text-green-800 text-sm font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300"
+                          >옵션상품</span
                         >
-                          <svg
-                            class="w-2.5 h-2.5"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            viewBox="0 0 16 16"
-                          >
-                            <path
-                              d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-                            ></path>
-                          </svg>
-                          판매 종료
-                        </span>
                       </a>
                     </td>
-                    <!--            
-          <td  @click="moveto(litem.id)" class="h-px whitespace-nowrap">
-              <a class="block h-full p-4"  >
-              <span class="text-sm text-gray-600 dark:text-gray-400">{{litem.seller.nickname}}</span>
-              </a>
-          </td> -->
 
-                    <td class="h-px whitespace-nowrap flex">
-                      <a
-                        id="kakaotalk-sharing-btn"
-                        @click="kakaoShare(litem)"
-                        class="items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                          class="w-6 h-6"
+                    <td class="h-px whitespace-nowrap">
+                      <span
+                        class="block text-sm font-semibold text-gray-800 dark:text-gray-200"
+                        ><a
+                          @click="moveto(litem.product_id)"
+                          class="text-blue-500 hover:text-blue-700"
                         >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"
-                          />
-                        </svg>
-                      </a>
-                      <a
-                        @click="showtemplate(litem)"
-                        data-hs-overlay="#hs-scroll-inside-body-modal"
-                        class="items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                          상세보기</a
+                        ></span
                       >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                          class="w-6 h-6"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 019 9v.375M10.125 2.25A3.375 3.375 0 0113.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 013.375 3.375M9 15l2.25 2.25L15 12"
-                          />
-                        </svg>
-                      </a>
-                      <a
-                        :href="`/commerce/detail/${litem.product_id}`"
-                        class="items-center gap-x-3 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                          class="w-6 h-6"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M3 8.25V18a2.25 2.25 0 002.25 2.25h13.5A2.25 2.25 0 0021 18V8.25m-18 0V6a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 6v2.25m-18 0h18M5.25 6h.008v.008H5.25V6zM7.5 6h.008v.008H7.5V6zm2.25 0h.008v.008H9.75V6z"
-                          />
-                        </svg>
-                      </a>
                     </td>
                   </tr>
                 </tbody>
               </table>
-              <!-- End Table -->
-
-              <!-- Footer -->
-              <div
-                class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-gray-700"
-              >
-                <div class="max-w-sm space-y-3">
-                  <select
-                    @change="getproductlists"
-                    v-model="size"
-                    class="py-2 px-3 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
-                  >
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                  </select>
-                </div>
-
-                <div>
-                  <div class="inline-flex gap-x-2">
-                    <button
-                      @click="prev"
-                      type="button"
-                      class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-                    >
-                      <svg
-                        class="w-3 h-3"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        viewBox="0 0 16 16"
+              <div v-else>
+                <!-- Card -->
+                <div class="flex flex-col">
+                  <div class="-m-1.5 overflow-x-auto">
+                    <div class="p-1.5 min-w-full inline-block align-middle">
+                      <div
+                        class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-slate-900 dark:border-gray-700"
                       >
-                        <path
-                          fill-rule="evenodd"
-                          d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-                        />
-                      </svg>
-                      Prev
-                    </button>
+                        <!-- Body -->
+                        <div
+                          class="max-w-sm w-full min-h-[400px] flex flex-col justify-center mx-auto px-6 py-4"
+                        >
+                          <div
+                            class="flex justify-center items-center w-[46px] h-[46px] bg-gray-100 rounded-md dark:bg-gray-800"
+                          >
+                            <svg
+                              class="w-6 h-6 text-gray-600 dark:text-gray-400"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              viewBox="0 0 16 16"
+                            >
+                              <path
+                                d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"
+                              />
+                              <path
+                                d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"
+                              />
+                            </svg>
+                          </div>
 
-                    <button
-                      v-if="!islastpage"
-                      @click="next"
-                      type="button"
-                      class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-                    >
-                      Next
-                      <svg
-                        class="w-3 h-3"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        viewBox="0 0 16 16"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                        />
-                      </svg>
-                    </button>
+                          <h2 class="mt-5 font-semibold text-gray-800 dark:text-white">
+                            내역이 없습니다.
+                          </h2>
+                          <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                            상품을 등록하고 관리해보세요.
+                          </p>
+
+                          <div class="mt-5 grid sm:flex gap-2">
+                            <button
+                              @click="movetporegist()"
+                              type="button"
+                              class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+                            >
+                              <svg
+                                class="w-3 h-3"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 16 16"
+                                fill="none"
+                              >
+                                <path
+                                  d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2"
+                                  stroke="currentColor"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                />
+                              </svg>
+                              새로운 상품 등록하기👀
+                            </button>
+
+                          </div>
+                        </div>
+                        <!-- End Body -->
+                      </div>
+                    </div>
                   </div>
                 </div>
+                <!-- End Card -->
               </div>
-              <!-- End Footer -->
+              <!-- End Table -->
 
               <the-preview-popup :contents="contents" />
             </div>
@@ -605,10 +346,6 @@ export default {
   },
   async created() {
     await this.getproductlists();
-
-    if (!Kakao) {
-      Kakao.init("bfdc56a39210639e056f66e470d11426");
-    }
   },
   data() {
     return {
@@ -620,6 +357,11 @@ export default {
       islastpage: false,
       contents: null,
       status: "",
+      statusList: [
+        { key: "", value: "전체" },
+        { key: "NORMAL", value: "판매중" },
+        { key: "HIDDEN", value: "판매종료" },
+      ],
     };
   },
   methods: {
@@ -630,71 +372,12 @@ export default {
     },
     searchproductstatus(status) {
       this.status = status;
+      this.page = 0;
       this.getproductlists();
     },
-    kakaoShare(item) {
-      // 카카오톡 공유하기
-      const main_title = item.main_title;
-      const sub_title = item.main_explanation;
-      const regularPrice = item.origin_price;
-      const discountPrice = item.price;
-      const imageUrl = item.main_image;
-      const productID = item.id;
 
-      Kakao.Share.sendDefault({
-        objectType: "commerce",
-        content: {
-          title: main_title,
-          imageUrl: imageUrl,
-          link: {
-            mobileWebUrl: `http://www.appling.me/commerce/detail/${productID}`,
-            webUrl: `http://www.appling.me/commerce/detail/${productID}`,
-          },
-        },
-        commerce: {
-          productName: main_title,
-          regularPrice,
-          discountRate: 10,
-          discountPrice,
-        },
-        buttons: [
-          {
-            title: "상품 구매하러 가기!",
-            link: {
-              mobileWebUrl: `http://www.appling.me/commerce/detail/${productID}`,
-              webUrl: `http://www.appling.me/commerce/detail/${productID}`,
-            },
-          },
-        ],
-        // container: "#kakaotalk-sharing-btn",
-        // objectType: "commerce",
-        // content: {
-        //   title: sub_title,
-        //   imageUrl,
-        //   link: {
-        //     mobileWebUrl: `http://www.appling.me/commerce/detail/${productID}`,
-        //     webUrl: `http://www.appling.me/commerce/detail/${productID}`,
-        //   },
-        // },
-        // commerce: {
-        //   productName: main_title,
-        //   regularPrice,
-        //   discountRate: 10,
-        //   discountPrice,
-        // },
-        // buttons: [
-        //   {
-        //     title: "상품 구매하러 가기!",
-        //     link: {
-        //       mobileWebUrl: `http://www.appling.me/commerce/detail/${productID}`,
-        //       webUrl: `http://www.appling.me/commerce/detail/${productID}`,
-        //     },
-        //   },
-        // ],
-      });
-    },
     async getproductlists() {
-      const payload = { size: this.size, page: this.page, keyword: this.keyword };
+      const payload = { size: 8, page: this.page, keyword: this.keyword };
       if (this.status) {
         payload["status"] = this.status;
       }
@@ -727,9 +410,6 @@ export default {
     },
     moveto(id) {
       this.$router.push(`/admin/product/detail/${id}`);
-    },
-    showtemplate(item) {
-      this.contents = item;
     },
   },
 };

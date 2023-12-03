@@ -18,13 +18,13 @@ export default {
       this.$router.push("/commerce/pricing");
     },
 
-    async gotodetail(id) {
+    async gotodetail(id, option) {
       // 조회수 증가
       const payload = {
         product_id: id,
       };
       await this.addProducetViewCount(payload).then(() => {
-        this.$router.push(`/commerce/detail/${id}`);
+        this.$router.push(`/commerce/detail/${id}?option_id=${option?.option_id}`);
       });
     },
     ...mapActions("cart", [
@@ -60,16 +60,6 @@ export default {
   },
 
   async mounted() {
-    // this.getproductlist().then((response) => {
-    // 	this.updateSpinnerStatus(false);
-    // 	if (response.data.code !== "0000") {
-    // 		return (this.products = []);
-    // 	}
-    // 	const { list } = response?.data.data;
-
-    // 	this.products = list;
-    // });
-
     // 주력상품 데이터(감홍, 시나노골드) 데이터 가져오기
     await this.setTargetItemList();
   },
@@ -213,7 +203,7 @@ export default {
 
                         <div class="bg-white py-8 px-8 dark:bg-slate-900">
                           <a
-                            :href="`/commerce/detail/${product.product_id}?option_id=${option?.option_id}`"
+                            @clcik="gotodetail(product, option)"
                             class="inline-flex justify-center items-center gap-2 rounded-md border-2 border-blue-600 font-semibold text-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm py-3 px-6 dark:text-blue-500 dark:border-blue-500 dark:hover:border-blue-700"
                           >
                             선택
