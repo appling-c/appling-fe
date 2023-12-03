@@ -101,7 +101,7 @@
 				this.$emit("updateProductPrice", {
 					count: this.count,
 					productType: this.productType,
-					product : this.product
+					product: this.product,
 				});
 			},
 
@@ -120,14 +120,12 @@
 				this.$emit("updateProductPrice", {
 					count: this.count,
 					productType: this.productType,
-					product : this.product
+					product: this.product,
 				});
 			},
 		},
 		mounted() {
 			this.count = this.selectCount;
-
-			console.log(this.selectCount);
 		},
 	};
 </script>
