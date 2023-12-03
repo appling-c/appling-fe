@@ -73,7 +73,7 @@
 												<polyline points="7 10 12 15 17 10" />
 												<line x1="12" x2="12" y1="15" y2="3" />
 											</svg>
-											Invoice PDF
+											Invoice PDFßßßß
 										</a> -->
 										<a
 											class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
@@ -563,7 +563,6 @@
 			status: reqStatus.toLowerCase(),
 		}).then((response) => {
 			const { status, data } = response.response;
-			console.log(response, status);
 			if (status !== 200) {
 				alert(data?.errors[0]?.detail);
 			} else {
