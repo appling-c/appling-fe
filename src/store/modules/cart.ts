@@ -41,7 +41,6 @@ const actions = {
           item.targetOption.option_id === product.targetOption.option_id
       );
     }
-
     inventory[cartItem].count = inventory[cartItem].count * 1;
     inventory[cartItem]["productTotalPrice"] = product.productTotalPrice;
 

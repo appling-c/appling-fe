@@ -3,23 +3,52 @@
     v-if="cartlistTotalCount > 0"
     class="bg-white rounded-lg divide-y divide-gray-200 shadow dark:divide-gray-700 lg:divide-y-0 lg:divide-x lg:grid lg:grid-cols-3 dark:bg-gray-800"
   >
-    <div class="col-span-2 p-6 lg:p-8">
+    <div class="col-span-2 p-6 lg:p-6">
       <h3 class="mb-4 text-lg font-medium text-gray-900">선택한 상품:</h3>
 
       <div id="starter-content" class="text-gray-900">
         <div class="flex flex-col">
           <div class="-m-1.5 overflow-x-auto">
             <div class="p-1.5 min-w-full inline-block align-middle">
-              <div class="rounded-lg overflow-hidden">
+              <div
+                class="block sm:hidden grid grid-cols-5 px-4 py-8 border-b border-gray-200"
+                v-for="(invent, index) in inventoryList"
+                :key="invent.id"
+              >
+                <div class="col-span-2">
+                  {{ invent.productName }} <br />
+                  <span v-if="invent?.productType == 'OPTION'">
+                    {{ invent.targetOption?.name }}
+                  </span>
+                  ₩{{ invent.sellingPriceDP?.toLocaleString() }}
+                </div>
+                <div class="col-span-2">
+                  <TheCounter
+                    :ea="
+                      invent.productType == 'OPTION' ? invent.targetOption.ea : invent.ea
+                    "
+                    :productType="invent.productType"
+                    :selectCount="invent.count"
+                    :product="invent"
+                    @updateProductPrice="updateCartList"
+                  />
+                </div>
+                <div class="col-span-1 text-center">
+                  <a @click="deleteItem(index)" class="text-blue-500 hover:text-blue-700"
+                    >삭제</a
+                  >
+                </div>
+              </div>
+              <div class="hidden sm:block rounded-lg overflow-hidden">
                 <table
                   v-if="inventoryList.length > 0"
                   class="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
                 >
                   <colgroup>
-                    <col />
+                    <col width="40%" />
+                    <col width="25%" />
                     <col width="20%" />
-                    <col width="10%" />
-                    <col width="15%" />
+                    <col width="*" />
                   </colgroup>
 
                   <thead class="bg-gray-50 dark:bg-gray-700">
@@ -252,13 +281,14 @@ function deleteItem(index) {
 }
 
 function updateCartList(inventoryItem) {
-  console.log(inventoryItem);
-  // const { count, sellingPriceDP } = inventoryItem;
-  // let productTotalPrice = count * sellingPriceDP;
-  // const addCartItem = { ...inventoryItem, productTotalPrice };
+  const { count, product, productType } = inventoryItem;
+  const { sellingPriceDP } = product;
+  const productTotalPrice = count * sellingPriceDP;
+  product["type"] = productType;
 
-  // updateCartItem(addCartItem);
-  // setTotalPrice();
+  const addCartItem = { ...product, productTotalPrice };
+  updateCartItem(addCartItem);
+  setTotalPrice();
 }
 
 function setTotalPrice() {

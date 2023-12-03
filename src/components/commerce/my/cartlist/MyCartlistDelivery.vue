@@ -26,7 +26,7 @@
                   <div class="relative flex items-start w-full">
                     <div class="flex items-center h-5">
                       <input
-                        id="hs-horizontal-list-group-item-radio-1"
+                        :id="`hs-horizontal-list-group-item-radio-${type.key}`"
                         name="hs-horizontal-list-group-item-radio"
                         type="radio"
                         :value="type.key"
@@ -35,7 +35,7 @@
                       />
                     </div>
                     <label
-                      for="hs-horizontal-list-group-item-radio-1"
+                      :for="`hs-horizontal-list-group-item-radio-${type.key}`"
                       class="ml-3 block w-full text-sm text-gray-600 dark:text-gray-500"
                     >
                       {{ type.text }}
@@ -88,7 +88,7 @@
                   <div class="col-span-2">
                     <div class="flex">
                       <input
-                        @click="showAddresspopup('ownerInfo')"
+                        @click="showAddresspopup(ownerInfo)"
                         v-model="ownerInfo.address"
                         placeholder="주소검색"
                         readonly
@@ -96,7 +96,7 @@
                         class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-base rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                       />
                       <button
-                        @click="showAddresspopup('ownerInfo')"
+                        @click="showAddresspopup(ownerInfo)"
                         type="button"
                         class="inline-flex flex-shrink-0 justify-center items-center h-[2.875rem] w-[2.875rem] rounded-r-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm"
                       >
@@ -367,16 +367,6 @@ async function getOrderList(id: number) {
   inventory.value = data.order_item_list;
 }
 
-function initializeInfo() {
-  return {
-    name: "",
-    address: "",
-    tel: "",
-    zonecode: "",
-    address_detail: "",
-  };
-}
-
 async function showAddresspopup(userInfoObj) {
   new daum.Postcode({
     oncomplete: function (data) {
@@ -397,7 +387,7 @@ function addressFormInvalidCheck() {
     return false;
   }
 
-  if (this.sellerAddressType == "1") {
+  if (sellerAddressType.value == "1") {
     ownerInfo = Object.assign({}, ownerAddressInfoFixed.value); // ownerAddressInfoFixed;
   }
 
@@ -415,7 +405,7 @@ function addressFormInvalidCheck() {
 }
 
 async function updateNextStep() {
-  if (!this.addressFormInvalidCheck()) {
+  if (!addressFormInvalidCheck()) {
     return;
   }
 

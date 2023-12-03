@@ -136,7 +136,7 @@
 
                         <div class="bg-white py-8 px-8 dark:bg-slate-900">
                           <a
-                            @clcik="gotodetail(product, option)"
+                            @click="gotodetail(product.product_id, option)"
                             class="inline-flex justify-center items-center gap-2 rounded-md border-2 border-blue-600 font-semibold text-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm py-3 px-6 dark:text-blue-500 dark:border-blue-500 dark:hover:border-blue-700"
                           >
                             선택

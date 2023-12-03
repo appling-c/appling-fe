@@ -1,66 +1,65 @@
 <template>
-	<!-- Invoice -->
-	<section class="bg-white dark:bg-gray-900">
-		<div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
-			<h1
-				class="mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white"
-			>
-				주문 완료!
-			</h1>
-			<p
-				class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400"
-			>
-				주문해주셔서 감사합니다.<br />
-				빠르게 배송해드릴게요!<br />
-				주문 내역은 주문확인/배송조회 페이지에서 확인 가능합니다.
-			</p>
-			<div
-				class="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4"
-			>
-				<a
-					href="/my/order/history"
-					class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-				>
-					
-					주문확인/배송조회
-				</a>
-				<a
-					href="/commerce/main"
-					class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
-				>
-					계속 쇼핑하기
-					<svg
-						class="ml-2 -mr-1 w-5 h-5"
-						fill="currentColor"
-						viewBox="0 0 20 20"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-							fill-rule="evenodd"
-							d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-							clip-rule="evenodd"
-						></path>
-					</svg>
-				</a>
-			</div>
-		</div>
-	</section>
-	<!-- End Invoice -->
+  <!-- Invoice -->
+  <section class="bg-white dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
+      <h1
+        class="mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white"
+      >
+        주문 완료!
+      </h1>
+      <p
+        class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400"
+      >
+        주문해주셔서 감사합니다.<br />
+        빠르게 배송해드릴게요!<br />
+        주문 내역은 주문확인/배송조회 페이지에서 확인 가능합니다.
+      </p>
+      <div
+        class="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4"
+      >
+        <a
+          @click="moveTo(`/my/order/history`)"
+          class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+        >
+          주문확인/배송조회
+        </a>
+        <a
+          @click="moveTo(`/commerce/main`)"
+          class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
+        >
+          계속 쇼핑하기
+          <svg
+            class="ml-2 -mr-1 w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- End Invoice -->
 </template>
 
 <script>
-	import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
-	export default {
-		props: {
-			order_number: String,
-		},
-		methods: {
-			...mapActions("cart", ["clearCartList"]),
-			moveto(path) {
-				this.clearCartList();
-				return (location.href = path);
-			},
-		},
-	};
+export default {
+  props: {
+    order_number: String,
+  },
+  methods: {
+    ...mapActions("cart", ["clearCartList"]),
+    moveTo(path) {
+      this.clearCartList();
+      return (location.href = path);
+    },
+  },
+};
 </script>
