@@ -10,8 +10,8 @@
       >
         <div class="text-center text-gray-500 dark:text-gray-400">
           <img
-            class="mx-auto mb-4 w-20 h-20 rounded-full"
-            src="/src/assets/apple-43.png"
+            class="mx-auto mb-4 w-36 h-36 rounded-full"
+            src="/src/assets/apple-in-basket.png"
             alt="Micheal Avatar"
           />
           <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
