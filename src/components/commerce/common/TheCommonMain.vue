@@ -1,70 +1,3 @@
-<script>
-import { mapActions, mapGetters } from "vuex";
-import ProductService from "@/services/ProductService";
-export default {
-  data() {
-    return {
-      categorys: [],
-      keyword: "",
-      products: [],
-    };
-  },
-  methods: {
-    gotoproducts(category_id) {
-      this.$router.push(`/commerce/search?categoryid=${category_id}`);
-    },
-
-    gopricing() {
-      this.$router.push("/commerce/pricing");
-    },
-
-    async gotodetail(id, option) {
-      // 조회수 증가
-      const payload = {
-        product_id: id,
-      };
-      await this.addProducetViewCount(payload).then(() => {
-        this.$router.push(`/commerce/detail/${id}?option_id=${option?.option_id}`);
-      });
-    },
-    ...mapActions("cart", [
-      "getproductlist",
-      "addProducetViewCount",
-      "updateSpinnerStatus",
-    ]),
-    async setTargetItemList() {
-      let targetItemIndexArr = [75, 74];
-      for (let i = 0; i < targetItemIndexArr.length; i++) {
-        await ProductService.getproductlistbyid(targetItemIndexArr[i]).then(
-          (response) => {
-            if (response.data.code == "0000") {
-              const userdata = response.data.data;
-
-              if (userdata.option_list.length > 0) {
-                const minValue = Object.entries(userdata.option_list).reduce(
-                  (min, [key, value]) => {
-                    return value["extra_price"] < min ? value["extra_price"] : min;
-                  },
-                  Infinity
-                );
-                userdata["lowPrice"] = minValue;
-              } else {
-                userdata["lowPrice"] = userdata.price;
-              }
-              this.products.push(userdata);
-            }
-          }
-        );
-      }
-    },
-  },
-
-  async mounted() {
-    // 주력상품 데이터(감홍, 시나노골드) 데이터 가져오기
-    await this.setTargetItemList();
-  },
-};
-</script>
 <template>
   <div>
     <!-- Testimonials -->
@@ -224,3 +157,70 @@ export default {
     </div>
   </div>
 </template>
+<script>
+import { mapActions, mapGetters } from "vuex";
+import ProductService from "@/services/ProductService";
+export default {
+  data() {
+    return {
+      categorys: [],
+      keyword: "",
+      products: [],
+    };
+  },
+  methods: {
+    gotoproducts(category_id) {
+      this.$router.push(`/commerce/search?categoryid=${category_id}`);
+    },
+
+    gopricing() {
+      this.$router.push("/commerce/pricing");
+    },
+
+    async gotodetail(id, option) {
+      // 조회수 증가
+      const payload = {
+        product_id: id,
+      };
+      await this.addProducetViewCount(payload).then(() => {
+        this.$router.push(`/commerce/detail/${id}?option_id=${option?.option_id}`);
+      });
+    },
+    ...mapActions("cart", [
+      "getproductlist",
+      "addProducetViewCount",
+      "updateSpinnerStatus",
+    ]),
+    async setTargetItemList() {
+      let targetItemIndexArr = [75, 74];
+      for (let i = 0; i < targetItemIndexArr.length; i++) {
+        await ProductService.getproductlistbyid(targetItemIndexArr[i]).then(
+          (response) => {
+            if (response.data.code == "0000") {
+              const userdata = response.data.data;
+
+              if (userdata.option_list.length > 0) {
+                const minValue = Object.entries(userdata.option_list).reduce(
+                  (min, [key, value]) => {
+                    return value["extra_price"] < min ? value["extra_price"] : min;
+                  },
+                  Infinity
+                );
+                userdata["lowPrice"] = minValue;
+              } else {
+                userdata["lowPrice"] = userdata.price;
+              }
+              this.products.push(userdata);
+            }
+          }
+        );
+      }
+    },
+  },
+
+  async mounted() {
+    // 주력상품 데이터(감홍, 시나노골드) 데이터 가져오기
+    await this.setTargetItemList();
+  },
+};
+</script>
