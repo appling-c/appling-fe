@@ -124,14 +124,36 @@
         </div>
       </div>
     </div>
+
     <div class="mt-6 bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
       <div class="container">
         <div class="flex flex-col">
           <div class="-m-1.5 overflow-x-auto">
             <div class="p-1.5 min-w-full inline-block align-middle">
-              <div class="overflow-hidden">
+              <div
+                class="sm:hidden grid grid-cols-4 border-b px-2 py-4 mx-4 text-base font-medium text-slate-500"
+                v-for="order in orders.value"
+                :key="order.order_id"
+              >
+                <div class="col-span-3">
+                  <TheOrderStatusChip :status="order?.status" type="seller" />
+
+                  {{ order.order_name }} /
+                  {{ setOrderTotalPrice(order?.order_item_list) }}원
+                </div>
+
+                <div class="col-span-1 text-right">
+                  <a
+                    @click="orderDetail(order.order_id)"
+                    class="text-blue-500 hover:text-blue-700"
+                  >
+                    ></a
+                  >
+                </div>
+              </div>
+              <div class="sm:block hidden overflow-hidden">
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                  <thead class="hidden sm:block">
+                  <thead class="">
                     <tr>
                       <th
                         scope="col"
@@ -175,45 +197,8 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <!--반응형-->
-                    <tr
-                      class="border-b block sm:hidden"
-                      v-for="order in orders.value"
-                      :key="order.order_id"
-                      :id="`hs-basic-with-arrow-heading-${order.order_id}`"
-                    >
-                      <td
-                        class="grid grid-cols-3 px-6 py-4 whitespace-nowrap text-base font-medium text-slate-800 dark:text-slate-200"
-                      >
-                        <div class="col-span-2">
-                          <TheOrderStatusChip :status="order?.status" type="seller" />
-
-                          {{ moment(order.created_at).format("YYYY.MM.DD HH:mm") }}
-                        </div>
-
-                        <div class="col-span-1 text-right">
-                          <a
-                            @click="orderDetail(order.order_id)"
-                            class="text-blue-500 hover:text-blue-700"
-                          >
-                            주문상세</a
-                          >
-                        </div>
-                      </td>
-
-                      <td
-                        class="px-6 py-4 whitespace-nowrap text-base text-slate-800 dark:text-slate-200"
-                      >
-                        {{ order.order_name }} /
-                        {{ setOrderTotalPrice(order?.order_item_list) }}원
-                      </td>
-                    </tr>
                     <!--full-->
-                    <tr
-                      class="hidden sm:block"
-                      v-for="order in orders.value"
-                      :key="order.order_id"
-                    >
+                    <tr class="" v-for="order in orders.value" :key="order.order_id">
                       <td
                         class="px-6 py-4 whitespace-nowrap text-base font-medium text-slate-800 dark:text-slate-200"
                       >
@@ -251,11 +236,11 @@
                         >
                       </td>
                     </tr>
-                    <tr v-if="orderTotalCount == 0">
+                    <!-- <tr v-if="orderTotalCount == 0">
                       <td>
                         <TheNodataTemplate message="주문 내역이 " />
                       </td>
-                    </tr>
+                    </tr> -->
                   </tbody>
                 </table>
               </div>

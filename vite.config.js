@@ -23,7 +23,7 @@ export default ({ mode }) => {
 
     server: {
       proxy: {
-        "/api": { target: "http://api.appling.me", changeOrigin: true },
+        "/api": { target: "https://api.appling.me", changeOrigin: true },
         "/service": {
           target: "http://www.kamis.co.kr",
           changeOrigin: true,

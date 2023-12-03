@@ -30,7 +30,7 @@ export default {
     kakaologin() {
       const returnurl = import.meta.env.DEV
         ? "http://localhost:5173"
-        : "http://www.appling.me";
+        : "https://www.appling.me";
       return (location.href = `
         https://kauth.kakao.com/oauth/authorize?client_id=04376f3d0a7618a3622f9c541d90d272&redirect_uri=${returnurl}/oauth/kakao/login&response_type=code`);
     },
