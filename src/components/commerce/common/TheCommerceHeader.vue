@@ -68,7 +68,10 @@
 									type="button"
 									class="flex items-center w-full text-gray-800 hover:text-gray-600 font-medium dark:text-gray-200 dark:hover:text-gray-500"
 								>
-									🍎마이애플링
+									<img
+										class="mx-auto w-8 h-8 rounded-full"
+										src="/src/assets/mobile-in-hand.png"
+									/>마이애플링
 									<svg
 										class="ml-2 w-2.5 h-2.5 text-gray-600"
 										width="16"
