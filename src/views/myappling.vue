@@ -2,7 +2,7 @@
   <TheCommerceHeader />
   <div class="antialiased bg-white">
     <TheMyApplingHeader />
-    <main class="p-4 pb-4 md:ml-64 h-auto sm:pt-20 pt-10">
+    <main class="p-4 pb-4 md:ml-52 h-auto sm:pt-20 pt-10">
       <header>
         <p class="mb-2 text-base font-semibold text-blue-600">마이애플링</p>
         <h1
