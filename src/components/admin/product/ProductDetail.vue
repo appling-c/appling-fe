@@ -6,8 +6,7 @@
       </h1>
       <template v-if="mode == 'regist'">
         <p class="mt-2 text-lg text-gray-800 dark:text-gray-600">
-          상품 정보를 등록한 후 한장짜리 <span class="text-blue-600">팜플렛</span>을
-          만들어 홍보해보세요!
+          판매하고자 하는 상품을 등록해주세요.
         </p>
         <p class="mt-2 text-base text-gray-800 dark:text-gray-400">
           등록 이후에도 수정이 가능합니다.

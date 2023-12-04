@@ -4,7 +4,7 @@
       📦 상품 달력
     </h1>
     <p class="mt-2 text-base text-gray-800 dark:text-gray-400">
-      상품 달력 상품 달력 상품 달력 상품 달력
+     주문 내역을 달력으로 확인해보세요!
     </p>
 
     <div class="mt-5 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">

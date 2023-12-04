@@ -1,12 +1,12 @@
 <template>
 	<header class=" ">
 		<h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">
-			나의 수입 한 눈에 보기👀
+			나의 매출👀
 		</h1>
 		<p class="mt-2 text-lg text-gray-800 dark:text-gray-400">
-			이번달, 내가 올린 상품의 매출액과 일정을 한 눈에 확인해보세요!
+			나의 상품 매출을 확인할 수 있는 페이지 입니다. 
 		</p>
-		<p class="mt-2 text-m text-gray-800 dark:text-gray-200">통계는 매월 1일 초기화 돼요.</p>
+		<p class="mt-2 text-m text-gray-800 dark:text-gray-200">매출 통계는 매월 1일 확인할 수 있습니다.</p>
 
 		<div class="mt-5 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
 			<router-link
