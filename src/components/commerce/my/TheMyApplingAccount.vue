@@ -598,7 +598,7 @@
 				this.$router.go(-1);
 			},
 			movetosellerregist() {
-				this.$router.push("/commerce/regist");
+				this.$router.push("/my/seller/request");
 			},
 		},
 		mounted() {

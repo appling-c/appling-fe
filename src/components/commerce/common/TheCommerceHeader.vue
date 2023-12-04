@@ -92,7 +92,7 @@
 								>
 									<router-link
 										v-if="userInfoInterface.role == 'MEMBER'"
-										to="/commerce/regist"
+										to="/my/seller/request"
 										class="inline-flex gap-x-5 w-full p-4 text-gray-600 rounded-md hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
 									>
 										<svg
