@@ -14,20 +14,15 @@
             {{ productItem?.order_product?.main_title }}
           </p>
 
-          <div class="sm:hidden sm:mx-4 grid grid-cols-3 gap-4">
+          <div class="sm:hidden sm:mx-4 gap-4">
             <div
               v-if="productItem?.order_product?.type == 'OPTION'"
-              class="col-span-3 sm:col-span-1 sm:border-r-2 pr-2 w-max"
+              class="sm:border-r-2 pr-2 w-max"
             >
-              {{ productItem?.order_product?.option?.name }}
-            </div>
-
-            <div class="col-span-3 sm:col-span-1 sm:border-r-2 pr-2 w-max">
-              {{ productItem.ea }}개
-            </div>
-
-            <div class="col-span-3 sm:col-span-1 w-max">
-              {{ productItem.product_total_price?.toLocaleString() }}원
+              {{ productItem?.order_product?.option?.name }} / {{ productItem.ea }}개 /
+              <span class="text-slate-900">
+                {{ productItem.product_total_price?.toLocaleString() }}원</span
+              >
             </div>
           </div>
 
