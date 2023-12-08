@@ -6,7 +6,11 @@
 				<h1
 					class="text-3xl font-bold text-gray-800 sm:text-4xl lg:text-5xl lg:leading-tight dark:text-white"
 				>
-					🍎 애플링 가족 되기
+				<img
+						class=" mb-4 w-16 h-16 rounded-full"
+						src="/src/assets/apple-logo.png"
+						alt="Micheal Avatar"
+					/> 애플링 회원가입
 				</h1>
 				<p class="mt-1 md:text-lg text-gray-800 dark:text-gray-200">
 					🍎 애플링 서비스 가입을 위해 정보를 입력해주세요.

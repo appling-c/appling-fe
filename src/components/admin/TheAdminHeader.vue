@@ -100,19 +100,23 @@
 							class="flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-md hover:bg-gray-100"
 						>
 							<svg
-								class="w-3.5 h-3.5"
+								class="w-[16px] h-[16px] text-gray-800 dark:text-white"
+								aria-hidden="true"
 								xmlns="http://www.w3.org/2000/svg"
-								width="16"
-								height="16"
-								fill="currentColor"
-								viewBox="0 0 16 16"
+								width="21"
+								height="20"
+								fill="none"
+								viewBox="0 0 21 20"
 							>
-								<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
 								<path
-									fill-rule="evenodd"
-									d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+									stroke="currentColor"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="1.5"
+									d="M3.308 9a2.257 2.257 0 0 0 2.25-2.264 2.25 2.25 0 0 0 4.5 0 2.25 2.25 0 0 0 4.5 0 2.25 2.25 0 1 0 4.5 0C19.058 5.471 16.956 1 16.956 1H3.045S1.058 5.654 1.058 6.736A2.373 2.373 0 0 0 3.308 9Zm0 0a2.243 2.243 0 0 0 1.866-1h.767a2.242 2.242 0 0 0 3.733 0h.767a2.242 2.242 0 0 0 3.733 0h.767a2.247 2.247 0 0 0 1.867 1A2.22 2.22 0 0 0 18 8.649V19H9v-7H5v7H2V8.524c.37.301.83.469 1.308.476ZM12 12h3v3h-3v-3Z"
 								/>
 							</svg>
+
 							상품관리
 						</a>
 					</li>
@@ -122,20 +126,9 @@
 							@click="moveto('/admin/order/history', '주문관리 > 주문내역')"
 							class="flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-md hover:bg-gray-100"
 						>
-							<svg
-								class="w-3.5 h-3.5"
-								xmlns="http://www.w3.org/2000/svg"
-								width="16"
-								height="16"
-								fill="currentColor"
-								viewBox="0 0 16 16"
-							>
-								<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-								<path
-									fill-rule="evenodd"
-									d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
-								/>
-							</svg>
+						<svg class="w-[16px] h-[16px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 20">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h6m-6 4h6m-6 4h6M1 1v18l2-2 2 2 2-2 2 2 2-2 2 2V1l-2 2-2-2-2 2-2-2-2 2-2-2Z"/>
+  </svg>
 							주문관리
 						</a>
 					</li>
@@ -251,21 +244,9 @@
 							class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100"
 							@click="movetoCommerce()"
 						>
-							<svg
-								class="w-3.5 h-3.5"
-								xmlns="http://www.w3.org/2000/svg"
-								width="16"
-								height="16"
-								fill="currentColor"
-								viewBox="0 0 16 16"
-							>
-								<path
-									d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"
-								/>
-								<path
-									d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"
-								/>
-							</svg>
+						<svg class="w-[16px] h-[16px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9V4a3 3 0 0 0-6 0v5m9.92 10H2.08a1 1 0 0 1-1-1.077L2 6h14l.917 11.923A1 1 0 0 1 15.92 19Z"/>
+  </svg>
 							메인으로 이동
 						</a>
 					</li>

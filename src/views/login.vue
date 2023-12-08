@@ -76,18 +76,14 @@ export default {
             href="#"
             class="inline-flex items-center mb-4 text-xl font-semibold text-gray-900 dark:text-white"
           >
-            <img
-              class="w-8 h-8 mr-2"
-              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
-              alt="logo"
-            />
-            Flowbite
+          <img
+						class="mx-auto mb-4 w-16 h-16 rounded-full"
+						src="/src/assets/apple-logo.png"
+						alt="Micheal Avatar"
+					/>
+          애플링
           </a>
-          <h1
-            class="mb-2 text-2xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white"
-          >
-            애플링
-          </h1>
+         
           <p class="text-sm font-light text-gray-500 dark:text-gray-300">
             아직 애플링 계정이 없다면?
             <a
