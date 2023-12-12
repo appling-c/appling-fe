@@ -5,11 +5,10 @@
 				📦 상품 관리하기
 			</h1>
 			<p class="mt-2 text-lg text-gray-800 dark:text-gray-600">
-				내가 등록한 상품을 관리하는 페이지 입니다. 
+				내가 등록한 상품을 관리하는 페이지 입니다.
 			</p>
 			<p class="mt-2 text-base text-gray-800 dark:text-gray-400">
-				상품의 상태를 확인하고 상품의 판매 상태를
-				업데이트할 수 있습니다.
+				상품의 상태를 확인하고 상품의 판매 상태를 업데이트할 수 있습니다.
 			</p>
 			<div class="mt-5 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
 				<router-link
@@ -339,16 +338,18 @@
 													<span
 														class="block text-sm font-semibold text-gray-800 dark:text-gray-200"
 														><a
-															@click="moveto(litem.product_id)"
+															
 															class="text-blue-500 hover:text-blue-700"
 														>
-															상세보기</a
+														<svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 4">
+    <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M2.49 2h.01m6 0h.01m5.99 0h.01"/>
+  </svg></a
 														></span
 													>
 												</td>
 											</tr>
 											<tr
-												class="hidden flex-1 overflow-x-auto w-full"
+												class="hidden w-full"
 												:id="`table-column-body-${index}`"
 												:aria-labelledby="`table-column-header-${index}`"
 											>
@@ -358,112 +359,139 @@
 												>
 													<div class="grid grid-cols-4 gap-4 mt-4">
 														<div
-															class="col-span-3 relative p-3 bg-gray-100 rounded-lg dark:bg-gray-700 flex flex-col items-start justify-between"
+														v-if="litem.type == 'OPTION'"
+															class="col-span-4 relative p-3 bg-gray-100 rounded-lg dark:bg-gray-700 flex flex-col items-start justify-between"
 														>
 															<h6
+
 																class="mb-2 text-base leading-none font-medium text-gray-900 dark:text-white"
 															>
 																재고 상태
 															</h6>
-															<div
-																class="bg-primary-100 text-primary-800 text-xs font-medium px-2.5 py-0.5 rounded-md dark:bg-primary-200 dark:text-primary-800 flex items-center"
+															<table
+																class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
 															>
-																<div
-																	class="relative overflow-x-auto"
+																<thead
+																	class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
 																>
-																	<table
-																		class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
-																	>
-																		<thead
-																			class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+																	<tr>
+																		<th
+																			scope="col"
+																			class="px-6 py-3"
 																		>
-																			<tr>
-																				<th
-																					scope="col"
-																					class="px-6 py-3"
-																				>
-																					옵션명
-																				</th>
-																				<th
-																					scope="col"
-																					class="px-6 py-3"
-																				>
-																					재고
-																				</th>
-																				<th
-																					scope="col"
-																					class="px-6 py-3"
-																				>
-																					판매가
-																				</th>
-																				<th
-																					scope="col"
-																					class="px-6 py-3"
-																				>
-																					주문건수
-																				</th>
-																			</tr>
-																		</thead>
-																		<tbody>
-																			<tr
-																				v-for="option in litem.option_list"
-																				:key="
-																					option.option_id
-																				"
-																				class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-																			>
-																				<th
-																					scope="row"
-																					class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-																				>
-																					{{
-																						option.name
-																					}}
-																				</th>
-																				<td
-																					class="px-6 py-4"
-																				>
-																					{{ option.ea }}
-																				</td>
+																			옵션명
+																		</th>
+																		<th
+																			scope="col"
+																			class="px-6 py-3"
+																		>
+																			재고
+																		</th>
+																		<th
+																			scope="col"
+																			class="px-6 py-3"
+																		>
+																			판매가
+																		</th>
+																		<th
+																			scope="col"
+																			class="px-6 py-3"
+																		>
+																			주문건수
+																		</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr
+																		v-for="option in litem.option_list"
+																		:key="option.option_id"
+																		class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+																	>
+																		<th
+																			scope="row"
+																			class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+																		>
+																			{{ option.name }}
+																		</th>
+																		<td class="px-6 py-4">
+																			{{ option.ea }}
+																		</td>
 
-																				<td
-																					class="px-6 py-4"
-																				>
-																					{{
-																						option.extra_price
-																					}}
-																				</td>
-																				<td
-																					class="px-6 py-4"
-																				>
-																					15
-																				</td>
-																			</tr>
-																		</tbody>
-																	</table>
+																		<td class="px-6 py-4">
+																			{{ option.extra_price }}
+																		</td>
+																		<td class="px-6 py-4">
+																			15
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+														<div class="col-span-4 grid grid-cols-4 gap-4 p-3 items-start justify-between">
+															<div
+																class="elative p-3 bg-gray-100 rounded-lg dark:bg-gray-700 flex flex-col items-start justify-between"
+															>
+																<h6
+																	class="mb-2 text-base leading-none font-medium text-gray-900 dark:text-white"
+																>
+																	정가
+																</h6>
+																<div
+																	class="bg-primary-100 text-primary-800 text-xs font-medium px-2.5 py-0.5 rounded-md dark:bg-primary-200 dark:text-primary-800 flex items-center"
+																>
+																	{{ litem.origin_price }}
 																</div>
 															</div>
-														</div>
-														<div
-															class="relative p-3 bg-gray-100 rounded-lg dark:bg-gray-700 flex flex-col items-start justify-between"
-														>
-															<h6
-																class="mb-2 text-base leading-none font-medium text-gray-900 dark:text-white"
-															>
-																상품 상태
-															</h6>
 															<div
-																class="bg-primary-100 text-primary-800 text-xs font-medium px-2.5 py-0.5 rounded-md dark:bg-primary-200 dark:text-primary-800 flex items-center"
+																class="col-span-1 relative p-3 bg-gray-100 rounded-lg dark:bg-gray-700 flex flex-col items-start justify-between"
 															>
-																{{ litem.status }}
+																<h6
+																	class="mb-2 text-base leading-none font-medium text-gray-900 dark:text-white"
+																>
+																	판매가(기본가)
+																</h6>
+																<div
+																	class="bg-primary-100 text-primary-800 text-xs font-medium px-2.5 py-0.5 rounded-md dark:bg-primary-200 dark:text-primary-800 flex items-center"
+																>
+																	{{ litem.price }}
+																</div>
+															</div>
+															<div
+																class="col-span-1 relative p-3 bg-gray-100 rounded-lg dark:bg-gray-700 flex flex-col items-start justify-between"
+															>
+																<h6
+																	class="mb-2 text-base leading-none font-medium text-gray-900 dark:text-white"
+																>
+																	상품 상태
+																</h6>
+																<div
+																	class="bg-primary-100 text-primary-800 text-xs font-medium px-2.5 py-0.5 rounded-md dark:bg-primary-200 dark:text-primary-800 flex items-center"
+																>
+																	{{ litem.status }}
+																</div>
+															</div>
+															<div
+																class="col-span-1 relative p-3 bg-gray-100 rounded-lg dark:bg-gray-700 flex flex-col items-start justify-between"
+															>
+																<h6
+																	class="mb-2 text-base leading-none font-medium text-gray-900 dark:text-white"
+																>
+																	판매량
+																</h6>
+																<div
+																	class="bg-primary-100 text-primary-800 text-xs font-medium px-2.5 py-0.5 rounded-md dark:bg-primary-200 dark:text-primary-800 flex items-center"
+																>
+																	9999
+																</div>
 															</div>
 														</div>
 													</div>
 
 													<div class="flex items-center space-x-3 mt-4">
 														<button
+														@click="moveto(litem.product_id)"
 															type="button"
-															class="py-2 px-3 flex items-center text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+															class="py-2 px-3 flex items-center text-sm font-medium text-center text-slate-500 bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 "
 														>
 															<svg
 																xmlns="http://www.w3.org/2000/svg"
@@ -481,33 +509,15 @@
 																	clip-rule="evenodd"
 																/>
 															</svg>
-															Edit
+															수정
 														</button>
 														<button
 															type="button"
-															class="py-2 px-3 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+															class="py-2 px-3 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 "
 														>
-															Preview
+															판매 화면으로 이동
 														</button>
-														<button
-															type="button"
-															class="py-2 px-3 flex items-center text-sm font-medium text-center text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 rounded-lg dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-														>
-															<svg
-																xmlns="http://www.w3.org/2000/svg"
-																class="h-4 w-4 mr-1"
-																viewbox="0 0 20 20"
-																fill="currentColor"
-																aria-hidden="true"
-															>
-																<path
-																	fill-rule="evenodd"
-																	d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-																	clip-rule="evenodd"
-																/>
-															</svg>
-															Delete
-														</button>
+														
 													</div>
 												</td>
 											</tr>
