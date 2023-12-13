@@ -63,6 +63,7 @@
 
 		mounted() {
 			this.$emit("renderTabTitle", "장바구니");
+			gtag("event", "view_cart", {});
 		},
 	};
 </script>
