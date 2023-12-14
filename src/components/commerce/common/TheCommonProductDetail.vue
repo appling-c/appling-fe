@@ -86,11 +86,13 @@
 				</div>
 
 				<figure>
-					<img
-						class="w-full object-cover rounded-xl"
-						:src="productDetailItem?.main_image"
-						alt="Image Description"
-					/>
+					<div style="margin: 10vw auto 5vw; width: 55.55vw; height: 32vw">
+						<img
+							class="w-full object-cover rounded-xl"
+							:src="productDetailItem?.main_image"
+							alt="Image Description"
+						/>
+					</div>
 				</figure>
 
 				<blockquote class="text-center p-4 sm:px-7">
@@ -304,81 +306,77 @@
 	</div>
 
 	<div class="sticky bottom-0 inset-x-0 text-center">
-		<footer class="opacity-90 bg-slate-100 mt-auto w-full py-6 px-4 sm:px-6 lg:px-8 mx-auto">
+		<footer class="opacity-90 bg-slate-100">
 			<!-- Grid -->
-			<div class="text-center">
-				<div>
-					<div class="grid grid-cols-3 gap-4">
-						<div class="col-span-2">
-							<span
-								v-if="productDetailItem?.type == 'NORMAL'"
-								class="flex-none text-xl font-semibold text-black dark:text-white"
-							>
-								구매수량
-							</span>
-							<div
-								v-if="productDetailItem?.type == 'OPTION'"
-								class="col-span-2 flex-none text-xl font-semibold text-black dark:text-white"
-								aria-label="Brand"
-							>
-								<span v-if="targetOption.length == 0"
-									>상품 옵션을 선택해주세요.</span
-								>
-								<span v-else
-									>{{ targetOption?.name }}<br />
-									<span class="text-base"
-										>잔여 수량 : {{ targetOption?.ea }}</span
-									>
-								</span>
-							</div>
-						</div>
-						<div>
-							<TheCounter
-								@updateProductPrice="updateProductPrice"
-								:ea="targetOption?.ea"
-								:productType="productType"
-								:selectCount="productCount"
-							/>
-						</div>
 
-						<div class="col-span-2 flex-none text-xl font-semibold text-black">
-							총 상품금액({{ productCount }}개)
-						</div>
-						<div class="flex rounded-md flex-none text-xl font-semibold text-black">
-							{{ productPrice?.toLocaleString() }}원
+			<!-- 구매 상태 -->
+			<div class="mt-auto w-full py-6 px-4 sm:px-6 lg:px-8 mx-auto">
+				<div class="grid grid-cols-3 gap-4">
+					<div class="col-span-2">
+						<span
+							v-if="productDetailItem?.type == 'NORMAL'"
+							class="flex-none text-xl sm:block flex font-semibold text-black dark:text-white"
+						>
+							구매수량
+						</span>
+						<div
+							v-if="productDetailItem?.type == 'OPTION'"
+							class="col-span-2 sm:block flex flex-none text-xl font-semibold text-black dark:text-white"
+							aria-label="Brand"
+						>
+							<span v-if="targetOption.length == 0">상품 옵션을 선택해주세요.</span>
+							<span v-else
+								>{{ targetOption?.name }}<br />
+								<span class="text-base">잔여 수량 : {{ targetOption?.ea }}</span>
+							</span>
 						</div>
 					</div>
-				</div>
-				<!-- End Col -->
+					<div>
+						<TheCounter
+							@updateProductPrice="updateProductPrice"
+							:ea="targetOption?.ea"
+							:productType="productType"
+							:selectCount="productCount"
+						/>
+					</div>
 
-				<div class="mt-3">
-					<div class="inline-flex rounded-md shadow-sm">
-						<button
-							id="kakao-article-share"
-							type="button"
-							class="py-3 px-4 inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-lg first:ml-0 last:rounded-r-lg border font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400"
-						>
-							공유하기
-						</button>
-						<button
-							@click="saveCartList()"
-							:disabled="
-								productDetailItem?.type == 'OPTION' && targetOption.length == 0
-							"
-							type="button"
-							class="py-3 px-4 inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-lg first:ml-0 last:rounded-r-lg border font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400"
-						>
-							장바구니 담기
-						</button>
-						<!-- <button
-              type="button"
-              class="py-3 px-4 inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-lg first:ml-0 last:rounded-r-lg border font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400"
-            >
-              구매하기
-            </button> -->
+					<div
+						class="col-span-2 sm:block flex flex-none text-xl font-semibold text-black"
+					>
+						총 상품금액({{ productCount }}개)
+					</div>
+					<div
+						class="flex rounded-md flex-none sm:block flex text-xl font-semibold text-black"
+					>
+						{{ productPrice?.toLocaleString() }}원
 					</div>
 				</div>
 			</div>
+
+			<!-- button-->
+			<div class="mt-3" style="width:100%;">
+				<button
+					id="kakao-article-share"
+					type="button"
+					style="min-width:155px; width:40%;"
+					class="py-3 px-4 inline-flex justify-center items-center gap-2 -ml-px first:ml-0 last:rounded-r-lg border font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-base"
+				>
+					공유하기
+				</button>
+				<button
+					@click="saveCartList()"
+					:disabled="productDetailItem?.type == 'OPTION' && targetOption.length == 0"
+					type="button"
+					style="min-width:155px; width:60%;"
+					class="py-3 px-4 inline-flex justify-center items-center gap-2 -ml-px first:ml-0 last:rounded-r-lg border font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all text-base"
+				>
+					장바구니 담기
+				</button>
+				
+				<!-- <div class="inline-flex rounded-md shadow-sm">
+				</div> -->
+			</div>
+
 			<!-- End Grid -->
 		</footer>
 	</div>
@@ -596,6 +594,7 @@
 					value: i + 1,
 				});
 			}
+			document.getElementById("common-footer").style.display = "none";
 		},
 	};
 </script>
