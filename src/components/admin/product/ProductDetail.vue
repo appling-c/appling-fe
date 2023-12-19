@@ -464,7 +464,7 @@
                     v-for="(sitem, sindex) in statusList"
                     :key="sindex"
                     type="button"
-                    @click="setProductStatus(item.key)"
+                    @click="setProductStatus(sitem.key)"
                     :class="
                       status == sitem.key
                         ? 'bg-blue-400 text-white hover:bg-blue-700'

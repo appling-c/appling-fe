@@ -29,6 +29,7 @@
 		</header>
 
 		<div>
+			
 			<div class="flex flex-col">
 				<div class="-m-1.5 overflow-x-auto">
 					<div class="p-1.5 min-w-full inline-block align-middle">
@@ -124,63 +125,6 @@
 													d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
 												/>
 											</svg>
-										</button>
-									</div>
-								</div>
-
-								<div
-									v-else
-									class="max-w-sm w-full min-h-[400px] flex flex-col justify-center mx-auto px-6 py-4"
-								>
-									<div
-										class="flex justify-center items-center w-[46px] h-[46px] bg-gray-100 rounded-md dark:bg-gray-800"
-									>
-										<svg
-											class="w-6 h-6 text-gray-600 dark:text-gray-400"
-											xmlns="http://www.w3.org/2000/svg"
-											width="16"
-											height="16"
-											fill="currentColor"
-											viewBox="0 0 16 16"
-										>
-											<path
-												d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"
-											/>
-											<path
-												d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"
-											/>
-										</svg>
-									</div>
-
-									<h2 class="mt-5 font-semibold text-gray-800 dark:text-white">
-										내역이 없습니다.
-									</h2>
-									<p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-										상품을 등록하고 관리해보세요.
-									</p>
-
-									<div class="mt-5 grid sm:flex gap-2">
-										<button
-											@click="movetporegist()"
-											type="button"
-											class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-										>
-											<svg
-												class="w-3 h-3"
-												xmlns="http://www.w3.org/2000/svg"
-												width="16"
-												height="16"
-												viewBox="0 0 16 16"
-												fill="none"
-											>
-												<path
-													d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2"
-													stroke="currentColor"
-													stroke-width="2"
-													stroke-linecap="round"
-												/>
-											</svg>
-											새로운 상품 등록하기👀
 										</button>
 									</div>
 								</div>
@@ -338,14 +282,22 @@
 													<span
 														class="block text-sm font-semibold text-gray-800 dark:text-gray-200"
 														><a
-															
 															class="text-blue-500 hover:text-blue-700"
 														>
-														<svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 4">
-    <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M2.49 2h.01m6 0h.01m5.99 0h.01"/>
-  </svg></a
-														></span
-													>
+															<svg
+																class="w-6 h-6 text-gray-800 dark:text-white"
+																aria-hidden="true"
+																xmlns="http://www.w3.org/2000/svg"
+																fill="none"
+																viewBox="0 0 17 4"
+															>
+																<path
+																	stroke="currentColor"
+																	stroke-linecap="round"
+																	stroke-width="2"
+																	d="M2.49 2h.01m6 0h.01m5.99 0h.01"
+																/></svg></a
+													></span>
 												</td>
 											</tr>
 											<tr
@@ -359,11 +311,10 @@
 												>
 													<div class="grid grid-cols-4 gap-4 mt-4">
 														<div
-														v-if="litem.type == 'OPTION'"
+															v-if="litem.type == 'OPTION'"
 															class="col-span-4 relative p-3 bg-gray-100 rounded-lg dark:bg-gray-700 flex flex-col items-start justify-between"
 														>
 															<h6
-
 																class="mb-2 text-base leading-none font-medium text-gray-900 dark:text-white"
 															>
 																재고 상태
@@ -427,7 +378,9 @@
 																</tbody>
 															</table>
 														</div>
-														<div class="col-span-4 grid grid-cols-4 gap-4 p-3 items-start justify-between">
+														<div
+															class="col-span-4 grid grid-cols-4 gap-4 p-3 items-start justify-between"
+														>
 															<div
 																class="elative p-3 bg-gray-100 rounded-lg dark:bg-gray-700 flex flex-col items-start justify-between"
 															>
@@ -489,9 +442,9 @@
 
 													<div class="flex items-center space-x-3 mt-4">
 														<button
-														@click="moveto(litem.product_id)"
+															@click="moveto(litem.product_id)"
 															type="button"
-															class="py-2 px-3 flex items-center text-sm font-medium text-center text-slate-500 bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 "
+															class="py-2 px-3 flex items-center text-sm font-medium text-center text-slate-500 bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300"
 														>
 															<svg
 																xmlns="http://www.w3.org/2000/svg"
@@ -513,11 +466,10 @@
 														</button>
 														<button
 															type="button"
-															class="py-2 px-3 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 "
+															class="py-2 px-3 flex items-center text-sm font-medium text-center text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
 														>
 															판매 화면으로 이동
 														</button>
-														
 													</div>
 												</td>
 											</tr>
@@ -526,77 +478,7 @@
 								</table>
 								<div v-else>
 									<!-- Card -->
-									<div class="flex flex-col">
-										<div class="-m-1.5 overflow-x-auto">
-											<div class="p-1.5 min-w-full inline-block align-middle">
-												<div
-													class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-slate-900 dark:border-gray-700"
-												>
-													<!-- Body -->
-													<div
-														class="max-w-sm w-full min-h-[400px] flex flex-col justify-center mx-auto px-6 py-4"
-													>
-														<div
-															class="flex justify-center items-center w-[46px] h-[46px] bg-gray-100 rounded-md dark:bg-gray-800"
-														>
-															<svg
-																class="w-6 h-6 text-gray-600 dark:text-gray-400"
-																xmlns="http://www.w3.org/2000/svg"
-																width="16"
-																height="16"
-																fill="currentColor"
-																viewBox="0 0 16 16"
-															>
-																<path
-																	d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"
-																/>
-																<path
-																	d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"
-																/>
-															</svg>
-														</div>
-
-														<h2
-															class="mt-5 font-semibold text-gray-800 dark:text-white"
-														>
-															내역이 없습니다.
-														</h2>
-														<p
-															class="mt-2 text-sm text-gray-600 dark:text-gray-400"
-														>
-															상품을 등록하고 관리해보세요.
-														</p>
-
-														<div class="mt-5 grid sm:flex gap-2">
-															<button
-																@click="movetporegist()"
-																type="button"
-																class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-															>
-																<svg
-																	class="w-3 h-3"
-																	xmlns="http://www.w3.org/2000/svg"
-																	width="16"
-																	height="16"
-																	viewBox="0 0 16 16"
-																	fill="none"
-																>
-																	<path
-																		d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2"
-																		stroke="currentColor"
-																		stroke-width="2"
-																		stroke-linecap="round"
-																	/>
-																</svg>
-																새로운 상품 등록하기👀
-															</button>
-														</div>
-													</div>
-													<!-- End Body -->
-												</div>
-											</div>
-										</div>
-									</div>
+									<TheNodataTemplate message="내역이 " />
 									<!-- End Card -->
 								</div>
 							</div>
@@ -620,10 +502,12 @@
 	import ThePreviewPopup from "../template/TemplatePreviewPopup.vue";
 	import { mapActions } from "vuex";
 	import ProductService from "@/services/ProductService";
+	import TheNodataTemplate from "@/components/TheNodataTemplate.vue";
 
 	export default {
 		components: {
 			ThePreviewPopup,
+			TheNodataTemplate
 		},
 		async created() {
 			await this.getproductlists();

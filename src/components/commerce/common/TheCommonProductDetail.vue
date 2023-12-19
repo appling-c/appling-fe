@@ -292,11 +292,17 @@
 
 				<blockquote class="mt-10 text-center p-4 sm:px-7">
 					<p class="text-lg text-gray-800 dark:text-gray-200">
-						<a
+						<!-- <a
 							:href="`/commerce/brandshop/${productDetailItem?.seller?.seller_id}}`"
 							class="text-blue-600 decoration-2 hover:underline font-medium"
 							>{{ productDetailItem?.seller?.company }}에서 판매중인 모든 상품
 							구경하기 >
+						</a> -->
+
+						<a
+							:href="`/commerce/main`"
+							class="text-blue-600 decoration-2 hover:underline font-medium"
+							>판매중인 상품 둘러보기 >
 						</a>
 					</p>
 				</blockquote>
