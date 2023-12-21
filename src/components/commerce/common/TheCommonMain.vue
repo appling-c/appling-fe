@@ -221,6 +221,7 @@ export default {
   async mounted() {
     // 주력상품 데이터(감홍, 시나노골드) 데이터 가져오기
     await this.setTargetItemList();
+    this.updateSpinnerStatus(false);
   },
 };
 </script>
