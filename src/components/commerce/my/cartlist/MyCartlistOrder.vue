@@ -11,7 +11,7 @@
           <div class="-m-1.5 overflow-x-auto">
             <div class="p-1.5 min-w-full inline-block align-middle">
               <div
-                class="block sm:hidden grid grid-cols-5 px-4 py-8 border-b border-gray-200"
+                class="block sm:hidden grid grid-cols-5 md:px-4 md:py-6 border-b border-gray-200"
                 v-for="(invent, index) in inventoryList"
                 :key="invent.id"
               >
@@ -22,7 +22,7 @@
                   </span>
                   ₩{{ invent.sellingPriceDP?.toLocaleString() }}
                 </div>
-                <div class="col-span-2">
+                <div class="col-span-3 mx-auto md:col-span-2">
                   <TheCounter
                     :ea="
                       invent.productType == 'OPTION' ? invent.targetOption.ea : invent.ea
@@ -33,7 +33,7 @@
                     @updateProductPrice="updateCartList"
                   />
                 </div>
-                <div class="col-span-1 text-center">
+                <div class="hidden md:block col-span-1 text-center">
                   <a @click="deleteItem(index)" class="text-blue-500 hover:text-blue-700"
                     >삭제</a
                   >
@@ -141,10 +141,10 @@
         </div>
       </div>
     </div>
-    <div class="flex p-6 lg:p-8">
+    <div class="flex">
       <div id="starter-plan" class="self-center w-full text-gray-900">
         <div class="mb-4 text-2xl font-semibold text-gray-900">
-          <div class="col-span-2 p-6 lg:p-8">
+          <div class="col-span-2 p-6">
             <h2
               class="hidden sm:inline mb-1 text-2xl font-bold text-gray-900 dark:text-white"
             >
@@ -170,7 +170,7 @@
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span class="leading-tight text-gray-500 dark:text-gray-400"
+                  <span class="leading-tight text-gray-500"
                     >선택한 상품 금액 : {{ totalPrice?.toLocaleString() }}원</span
                   >
                 </li>
@@ -188,9 +188,7 @@
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span class="leading-tight text-gray-500 dark:text-gray-400"
-                    >배송비 : 0원</span
-                  >
+                  <span class="leading-tight text-gray-500">배송비 : 0원</span>
                 </li>
               </ul>
             </div>

@@ -1,7 +1,7 @@
 <template>
   <header
     :class="isShowHeader ? 'flex' : 'hidden md:flex'"
-    class="sticky top-0 inset-x-0 z-40 flex-wrap sm:justify-start sm:flex-nowrap w-full bg-white border-b text-sm py-2.5 sm:py-0 lg:pl-52"
+    class="sticky top-0 inset-x-0 z-40 flex-wrap sm:justify-start sm:flex-nowrap w-full bg-white border-b text-sm py-2.5 sm:py-0"
   >
     <div class="flex items-center justify-between px-4 sm:px-0 md:px-2">
       <div class="sm:hidden">
@@ -69,7 +69,7 @@
                   class="flex items-center w-full text-gray-800 hover:text-gray-600 font-medium dark:text-gray-200 dark:hover:text-gray-500"
                 >
                   <img
-                    class="mx-auto w-8 h-8 rounded-full"
+                    class="w-8 h-8 rounded-full"
                     src="/src/assets/apple-logo.png"
                   />마이애플링
                   <svg
@@ -131,7 +131,6 @@
                     class="inline-flex gap-x-5 w-full p-4 text-gray-600 rounded-md hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                   >
                     <img class="w-8 h-8" src="../../../assets/main.png" />
-                   
 
                     <div class="grow">
                       <span
@@ -146,8 +145,8 @@
                     @click="cartlist"
                     class="inline-flex gap-x-5 w-full p-4 text-gray-600 rounded-md hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                   >
-                  <img class="w-8 h-8" src="../../../assets/cartlist.png" />
-                   
+                    <img class="w-8 h-8" src="../../../assets/cartlist.png" />
+
                     <div class="grow">
                       <span
                         class="pt-2 block font-semibold mb-1 text-gray-800 dark:text-gray-200"
@@ -161,8 +160,8 @@
                     @click="history()"
                     class="inline-flex gap-x-5 w-full p-4 text-gray-600 rounded-md hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                   >
-                  <img class="w-8 h-8" src="../../../assets/delivery.png" />
-                   
+                    <img class="w-8 h-8" src="../../../assets/delivery.png" />
+
                     <div class="grow">
                       <span
                         class="pt-2 block font-semibold mb-1 text-gray-800 dark:text-gray-200"
@@ -177,8 +176,8 @@
                     @click="account()"
                     class="inline-flex gap-x-5 w-full p-4 text-gray-600 rounded-md hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                   >
-                  <img class="w-8 h-8" src="../../../assets/myinfo.png" />
-                   
+                    <img class="w-8 h-8" src="../../../assets/myinfo.png" />
+
                     <div class="grow">
                       <span
                         class="pt-2 block font-semibold mb-1 text-gray-800 dark:text-gray-200"

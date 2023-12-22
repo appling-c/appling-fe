@@ -442,7 +442,7 @@ export default {
       if (this.productType !== "NORMAL") {
         addCartItem["targetOption"] = this.targetOption;
         addCartItem["sellingPriceDP"] =
-          addCartItem["price"] + this.targetOption?.extra_price * this.productCount;
+          addCartItem["price"] + this.targetOption?.extra_price;
       } else {
         addCartItem["sellingPriceDP"] = addCartItem["price"];
       }

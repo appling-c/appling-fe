@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import TheCommerceHeader from "../components/commerce/common/TheCommerceHeader.vue";
 import TheMyApplingHeader from "../components/commerce/my/TheMyApplingHeader.vue";
 const currentTabTitle = ref("");
@@ -29,4 +29,8 @@ function renderTabTitle(title) {
   currentTabTitle.value = title;
   console.log(currentTabTitle.value);
 }
+
+onMounted(() => {
+  document.getElementById("common-footer").style.display = "none";
+});
 </script>

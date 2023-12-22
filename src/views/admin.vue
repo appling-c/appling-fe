@@ -23,5 +23,8 @@ export default {
     TheAdminHeader,
     TheCommerceHeader,
   },
+  mounted() {
+    document.getElementById("common-footer").style.display = "none";
+  },
 };
 </script>

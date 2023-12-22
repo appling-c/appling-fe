@@ -47,15 +47,15 @@
         </figure>
 
         <footer class="mt-6">
-          <div class="font-bold text-2xl text-gray-800 dark:text-gray-200">
+          <!-- <div class="font-bold text-2xl text-gray-800 dark:text-gray-200">
             ₩ {{ (product.price + product.lowPrice).toLocaleString() }} 원부터
-          </div>
+          </div> -->
           <!-- Buttons -->
           <div class="mt-8 grid gap-3 w-full sm:inline-flex sm:justify-center">
             <!-- End Buttons -->
             <div>
               <div>
-                <button
+                <!-- <button
                   class="inline-flex justify-center items-center gap-x-3 text-center bg-blue-600 hover:bg-blue-700 border border-transparent text-white text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:focus:ring-offset-gray-800"
                 >
                   구매하기
@@ -73,7 +73,7 @@
                       stroke-linecap="round"
                     />
                   </svg>
-                </button>
+                </button> -->
 
                 <div class="w-full overflow-hidden transition-[height] duration-300">
                   <div class="mt-8 max-w-2xl mx-auto text-center mb-8">
