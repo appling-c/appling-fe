@@ -40,7 +40,7 @@
         </div>
         <figure>
           <img
-            class="w-full object-cover rounded-xl"
+            class="w-8/12 h-2/3 m-auto object-cover rounded-xl"
             :src="product.main_image"
             alt="Image Description"
           />
@@ -53,11 +53,10 @@
           <!-- Buttons -->
           <div class="mt-8 grid gap-3 w-full sm:inline-flex sm:justify-center">
             <!-- End Buttons -->
-            <div class="hs-accordion-group">
-              <div class="hs-accordion" id="hs-basic-no-arrow-heading-one">
+            <div>
+              <div>
                 <button
-                  class="hs-accordion-toggle inline-flex justify-center items-center gap-x-3 text-center bg-blue-600 hover:bg-blue-700 border border-transparent text-white text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:focus:ring-offset-gray-800"
-                  aria-controls="hs-basic-no-arrow-collapse-one"
+                  class="inline-flex justify-center items-center gap-x-3 text-center bg-blue-600 hover:bg-blue-700 border border-transparent text-white text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:focus:ring-offset-gray-800"
                 >
                   구매하기
                   <svg
@@ -76,12 +75,8 @@
                   </svg>
                 </button>
 
-                <div
-                  id="hs-basic-no-arrow-collapse-one"
-                  class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
-                  aria-labelledby="hs-basic-no-arrow-heading-one"
-                >
-                  <div class="mt-8 max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+                <div class="w-full overflow-hidden transition-[height] duration-300">
+                  <div class="mt-8 max-w-2xl mx-auto text-center mb-8">
                     <h2
                       class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white"
                     >
@@ -89,7 +84,7 @@
                     </h2>
                   </div>
                   <div
-                    class="mt-12 relative before:absolute before:inset-0 before:-z-[1] before:bg-[radial-gradient(closest-side,#cbd5e1,transparent)] dark:before:bg-[radial-gradient(closest-side,#334155,transparent)]"
+                    class="mt-8 relative before:absolute before:inset-0 before:-z-[1] before:bg-[radial-gradient(closest-side,#cbd5e1,transparent)] dark:before:bg-[radial-gradient(closest-side,#334155,transparent)]"
                   >
                     <div
                       class="grid gap-px sm:grid-cols-2 lg:items-center"
